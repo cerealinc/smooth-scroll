@@ -1,12 +1,8 @@
 'use client';
 import { useEffect } from 'react';
 import styles from './page.module.css'
-import Intro from '../components/Intro';
-import Description from '../components/Description';
 import Projects from '../components/Projects/index';
 import Logo from '@/components/Logo';
-import CustomCursor from "../components/CustomCursor";
-import CustomCursorManager from "../components/CustomCursor/context/manager";
 import Start from '@/components/Start'; 
 import TextScrollAuto from '@/components/textScrollAuto';
 
