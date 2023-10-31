@@ -98,7 +98,7 @@ const HorizontalScrollText3 = () => {
     <>
       <div ref={videoContainerRef} className='horizontal-scroll-container'>
         <div className="horizontal-scroll-copy">
-          Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client's <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
+          Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client&apos;s <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
         </div>
         <div className="horizontal-scroll-video">
           <video
