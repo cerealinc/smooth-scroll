@@ -53,67 +53,69 @@ const HorizontalScrollText3 = () => {
       markers: false,
     });
     ScrollTrigger.create({
-        animation: textTimeline,
-        trigger: paragraphRef.current,
-        start: 'top+=20 center',
-        end: 'top+=20 center',
-        scrub: 0.2, // Adjust this value to control the transition speed
-        markers: false,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const newIndex = Math.floor(progress * words.length);
-      
-          if (newIndex !== currentWordIndex) {
-            textTimeline.seek(newIndex);
-          }
-        },
-      });
-      ScrollTrigger.create({
-        animation: textTimeline,
-        trigger: paragraphRef2.current,
-        start: 'top+=150 center',
-        end: 'top+=150 center',
-        scrub: 0.2, // Adjust this value to control the transition speed
-        markers: false,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const newIndex = Math.floor(progress * words2.length);
-      
-          if (newIndex !== currentWordIndex) {
-            textTimeline.seek(newIndex);
-          }
-        },
-      });
-    
+      animation: textTimeline,
+      trigger: paragraphRef.current,
+      start: 'top+=20 center',
+      end: 'top+=20 center',
+      scrub: 0.2, // Adjust this value to control the transition speed
+      markers: false,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const newIndex = Math.floor(progress * words.length);
+
+        if (newIndex !== currentWordIndex) {
+          textTimeline.seek(newIndex);
+        }
+      },
+    });
+    ScrollTrigger.create({
+      animation: textTimeline,
+      trigger: paragraphRef2.current,
+      start: 'top+=150 center',
+      end: 'top+=150 center',
+      scrub: 0.2, // Adjust this value to control the transition speed
+      markers: false,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const newIndex = Math.floor(progress * words2.length);
+
+        if (newIndex !== currentWordIndex) {
+          textTimeline.seek(newIndex);
+        }
+      },
+    });
+
     return () => {
       textTimeline.kill();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       ScrollTrigger.getById(videoContainerRef.current).kill(true);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       ScrollTrigger.getById(paragraphRef.current).kill(true);
     };
   }, []);
 
   return (
     <>
-    <div ref={videoContainerRef} className='horizontal-scroll-container'>
-      <div className="horizontal-scroll-copy">
-        Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client's <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
+      <div ref={videoContainerRef} className='horizontal-scroll-container'>
+        <div className="horizontal-scroll-copy">
+          Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client's <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
+        </div>
+        <div className="horizontal-scroll-video">
+          <video
+            loop
+            muted
+            autoPlay
+            playsInline
+            className="videoInner"
+          >
+            <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
+          </video>
+        </div>
+
       </div>
-      <div className="horizontal-scroll-video">
-        <video
-          loop
-          muted
-          autoPlay
-          playsInline
-          className="videoInner"
-        >
-          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-        </video>
-      </div>
-
-    </div>
 
 
-        </>
+    </>
   );
 };
 

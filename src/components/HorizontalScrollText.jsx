@@ -27,6 +27,7 @@ const HorizontalScrollText = () => {
     // Disable scroll trigger animations when navigating away from the page
     return () => {
       tl.kill();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       ScrollTrigger.getById(textRef.current).kill(true);
     };
   }, []);

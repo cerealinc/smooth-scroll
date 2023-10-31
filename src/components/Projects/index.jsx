@@ -68,7 +68,7 @@ export default function Index() {
         window.removeEventListener('mousemove', handleMouseMove);
       };
 
-    }, [prevX, prevY]);
+    }, [speed, prevX, prevY]);
 
     const [activeId, setActiveId] = useState(0);
 
@@ -154,6 +154,7 @@ export default function Index() {
 
                 {
                     projects.map(({ id, title, details }) => (
+                        // eslint-disable-next-line react/jsx-key
                         <div
                             className={`${activeId === id ? styles.hover : ''} ${styles.projectEl}`}
                         >
