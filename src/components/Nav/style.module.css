@@ -1,0 +1,28 @@
+
+
+.navigation {
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    position: fixed;
+    right: 42px;
+    top: 40px;
+    z-index: 9;
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px;
+}
+
+.navigation .centerLine{
+    content: ' ';
+    height: 1px;
+    width: 6px;
+    background-color: #fff;
+    margin-top: 1px;
+}

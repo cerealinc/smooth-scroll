@@ -24,8 +24,9 @@ const AnimatedLogo = ({ text }) => {
     logoAnimation.to(splitChars, {
       opacity: 0,
       y: 0,
-      x: -1,
-      stagger: -0.02,
+      x: -20,
+      stagger: -0.01,
+      duration: .7
     });
   }, []);
 

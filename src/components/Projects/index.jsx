@@ -48,15 +48,8 @@ export default function Index() {
         const mouseY = e.clientY;
         const myNumber = Number(speed);
 
-        let setit; // Declare the variable outside of the if-else blocks
+        let setit = 80; // Declare the variable outside of the if-else blocks
 
-        if (myNumber > 20) {
-          setit = 140; // Assign the value within the if block
-        } else if (myNumber > 40) {
-            setit = 200; // Assign the value within the if block
-        } else {
-          setit = 80; // Assign the value within the else block
-        }
         focusFront.style = `clip-path: circle(var(--radius, ${setit}px) at ${mouseX}px ${mouseY}px);`;
         circle.style = `transform: translate(${mouseX}px, ${mouseY}px)`;
 
@@ -94,29 +87,7 @@ export default function Index() {
             <div className={styles.projectDescription}>
 
                 <div className={styles.imageContainer}>
-                <div class="focus focus--back">
-                {
-                            projects.map(({ id, src }) => (
-                                <video
-                                    loop
-                                    muted
-                                    autoPlay
-                                    playsInline
-                                    key={id}
-                                    className={styles.videoBlur}
-                                    style={{
-                                        display:
-                                          activeId === id ? "block" : "none",
-                                        
-                                      }}
-                                >
-                                    <source src={`/images/${src}`} type="video/mp4" />
 
-                                </video>
-                            )
-                            )
-                    }
-                    </div>
                     <div class="focus focus--front">
 
 

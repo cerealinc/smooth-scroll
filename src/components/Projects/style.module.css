@@ -52,7 +52,7 @@
     color: #000;
 }
 .projectList h3.hovered {
-    color: #fff;
+    color: #000;
 }
 .projectEl{
     width: 100%;
@@ -65,7 +65,7 @@
     height: 200px;
 }
 .hovered {
-    color: #fff;
+    color: #000;
 }
 h2.notHovered {
     opacity: 1 !important;

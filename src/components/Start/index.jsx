@@ -1,6 +1,5 @@
 import HorizontalScrollText from '../../components/HorizontalScrollText';
 import HorizontalScrollText2 from '../../components/HorizontalScrollText2';
-import HorizontalScrollText3 from '../../components/HorizontalScrollText3';
 import styles from './style.module.css';
 
 export default function Start() {
@@ -12,7 +11,6 @@ export default function Start() {
       <section  id="nextSection">
       <HorizontalScrollText2 />
       </section>
-      <HorizontalScrollText3 />
 
     </div>
   );

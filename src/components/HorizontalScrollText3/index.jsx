@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin'; // Import the TextPlugin
+import styles from './style.module.css';
 
 const HorizontalScrollText3 = () => {
   const videoContainerRef = useRef(null); // Change this to the parent container
@@ -96,20 +97,9 @@ const HorizontalScrollText3 = () => {
 
   return (
     <>
-      <div ref={videoContainerRef} className='horizontal-scroll-container'>
-        <div className="horizontal-scroll-copy">
+      <div ref={videoContainerRef} className={styles.scrollContainer}>
+        <div className={styles.scrollCopy}>
           Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client&apos;s <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
-        </div>
-        <div className="horizontal-scroll-video">
-          <video
-            loop
-            muted
-            autoPlay
-            playsInline
-            className="videoInner"
-          >
-            <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-          </video>
         </div>
 
       </div>

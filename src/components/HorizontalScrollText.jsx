@@ -33,7 +33,7 @@ const HorizontalScrollText = () => {
   }, []);
 
   return (
-    <div className='horizontal-scroll-container'>
+    <div className='horizontal-scroll-container' style={{background: "#888971"}}>
 
       <div ref={textRef} className="horizontal-scroll-text">
       A creative partner for agencies, brands, and start-ups.
