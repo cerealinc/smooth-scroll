@@ -31,7 +31,7 @@ const Scroll = () => {
       },[])
   return (
     <div className={styles.scroll}>
-    <div>scroll</div>
+    <div>Scroll</div>
 
 <div
       id="progress-container"
