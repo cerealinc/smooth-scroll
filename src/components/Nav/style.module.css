@@ -17,6 +17,7 @@
     color: #fff;
     text-decoration: none;
     padding: 8px;
+    position: relative;
 }
 
 .navigation .centerLine{
@@ -33,4 +34,6 @@
     background-color: #fff;
     display: block;
     margin-top: 5px;
+    position: relative;
+    left: 0;
 }
