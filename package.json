@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^14.0.1",
+    "@studio-freight/react-lenis": "^0.0.36",
     "eslint": "^8.43.0",
     "eslint-config-next": "13.4.6",
     "gsap": "npm:@gsap/shockingly@^3.12.2",
@@ -17,6 +18,10 @@
     "next": "13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.69.4"
+    "react-intersection-observer": "^9.5.2",
+    "react-particles": "^2.12.2",
+    "sass": "^1.69.4",
+    "tsparticles": "^2.12.0",
+    "tsparticles-slim": "^2.12.0"
   }
 }

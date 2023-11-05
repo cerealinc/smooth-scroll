@@ -1,6 +1,8 @@
 import './globals.css'
 import localFont from "@next/font/local";
 
+
+
 const bbfont = localFont({
   src: [
     {
@@ -25,7 +27,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body style={bbfont.style}>{children}</body>
+      <body style={bbfont.style}>
+          {children}
+</body>
     </html>
   )
 }

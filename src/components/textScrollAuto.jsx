@@ -11,7 +11,7 @@ const TextScrollAuto = () => {
     <>
           <div className="marquee">
           <p>
-          <span>creative direction, development </span>
+          <span>Creative Direction, Development, and Execution</span>
         </p>
         </div>
 

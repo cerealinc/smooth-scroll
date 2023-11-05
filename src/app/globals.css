@@ -11,12 +11,31 @@
 }
 body{
   margin: 0px;
-  background-color: black;
+  background-color: #888971;
+  overflow-x: hidden;
 }
 
 .wef {display: block !important;}
 
+html.lenis {
+  height: auto;
+}
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 /* ------------ GOOGLE FONTS ------------ */
 
 /* ------------ VARIABLES ------------ */
@@ -31,9 +50,6 @@ body{
   box-sizing: border-box;
 }
 
-body{
-  overflow: hidden
-}
 
 /* ---------- FOCUS ----------- */
 .focus__container{
@@ -91,83 +107,6 @@ body{
 
 
 
-.horizontal-scroll-container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.horizontal-scroll-text {
-  white-space: nowrap;
-  font-size: 4rem;
-  position: absolute;
-  top: 50%;
-  left: 30%;
-  transform: translateY(-50%);
-  color: #fff;
-  z-index: 9999;
-}
-.horizontal-scroll-header {
-  white-space: nowrap;
-  font-size: 3rem;
-  position: absolute;
-  top: 40%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  transform: translateY(-60%);
-  color: #fff;
-  z-index: 9999;
-}
-.horizontal-scroll-copy {
-  font-size: 2rem;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  right: 0;
-  text-align: center;
-  transform: translateY(-50%);
-  transform: translatex(-50%);
-  color: #fff;
-  z-index: 9999;
-  width: 850px;
-}
-
-.horizontal-scroll-video {
-  width: 100vw;
-  height: 100vh;
-}
-
-
-
-.marquee {
-  height: 260px;
-  overflow: hidden;
-  position: relative;
-  background: #fefefe;
-}
-
-.marquee p {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  line-height: 260px;
-  text-align: center;
-  font-size: 2rem;
-  color: #000;
-  display: flex;
-  justify-content: space-around;
-  white-space: nowrap;
-  will-change: transform;
-  animation: marquee 16s linear infinite;
-}
-
-@keyframes marquee {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
 
 .videoInner {
   bottom: 0;
@@ -201,4 +140,45 @@ body{
 .animated-text {
   opacity: 1;
 }
+
+
+
+/* components/ParticleBackground.css */
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the particles behind other content */
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transform: scale(1);
+  animation: move 5s linear infinite;
+  height: 4px;
+  width: 4px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.7);
+  }
+}
+
+
 

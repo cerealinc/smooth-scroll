@@ -1,23 +1,20 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin'; // Import the TextPlugin
+import { TextPlugin } from 'gsap/TextPlugin';
 import styles from './style.module.css';
 
 const HorizontalScrollText3 = () => {
-  const videoContainerRef = useRef(null); // Change this to the parent container
+  const videoContainerRef = useRef(null);
   const paragraphRef = useRef(null);
-  const paragraphRef2 = useRef(null);
-  const helpMe = useRef(null);
+  const marqueeRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
-    const words = ["vision", "innovation",]; // Define an array of words to cycle through
-    const words2 = ["resources", "another",]; // Define an array of words to cycle through
+    const words = ["vision.", "resources."];
     let currentWordIndex = 0;
 
     const textTimeline = gsap.timeline();
-
 
     words.forEach((word, index) => {
       textTimeline.to(paragraphRef.current, {
@@ -28,38 +25,25 @@ const HorizontalScrollText3 = () => {
         },
       });
     });
-    words2.forEach((word2, index) => {
-      textTimeline.to(paragraphRef2.current, {
-        duration: 10,
-        text: { value: word2, padSpace: false },
-        onStart: () => {
-          currentWordIndex = index;
-        },
-      });
-    });
+
+    // ScrollTrigger to pin the video container
     ScrollTrigger.create({
-      trigger: videoContainerRef.current, // Change to the parent container
-      start: 'top top', // Pin when the video container reaches the top
+      trigger: videoContainerRef.current,
+      start: 'top top',
       endTrigger: paragraphRef.current,
-      end: 'bottom top', // Unpin when the text is at the top
+      end: 'bottom top',
       pin: true,
-      pinSpacing: true, // Adjust as needed
+      pinSpacing: true,
       markers: false,
     });
-    ScrollTrigger.create({
-      trigger: helpMe.current, // Change to the parent container
-      start: 'top top', // Pin when the video container reaches the top
-      endTrigger: helpMe.current,
-      end: 'top top', // Unpin when the text is at the top
-      markers: false,
-    });
+
+    // ScrollTrigger for horizontal scroll of marquee text
     ScrollTrigger.create({
       animation: textTimeline,
       trigger: paragraphRef.current,
-      start: 'top+=20 center',
-      end: 'top+=20 center',
-      scrub: 0.2, // Adjust this value to control the transition speed
-      markers: false,
+      start: 'top center',
+      end: 'top+=100 center', // Adjust to your needs
+      scrub: 0.1,
       onUpdate: (self) => {
         const progress = self.progress;
         const newIndex = Math.floor(progress * words.length);
@@ -69,43 +53,34 @@ const HorizontalScrollText3 = () => {
         }
       },
     });
-    ScrollTrigger.create({
-      animation: textTimeline,
-      trigger: paragraphRef2.current,
-      start: 'top+=150 center',
-      end: 'top+=150 center',
-      scrub: 0.2, // Adjust this value to control the transition speed
-      markers: false,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const newIndex = Math.floor(progress * words2.length);
 
-        if (newIndex !== currentWordIndex) {
-          textTimeline.seek(newIndex);
-        }
-      },
+    // ScrollTrigger to pin the marquee text at the bottom within the container
+    ScrollTrigger.create({
+      trigger: paragraphRef.current,
+      start: 'top bottom',
+      end: 'bottom bottom',
+      pin: true,
+      pinSpacing: false,
+      markers: false,
     });
 
-    return () => {
-      textTimeline.kill();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      ScrollTrigger.getById(videoContainerRef.current).kill(true);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      ScrollTrigger.getById(paragraphRef.current).kill(true);
-    };
   }, []);
 
   return (
-    <>
+    <div className='dark-section'>
       <div ref={videoContainerRef} className={styles.scrollContainer}>
         <div className={styles.scrollCopy}>
-          Our team is both innovative and insightful, offering end to end solutions that streamline and maximize client&apos;s <span ref={paragraphRef}>vision</span>, <span ref={paragraphRef2}>resources</span>, and impact.
+          Our team is both innovative and insightful,<br/>
+          offering end to end solutions that streamline<br/>
+          and maximize client&apos;s <span ref={paragraphRef}>vision.</span>
         </div>
-
+        <div ref={marqueeRef} className={styles.marquee}>
+          <p className={styles.marqueeText}>
+            <span>Creative Direction, Development, and Execution</span>
+          </p>
+        </div>
       </div>
-
-
-    </>
+    </div>
   );
 };
 

@@ -18,7 +18,6 @@ const Scroll = () => {
             const scrollPercent = (scrollY / (documentHeight - windowHeight))*100 
     
             setScrollPercentage(scrollPercent)
-            console.log(scrollPercent)
         }
     
     
