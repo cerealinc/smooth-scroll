@@ -16,7 +16,7 @@ const HorizontalScrollText2 = () => {
   useEffect(() => {
     // Parallax effect for the text
     gsap.to(headerRef.current, {
-      y: 180, // Adjust the vertical parallax distance
+      y: 196, // Adjust the vertical parallax distance
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top-=200 center',
@@ -77,7 +77,7 @@ const HorizontalScrollText2 = () => {
 
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
-      filter: 'blur(10px)', // Initial blur
+      filter: 'blur(18px)', // Initial blur
       scrollTrigger: {
         trigger: videoRef.current,
         start: 'top bottom',
@@ -86,7 +86,7 @@ const HorizontalScrollText2 = () => {
         markers: false,
         onUpdate: (self) => {
           // Gradually reduce the blur effect
-          const blurAmount = 10 - self.progress * 10;
+          const blurAmount = 18 - self.progress * 18;
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
         },
       },
@@ -101,10 +101,13 @@ const HorizontalScrollText2 = () => {
       <div ref={textRef} className={styles.scrollText}>
         A creative partner for agencies, brands, and start-ups.
       </div>
-      <div ref={videoRef} className={styles.scrollVideo}>
+      <div className={styles.scrollVideo}>
+      <div ref={videoRef} className={styles.scrollVideoBlur}>
+
         <video loop muted autoPlay playsInline className="videoInner">
           <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
         </video>
+        </div>
       </div>
     </div>
   );

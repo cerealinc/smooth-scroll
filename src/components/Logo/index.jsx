@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import AnimatedLogo from '@/components/AnimatedSection';
 import { gsap } from 'gsap';
@@ -11,25 +10,53 @@ const Logo = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const logoAnimationw = gsap.timeline({
+    const logoAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: ".lightbg",
-        start: 'center-=100 top', // Start animation when the top of the logo hits the top of the viewport
+        start: 'center top', // Start animation when the top of the logo hits the top of the viewport
         toggleActions: 'play none none reverse',
         markers: false,
-        duration: 0
+        duration: 0,
       },
     });
 
+    // Function to check the background color and set the logo text color accordingly
+    function checkBackgroundColor() {
+      const backgroundColor = getComputedStyle(document.body).backgroundColor;
+      const isDarkBackground = isDarkColor(backgroundColor);
 
-    logoAnimationw.to(mainRef.current, {
-      color: "#000"
-    });
+      if (isDarkBackground) {
+        logoAnimation.to(mainRef.current, { color: "#fff" });
+      } else {
+        logoAnimation.to(mainRef.current, { color: "#000" });
+      }
+    }
+
+    // Function to check if a color is dark
+    function isDarkColor(color) {
+      // Calculate the relative luminance of the color
+      const hexColor = color.slice(1); // Remove '#' from the color
+      const r = parseInt(hexColor.substr(0, 2), 16) / 255;
+      const g = parseInt(hexColor.substr(2, 2), 16) / 255;
+      const b = parseInt(hexColor.substr(4, 2), 16) / 255;
+      const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+      // You can adjust this threshold as needed
+      return luminance < 0.5; // Return true for dark colors, false for light colors
+    }
+
+    // Check background color initially and whenever the viewport is scrolled
+    checkBackgroundColor();
+    window.addEventListener('scroll', checkBackgroundColor);
+
+    return () => {
+      window.removeEventListener('scroll', checkBackgroundColor);
+    };
   }, []);
 
   return (
     <div className={styles.logo} ref={mainRef}>
-        ST.<AnimatedLogo text="STUDIO" />
+      ST.<AnimatedLogo text="STUDIO" />
     </div>
   );
 };

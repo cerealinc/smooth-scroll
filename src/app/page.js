@@ -10,6 +10,7 @@ import HorizontalScrollText from '@/components/HorizontalScrollText';
 import HorizontalScrollText3 from '@/components/HorizontalScrollText3';
 import { useInView } from 'react-intersection-observer';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import CursorCircle from '@/components/Cursor';
 
 
 export default function Home() {
@@ -22,6 +23,8 @@ export default function Home() {
 
   return (
     <ReactLenis root>
+              <CursorCircle />
+
         <Logo />
         <Nav />
         <Scroll />

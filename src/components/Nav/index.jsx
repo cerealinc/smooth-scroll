@@ -13,7 +13,7 @@ const Nav = () => {
       }
     
       const manageMouseLeave = (e) => {
-        gsap.to(e.target.children, {width: "0", duration: 0.3, delay: 0.1})
+        gsap.to(e.target.children, {width: "100%", duration: 0.3, delay: 0.1})
       }
     
 

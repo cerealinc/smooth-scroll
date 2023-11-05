@@ -44,4 +44,12 @@
 .scrollVideo {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+}
+.scrollVideoBlur {
+  width: calc(100vw + 20px);
+  height: calc(100vh + 20px);
+  position: relative;
+  top: -10px;
+  left: -10px;
 }
