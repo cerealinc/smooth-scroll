@@ -49,6 +49,8 @@ const HorizontalScrollText2 = () => {
       duration: 15,
       ease: 'none',
       x: '-=' + (itemWidth + window.innerWidth),
+      repeatRefresh: true, // Repeats animation when it reaches the end
+
       repeat: -1,
       modifiers: {
         x: x => (parseFloat(x) % (itemWidth + window.innerWidth)) + 'px',

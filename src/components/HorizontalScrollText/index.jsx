@@ -22,6 +22,7 @@ const HorizontalScrollText = () => {
       ease: 'none',
       x: '-=' + (itemWidth + window.innerWidth), // Animate off the screen to the left
       repeat: -1,
+      repeatRefresh: true, // Repeats animation when it reaches the end
       modifiers: {
         x: x => (parseFloat(x) % (itemWidth + window.innerWidth)) + 'px',
       },
