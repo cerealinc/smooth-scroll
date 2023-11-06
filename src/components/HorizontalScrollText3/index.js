@@ -61,7 +61,7 @@ const HorizontalScrollText3 = () => {
 
     // ScrollTrigger to pin the marquee text at the center within the container
     ScrollTrigger.create({
-      trigger: marqueeRef.current,
+      trigger: marqueeContainerRef.current,
       start: 'top center',
       end: 'top top',
       pin: true,
@@ -79,14 +79,13 @@ const HorizontalScrollText3 = () => {
             offering end to end solutions that streamline<br />
             and maximize client's <span ref={paragraphRef}>vision.</span>
           </div>
-          <div ref={marqueeContainerRef}>
+        </div>
+      </div>
+      <div ref={marqueeContainerRef}>
         <div ref={marqueeRef}>
           <TextScrollAuto />
         </div>
       </div>
-        </div>
-      </div>
-
     </>
   );
 };
