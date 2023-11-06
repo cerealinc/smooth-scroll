@@ -64,7 +64,7 @@ const CursorCircle = () => {
         cx={svgSize / 2}
         cy={svgSize / 2}
         r={circleRadius}
-        stroke="#333"
+        stroke="#000"
         strokeWidth="2"
         fill="transparent"
         style={{
