@@ -45,7 +45,7 @@ const HorizontalScrollText3 = () => {
       animation: textTimeline,
       trigger: paragraphRef.current,
       start: 'top center',
-      end: 'top+=100 center', // Adjust to your needs
+      end: 'top center', // Adjust to your needs
       scrub: 0.1,
       onUpdate: (self) => {
         const progress = self.progress;
