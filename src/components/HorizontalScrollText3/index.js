@@ -77,7 +77,7 @@ const HorizontalScrollText3 = () => {
           <div className={styles.scrollCopy}>
             Our team is both innovative and insightful,<br />
             offering end to end solutions that streamline<br />
-            and maximize client's <span ref={paragraphRef}>vision.</span>
+            and maximize client&apos;s <span ref={paragraphRef}>vision.</span>
           </div>
         </div>
       </div>
