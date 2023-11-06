@@ -37,3 +37,11 @@
     position: relative;
     left: 0;
 }
+
+.isBlack a  {
+    color: #000;
+}
+.isBlack .underline, .isBlack.navigation .centerLine {
+    background-color: #000;
+ 
+}

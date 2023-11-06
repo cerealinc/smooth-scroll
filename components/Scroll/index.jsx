@@ -33,20 +33,43 @@ const Scroll = () => {
     };
   }, []);
 
+  const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
+
+  // Create an Intersection Observer to check if the section with class .isDark is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target.classList.contains('isDark')) {
+          setIsDarkSectionInView(entry.isIntersecting);
+        }
+      });
+    }, {
+      rootMargin: '-40px',
+    });
+
+    const darkSection = document.querySelector('.isDark');
+    if (darkSection) {
+      observer.observe(darkSection);
+    }
+
+    return () => {
+      if (darkSection) {
+        observer.unobserve(darkSection);
+      }
+    };
+  }, []);
+  // ...
+
+  // Use isDarkSectionInView to determine the text color
+  const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
+
   return (
-    <div className={styles.scroll}>
+    <div className={`${styles.scroll} ${styles[textColor]}`}>
       <div className={styles.scrollHeader}>Scroll</div>
 
         <div
           ref={lineRef}
-          style={{
-            height: '60px',
-            backgroundColor: 'white',
-            width: '1px',
-            position: "absolute",
-            top: '-24px',
-
-          }}
+          className={styles.scrollLine}
         ></div>
     </div>
   );

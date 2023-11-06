@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 
@@ -7,6 +7,7 @@ import styles from './style.module.css';
 const Nav = () => {
   const animationRef = useRef(null);
   const underlineRefs = useRef([]);
+  const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
 
   const manageMouseEnter = (e, index) => {
     // Create a new animation timeline
@@ -40,9 +41,37 @@ const Nav = () => {
       { left: 0, width: '100%', duration: .4, ease: "power2.inOut" }
     );
   };
+  // Create an Intersection Observer to check if the section with class .isDark is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target.classList.contains('isDark')) {
+          setIsDarkSectionInView(entry.isIntersecting);
+        }
+      });
+    }, {
+      rootMargin: '-40px',
+      threshold: .4, // Adjust this threshold as needed
+    });
 
+    const darkSection = document.querySelector('.isDark');
+    if (darkSection) {
+      observer.observe(darkSection);
+    }
+
+    return () => {
+      if (darkSection) {
+        observer.unobserve(darkSection);
+      }
+    };
+  }, []);
+  // ...
+
+  // Use isDarkSectionInView to determine the text color
+  const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
+  
   return (
-    <div className={styles.navigation}>
+    <div className={`${styles.navigation} ${styles[textColor]}`}>
       <Link onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
         Contact
         <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>

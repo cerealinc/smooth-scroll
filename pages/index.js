@@ -31,7 +31,7 @@ export default function Home() {
         <HorizontalScrollText />
         <div id="nextSection">
         <HorizontalScrollText2 /></div>
-        <div className="lightbg">
+        <div className="isDark lightbg">
         <HorizontalScrollText3 />
         </div>
         <Projects />

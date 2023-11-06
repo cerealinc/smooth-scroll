@@ -10,3 +10,19 @@
     transform: rotate(90deg);
 
 }
+
+.scrollLine {
+    height: 60px;
+    background-color: white;
+    width: 1px;
+    position: absolute;
+    top: -24px;
+  }
+
+  .isBlack {
+    color: #000;
+  }
+
+  .isBlack  .scrollLine {
+    background-color: #000;
+  }
