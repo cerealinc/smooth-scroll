@@ -13,13 +13,14 @@ const Logo = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        console.log('Intersection Observer Entry Data:', entry);
+
         if (entry.target.classList.contains('isDark')) {
           setIsDarkSectionInView(entry.isIntersecting);
         }
       });
     }, {
-      rootMargin: '-40px',
-      threshold: .4, // Adjust this threshold as needed
+      threshold: .28
     });
 
     const darkSection = document.querySelector('.isDark');

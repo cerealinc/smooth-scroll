@@ -31,10 +31,11 @@ export default function Home() {
         <HorizontalScrollText />
         <div id="nextSection">
         <HorizontalScrollText2 /></div>
-        <div className="isDark lightbg">
+        <div className="isDark">
         <HorizontalScrollText3 />
-        </div>
         <Projects />
+        </div>
+
       </ReactLenis>
 
   )

@@ -50,8 +50,8 @@ const Nav = () => {
         }
       });
     }, {
-      rootMargin: '-40px',
-      threshold: .4, // Adjust this threshold as needed
+      threshold: .28
+
     });
 
     const darkSection = document.querySelector('.isDark');
@@ -69,7 +69,7 @@ const Nav = () => {
 
   // Use isDarkSectionInView to determine the text color
   const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
-  
+
   return (
     <div className={`${styles.navigation} ${styles[textColor]}`}>
       <Link onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
