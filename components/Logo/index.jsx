@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import AnimatedLogo from '@/components/AnimatedSection';
+import AnimatedLogo from '../AnimatedSection';
 import Link from 'next/link';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from './style.module.css';
 
 const Logo = () => {

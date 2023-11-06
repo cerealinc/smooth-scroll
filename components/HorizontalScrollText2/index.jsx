@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CSSPlugin } from 'gsap/CSSPlugin'; // Import CSSPlugin
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 import styles from './style.module.css';
 
-gsap.registerPlugin(ScrollTrigger, CSSPlugin); // Register CSSPlugin
+gsap.registerPlugin(ScrollTrigger); // Register CSSPlugin
 
 const HorizontalScrollText2 = () => {
   const textRef = useRef(null);

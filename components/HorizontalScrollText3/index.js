@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { TextPlugin } from 'gsap/dist/TextPlugin';
 import styles from './style.module.css';
 import TextScrollAuto from '../textScrollAuto';
 
@@ -66,7 +66,7 @@ const HorizontalScrollText3 = () => {
       end: 'top top',
       pin: true,
       pinSpacing: true,
-      markers: true,
+      markers: false,
     });
   }, []);
 

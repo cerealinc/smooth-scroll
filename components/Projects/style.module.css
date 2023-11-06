@@ -145,3 +145,28 @@ h2.notHovered {
 }
 
 
+.focusFront{
+    position: absolute;
+    top: 0;
+    --radius: 40px; /* Hovered value */
+
+    clip-path: circle(var(--radius) at 0% 0%); /* Use var(--radius) with a default value */
+      width: 100%;
+      height: 100%;
+    
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    
+      position: relative;
+      transition: --radius ease-in-out 800ms; /* Apply transition to --radius */
+    
+  }
+  .focusFront.hovered{
+    position: absolute;
+    top: 0;
+    --radius: 100px; /* Hovered value */
+
+    clip-path: circle(var(--radius) at 0% 0%); /* Use var(--radius) with a default value */
+  
+  }

@@ -42,7 +42,7 @@ const Scroll = () => {
           style={{
             height: '60px',
             backgroundColor: 'white',
-            width: '2px',
+            width: '1px',
             position: "absolute",
             top: '-24px',
 

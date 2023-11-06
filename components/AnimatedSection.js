@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { SplitText } from 'gsap/SplitText';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/dist/SplitText';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const AnimatedLogo = ({ text }) => {
   const logoRef = useRef(null);

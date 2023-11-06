@@ -61,16 +61,6 @@ html.lenis {
   align-items: center;
 }
 
-.focus{
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-}
 
 
 
@@ -87,23 +77,6 @@ html.lenis {
   /* for safari browser */
   -webkit-backdrop-filter: blur(10px);
 }
-
-.focus--front{
-  position: absolute;
-  top: 0;
-  clip-path: circle(10em at 0% 0%);
-}
-
-.focus__circle{
-  position: absolute;
-  top: -5em;
-  left: -5em;
-  width: 10em;
-  height: 10em;
-  border-radius: 50%;
-  border: 1px solid #fff;
-}
-
 
 
 

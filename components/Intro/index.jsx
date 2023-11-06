@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 import styles from './style.module.css';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default function Index() {
 

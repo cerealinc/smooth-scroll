@@ -59,13 +59,13 @@ const CursorCircle = () => {
         transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`,
       }}
     >
-      <circle cx={svgSize / 2} cy={svgSize / 2} r={circleRadius} stroke="white" strokeWidth="2" fill="transparent" />
+      <circle cx={svgSize / 2} cy={svgSize / 2} r={circleRadius} stroke="white" strokeWidth="1" fill="transparent" />
       <circle
         cx={svgSize / 2}
         cy={svgSize / 2}
         r={circleRadius}
         stroke="#000"
-        strokeWidth="2"
+        strokeWidth="1"
         fill="transparent"
         style={{
           strokeDasharray: circumference,
