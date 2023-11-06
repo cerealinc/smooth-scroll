@@ -120,6 +120,8 @@ h2.notHovered {
     position: absolute;
     top: 0;
     z-index: 1;
+    image-rendering: pixelated;
+
 }
 
 .videoBlur {
