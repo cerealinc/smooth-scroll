@@ -4,7 +4,9 @@
     overflow: visible;
     position: relative;
   }
-  
+  .wrapper {
+    background: #888971;
+  }
   .scrollText {
     white-space: nowrap;
     font-size: 4rem;

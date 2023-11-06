@@ -48,10 +48,12 @@ const HorizontalScrollText = () => {
   }, []);
 
   return (
+    <div className={styles.wrapper}>
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
         A creative partner for agencies, brands, and start-ups.
       </div>
+    </div>
     </div>
   );
 };
