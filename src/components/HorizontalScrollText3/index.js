@@ -3,11 +3,13 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import styles from './style.module.css';
+import TextScrollAuto from '../textScrollAuto';
 
 const HorizontalScrollText3 = () => {
   const videoContainerRef = useRef(null);
   const paragraphRef = useRef(null);
   const marqueeRef = useRef(null);
+  const marqueeContainerRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -15,6 +17,7 @@ const HorizontalScrollText3 = () => {
     let currentWordIndex = 0;
 
     const textTimeline = gsap.timeline();
+
 
     words.forEach((word, index) => {
       textTimeline.to(paragraphRef.current, {
@@ -54,33 +57,37 @@ const HorizontalScrollText3 = () => {
       },
     });
 
-    // ScrollTrigger to pin the marquee text at the bottom within the container
-    ScrollTrigger.create({
-      trigger: paragraphRef.current,
-      start: 'top bottom',
-      end: 'bottom bottom',
-      pin: true,
-      pinSpacing: false,
-      markers: false,
-    });
 
+
+    // ScrollTrigger to pin the marquee text at the center within the container
+    ScrollTrigger.create({
+      trigger: marqueeRef.current,
+      start: 'top center',
+      end: 'top top',
+      pin: true,
+      pinSpacing: true,
+      markers: true,
+    });
   }, []);
 
   return (
-    <div className='dark-section'>
-      <div ref={videoContainerRef} className={styles.scrollContainer}>
-        <div className={styles.scrollCopy}>
-          Our team is both innovative and insightful,<br/>
-          offering end to end solutions that streamline<br/>
-          and maximize client&apos;s <span ref={paragraphRef}>vision.</span>
-        </div>
-        <div ref={marqueeRef} className={styles.marquee}>
-          <p className={styles.marqueeText}>
-            <span>Creative Direction, Development, and Execution</span>
-          </p>
+    <>
+      <div className="dark-section">
+        <div ref={videoContainerRef} className={styles.scrollContainer}>
+          <div className={styles.scrollCopy}>
+            Our team is both innovative and insightful,<br />
+            offering end to end solutions that streamline<br />
+            and maximize client's <span ref={paragraphRef}>vision.</span>
+          </div>
+          <div ref={marqueeContainerRef}>
+        <div ref={marqueeRef}>
+          <TextScrollAuto />
         </div>
       </div>
-    </div>
+        </div>
+      </div>
+
+    </>
   );
 };
 

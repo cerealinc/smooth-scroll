@@ -22,11 +22,3 @@
     width: 850px;
   }
 
-  .marquee {
-    font-size: 6rem;
-    color: #000;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-wrap: nowrap;
-  }

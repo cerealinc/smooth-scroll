@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import AnimatedLogo from '@/components/AnimatedSection';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './style.module.css';
@@ -56,7 +57,9 @@ const Logo = () => {
 
   return (
     <div className={styles.logo} ref={mainRef}>
+      <Link href="" >
       ST.<AnimatedLogo text="STUDIO" />
+      </Link>
     </div>
   );
 };
