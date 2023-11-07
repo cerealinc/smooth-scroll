@@ -7,9 +7,9 @@
 .scrollText {
   white-space: nowrap;
   font-size: 4rem;
-  top: calc(50vh + 3%);
+  top: calc(50vh - 56px);
   position: fixed;
-  transform: translateY(-100%);
+  transform: translateY(50px);
   color: #fff;
   z-index: 9999;
 }

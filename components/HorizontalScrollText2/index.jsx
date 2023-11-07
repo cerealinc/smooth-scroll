@@ -14,7 +14,20 @@ const HorizontalScrollText2 = () => {
   
   useEffect(() => {
 
-
+    // Your existing GSAP code for horizontal text animation and pinning
+    const item = textRef.current;
+    const itemWidth = item.clientWidth;
+    // Parallax effect for the video
+    gsap.to(item, {
+      y: 0, // Adjust the vertical parallax distance
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top center',
+        end: 'center center',
+        scrub: true, // Smooth scrolling effect
+        markers: true
+      },
+    });
     // Parallax effect for the video
     gsap.to(videoRef.current, {
       y: -260, // Adjust the vertical parallax distance
@@ -26,9 +39,6 @@ const HorizontalScrollText2 = () => {
       },
     });
 
-    // Your existing GSAP code for horizontal text animation and pinning
-    const item = textRef.current;
-    const itemWidth = item.clientWidth;
 
     gsap.set(item, {
       marginLeft: '100vw', // Start off the screen to the right
