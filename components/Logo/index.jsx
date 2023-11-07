@@ -20,7 +20,7 @@ const Logo = () => {
         }
       });
     }, {
-      threshold: .28
+      threshold: .3
     });
 
     const darkSection = document.querySelector('.isDark');

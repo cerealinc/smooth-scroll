@@ -8,7 +8,7 @@
 .scrollText {
   white-space: nowrap;
   font-size: 4rem;
-  top:50%;
+  top: calc(50vh + 50px);
   position: absolute;
   transform: translateY(-100%);
   color: #fff;
@@ -19,7 +19,7 @@
   white-space: nowrap;
   font-size: 4rem;
   position: absolute;
-  top: calc(50vh - 360px);
+  top: calc(50vh - 300px);
   left: 0;
   right: 0;
   text-align: center;

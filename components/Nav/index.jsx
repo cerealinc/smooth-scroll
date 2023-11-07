@@ -50,7 +50,7 @@ const Nav = () => {
         }
       });
     }, {
-      threshold: .28
+      threshold: .3
 
     });
 
