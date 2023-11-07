@@ -25,7 +25,7 @@ const HorizontalScrollText2 = () => {
         start: 'top center',
         end: 'center center',
         scrub: true, // Smooth scrolling effect
-        markers: true
+        markers: false
       },
     });
     // Parallax effect for the video
