@@ -23,7 +23,7 @@ const HorizontalScrollText2 = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top center',
-        end: 'center center',
+        end: 'bottom center',
         scrub: true, // Smooth scrolling effect
         markers: false
       },
