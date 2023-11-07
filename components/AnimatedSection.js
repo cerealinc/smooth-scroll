@@ -34,16 +34,16 @@ const AnimatedLogo = ({ text }) => {
 
     logoAnimationOut.to(splitCharsOut, {
       opacity: 0,
-      y: -6, // Move text down for animation out
-      stagger: 0.01,
-      duration: 0.7,
+      y: 0, // Move text down for animation out
+      stagger: 0,
+      duration: 0.4,
     });
 
     logoAnimationIn.from(splitCharsIn, {
       opacity: 1,
       y: 0, // Move text up for animation in
-      stagger: 0.01,
-      duration: 0.7,
+      stagger: 0,
+      duration: 0.4,
     });
   }, []);
 
