@@ -9,7 +9,7 @@
   font-size: 4rem;
   top: calc(50vh - 56px);
   position: fixed;
-  transform: translateY(50px);
+  transform: translateY(30px);
   color: #fff;
   z-index: 9999;
 }
