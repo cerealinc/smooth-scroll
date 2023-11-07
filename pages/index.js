@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import styles from './page.module.css'
 import Projects from '../components/Projects/index';
 import Logo from '../components/Logo';
-import HorizontalScrollText2 from '../components/HorizontalScrollText2/index'; 
+import TextReveal from '../components/HorizontalScrollText2'; 
 import Nav from '../components/Nav'; 
 import Scroll from '../components/Scroll'; 
 import HorizontalScrollText from '../components/HorizontalScrollText';
@@ -30,7 +30,8 @@ export default function Home() {
         <Scroll />
         <HorizontalScrollText />
         <div id="nextSection">
-        <HorizontalScrollText2 /></div>
+        <TextReveal />
+</div>
         <div className="isDark">
         <HorizontalScrollText3 />
         <Projects />
