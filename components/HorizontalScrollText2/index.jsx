@@ -67,7 +67,7 @@ const HorizontalScrollText2 = () => {
 
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
-      filter: 'blur(24px)', // Initial blur
+      filter: 'blur(44px)', // Initial blur
       scrollTrigger: {
         trigger: videoRef.current,
         start: 'top bottom',
@@ -76,7 +76,7 @@ const HorizontalScrollText2 = () => {
         markers: false,
         onUpdate: (self) => {
           // Gradually reduce the blur effect
-          const blurAmount = 24 - self.progress * 24;
+          const blurAmount = 44 - self.progress * 44;
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
         },
       },
@@ -87,12 +87,12 @@ const HorizontalScrollText2 = () => {
     <div className={styles.wrapper}>
     <div className={styles.childWrapper}>
     <div ref={textRef} className={styles.scrollText}>
-    Creative Direction, Development, and Execution
-<span style={{marginLeft: "20vw"}}>        Creative Direction, Development, and Execution
+    Direction, Development, and Execution
+<span style={{marginLeft: "20vw"}}>        Direction, Development, and Execution
 
-</span><span style={{marginLeft: "20vw"}}>        Creative Direction, Development, and Execution
+</span><span style={{marginLeft: "20vw"}}>        Direction, Development, and Execution
 
-</span><span style={{marginLeft: "20vw"}}>        Creative Direction, Development, and Execution
+</span><span style={{marginLeft: "20vw"}}>         Direction, Development, and Execution
 
 </span>
     </div>
