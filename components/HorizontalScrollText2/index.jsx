@@ -67,7 +67,7 @@ const HorizontalScrollText2 = () => {
 
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
-      filter: 'blur(44px)', // Initial blur
+      filter: 'blur(64px)', // Initial blur
       scrollTrigger: {
         trigger: videoRef.current,
         start: 'top bottom',
@@ -76,7 +76,7 @@ const HorizontalScrollText2 = () => {
         markers: false,
         onUpdate: (self) => {
           // Gradually reduce the blur effect
-          const blurAmount = 44 - self.progress * 44;
+          const blurAmount = 64 - self.progress * 64;
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
         },
       },
