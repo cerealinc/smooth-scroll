@@ -18,16 +18,20 @@ const Scroll = () => {
     // Define the animations
     animation.fromTo(
       line,
-      { y: 0, height: '0' },
+      { y: 0, height: '0'},
       { y: '6px', height: '60px', duration: 1,  ease: "power2.inOut" }
     );
 
     animation.fromTo(
       line,
-      { y: '6px', height: '60px', delay: 2 },
-      { y: '72px', height: '0', duration: 1,  ease: "power2.inOut" }
+      { y: '6px', height: '60px'},
+      { y: '72px', height: '0', duration: 1,  ease: "power2.inOut"}
     );
-
+    animation.fromTo(
+      line,
+      { y: 0, height: '0'},
+      { y: 0, height: '0', delay: 2},
+    );
     return () => {
       animation.kill(); // Clean up animation on unmount
     };

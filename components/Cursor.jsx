@@ -55,7 +55,7 @@ const CursorCircle = () => {
       style={{
         position: 'fixed',
         pointerEvents: 'none',
-        zIndex: 9999,
+        zIndex: 98,
         transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`,
       }}
     >

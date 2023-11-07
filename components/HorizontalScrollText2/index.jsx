@@ -27,7 +27,7 @@ const HorizontalScrollText2 = () => {
 
     // Parallax effect for the video
     gsap.to(videoRef.current, {
-      y: 0, // Adjust the vertical parallax distance
+      y: -260, // Adjust the vertical parallax distance
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top center',

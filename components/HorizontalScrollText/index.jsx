@@ -18,7 +18,7 @@ const HorizontalScrollText = () => {
     });
 
     const marquee = gsap.to(item, {
-      duration: 15,
+      duration: 45,
       ease: 'none',
       x: '-=' + (itemWidth + window.innerWidth), // Animate off the screen to the left
       repeat: -1,
@@ -28,10 +28,6 @@ const HorizontalScrollText = () => {
       },
     });
 
-    const master = gsap.timeline().add(marquee, 0);
-
-    const tween = gsap.to(master, { duration: 1.5, timeScale: 1, paused: true });
-    const timeScaleClamp = gsap.utils.clamp(1, 6);
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -40,10 +36,7 @@ const HorizontalScrollText = () => {
       pin: true, // Pin the container
       pinSpacing: false, // Remove space when pinned
       markers: false, // Remove this in production
-      onUpdate: self => {
-        master.timeScale(timeScaleClamp(Math.abs(self.getVelocity() / 200)));
-        tween.invalidate().restart();
-      },
+
     });
   }, []);
 
@@ -51,7 +44,10 @@ const HorizontalScrollText = () => {
     <div className={styles.wrapper}>
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
-        A creative partner for agencies, brands, and start-ups.
+        A creative partner for agencies, brands, and start-ups. <span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
+</span><span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
+</span><span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
+</span>
       </div>
     </div>
     </div>

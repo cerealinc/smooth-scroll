@@ -47,9 +47,9 @@
   overflow: hidden;
 }
 .scrollVideoBlur {
-  width: calc(100vw + 60px);
-  height: calc(100vh + 60px);
+  width: calc(100vw + 300px);
+  height: calc(100vh + 300px);
   position: relative;
   top: -30px;
-  left: -30px;
+  left: -150px;
 }

@@ -41,8 +41,8 @@
 }
 .projectListWrap {
     height: 100vh;
-    width: 90%;
-    margin-left: 5%;
+    width: calc(100vw - 100px);
+    margin-left: 50px;
  
 }
 .projectList h3 {
@@ -159,14 +159,15 @@ h2.notHovered {
       align-items: center;
     
       position: relative;
-      transition: --radius ease-in-out 800ms; /* Apply transition to --radius */
+      transition: ease-in-out 400ms; /* Apply transition to --radius */
     
   }
   .focusFront.hovered{
     position: absolute;
     top: 0;
-    --radius: 100px; /* Hovered value */
-
+    --radius: 60px; /* Hovered value */
+    z-index: 99;
     clip-path: circle(var(--radius) at 0% 0%); /* Use var(--radius) with a default value */
-  
+    transition: ease-in-out 0ms; /* Apply transition to --radius */
+
   }

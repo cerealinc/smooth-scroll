@@ -52,7 +52,7 @@ export default function Index() {
             const mouseY = e.clientY;
             const myNumber = Number(speed);
                 // Set up animation here
-                let setit = 100; // Set the initial size for the first hover
+                let setit = 60; // Set the initial size for the first hover
                 focusFront.style = `clip-path: circle(var(--radius) at ${mouseX}px ${mouseY}px);`;
 
         };
