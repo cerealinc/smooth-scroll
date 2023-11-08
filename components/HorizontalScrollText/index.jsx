@@ -44,10 +44,15 @@ const HorizontalScrollText = () => {
     <div className={styles.wrapper}>
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
-        A creative partner for agencies, brands, and start-ups. <span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
-</span><span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
-</span><span style={{marginLeft: "20vw"}}>A creative partner for agencies, brands, and start-ups.
+      Creative Direction, Development, and Execution
+<span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
+
+</span><span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
+
+</span><span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
+
 </span>
+
       </div>
     </div>
     </div>
