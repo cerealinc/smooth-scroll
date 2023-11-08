@@ -49,14 +49,14 @@
     text-align: left;align-items: flex-start;
     margin-bottom: 100px;
     font-weight: 300;
-    color: #000;
+    color: #fff;
 }
 .projectList h3.hovered {
-    color: #000;
+    color: #fff;
 }
 .projectEl{
     width: 100%;
-    color: #000;
+    color: #fff;
     font-size: 3.8rem;
     display: block;
     justify-content: space-between;
@@ -65,7 +65,7 @@
     height: 200px;
 }
 .hovered {
-    color: #000;
+    color: #fff;
 }
 h2.notHovered {
     opacity: 1 !important;
