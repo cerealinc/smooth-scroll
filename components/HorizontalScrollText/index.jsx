@@ -18,7 +18,7 @@ const HorizontalScrollText = () => {
     });
 
     const marquee = gsap.to(item, {
-      duration: 35,
+      duration: 39,
       ease: 'none',
       x: '-=' + (itemWidth + window.innerWidth), // Animate off the screen to the left
       repeat: -1,
