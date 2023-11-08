@@ -32,10 +32,7 @@ export default function Home() {
         <div id="nextSection">
         <TextReveal />
 </div>
-        <div className="isDark">
-        <HorizontalScrollText3 />
         <Projects />
-        </div>
 
       </ReactLenis>
 

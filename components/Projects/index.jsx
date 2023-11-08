@@ -84,6 +84,8 @@ export default function Index() {
     const focusClasses = `${firstHover ? styles.hovered : styles.notHovered}`;
 
     return (
+        <div className={styles.wrapper}>
+
         <div ref={container} className={styles.projects}>
 
             <div className={styles.projectDescription}>
@@ -150,7 +152,8 @@ export default function Index() {
                     }
                 </div>
             </div>
-        </div>
+            </div>
+            </div>
     )
 }
 

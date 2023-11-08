@@ -12,7 +12,7 @@
     width: 100vw;
     overflow: hidden;
     position: absolute;
-    background-color: #fff;
+    background-color: #0a0a0a;
 }
 
 .imageContainer{
@@ -170,4 +170,10 @@ h2.notHovered {
     clip-path: circle(var(--radius) at 0% 0%); /* Use var(--radius) with a default value */
     transition: ease-in-out 0ms; /* Apply transition to --radius */
 
+  }
+
+
+  .wrapper {
+    z-index: 999999;
+    position: relative;
   }

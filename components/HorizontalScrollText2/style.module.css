@@ -11,7 +11,7 @@
   position: fixed;
   transform: translateY(30px);
   color: #fff;
-  z-index: 9999;
+  z-index: 9;
 }
 
 .scrollHeader {
