@@ -27,6 +27,7 @@ const projects = [
 ]
 
 export default function Index() {
+    const textRef = useRef(null);
 
     const [prevX, setPrevX] = useState(null);
     const [prevY, setPrevY] = useState(null);
@@ -37,7 +38,33 @@ export default function Index() {
 
     useEffect(() => {
         const focusFront = focusFrontRef.current;
+        const item = textRef.current;
+        const itemWidth = item.clientWidth;
 
+        gsap.to(item, {
+            y: 60, // Adjust the vertical parallax distance
+            scrollTrigger: {
+              trigger: container.current,
+              start: 'top center',
+              end: 'bottom center',
+              scrub: true, // Smooth scrolling effect
+              markers: false
+            },
+          });
+          gsap.set(item, {
+            marginLeft: '100vw', // Start off the screen to the right
+          });
+      
+          const marquee = gsap.to(item, {
+            duration: 45,
+            ease: 'none',
+            x: '-=' + (itemWidth + window.innerWidth), // Animate off the screen to the left
+            repeat: -1,
+            repeatRefresh: true, // Repeats animation when it reaches the end
+            modifiers: {
+              x: x => (parseFloat(x) % (itemWidth + window.innerWidth)) + 'px',
+            },
+          });
         const handleMouseMove = (e) => {
             if (prevX !== null && prevY !== null) {
                 const deltaX = e.clientX - prevX;
@@ -87,7 +114,17 @@ export default function Index() {
         <div className={styles.wrapper}>
 
         <div ref={container} className={styles.projects}>
-
+        <div className={styles.childWrapper}>
+    <div ref={textRef} className={styles.scrollText}>
+    Clients Include <span style={{marginLeft: "20vw"}}> Clients Include
+</span><span style={{marginLeft: "20vw"}}> Clients Include
+</span><span style={{marginLeft: "20vw"}}> Clients Include
+</span>
+<span style={{marginLeft: "20vw"}}> Clients Include
+</span><span style={{marginLeft: "20vw"}}> Clients Include
+</span>
+    </div>
+    </div>
             <div className={styles.projectDescription}>
 
                 <div className={styles.imageContainer}>
@@ -124,7 +161,6 @@ export default function Index() {
             <div className={styles.projectListWrap} data-scroll data-scroll-speed="0.3">
 
                 <div className={styles.projectList}>
-                    <h3 className={projectClasses}>SELECT BRANDS</h3>
 
                     {
                         projects.map(({ id, title, details }) => (
