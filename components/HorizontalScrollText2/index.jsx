@@ -71,7 +71,14 @@ const HorizontalScrollText2 = () => {
         x: x => (parseFloat(x) % (itemWidth2 + window.innerWidth)) + 'px',
       },
     });
-
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: 'top top',
+      end: 'bottom center',
+      pin: true,
+      pinSpacing: true,
+      markers: false,
+    });
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
       filter: 'blur(64px)',

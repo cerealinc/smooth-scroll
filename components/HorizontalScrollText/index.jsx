@@ -29,6 +29,7 @@ const HorizontalScrollText = () => {
     });
 
 
+
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top center',

@@ -86,7 +86,7 @@
   z-index: 999;
   z-index: 99999;
   position: relative;
-  background-color: #0a0a0ae0;
+  background-color: #0a0a0a;
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 90%);
 }
 
