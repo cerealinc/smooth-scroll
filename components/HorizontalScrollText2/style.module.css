@@ -86,10 +86,17 @@
   z-index: 999;
   z-index: 99999;
   position: relative;
-  background-color: #0a0a0a;
+
+  background: linear-gradient(181deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 10%);
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 90%);
 }
-
+.ugh {
+  backdrop-filter: blur(9px);
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 200px;
+}
 
 
 

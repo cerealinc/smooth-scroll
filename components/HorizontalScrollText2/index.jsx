@@ -137,7 +137,8 @@ const HorizontalScrollText2 = () => {
         </div>
     </div>
     <div ref={projectWrapperRef} className={styles.projectWrapper}>
-      
+
+
     <div ref={textRef2} className={styles.scrollText2}>
     Clients Include <span style={{marginLeft: "20vw"}}>Clients Include
 </span><span style={{marginLeft: "20vw"}}>Clients Include
@@ -145,6 +146,8 @@ const HorizontalScrollText2 = () => {
 </span><span style={{marginLeft: "20vw"}}>Clients Include
 </span>
     </div>
+    <div className={styles.ugh}>  </div>
+
     <div className={styles.projectList}>
 
 {
@@ -168,7 +171,8 @@ const HorizontalScrollText2 = () => {
     ))
 }
 </div>
-    </div>
+</div>
+
     </div>
 
   );
