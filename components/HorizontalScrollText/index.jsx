@@ -36,7 +36,12 @@ const HorizontalScrollText = () => {
       pin: true, // Pin the container
       pinSpacing: false, // Remove space when pinned
       markers: false, // Remove this in production
-
+      onEnter: () => {
+        gsap.to(item, { opacity: 1, duration: 1 }); // Adjust the duration for video fade
+      },
+      onLeaveBack: () => {
+        gsap.to(item, { opacity: 0, duration: 1 }); // Adjust the duration for video fade
+      },
     });
   }, []);
 

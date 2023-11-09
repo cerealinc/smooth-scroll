@@ -29,11 +29,7 @@ export default function Home() {
         <Nav />
         <Scroll />
         <HorizontalScrollText />
-        <div id="nextSection">
         <TextReveal />
-</div>
-        <Projects />
-
       </ReactLenis>
 
   )

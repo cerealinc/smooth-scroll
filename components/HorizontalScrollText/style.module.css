@@ -5,8 +5,10 @@
     position: relative;
   }
   .wrapper {
-    position: fixed;
-    height: 100vh;
+    position: relative;
+    height: 56vh;
+    clip-path: polygon(0 0, 100% 0, 100% 110%, 0% 110%);
+
     width: 100vw;  }
 
   .scrollText {
