@@ -114,7 +114,7 @@ const HorizontalScrollText2 = () => {
         scrub: true,
         markers: false,
         onUpdate: (self) => {
-          const blurAmount = 64 - self.progress * 64;
+          const blurAmount = 140 - self.progress * 140;
           console.log(blurAmount)
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
