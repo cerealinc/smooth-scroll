@@ -102,7 +102,6 @@
 
 .projectList{
     white-space: nowrap;
-    font-size: 4rem;
     top: calc(50vh - 20px);
     position: fixed;
     transform: translateY(0px);
@@ -119,7 +118,6 @@
 }
 .projectEl{
   color: #fff;
-  font-size: 3.8rem;
   display: inline;
   margin:  0 30px;
 }
@@ -138,6 +136,8 @@ h2.notHovered {
   opacity: 1;
   line-height: 1;
   font-weight: 300;
+  font-size: 4rem;
+
 
 }
 .projectEl h2:before {

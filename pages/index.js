@@ -23,8 +23,6 @@ export default function Home() {
 
   return (
     <ReactLenis root>
-              <CursorCircle />
-
         <Logo />
         <Nav />
         <Scroll />

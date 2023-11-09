@@ -103,17 +103,19 @@ const HorizontalScrollText2 = () => {
       pinSpacing: true,
       markers: false,
     });
+
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
       filter: 'blur(64px)',
       scrollTrigger: {
         trigger: videoRef.current,
         start: 'top bottom',
-        end: 'top top',
+        end: 'top-=300 top',
         scrub: true,
         markers: false,
         onUpdate: (self) => {
           const blurAmount = 64 - self.progress * 64;
+          console.log(blurAmount)
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
 
@@ -121,7 +123,20 @@ const HorizontalScrollText2 = () => {
 
       },
     });
-
+    gsap.to(videoRef.current, {
+      scrollTrigger: {
+        trigger: videoRef.current,
+        start: 'top center',
+        end: 'center top',
+        scrub: true,
+        markers: true,
+        onUpdate: (self) => {
+          const blurAmount = 64 - self.progress * 64;
+          console.log(blurAmount)
+          gsap.to(videoRef.current, { opacity: `${blurAmount}` }); // Adjust the duration for video fade
+        }
+      },
+    });
     ScrollTrigger.create({
       trigger: projectWrapperRef.current,
       start: 'top center',

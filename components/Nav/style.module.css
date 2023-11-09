@@ -30,13 +30,13 @@
 }
 
 .underline {
-    width: 100%;
+    width: 0;
     height: 1px;
     background-color: #fff;
     display: block;
     margin-top: 8px;
     position: relative;
-    left: 0;
+    left: -10%;
 }
 
 .isBlack a  {
