@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
@@ -11,7 +11,7 @@ const projects = [
       id: "one",
       title: "Miramax",
       details: "<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-      src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
+      src: "ST_2020_ActiveReel_5.mp4"
   },
   {
       id: "two",
@@ -29,14 +29,19 @@ const projects = [
 const HorizontalScrollText2 = () => {
   const textRef = useRef(null);
   const textRef2 = useRef(null);
+  const textRef3 = useRef(null);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
   const wrapperRef = useRef(null);
   const projectWrapperRef = useRef(null);
   const scrollContainerRef = useRef(null); // Add a new ref for the scroll container
+  const [firstHover, setFirstHover] = useState(false);
+
+  const focusFrontRef = useRef(null);
 
   useEffect(() => {
+      const focusFront = focusFrontRef.current;
     const item = textRef.current;
     const itemWidth = item.clientWidth;
 
@@ -71,6 +76,25 @@ const HorizontalScrollText2 = () => {
         x: x => (parseFloat(x) % (itemWidth2 + window.innerWidth)) + 'px',
       },
     });
+
+    const item3 = textRef3.current;
+    const itemWidth3 = item3.clientWidth;
+
+    gsap.set(item3, {
+      marginLeft: '100vw',
+    });
+
+    const marquee3 = gsap.to(item3, {
+      duration: 45,
+      ease: 'none',
+      x: '-=' + (itemWidth3 + window.innerWidth),
+      repeat: -1,
+      repeatRefresh: true,
+      modifiers: {
+        x: x => (parseFloat(x) % (itemWidth3 + window.innerWidth)) + 'px',
+      },
+    });
+
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top top',
@@ -115,6 +139,18 @@ const HorizontalScrollText2 = () => {
       },
     });
   }, []);
+  const handleProjectHover = () => {
+    if (!firstHover) {
+        setFirstHover(true); // Set the flag to indicate the first hover
+    }
+}
+  const [activeId, setActiveId] = useState(0);
+
+  const setActiveElementOnHover = (id) => {
+      setActiveId(id);
+  };
+
+  const focusClasses = `${firstHover ? styles.hovered : styles.notHovered}`;
 
   return (
     <div  ref={wrapperRef} className={styles.wrapper}>
@@ -147,8 +183,41 @@ const HorizontalScrollText2 = () => {
 </span>
     </div>
     <div className={styles.ugh}>  </div>
+    <div className={styles.projectDescription}>
 
-    <div className={styles.projectList}>
+<div className={styles.imageContainer}>
+
+<div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
+
+<div className={styles.overlay}></div>
+        {
+            projects.map(({ id, src }) => (
+                <video
+                    loop
+                    muted
+                    autoPlay
+                    playsInline
+                    key={id}
+                    className={styles.video}
+                    style={{
+                        display:
+                            activeId === id ? "block" : "none"
+                    }}
+                >
+                    <source src={`/images/${src}`} type="video/mp4" />
+
+                </video>
+            )
+            )
+        }
+
+    </div>
+
+</div>
+
+</div>
+
+    <div ref={textRef3} className={styles.projectList}>
 
 {
     projects.map(({ id, title, details }) => (
@@ -158,15 +227,69 @@ const HorizontalScrollText2 = () => {
         >
             <h2
                 key={id}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
 
-                {title}
+                {title},
 
             </h2>
 
+        </div>
+    ))
+}
+{
+    projects.map(({ id, title, details }) => (
+        // eslint-disable-next-line react/jsx-key
+        <div
+            className={`${styles.projectEl}`}
+        >
+            <h2
+                key={id}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+            >
 
-            <p style={{
-            }} dangerouslySetInnerHTML={{ __html: details }}></p>
+                {title},
+
+            </h2>
+
+        </div>
+    ))
+}
+{
+    projects.map(({ id, title, details }) => (
+        // eslint-disable-next-line react/jsx-key
+        <div
+            className={`${styles.projectEl}`}
+        >
+            <h2
+                key={id}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+
+            >
+
+                {title},
+
+            </h2>
+
+        </div>
+    ))
+}
+{
+    projects.map(({ id, title, details }) => (
+        // eslint-disable-next-line react/jsx-key
+        <div
+            className={`${styles.projectEl}`}
+        >
+            <h2
+                key={id}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+
+            >
+
+                {title},
+
+            </h2>
+
         </div>
     ))
 }
