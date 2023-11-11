@@ -10,7 +10,7 @@
 .scrollText {
   white-space: nowrap;
   font-size: 4rem;
-  top: calc(50vh - 56px);
+  top: calc(50vh - 70px);
   position: fixed;
   transform: translateY(30px);
   color: #fff;
@@ -19,9 +19,9 @@
 .scrollText2 {
   white-space: nowrap;
   font-size: 4rem;
-  top: calc(50vh - 20px);
+  top: calc(50vh - 50px);
   position: fixed;
-  transform: translateY(0px);
+  transform: translateY(50px);
   color: #fff;
   z-index: 9; 
 }
@@ -79,7 +79,7 @@
 }
 
 .projectWrapper {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 120px);
   width: 100vw;
   overflow: hidden;
   display: block;

@@ -129,7 +129,7 @@ const HorizontalScrollText2 = () => {
         start: 'top center',
         end: 'center top',
         scrub: true,
-        markers: true,
+        markers: false,
         onUpdate: (self) => {
           const blurAmount = 64 - self.progress * 64;
           console.log(blurAmount)
@@ -140,18 +140,14 @@ const HorizontalScrollText2 = () => {
     ScrollTrigger.create({
       trigger: projectWrapperRef.current,
       start: 'top center',
-      end: 'top center',
-      markers: false,
-      onEnter: () => {
-        
-        gsap.to(textRef.current, { top: 80, duration: 1 }); // Adjust the duration for video fade
-        gsap.to(textRef2.current, { top:112, duration: 1 }); // Adjust the duration for video fade
-       },
-      onLeaveBack: () => {
-        gsap.to(textRef.current, { top: 'calc(50vh - 56px)', duration: 1 }); // Adjust the duration for video fade
-        gsap.to(textRef2.current, { top: 'calc(50vh - 20px', duration: 1 }); // Adjust the duration for video fade
-
-      },
+      end: 'top-=300 top',
+      scrub: true,
+        markers: false,
+      onUpdate: (self) => {
+        const blurAmount = 64 - self.progress * 64;
+        console.log(blurAmount)
+        gsap.to(textRef2.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
+      }
     });
   }, []);
   const handleProjectHover = () => {
@@ -191,10 +187,10 @@ const HorizontalScrollText2 = () => {
 
 
     <div ref={textRef2} className={styles.scrollText2}>
-    Clients Include <span style={{marginLeft: "20vw"}}>Clients Include
-</span><span style={{marginLeft: "20vw"}}>Clients Include
-</span><span style={{marginLeft: "20vw"}}>Clients Include
-</span><span style={{marginLeft: "20vw"}}>Clients Include
+    Select Clients Include <span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
 </span>
     </div>
     <div className={styles.ugh}>  </div>
@@ -232,7 +228,7 @@ const HorizontalScrollText2 = () => {
 
 </div>
 
-    <div ref={textRef3} className={styles.projectList}>
+    <div ref={textRef3} className={styles.projectList} style={{display: 'none'}}>
 
 {
     projects.map(({ id, title, details }) => (
