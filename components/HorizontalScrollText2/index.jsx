@@ -30,6 +30,7 @@ const HorizontalScrollText2 = () => {
   const textRef = useRef(null);
   const textRef2 = useRef(null);
   const textRef3 = useRef(null);
+  const textRef4 = useRef(null);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
@@ -37,6 +38,7 @@ const HorizontalScrollText2 = () => {
   const projectWrapperRef = useRef(null);
   const scrollContainerRef = useRef(null); // Add a new ref for the scroll container
   const [firstHover, setFirstHover] = useState(false);
+  const [workInView, setworkInView] = useState(false);
 
   const focusFrontRef = useRef(null);
 
@@ -77,21 +79,21 @@ const HorizontalScrollText2 = () => {
       },
     });
 
-    const item3 = textRef3.current;
-    const itemWidth3 = item3.clientWidth;
 
-    gsap.set(item3, {
+    const item4 = textRef4.current;
+    const itemWidth4 = item4.clientWidth;
+
+    gsap.set(item4, {
       marginLeft: '100vw',
     });
-
-    const marquee3 = gsap.to(item3, {
+    const marquee4 = gsap.to(item4, {
       duration: 45,
       ease: 'none',
-      x: '-=' + (itemWidth3 + window.innerWidth),
+      x: '-=' + (itemWidth4 + window.innerWidth),
       repeat: -1,
       repeatRefresh: true,
       modifiers: {
-        x: x => (parseFloat(x) % (itemWidth3 + window.innerWidth)) + 'px',
+        x: x => (parseFloat(x) % (itemWidth4 + window.innerWidth)) + 'px',
       },
     });
 
@@ -115,26 +117,11 @@ const HorizontalScrollText2 = () => {
         markers: false,
         onUpdate: (self) => {
           const blurAmount = 140 - self.progress * 140;
-          console.log(blurAmount)
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
 
         },
 
-      },
-    });
-    gsap.to(videoRef.current, {
-      scrollTrigger: {
-        trigger: videoRef.current,
-        start: 'top center',
-        end: 'center top',
-        scrub: true,
-        markers: false,
-        onUpdate: (self) => {
-          const blurAmount = 64 - self.progress * 64;
-          console.log(blurAmount)
-          gsap.to(videoRef.current, { opacity: `${blurAmount}` }); // Adjust the duration for video fade
-        }
       },
     });
     ScrollTrigger.create({
@@ -145,10 +132,29 @@ const HorizontalScrollText2 = () => {
         markers: false,
       onUpdate: (self) => {
         const blurAmount = 64 - self.progress * 64;
-        console.log(blurAmount)
         gsap.to(textRef2.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
       }
     });
+
+    marquee4.pause();
+
+    ScrollTrigger.create({
+      trigger: projectWrapperRef.current,
+      start: 'top-=200 top',
+      scrub: true,
+      markers: false,
+      onEnter: (self) => {
+        marquee4.play();
+        setworkInView(true); // Set the flag to indicate the first hover
+        console.log('Start Marquee')
+      },
+      onLeave: (self) => {
+        marquee4.pause();
+        setworkInView(false); // Set the flag to indicate the first hover
+        console.log('Pause Marquee')
+      }
+    });
+
   }, []);
   const handleProjectHover = () => {
     if (!firstHover) {
@@ -165,6 +171,13 @@ const HorizontalScrollText2 = () => {
 
   return (
     <div  ref={wrapperRef} className={styles.wrapper}>
+          <div ref={textRef4} className={styles.scrollText4}>
+    Select Clients Include <span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
+</span><span style={{marginLeft: "20vw"}}>Select Clients Include
+</span>
+    </div>
     <div className={styles.childWrapper}>
     <div ref={textRef} className={styles.scrollText}>
     A partner for agencies, brands, and start-ups <span style={{marginLeft: "20vw"}}>A partner for agencies, brands, and start-ups
@@ -184,19 +197,6 @@ const HorizontalScrollText2 = () => {
         </div>
     </div>
     <div ref={projectWrapperRef} className={styles.projectWrapper}>
-
-
-    <div ref={textRef2} className={styles.scrollText2}>
-    Select Clients Include <span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span>
-    </div>
-    <div className={styles.ugh}>  </div>
-    <div className={styles.projectDescription}>
-
-<div className={styles.imageContainer}>
 
 <div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
 
@@ -224,11 +224,7 @@ const HorizontalScrollText2 = () => {
 
     </div>
 
-</div>
-
-</div>
-
-    <div ref={textRef3} className={styles.projectList} style={{display: 'none'}}>
+    <div ref={textRef2} className={styles.scrollText2}>
 
 {
     projects.map(({ id, title, details }) => (
@@ -240,9 +236,7 @@ const HorizontalScrollText2 = () => {
                 key={id}
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
-
-                {title},
-
+            {workInView ? title : 'clients'},
             </h2>
 
         </div>
@@ -259,7 +253,7 @@ const HorizontalScrollText2 = () => {
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
 
-                {title},
+{workInView ? title : 'clients'},
 
             </h2>
 
@@ -278,7 +272,7 @@ const HorizontalScrollText2 = () => {
 
             >
 
-                {title},
+{workInView ? title : 'clients'},
 
             </h2>
 

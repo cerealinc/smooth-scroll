@@ -80,12 +80,10 @@ const Nav = () => {
         Home
         <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
       </Link>
-      <span className={styles.centerLine}></span>
       <Link onMouseEnter={(e) => manageMouseEnter(e, 1)} onMouseLeave={(e) => manageMouseLeave(e, 1)} href="">
         Work
         <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
       </Link>
-      <span className={styles.centerLine}></span>
       <Link onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
         Contact
         <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>

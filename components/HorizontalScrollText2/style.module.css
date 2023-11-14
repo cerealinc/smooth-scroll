@@ -25,6 +25,15 @@
   color: #fff;
   z-index: 9; 
 }
+.scrollText4 {
+  white-space: nowrap;
+  font-size: 4rem;
+  top: 46px;
+  position: fixed;
+  transform: translateY(50px);
+  color: #fff;
+  z-index: 9;  
+}
 
 .scrollHeader {
   white-space: nowrap;
@@ -79,7 +88,7 @@
 }
 
 .projectWrapper {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 160px);
   width: 100vw;
   overflow: hidden;
   display: block;
@@ -88,7 +97,7 @@
   position: relative;
 
   background: linear-gradient(181deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,1) 10%);
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 .ugh {
   backdrop-filter: blur(9px);

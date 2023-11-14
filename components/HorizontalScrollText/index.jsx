@@ -33,7 +33,7 @@ const HorizontalScrollText = () => {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top center',
-      end: 'bottom top',
+      end: 'bottom center',
       pin: true, // Pin the container
       pinSpacing: false, // Remove space when pinned
       markers: false, // Remove this in production
