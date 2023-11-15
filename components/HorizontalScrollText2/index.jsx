@@ -100,10 +100,12 @@ const HorizontalScrollText2 = () => {
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top top',
-      end: 'bottom center',
       pin: true,
-      pinSpacing: true,
+      pinSpacing: false,
       markers: false,
+      onLeave: (self) => {
+        gsap.to(videoRef.current, { opacity: `0`, duration: 2 });
+      }
     });
 
     // Create a ScrollTrigger to control the video blur effect
@@ -119,7 +121,6 @@ const HorizontalScrollText2 = () => {
           const blurAmount = 140 - self.progress * 140;
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
-
         },
 
       },
@@ -131,7 +132,7 @@ const HorizontalScrollText2 = () => {
       scrub: true,
         markers: false,
       onUpdate: (self) => {
-        const blurAmount = 64 - self.progress * 64;
+        const blurAmount = 20 - self.progress * 20;
         gsap.to(textRef2.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
       }
     });
@@ -188,17 +189,7 @@ const HorizontalScrollText2 = () => {
     </div>
 
     <div ref={containerRef} className={styles.scrollContainer}>
-
-      <div ref={videoRef} className={styles.scrollVideoBlur}>
-
-        <video loop muted autoPlay playsInline className="videoInner">
-          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-        </video>
-        </div>
-    </div>
-    <div ref={projectWrapperRef} className={styles.projectWrapper}>
-
-<div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
+    <div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
 
 <div className={styles.overlay}></div>
         {
@@ -223,6 +214,20 @@ const HorizontalScrollText2 = () => {
         }
 
     </div>
+      <div ref={videoRef} className={styles.scrollVideoBlur}>
+
+        <video loop muted autoPlay playsInline className="videoInner">
+          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
+        </video>
+        
+        </div>
+    </div>
+
+
+    
+    <div ref={projectWrapperRef} className={styles.projectWrapper}>
+    <div className={styles.overlay}></div>
+
 
     <div ref={textRef2} className={styles.scrollText2}>
 
@@ -291,7 +296,7 @@ const HorizontalScrollText2 = () => {
 
             >
 
-                {title},
+{workInView ? title : 'clients'},
 
             </h2>
 
