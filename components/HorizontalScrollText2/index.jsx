@@ -27,6 +27,7 @@ const projects = [
   }
 ]
 const HorizontalScrollText2 = () => {
+  const swapText = useRef(null);
   const textRef = useRef(null);
   const textRef2 = useRef(null);
   const textRef3 = useRef(null);
@@ -47,55 +48,25 @@ const HorizontalScrollText2 = () => {
     const item = textRef.current;
     const itemWidth = item.clientWidth;
 
-    gsap.set(item, {
-      marginLeft: '100vw',
-    });
-
-    const marquee = gsap.to(item, {
-      duration: 45,
-      ease: 'none',
-      x: '-=' + (itemWidth + window.innerWidth),
-      repeat: -1,
-      repeatRefresh: true,
-      modifiers: {
-        x: x => (parseFloat(x) % (itemWidth + window.innerWidth)) + 'px',
-      },
-    });
     const item2 = textRef2.current;
     const itemWidth2 = item2.clientWidth;
 
-    gsap.set(item2, {
-      marginLeft: '100vw',
-    });
-
-    const marquee2 = gsap.to(item2, {
-      duration: 45,
-      ease: 'none',
-      x: '-=' + (itemWidth2 + window.innerWidth),
-      repeat: -1,
-      repeatRefresh: true,
-      modifiers: {
-        x: x => (parseFloat(x) % (itemWidth2 + window.innerWidth)) + 'px',
-      },
-    });
+  
 
 
     const item4 = textRef4.current;
     const itemWidth4 = item4.clientWidth;
 
-    gsap.set(item4, {
-      marginLeft: '100vw',
-    });
-    const marquee4 = gsap.to(item4, {
-      duration: 45,
-      ease: 'none',
-      x: '-=' + (itemWidth4 + window.innerWidth),
-      repeat: -1,
-      repeatRefresh: true,
-      modifiers: {
-        x: x => (parseFloat(x) % (itemWidth4 + window.innerWidth)) + 'px',
-      },
-    });
+    const handleScrollToRef = () => {
+      console.log('qwdqwd')
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: {
+          y: projectWrapperRef.current.offsetTop,
+          autoKill: true,
+        },
+      });
+    };
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -103,9 +74,10 @@ const HorizontalScrollText2 = () => {
       pin: true,
       pinSpacing: false,
       markers: false,
-      onLeave: (self) => {
-        gsap.to(videoRef.current, { opacity: `0`, duration: 2 });
-      }
+      onUpdate: (self) => {
+        const blurAmount = 140 - self.progress * 140;
+        gsap.to(videoRef.current, { opacity: {blurAmount}, duration: 2 });
+      },
     });
 
     // Create a ScrollTrigger to control the video blur effect
@@ -131,13 +103,17 @@ const HorizontalScrollText2 = () => {
       end: 'top-=300 top',
       scrub: true,
         markers: false,
-      onUpdate: (self) => {
-        const blurAmount = 20 - self.progress * 20;
-        gsap.to(textRef2.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
-      }
+        onEnter: () => {
+          gsap.to(videoRef.current, { opacity: 0, duration: 1 }); // Adjust the duration for video fade
+      // Scroll to the specified reference
+        },
+        onLeaveBack: () => {
+          gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 }); // Adjust the duration for video fade
+          setFirstHover(false); // Set the flag to indicate the first hover
+
+        },
     });
 
-    marquee4.pause();
 
     ScrollTrigger.create({
       trigger: projectWrapperRef.current,
@@ -145,14 +121,16 @@ const HorizontalScrollText2 = () => {
       scrub: true,
       markers: false,
       onEnter: (self) => {
-        marquee4.play();
         setworkInView(true); // Set the flag to indicate the first hover
-        console.log('Start Marquee')
+        console.log('Start Marquee');
+        gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 1 }); // Adjust the duration for video fade
+
       },
-      onLeave: (self) => {
-        marquee4.pause();
+      onLeaveBack: (self) => {
         setworkInView(false); // Set the flag to indicate the first hover
         console.log('Pause Marquee')
+        gsap.to(textRef4.current, { opacity: 0, y: 62, duration: 1 }); // Adjust the duration for video fade
+
       }
     });
 
@@ -162,6 +140,16 @@ const HorizontalScrollText2 = () => {
         setFirstHover(true); // Set the flag to indicate the first hover
     }
 }
+
+useEffect(() => {
+  // Use gsap.to for the animation
+  gsap.to(swapText.current, {
+    opacity: workInView ? 1 : 0, // Set opacity based on workInView
+    duration: 0.5, // Animation duration
+    ease: 'power2.inOut', // Easing function
+  });
+}, [workInView]); // Run the effect when workInView changes
+
   const [activeId, setActiveId] = useState(0);
 
   const setActiveElementOnHover = (id) => {
@@ -172,24 +160,91 @@ const HorizontalScrollText2 = () => {
 
   return (
     <div  ref={wrapperRef} className={styles.wrapper}>
-          <div ref={textRef4} className={styles.scrollText4}>
-    Select Clients Include <span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span><span style={{marginLeft: "20vw"}}>Select Clients Include
-</span>
-    </div>
+
+
     <div className={styles.childWrapper}>
     <div ref={textRef} className={styles.scrollText}>
-    A partner for agencies, brands, and start-ups <span style={{marginLeft: "20vw"}}>A partner for agencies, brands, and start-ups
-</span><span style={{marginLeft: "20vw"}}>A partner for agencies, brands, and start-ups
-</span><span style={{marginLeft: "20vw"}}>A partner for agencies, brands, and start-ups
-</span>
+    <div className={styles.marquee}>
+    <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+      <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
+      </div>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
+      </div>
+    </div>
     </div>
     </div>
 
     <div ref={containerRef} className={styles.scrollContainer}>
-    <div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
+
+      <div ref={videoRef} className={styles.scrollVideoBlur}>
+
+        <video loop muted autoPlay playsInline className="videoInner">
+          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
+        </video>
+        
+        </div>
+    </div>
+
+
+    <div className={styles.projectWrapperOuter}>
+    <div ref={textRef4} className={styles.scrollText4}>
+          <div className={styles.marquee}>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={styles.textBlock}>Select Clients Include</div>
+      </div>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+      <div className={styles.textBlock}>Select Clients Include</div>
+      </div>
+    </div>
+
+    </div>
+    <div ref={projectWrapperRef} className={styles.projectWrapper}>
+
+    <div className={styles.overlay}></div>
+
+<div ref={textRef2} className={styles.scrollText2}>
+<div className={styles.marquee}>
+<div className={`${styles.marqueeContent} ${styles.scroll}`}>
+<div className={styles.textBlock}>
+  {
+    projects.map(({ id, title, details }) => (
+        // eslint-disable-next-line react/jsx-key
+            <span
+                ref={swapText}
+                key={id}
+                className={styles.listItem}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+            >
+            {workInView ? title : 'Select Clients Include'},
+            </span>
+
+    ))
+}
+</div>
+</div>
+<div className={`${styles.marqueeContent} ${styles.scroll}`}>
+<div className={styles.textBlock}>
+{
+    projects.map(({ id, title, details }) => (
+        // eslint-disable-next-line react/jsx-key
+            <span
+                ref={swapText}
+                key={id}
+                className={styles.listItem}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+            >
+            {workInView ? title : 'Select Clients Include'},
+            </span>
+
+    ))
+}
+</div>
+</div>
+</div>
+
+</div>
+<div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`} id='your-anchor-id'>
 
 <div className={styles.overlay}></div>
         {
@@ -214,98 +269,8 @@ const HorizontalScrollText2 = () => {
         }
 
     </div>
-      <div ref={videoRef} className={styles.scrollVideoBlur}>
-
-        <video loop muted autoPlay playsInline className="videoInner">
-          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-        </video>
-        
-        </div>
-    </div>
-
-
-    
-    <div ref={projectWrapperRef} className={styles.projectWrapper}>
-    <div className={styles.overlay}></div>
-
-
-    <div ref={textRef2} className={styles.scrollText2}>
-
-{
-    projects.map(({ id, title, details }) => (
-        // eslint-disable-next-line react/jsx-key
-        <div
-            className={`${styles.projectEl}`}
-        >
-            <h2
-                key={id}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-            >
-            {workInView ? title : 'clients'},
-            </h2>
-
-        </div>
-    ))
-}
-{
-    projects.map(({ id, title, details }) => (
-        // eslint-disable-next-line react/jsx-key
-        <div
-            className={`${styles.projectEl}`}
-        >
-            <h2
-                key={id}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-            >
-
-{workInView ? title : 'clients'},
-
-            </h2>
-
-        </div>
-    ))
-}
-{
-    projects.map(({ id, title, details }) => (
-        // eslint-disable-next-line react/jsx-key
-        <div
-            className={`${styles.projectEl}`}
-        >
-            <h2
-                key={id}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-
-            >
-
-{workInView ? title : 'clients'},
-
-            </h2>
-
-        </div>
-    ))
-}
-{
-    projects.map(({ id, title, details }) => (
-        // eslint-disable-next-line react/jsx-key
-        <div
-            className={`${styles.projectEl}`}
-        >
-            <h2
-                key={id}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-
-            >
-
-{workInView ? title : 'clients'},
-
-            </h2>
-
-        </div>
-    ))
-}
 </div>
 </div>
-
     </div>
 
   );

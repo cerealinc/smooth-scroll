@@ -13,21 +13,17 @@ const HorizontalScrollText = () => {
     const item = textRef.current;
     const itemWidth = item.clientWidth;
 
-    gsap.set(item, {
-      marginLeft: '100vw', // Start off the screen to the right
-    });
 
-    const marquee = gsap.to(item, {
-      duration: 39,
-      ease: 'none',
-      x: '-=' + (itemWidth + window.innerWidth), // Animate off the screen to the left
-      repeat: -1,
-      repeatRefresh: true, // Repeats animation when it reaches the end
-      modifiers: {
-        x: x => (parseFloat(x) % (itemWidth + window.innerWidth)) + 'px',
-      },
-    });
+    const marqueeContent = document.querySelectorAll('.marquee-content');
+    const marquee = document.querySelector('.marquee');
 
+    marquee.addEventListener('animationend', () => {
+      // Once the initial animation ends, remove the class and add the infinite scrolling class
+      marquee.classList.remove('initial-scroll');
+      marqueeContent.forEach(element => {
+        element.classList.add('scroll');
+      });
+    });
 
 
     ScrollTrigger.create({
@@ -50,14 +46,14 @@ const HorizontalScrollText = () => {
     <div className={styles.wrapper}>
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
-      Creative Direction, Development, and Execution
-<span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
-
-</span><span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
-
-</span><span style={{marginLeft: "20vw"}}>Creative Direction, Development, and Execution
-
-</span>
+      <div className="marquee initial-scroll ">
+      <div className="marquee-content">
+        <div className="text-block">Creative Direction, Development, and Execution</div>
+      </div>
+      <div className="marquee-content">
+        <div className="text-block">Creative Direction, Development, and Execution</div>
+      </div>
+    </div>
 
       </div>
     </div>

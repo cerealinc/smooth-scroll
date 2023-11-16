@@ -12,8 +12,6 @@
     width: 100vw;  }
 
   .scrollText {
-    white-space: nowrap;
-    font-size: 4rem;
     position: absolute;
     transform: translateY(-100%);
     color: #fff;

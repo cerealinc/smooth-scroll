@@ -8,8 +8,6 @@
 }
 
 .scrollText {
-  white-space: nowrap;
-  font-size: 4rem;
   top: calc(50vh - 70px);
   position: fixed;
   transform: translateY(30px);
@@ -26,14 +24,62 @@
   z-index: 9; 
 }
 .scrollText4 {
-  white-space: nowrap;
-  font-size: 4rem;
-  top: 46px;
-  position: fixed;
-  transform: translateY(50px);
+  top: 0px;
+  position: absolute;
+  transform: translateY(0);
   color: #fff;
   z-index: 9;  
+  opacity: 0;
 }
+
+  .marquee {
+    width: 100vw;
+    grid-column-gap: 2rem;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .marqueeContent {
+    min-width: 100vw;
+    grid-column-gap: 2rem;
+    padding: 12px 0;
+    flex: none;
+    justify-content: space-around;
+    display: flex;
+  }
+  
+  .textBlock {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .listItem {
+    padding: 0 24px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .marquee-image.hide-mobile {
+      display: none;
+    }
+  }
+  
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }
+  .scroll {
+    animation: scroll 12s linear infinite;
+  }
+  .reverse {
+    animation-direction: reverse;
+  }
+  
 
 .scrollHeader {
   white-space: nowrap;
@@ -84,9 +130,13 @@
     overflow: hidden;
     position: relative;
     z-index: 999;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% + 200px), 0% calc(100% + 200px));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% + 160px), 0% calc(100% + 160px));
 }
-
+.projectWrapperOuter {
+height: auto;
+overflow: visible;
+position: relative;
+}
 .projectWrapper {
   height: calc(100vh - 160px);
   width: 100vw;
@@ -98,6 +148,7 @@
   position: relative;
   background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,.7) 20%, rgba(0,0,0,1) 100%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
 }
 
 
@@ -229,7 +280,7 @@ z-index: 0;
 .focusFront.hovered{
   position: absolute;
   top: 0;
-  z-index: 9999;
+  z-index: 0;
   transition: ease-in-out 0ms; /* Apply transition to --radius */
   backdrop-filter: blur(26px);
   opacity: 1;
