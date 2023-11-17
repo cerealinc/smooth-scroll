@@ -17,7 +17,7 @@ export default function Home() {
   const targetRef = useRef(null);
   const elementToCheckRef = useRef(null);
   const lenis = useLenis(({ scroll }) => {
-    duration: 2
+    lerp: .6
   })
 
 

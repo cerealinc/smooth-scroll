@@ -17,21 +17,32 @@
 .scrollText2 {
   white-space: nowrap;
   font-size: 4rem;
-  top: calc(50vh - 50px);
-  position: fixed;
-  transform: translateY(50px);
+  top: calc(50vh - 210px);
+  position: absolute;
+  transform: translateY(0px);
   color: #fff;
   z-index: 9; 
 }
 .scrollText4 {
-  top: 0px;
   position: absolute;
   transform: translateY(0);
   color: #fff;
   z-index: 9;  
   opacity: 0;
 }
-
+.scrollText5 {
+  position: absolute;
+  transform: translateY(0);
+  color: #fff;
+  z-index: 999999;  
+}
+.scrollText5.start {
+  position: fixed;
+  top: calc(50vh - 40px);
+  transform: translateY(0);
+  color: #fff;
+  z-index: 999999;  
+}
   .marquee {
     width: 100vw;
     grid-column-gap: 2rem;
@@ -146,7 +157,7 @@ position: relative;
   z-index: 999;
   z-index: 99999;
   position: relative;
-  background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,.7) 20%, rgba(0,0,0,1) 100%);
+  background:  rgba(0,0,0,0.5);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
 }

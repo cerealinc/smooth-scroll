@@ -5,7 +5,9 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 
 import styles from './style.module.css';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
 const projects = [
   {
       id: "one",
@@ -32,6 +34,7 @@ const HorizontalScrollText2 = () => {
   const textRef2 = useRef(null);
   const textRef3 = useRef(null);
   const textRef4 = useRef(null);
+  const textRef5 = useRef(null);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
@@ -50,9 +53,6 @@ const HorizontalScrollText2 = () => {
 
     const item2 = textRef2.current;
     const itemWidth2 = item2.clientWidth;
-
-  
-
 
     const item4 = textRef4.current;
     const itemWidth4 = item4.clientWidth;
@@ -97,39 +97,27 @@ const HorizontalScrollText2 = () => {
 
       },
     });
-    ScrollTrigger.create({
-      trigger: projectWrapperRef.current,
-      start: 'top center',
-      end: 'top-=300 top',
-      scrub: true,
-        markers: false,
-        onEnter: () => {
-          gsap.to(videoRef.current, { opacity: 0, duration: 1 }); // Adjust the duration for video fade
-      // Scroll to the specified reference
-        },
-        onLeaveBack: () => {
-          gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 }); // Adjust the duration for video fade
-          setFirstHover(false); // Set the flag to indicate the first hover
-
-        },
-    });
 
 
     ScrollTrigger.create({
       trigger: projectWrapperRef.current,
-      start: 'top-=200 top',
+      start: 'top+=40 center',
       scrub: true,
-      markers: false,
+      markers: true,
       onEnter: (self) => {
         setworkInView(true); // Set the flag to indicate the first hover
+        gsap.to(videoRef.current, { opacity: 0,delay: 1, duration: 1 }); // Adjust the duration for video fade
         console.log('Start Marquee');
-        gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 1 }); // Adjust the duration for video fade
+        gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 3 }); // Adjust the duration for video fade
+        gsap.to(textRef5.current, { opacity: 0, y: -62, duration: 3 }); // Adjust the duration for video fade
 
       },
       onLeaveBack: (self) => {
         setworkInView(false); // Set the flag to indicate the first hover
         console.log('Pause Marquee')
-        gsap.to(textRef4.current, { opacity: 0, y: 62, duration: 1 }); // Adjust the duration for video fade
+        gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 }); // Adjust the duration for video fade
+        gsap.to(textRef4.current, { opacity: 0, y: 0, duration: 1 }); // Adjust the duration for video fade
+        gsap.to(textRef5.current, { opacity: 1, y: 0, duration: 1 }); // Adjust the duration for video fade
 
       }
     });
@@ -199,11 +187,22 @@ useEffect(() => {
     </div>
 
     </div>
-    <div ref={projectWrapperRef} className={styles.projectWrapper}>
+
+    <div ref={projectWrapperRef} className={styles.projectWrapper}  id='your-anchor-id'>
 
     <div className={styles.overlay}></div>
+    <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.wd : styles.start}`}>
+          <div className={styles.marquee}>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={styles.textBlock}>Select Clients Include</div>
+      </div>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+      <div className={styles.textBlock}>Select Clients Include</div>
+      </div>
+    </div>
 
-<div ref={textRef2} className={styles.scrollText2}>
+    </div>
+<div ref={textRef2} className={styles.scrollText2} style={{display: ''}}>
 <div className={styles.marquee}>
 <div className={`${styles.marqueeContent} ${styles.scroll}`}>
 <div className={styles.textBlock}>
@@ -244,7 +243,7 @@ useEffect(() => {
 </div>
 
 </div>
-<div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`} id='your-anchor-id'>
+<div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
 
 <div className={styles.overlay}></div>
         {
