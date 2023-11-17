@@ -17,7 +17,7 @@
 .scrollText2 {
   white-space: nowrap;
   font-size: 4rem;
-  top: calc(50vh - 210px);
+  top: calc(50vh - 160px);
   position: absolute;
   transform: translateY(0px);
   color: #fff;
@@ -271,6 +271,8 @@ h2.notHovered {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   z-index: 2;
+  background:  rgba(0,0,0,0.5);
+
 }
 
 
