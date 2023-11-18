@@ -95,7 +95,7 @@ const onEnterFunction = (self) => {
   gsap.to(videoRef.current, { opacity: 0, delay: 1, duration: 1 });
   gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
   gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 3 });
-  gsap.to(textRef5.current, { opacity: 0, y: -62, duration: 3 });
+  gsap.to(textRef5.current, { opacity: 0, marginTop: '-62', duration: 3 });
 
   gsap.to(window, {
     duration: 2,
@@ -115,7 +115,7 @@ const onLeaveBackFunction = (self) => {
   gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 });
   gsap.to(textRef2.current, { opacity: 0, y: 100, duration: 3 });
   gsap.to(textRef4.current, { opacity: 0, y: 0, duration: .5 });
-  gsap.to(textRef5.current, { opacity: 1, y: 0, duration: 1 });
+  gsap.to(textRef5.current, { opacity: 1,marginTop: 0, duration: .5 });
 };
 
 // Create ScrollTrigger with onEnter and onLeaveBack functions

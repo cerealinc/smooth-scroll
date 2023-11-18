@@ -36,6 +36,10 @@
   transform: translateY(0);
   color: #fff;
   z-index: 999999;  
+  left: 0;
+  right: 0;
+  width: 100vw;
+  top: 0;
 }
 .scrollText5.start {
   position: fixed;
@@ -43,6 +47,10 @@
   transform: translateY(0);
   color: #fff;
   z-index: 999999;  
+  left: 0;
+  right: 0;
+  width: 100vw;
+  transform: translateX(0);
 }
   .marquee {
     width: 100vw;
