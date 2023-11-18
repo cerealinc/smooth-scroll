@@ -42,7 +42,7 @@ const HorizontalScrollText2 = () => {
   const projectWrapperRef = useRef(null);
   const scrollContainerRef = useRef(null); // Add a new ref for the scroll container
   const [firstHover, setFirstHover] = useState(false);
-  const [workInView, setworkInView] = useState(false);
+  const [workInView, setWorkInView] = useState(false);
 
   const focusFrontRef = useRef(null);
 
@@ -57,16 +57,6 @@ const HorizontalScrollText2 = () => {
     const item4 = textRef4.current;
     const itemWidth4 = item4.clientWidth;
 
-    const handleScrollToRef = () => {
-      console.log('qwdqwd')
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: {
-          y: projectWrapperRef.current.offsetTop,
-          autoKill: true,
-        },
-      });
-    };
 
     ScrollTrigger.create({
       trigger: containerRef.current,
@@ -99,30 +89,48 @@ const HorizontalScrollText2 = () => {
     });
 
 
-    ScrollTrigger.create({
-      trigger: projectWrapperRef.current,
-      start: 'top+=40 center',
-      scrub: true,
-      markers: true,
-      onEnter: (self) => {
-        setworkInView(true); // Set the flag to indicate the first hover
-        gsap.to(videoRef.current, { opacity: 0,delay: 1, duration: 1 }); // Adjust the duration for video fade
-        console.log('Start Marquee');
-        gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 3 }); // Adjust the duration for video fade
-        gsap.to(textRef5.current, { opacity: 0, y: -62, duration: 3 }); // Adjust the duration for video fade
+// Define onEnter function
+const onEnterFunction = (self) => {
+  setWorkInView(true);
+  gsap.to(videoRef.current, { opacity: 0, delay: 1, duration: 1 });
+  gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
+  gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 3 });
+  gsap.to(textRef5.current, { opacity: 0, y: -62, duration: 3 });
 
-      },
-      onLeaveBack: (self) => {
-        setworkInView(false); // Set the flag to indicate the first hover
-        console.log('Pause Marquee')
-        gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 }); // Adjust the duration for video fade
-        gsap.to(textRef4.current, { opacity: 0, y: 0, duration: 1 }); // Adjust the duration for video fade
-        gsap.to(textRef5.current, { opacity: 1, y: 0, duration: 1 }); // Adjust the duration for video fade
+  gsap.to(window, {
+    duration: 2,
+    scrollTo: {
+      y: "#your-anchor-id", // Replace with your anchor ID or selector
+      offsetY: 0,
+      autoKill: false, // Prevents ScrollToPlugin from canceling previous scrolls
+    },
+    ease: "power3.inOut",
+  });
+  
+};
 
-      }
-    });
+// Define onLeaveBack function
+const onLeaveBackFunction = (self) => {
+  setWorkInView(false);
+  gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 });
+  gsap.to(textRef2.current, { opacity: 0, y: 100, duration: 3 });
+  gsap.to(textRef4.current, { opacity: 0, y: 0, duration: .5 });
+  gsap.to(textRef5.current, { opacity: 1, y: 0, duration: 1 });
+};
+
+// Create ScrollTrigger with onEnter and onLeaveBack functions
+ScrollTrigger.create({
+  trigger: projectWrapperRef.current,
+  start: 'top+=40 center',
+  scrub: true,
+  markers: false,
+  onEnter: onEnterFunction,
+  onLeaveBack: onLeaveBackFunction,
+});
 
   }, []);
+
+  
   const handleProjectHover = () => {
     if (!firstHover) {
         setFirstHover(true); // Set the flag to indicate the first hover
@@ -215,7 +223,7 @@ useEffect(() => {
                 className={styles.listItem}
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
-            {workInView ? title : 'Select Clients Include'},
+            {workInView ? title : title},
             </span>
 
     ))
@@ -233,7 +241,7 @@ useEffect(() => {
                 className={styles.listItem}
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
-            {workInView ? title : 'Select Clients Include'},
+            {workInView ? title : title},
             </span>
 
     ))

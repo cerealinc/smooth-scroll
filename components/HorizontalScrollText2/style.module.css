@@ -19,9 +19,10 @@
   font-size: 4rem;
   top: calc(50vh - 160px);
   position: absolute;
-  transform: translateY(0px);
+  transform: translateY(100px);
   color: #fff;
   z-index: 9; 
+  opacity: 0;
 }
 .scrollText4 {
   position: absolute;
