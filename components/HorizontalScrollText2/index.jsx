@@ -94,8 +94,8 @@ const onEnterFunction = (self) => {
   setWorkInView(true);
   gsap.to(videoRef.current, { opacity: 0, delay: 1, duration: 1 });
   gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
-  gsap.to(textRef4.current, { opacity: 1, y: -62, duration: 3 });
-  gsap.to(textRef5.current, { opacity: 0, marginTop: '-62', duration: 3 });
+  gsap.to(textRef4.current, { opacity: 1, y: -100, duration: 3 });
+  gsap.to(textRef5.current, { opacity: 0, marginTop: '-202px', duration: 3 });
 
   gsap.to(window, {
     duration: 2,
@@ -121,7 +121,7 @@ const onLeaveBackFunction = (self) => {
 // Create ScrollTrigger with onEnter and onLeaveBack functions
 ScrollTrigger.create({
   trigger: projectWrapperRef.current,
-  start: 'top+=40 center',
+  start: 'top+=202 center',
   scrub: true,
   markers: false,
   onEnter: onEnterFunction,

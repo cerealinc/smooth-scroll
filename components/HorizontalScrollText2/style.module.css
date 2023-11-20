@@ -26,10 +26,11 @@
 }
 .scrollText4 {
   position: absolute;
-  transform: translateY(0);
+  transform: translateY(120px);
   color: #fff;
   z-index: 9;  
   opacity: 0;
+  top: 40px;
 }
 .scrollText5 {
   position: absolute;
@@ -39,7 +40,7 @@
   left: 0;
   right: 0;
   width: 100vw;
-  top: 0;
+  top: 120px;
 }
 .scrollText5.start {
   position: fixed;

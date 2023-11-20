@@ -129,9 +129,6 @@ html.lenis {
 .marquee {
   width: 100%;
   grid-column-gap: 12rem;
-  margin-bottom: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   display: flex;
   overflow: hidden;
 }
