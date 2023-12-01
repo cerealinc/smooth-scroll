@@ -12,7 +12,7 @@ const projects = [
   {
       id: "one",
       title: "Miramax",
-      details: "<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+      details: "<p>A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "ST_2020_ActiveReel_5.mp4"
   },
   {
@@ -24,7 +24,7 @@ const projects = [
   {
       id: "three",
       title: "Walmart",
-      details: "<span>Creative Direction</span> <span>Production</span>",
+      details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
   }
 ]
@@ -94,8 +94,9 @@ const onEnterFunction = (self) => {
   setWorkInView(true);
   gsap.to(videoRef.current, { opacity: 0, delay: 1, duration: 1 });
   gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
-  gsap.to(textRef4.current, { opacity: 1, y: -100, duration: 3 });
-  gsap.to(textRef5.current, { opacity: 0, marginTop: '-202px', duration: 3 });
+  gsap.to(textRef5.current, { opacity: 0, marginTop: 'calc(-50vh + 140px)', duration: 3 });
+  gsap.to(textRef4.current, { opacity: 1, marginTop: 'calc(-50vh + 140px)', duration: 3 });
+  gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
 
   gsap.to(window, {
     duration: 2,
@@ -104,7 +105,7 @@ const onEnterFunction = (self) => {
       offsetY: 0,
       autoKill: false, // Prevents ScrollToPlugin from canceling previous scrolls
     },
-    ease: "power3.inOut",
+    ease: "linear",
   });
   
 };
@@ -112,10 +113,11 @@ const onEnterFunction = (self) => {
 // Define onLeaveBack function
 const onLeaveBackFunction = (self) => {
   setWorkInView(false);
-  gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 1 });
+  gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
+  gsap.to(videoRef.current, { opacity: 1, delay: 2, duration: 2 });
   gsap.to(textRef2.current, { opacity: 0, y: 100, duration: 3 });
-  gsap.to(textRef4.current, { opacity: 0, y: 0, duration: .5 });
-  gsap.to(textRef5.current, { opacity: 1,marginTop: 0, duration: .5 });
+  gsap.to(textRef5.current, { opacity: 1,marginTop: 0, duration: 3 });
+  gsap.to(textRef4.current, { opacity: 0,marginTop: 0, duration: 3 });
 };
 
 // Create ScrollTrigger with onEnter and onLeaveBack functions
@@ -123,7 +125,6 @@ ScrollTrigger.create({
   trigger: projectWrapperRef.current,
   start: 'top+=202 center',
   scrub: true,
-  markers: false,
   onEnter: onEnterFunction,
   onLeaveBack: onLeaveBackFunction,
 });
@@ -249,6 +250,25 @@ useEffect(() => {
 </div>
 </div>
 </div>
+
+</div>
+<div className={styles.projectDetails}>
+{
+            projects.map(({ id, details }) => (
+        // eslint-disable-next-line react/jsx-key
+        <span
+        key={id}
+        style={{
+          display:
+              activeId === id ? "block" : "none"
+      }}
+    
+   dangerouslySetInnerHTML={{ __html: details }}>
+    </span>
+
+              )
+              )
+          }
 
 </div>
 <div ref={focusFrontRef} className={`${styles.focusFront} ${focusClasses}`}>
