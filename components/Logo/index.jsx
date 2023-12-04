@@ -42,7 +42,7 @@ const Logo = () => {
   return (
     <div className={`${styles.logo} ${styles[textColor]}`} ref={mainRef}>
       <Link href="" >
-      ST.<AnimatedLogo text="STUDIO" />
+      SAINT
       </Link>
     </div>
   );
