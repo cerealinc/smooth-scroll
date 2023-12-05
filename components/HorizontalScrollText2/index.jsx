@@ -12,21 +12,39 @@ const projects = [
   {
       id: "one",
       title: "Miramax",
-      details: "<p>A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+      details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "ST_2020_ActiveReel_5.mp4"
   },
   {
       id: "two",
       title: "New Era",
-      details: "<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
   },
   {
       id: "three",
       title: "Walmart",
-      details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+      details: "<p>Project Info, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
-  }
+  },
+  {
+    id: "four",
+    title: "Miramax",
+    details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+    src: "ST_2020_ActiveReel_5.mp4"
+},
+{
+    id: "five",
+    title: "New Era",
+    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+    src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
+},
+{
+    id: "six",
+    title: "Walmart",
+    details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+    src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
+}
 ]
 const HorizontalScrollText2 = () => {
   const swapText = useRef(null);
@@ -94,19 +112,10 @@ const onEnterFunction = (self) => {
   setWorkInView(true);
   gsap.to(videoRef.current, { opacity: 0, delay: 1, duration: 1 });
   gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
-  gsap.to(textRef5.current, { opacity: 0, marginTop: 'calc(-50vh + 140px)', duration: 3 });
-  gsap.to(textRef4.current, { opacity: 1, marginTop: 'calc(-50vh + 140px)', duration: 3 });
+  gsap.to(textRef5.current, { opacity: 0, marginTop: '-80px)', duration: 3 });
+  gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px)', duration: 3 });
   gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
 
-  gsap.to(window, {
-    duration: 2,
-    scrollTo: {
-      y: "#your-anchor-id", // Replace with your anchor ID or selector
-      offsetY: 0,
-      autoKill: false, // Prevents ScrollToPlugin from canceling previous scrolls
-    },
-    ease: "linear",
-  });
   
 };
 
@@ -118,13 +127,15 @@ const onLeaveBackFunction = (self) => {
   gsap.to(textRef2.current, { opacity: 0, y: 100, duration: 3 });
   gsap.to(textRef5.current, { opacity: 1,marginTop: 0, duration: 3 });
   gsap.to(textRef4.current, { opacity: 0,marginTop: 0, duration: 3 });
+
 };
 
 // Create ScrollTrigger with onEnter and onLeaveBack functions
 ScrollTrigger.create({
   trigger: projectWrapperRef.current,
-  start: 'top+=202 center',
+  start: 'top top+=200',
   scrub: true,
+  markers: false,
   onEnter: onEnterFunction,
   onLeaveBack: onLeaveBackFunction,
 });
@@ -184,7 +195,7 @@ useEffect(() => {
     </div>
 
 
-    <div className={styles.projectWrapperOuter}>
+    <div className={styles.projectWrapperOuter} id='your-anchor-2'>
     <div ref={textRef4} className={styles.scrollText4}>
           <div className={styles.marquee}>
       <div className={`${styles.marqueeContent} ${styles.scroll}`}>
@@ -212,8 +223,8 @@ useEffect(() => {
 
     </div>
 <div ref={textRef2} className={styles.scrollText2} style={{display: ''}}>
-<div className={styles.marquee}>
-<div className={`${styles.marqueeContent} ${styles.scroll}`}>
+<div className={styles.marqueeWork}>
+<div className={`${styles.marqueeContentWork} ${styles.scrollWork}`}>
 <div className={styles.textBlock}>
   {
     projects.map(({ id, title, details }) => (
@@ -231,7 +242,7 @@ useEffect(() => {
 }
 </div>
 </div>
-<div className={`${styles.marqueeContent} ${styles.scroll}`}>
+<div className={`${styles.marqueeContentWork} ${styles.scrollWork}`}>
 <div className={styles.textBlock}>
 {
     projects.map(({ id, title, details }) => (
