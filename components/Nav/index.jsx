@@ -4,7 +4,8 @@ import gsap from 'gsap';
 
 import styles from './style.module.css';
 
-const Nav = () => {
+const Nav = ({ handleClick }) => {
+
   const animationRef = useRef(null);
   const underlineRefs = useRef([]);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
@@ -84,7 +85,7 @@ const Nav = () => {
         Work
         <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
       </Link>
-      <Link onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
+      <Link onClick={handleClick} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
         Contact
         <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
       </Link>

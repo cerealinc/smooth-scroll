@@ -44,6 +44,7 @@ const HorizontalScrollText = () => {
 
   return (
     <div className={styles.wrapper}>
+
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
       <div className="marquee initial-scroll ">
