@@ -3,7 +3,6 @@ import { createCamera } from "./components/Camera.js";
 import { createEarth } from "./components/Earth.js";
 import { createScene } from "./components/Scene.js";
 import { createLight } from "./components/Light.js";
-import { createSpace } from "./components/Space.js";
 import { createMoon } from "./components/Moon.js";
 
 // importing systems
@@ -24,7 +23,6 @@ class World {
     this.scene = createScene();
     this.earth = createEarth();
     this.moon = createMoon();
-    this.space = createSpace();
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
 
@@ -33,9 +31,6 @@ class World {
 
     // adding earth to scene
     this.scene.add(this.earth);
-
-    // adding space to scene
-    this.scene.add(this.space);
 
     // adding lights to the scene
     const { mainLight, ambientLight } = createLight();

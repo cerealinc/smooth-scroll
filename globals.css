@@ -6,6 +6,7 @@
 }
 html, body {
   width: 100vw;
+  overflow: hidden;
 }
 
 .show-cursor {
@@ -176,24 +177,22 @@ html.lenis {
 
 
 .world-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
-  height: 100vh;
+  height: 56vh;
   width: 100vw;
-  z-index: 99999;
-  background-color: #000;
+  z-index: 1;
+    background-color: transparent;
 }
 .world-container .world {
-  height: 100vh;
+  height: 56vh;
+  background-color: transparent;
+
 }
 
 .world-container .world-overlay {
-  height: 50vh;
-  background-color: #0000007c;
-  backdrop-filter: blur(10px);
-  /* for safari browser */
-  -webkit-backdrop-filter: blur(10px);
+  height: 44vh;
   position: fixed;
   bottom: 0;
   width: 100vw;

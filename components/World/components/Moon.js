@@ -3,7 +3,7 @@ import * as THREE from "three";
 const textureLoader = new THREE.TextureLoader();
 
 function createMoon() {
-  const geometry = new THREE.SphereGeometry(12, 32, 32);
+  const geometry = new THREE.SphereGeometry(62, 32, 32);
   const moon_texture = textureLoader.load(
     "/assets/textures/moon/moon_texture.jpg"
   );

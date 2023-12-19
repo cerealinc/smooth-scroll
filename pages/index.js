@@ -2,7 +2,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './page.module.css'
 import Projects from '../components/Projects/index';
+import Logo from '../components/Logo';
 import TextReveal from '../components/HorizontalScrollText2'; 
+import Nav from '../components/Nav'; 
 import Scroll from '../components/Scroll'; 
 import HorizontalScrollText from '../components/HorizontalScrollText';
 import HorizontalScrollText3 from '../components/HorizontalScrollText3';
@@ -19,6 +21,7 @@ export default function Home() {
   const handleClick = () => {
     setRenderMain(true); // Set renderMain state to true when the link is clicked
     document.body.style.overflow = 'hidden'; // Prevent scrolling
+    document.body.style.height = '100vh'; // Prevent scrolling
 
   };
   const targetRef = useRef(null);
@@ -30,6 +33,8 @@ export default function Home() {
 
   return (
     <ReactLenis root>
+        <Logo />
+        <Nav handleClick={handleClick} />
         {renderMain && <Main />}
         <Scroll />
         <HorizontalScrollText />

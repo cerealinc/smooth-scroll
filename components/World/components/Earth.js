@@ -7,7 +7,7 @@ const createClouds = () => {
     "/assets/textures/earth/earth_clouds.png"
   );
 
-  const geometry = new THREE.SphereGeometry(100.02, 128, 128); // Increased segments
+  const geometry = new THREE.SphereGeometry(101, 128, 128); // Increased segments
   const material = new THREE.MeshPhongMaterial({
     map: canvasCloud,
     transparent: true,
@@ -24,7 +24,7 @@ function createMaterial() {
 
   // earth map
   const earthMap = textureLoader.load(
-    "/assets/textures/earth/earth_map.jpg"
+    "/assets/textures/earth/world.topo.bathy.200401.3x5400x2700.jpg"
   );
   material.map = earthMap;
 
@@ -33,7 +33,7 @@ function createMaterial() {
     "/assets/textures/earth/earth_bump.jpg"
   );
   material.bumpMap = earthBump;
-  material.bumpScale = 0.005;
+  material.bumpScale = 0.001;
 
   // specular map
   const earthSpecular = textureLoader.load(

@@ -58,7 +58,7 @@ function deletePreviousMarker(earth) {
 function createRings(marker) {
   const rings = new THREE.Group();
 
-  const ringGeometry = new THREE.RingGeometry(1.5, 2, 64); // Parameters: innerRadius, outerRadius, segments
+  const ringGeometry = new THREE.RingGeometry(0, 2, 64); // Parameters: innerRadius, outerRadius, segments
   const ringMaterial = new THREE.LineBasicMaterial({ color: 0xFF0000 });
 
   for (let i = 1; i <= 5; i++) {

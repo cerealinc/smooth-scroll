@@ -77,7 +77,7 @@ const Nav = ({ handleClick }) => {
 
   return (
     <div className={`${styles.navigation} ${styles[textColor]}`}>
-      <Link onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="/">
+      <Link onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
         Home
         <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
       </Link>
@@ -85,7 +85,7 @@ const Nav = ({ handleClick }) => {
         Work
         <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
       </Link>
-      <Link onClick={handleClick} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="/contact">
+      <Link onClick={handleClick} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
         Contact
         <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
       </Link>
