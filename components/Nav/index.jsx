@@ -4,12 +4,16 @@ import gsap from 'gsap';
 
 import styles from './style.module.css';
 
-const Nav = ({ handleClick }) => {
+const Nav = ({ handleClick, setRenderMain }) => {
 
   const animationRef = useRef(null);
   const underlineRefs = useRef([]);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
 
+  const handleLinkClick = () => {
+    handleClick(false); // Set renderMain state to false when "Home" or "Work" are clicked
+    // ... (other logic if needed)
+  };
   const manageMouseEnter = (e, index) => {
     // Create a new animation timeline
     const animation = gsap.timeline({
@@ -77,20 +81,21 @@ const Nav = ({ handleClick }) => {
 
   return (
     <div className={`${styles.navigation} ${styles[textColor]}`}>
-      <Link onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
+      <Link onClick={handleLinkClick} onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
         Home
         <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
       </Link>
-      <Link onMouseEnter={(e) => manageMouseEnter(e, 1)} onMouseLeave={(e) => manageMouseLeave(e, 1)} href="">
+      <Link onClick={handleLinkClick} onMouseEnter={(e) => manageMouseEnter(e, 1)} onMouseLeave={(e) => manageMouseLeave(e, 1)} href="">
         Work
         <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
       </Link>
-      <Link onClick={handleClick} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
+      <Link onClick={() => handleClick(true)} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
         Contact
         <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
       </Link>
     </div>
   );
 };
+
 
 export default Nav;

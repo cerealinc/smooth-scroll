@@ -1,18 +1,4 @@
-.fadeIn {
-    opacity: 0;
-    transition: opacity 1s ease-in-out; /* Adjust duration and easing as needed */
-  }
-  
-  .fadeIn.show {
-    opacity: 1;
-  }
-  
-  /* Add additional styling for your Main component */
-  .main {
-    display: block;
-  }
-
-  .world-container {
+.world-container {
     /* Your existing styles */
     opacity: 0; /* Start with opacity 0 */
     transition: opacity 1s ease-in-out; /* Adjust duration and easing as needed */

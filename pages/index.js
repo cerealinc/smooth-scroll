@@ -16,30 +16,39 @@ import Main from '@/components/main';
 
 export default function Home() {
   const [renderMain, setRenderMain] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  // Function to handle the click event on the link
-  const handleClick = () => {
-    setRenderMain(true); // Set renderMain state to true when the link is clicked
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
-    document.body.style.height = '100vh'; // Prevent scrolling
-
+  const handleClick = (shouldRenderMain) => {
+    if (shouldRenderMain) {
+      setRenderMain(true);
+      setFadeOut(false);
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+    } else {
+      setFadeOut(true);
+      setTimeout(() => {
+        setRenderMain(false);
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+      }, 1000); // Adjust timeout to match the transition duration
+    }
   };
-  const targetRef = useRef(null);
-  const elementToCheckRef = useRef(null);
-  const lenis = useLenis(({ scroll }) => {
-    lerp: .6
-  })
 
+  const fadeClass = renderMain ? (fadeOut ? 'fadeOut' : 'fadeIn') : '';
 
   return (
     <ReactLenis root>
-        <Logo />
-        <Nav handleClick={handleClick} />
-        {renderMain && <Main />}
-        <Scroll />
-        <HorizontalScrollText />
-        <TextReveal />
-      </ReactLenis>
+      <Logo />
+      <Nav handleClick={handleClick} />
+      {renderMain && (
+        <div className={`world-container ${fadeClass}`}>
+          <Main />
+        </div>
+      )}
+      <Scroll />
+      <HorizontalScrollText />
+      <TextReveal />
+    </ReactLenis>
 
   )
 }

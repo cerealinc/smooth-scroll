@@ -184,6 +184,8 @@ html.lenis {
   width: 100vw;
   z-index: 1;
     background-color: transparent;
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }
 .world-container .world {
   height: 56vh;
@@ -225,4 +227,19 @@ html.lenis {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 1.4px;
+}
+
+.world-container {
+  /* Your existing styles */
+  opacity: 0; /* Start with opacity 0 */
+  transition: opacity 1s ease-in-out; /* Adjust duration and easing as needed */
+}
+
+.fadeIn {
+  opacity: 1; /* Fade in by changing opacity to 1 */
+}
+
+.fadeOut {
+  opacity: 0; /* Start with opacity 0 */
+
 }

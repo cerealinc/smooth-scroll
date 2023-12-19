@@ -1,9 +1,12 @@
 import { World } from "./World/World.js";
-
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import styles from './Main.module.css'; // Import your CSS module
 
 export default function Main() {
+  const [fadeIn, setFadeIn] = useState(false);
+
   useEffect(() => {
+
     const main = () => {
       // scene container
       const container = document.querySelector('#scene-container');
@@ -16,13 +19,15 @@ export default function Main() {
 
       // locating on model
       world.findLocation(34.05, -118.24); // Update the latitude and longitude accordingly
+      setFadeIn(true);
+
     };
 
     main();
   }, []);
 
   return (
-    <div className="world-container">
+    <div className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
     <div id="scene-container" className="world">
     </div>
     <div className="world-overlay">
@@ -45,3 +50,5 @@ A right hand to strategy, our team is both innovative and insightful, offering e
     </div>
     </div>  );
 }
+
+
