@@ -38,17 +38,21 @@ function deletePreviousMarker(earth) {
   // Check if there are elements in the array
   if (previousMarkers.length > 0) {
     // Code to delete the marker
-    const previousMarkerId = previousMarkers[0]; // Look for id
+    const previousMarkerId = previousMarkers.pop(); // Remove and get the last added ID
     const previousMarker = earth.getObjectByProperty("uuid", previousMarkerId); // Get children using id from parent mesh
 
-    previousMarker.material.dispose(); // Disposing mesh material
-    previousMarker.geometry.dispose(); // Disposing mesh geometry
-    earth.remove(previousMarker); // Disposing mesh
-
-    // Removing element from array
-    previousMarkers.pop();
+    if (previousMarker) {
+      if (previousMarker.material) {
+        previousMarker.material.dispose(); // Disposing mesh material if exists
+      }
+      if (previousMarker.geometry) {
+        previousMarker.geometry.dispose(); // Disposing mesh geometry if exists
+      }
+      earth.remove(previousMarker); // Disposing mesh
+    }
   }
 }
+
 
 // Function to create rings around the marker
 function createRings(marker) {
