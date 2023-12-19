@@ -6,8 +6,8 @@ function createControls(camera, canvas) {
     controls.enableDamping = true;
  
     // restricting zoom in and zoom out
-    controls.minDistance = 40;
-    controls.maxDistance = 1900;
+    controls.minDistance = 140;
+    controls.maxDistance = 140;
 
     return controls;
 }

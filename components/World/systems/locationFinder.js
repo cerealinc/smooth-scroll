@@ -1,66 +1,121 @@
 import * as THREE from "three";
 
-// array to keep track of previous marker
+// Array to keep track of previous markers
 const previousMarkers = [];
 
-// function to create marker
+// Function to create the hovering dot marker
 function createMarker() {
-  const geometry = new THREE.CylinderGeometry(.5, .5, 20, 32); // Parameters: radiusTop, radiusBottom, height, radialSegments
-  const material = new THREE.MeshPhongMaterial({ color: 0xff0000 }); // Red color
-
+  const geometry = new THREE.SphereGeometry(.3, 16, 16); // Parameters: radius, widthSegments, heightSegments
+  const material = new THREE.MeshStandardMaterial({
+    emissive: 0xFF0000, // Yellow emissive color
+    emissiveIntensity: 1, // Full intensity
+    metalness: 0.5, // Adjust to your liking
+    roughness: 0.5, // Adjust to your liking
+  });
 
   const mesh = new THREE.Mesh(geometry, material);
-  mesh.rotation.x = Math.PI / 3;
 
   previousMarkers.push(mesh.uuid);
 
   return mesh;
 }
 
-// function to find positon on model
-function findPosition(lat, lng) {
-  const R = 100;
-  var phi = ((90 - lat) * Math.PI) / 180;
-  var theta = ((180 + lng) * Math.PI) / 180;
+// Function to find the position above the model
+function findPosition(lat, lng, radius) {
+  const R = radius + 5; // Adding a small offset to keep it above the surface
+  const phi = ((90 - lat) * Math.PI) / 180;
+  const theta = ((180 + lng) * Math.PI) / 180;
 
   const x = -R * Math.sin(phi) * Math.cos(theta);
   const y = R * Math.cos(phi);
   const z = R * Math.sin(phi) * Math.sin(theta);
 
-  return { x: x, y: y, z: z };
+  return { x, y, z };
 }
 
-// function to remove marker
+// Function to remove the previous marker
 function deletePreviousMarker(earth) {
-  // check if there are elements in array
+  // Check if there are elements in the array
   if (previousMarkers.length > 0) {
-    // code to delete marker
-    const previousMarkerId = previousMarkers[0]; // look for id
-    const previousMarker = earth.getObjectByProperty("uuid", previousMarkerId); // get childern using id from parent mesh
+    // Code to delete the marker
+    const previousMarkerId = previousMarkers[0]; // Look for id
+    const previousMarker = earth.getObjectByProperty("uuid", previousMarkerId); // Get children using id from parent mesh
 
-    previousMarker.material.dispose(); // disposing mesh material
-    previousMarker.geometry.dispose(); // disposing mesh geometry
-    earth.remove(previousMarker); // disposing mesh
+    previousMarker.material.dispose(); // Disposing mesh material
+    previousMarker.geometry.dispose(); // Disposing mesh geometry
+    earth.remove(previousMarker); // Disposing mesh
 
-    // removing element from array
+    // Removing element from array
     previousMarkers.pop();
   }
 }
 
+// Function to create rings around the marker
+function createRings(marker) {
+  const rings = new THREE.Group();
+
+  const ringGeometry = new THREE.RingGeometry(1.5, 2, 64); // Parameters: innerRadius, outerRadius, segments
+  const ringMaterial = new THREE.LineBasicMaterial({ color: 0xFF0000 });
+
+  for (let i = 1; i <= 5; i++) {
+    const ring = new THREE.Line(ringGeometry, ringMaterial);
+    ring.scale.set(i, i, 1);
+    rings.add(ring);
+  }
+
+  marker.add(rings);
+
+  return rings;
+}
+
+// Function to mark the location with a pulsating beacon effect
 function markLocation(lat, lng, earth) {
-  // check for any marker already marked
+  // Check for any previously marked marker
   deletePreviousMarker(earth);
 
-  // creating marker
+  // Creating the marker
   const marker = createMarker();
 
-  // finding position
-  const position = findPosition(lat, lng);
+  // Finding the position above the Earth's surface
+  const position = findPosition(lat, lng, 110); // Adjust the radius to position the beacon above the Earth
 
-  // setting marker position
-  marker.position.x = position.x;
-  marker.position.y = position.y;
-  marker.position.z = position.z;
+  // Setting the marker position above the Earth's surface
+  marker.position.set(position.x, position.y - 25, position.z); // Adjust the Y-axis value to position the beacon above the Earth
+
+  // Rotating the marker to face upwards
+  marker.lookAt(earth.position);
+  // Creating rings around the marker
+  const rings = createRings(marker);
+
+  const minScale = 0.5; // Minimum scale for the rings
+  const maxScale = 1; // Maximum scale for the rings
+  const speed = 0.006; // Speed of expansion and contraction
+
+  let isGrowing = true; // Flag to control the scaling direction
+
+  // Animation function for pulsating effect
+  function pulsate() {
+    if (isGrowing) {
+      rings.scale.set(rings.scale.x + speed, rings.scale.y + speed, 1);
+
+      if (rings.scale.x > maxScale) {
+        isGrowing = false;
+      }
+    } else {
+      rings.scale.set(rings.scale.x - speed, rings.scale.y - speed, 1);
+
+      if (rings.scale.x < minScale) {
+        isGrowing = true;
+      }
+    }
+
+    requestAnimationFrame(pulsate);
+  }
+
+  // Start pulsating animation
+  pulsate();
+
+  earth.add(marker); // Adding the marker to the Earth's scene
 
   return marker;
 }

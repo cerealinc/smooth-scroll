@@ -18,6 +18,7 @@ let controls;
 let resizer;
 
 class World {
+
   constructor(container) {
     this.camera = createCamera(container);
     this.scene = createScene();

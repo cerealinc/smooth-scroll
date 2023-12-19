@@ -53,6 +53,7 @@ function createEarth() {
   const material = new createMaterial();
 
   const earth = new THREE.Mesh(geometry, material);
+
   earth.add(cloudMesh);
 
   earth.tick = (delta) => {

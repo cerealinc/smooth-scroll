@@ -185,5 +185,45 @@ html.lenis {
   background-color: #000;
 }
 .world-container .world {
+  height: 100vh;
+}
+
+.world-container .world-overlay {
   height: 50vh;
+  background-color: #0000007c;
+  backdrop-filter: blur(10px);
+  /* for safari browser */
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 99;
+
+}
+
+.contact-info {
+  color: #fff;
+}
+.contact-details {
+  color: #fff;
+}
+
+.world-overlay {
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  justify-content: space-between;
+}
+
+
+.contact-details {
+  /* Styles for contact details */
+  text-align: right; /* Align text to the right */
+  /* Add any specific styling needed */
+  width: 60vw;
+  max-width: 560px;
+  line-height: 2;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
 }
