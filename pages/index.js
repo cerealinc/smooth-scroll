@@ -40,11 +40,10 @@ export default function Home() {
     <ReactLenis root>
       <Logo />
       <Nav handleClick={handleClick} />
-      {renderMain && (
-        <div className={`world-container ${fadeClass}`}>
+    <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>
           <Main />
         </div>
-      )}
+  
       <Scroll />
       <HorizontalScrollText />
       <TextReveal />
