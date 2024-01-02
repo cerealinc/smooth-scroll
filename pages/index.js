@@ -24,6 +24,7 @@ export default function Home() {
       setFadeOut(false);
       document.body.style.overflow = 'hidden';
       document.body.style.height = '100vh';
+
     } else {
       setFadeOut(true);
       setTimeout(() => {

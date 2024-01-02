@@ -237,9 +237,10 @@ html.lenis {
 
 .fadeIn {
   opacity: 1; /* Fade in by changing opacity to 1 */
+  z-index: 9;
 }
 
 .fadeOut {
   opacity: 0; /* Start with opacity 0 */
-
+  z-index: -1;
 }
