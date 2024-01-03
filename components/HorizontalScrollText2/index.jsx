@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+import Image from 'next/image'
 
 import styles from './style.module.css';
 
@@ -12,38 +13,64 @@ const projects = [
   {
       id: "one",
       title: "Miramax",
+      img: "1.jpg",
       details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "ST_2020_ActiveReel_5.mp4"
   },
   {
       id: "two",
       title: "New Era",
+      img: "2.jpg",
       details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
   },
   {
       id: "three",
       title: "Walmart",
+      img: "3.jpg",
       details: "<p>Project Info, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
   },
   {
     id: "four",
     title: "Miramax",
+    img: "4.jpg",
     details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
     src: "ST_2020_ActiveReel_5.mp4"
 },
 {
     id: "five",
     title: "New Era",
+    img: "1.jpg",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
     src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
 },
 {
     id: "six",
     title: "Walmart",
+    img: "3.jpg",
     details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
     src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
+},  {
+  id: "seven",
+  title: "Miramax",
+  img: "2.jpg",
+  details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+  src: "ST_2020_ActiveReel_5.mp4"
+},
+{
+  id: "eight",
+  title: "New Era",
+  img: "4.jpg",
+  details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+  src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
+},
+{
+  id: " nine",
+  title: "Walmart",
+  img: "1.jpg",
+  details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
+  src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
 }
 ]
 const HorizontalScrollText2 = () => {
@@ -222,45 +249,25 @@ useEffect(() => {
     </div>
 
     </div>
-<div ref={textRef2} className={styles.scrollText2} style={{display: ''}}>
-<div className={styles.marqueeWork}>
-<div className={`${styles.marqueeContentWork} ${styles.scrollWork}`}>
-<div className={styles.textBlock}>
+<div ref={textRef2} data-scroll data-scroll-speed="0.5" className={styles.scrollText2} style={{display: ''}}>
   {
-    projects.map(({ id, title, details }) => (
+    projects.map(({ id, title, details, img }) => (
         // eslint-disable-next-line react/jsx-key
+<div className={styles.flexItem}>
+          <Image alt="Alt" src={`/images/${img}`} width={600} height={800}/>
             <span
                 ref={swapText}
                 key={id}
                 className={styles.listItem}
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
             >
-            {workInView ? title : title},
+            {workInView ? title : title}
             </span>
+            </div>
 
     ))
 }
-</div>
-</div>
-<div className={`${styles.marqueeContentWork} ${styles.scrollWork}`}>
-<div className={styles.textBlock}>
-{
-    projects.map(({ id, title, details }) => (
-        // eslint-disable-next-line react/jsx-key
-            <span
-                ref={swapText}
-                key={id}
-                className={styles.listItem}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-            >
-            {workInView ? title : title},
-            </span>
 
-    ))
-}
-</div>
-</div>
-</div>
 
 </div>
 <div className={styles.projectDetails}>
@@ -296,7 +303,7 @@ useEffect(() => {
                     className={styles.video}
                     style={{
                         display:
-                            activeId === id ? "block" : "none"
+                            activeId === id ? "none" : "none"
                     }}
                 >
                     <source src={`/images/${src}`} type="video/mp4" />
