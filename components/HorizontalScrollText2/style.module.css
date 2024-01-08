@@ -14,23 +14,7 @@
   color: #fff;
   z-index: 9;
 }
-.scrollText2 {
-  white-space: nowrap;
-  font-size: 1.4rem;
-  position: relative;
-  transform: translateY(100px);
-  color: #fff;
-  z-index: 9; 
-  opacity: 0;
-  justify-content: space-around;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 180px;
-  align-items: center;
-}
-.scrollText2 .flexItem {
-  flex: 1 0 calc(33.33% - 180px); /* Adjust image width and gap */
-}
+
 .scrollText4 {
   position: absolute;
   top: 18px;
@@ -95,7 +79,7 @@
     line-height: 1;
   }
   .listItem {
-    padding: 12px;
+    padding: 0 24px;
     cursor: pointer;
   }
 .scrollText2  .marqueeContentWork {
@@ -222,20 +206,36 @@ position: relative;
 }
 .projectWrapper {
   width: 100vw;
-  margin-top: 160px;
+  overflow: hidden;
   display: block;
-  z-index: 999;
   z-index: 99999;
-  position: relative;
-  background:  rgba(0,0,0,0.5);
+  position: sticky;
+    background:  rgba(0,0,0,0.5);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-padding: 80px;
+
 }
 
-.projectWrapper img {
+.scrollText2 {
+  white-space: nowrap;
+  font-size: 1.4rem;
+  position: relative;
+  transform: translateY(100px);
+  color: #fff;
+  z-index: 9; 
+  opacity: 0;
+  justify-content: space-around;
+  display: block;
+  flex-wrap: wrap;
+  gap: 180px;
+  align-items: center;
+}
+.scrollText2 .flexItem {
+  opacity: 1;
+}
+
+.scrollText2 .flexItem img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 .projectList{

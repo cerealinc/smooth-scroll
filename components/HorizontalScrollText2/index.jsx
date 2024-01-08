@@ -13,7 +13,7 @@ const projects = [
   {
       id: "one",
       title: "Miramax",
-      img: "1.jpg",
+      img: "2.jpg",
       details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "ST_2020_ActiveReel_5.mp4"
   },
@@ -27,82 +27,62 @@ const projects = [
   {
       id: "three",
       title: "Walmart",
-      img: "3.jpg",
+      img: "2.jpg",
       details: "<p>Project Info, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
       src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
   },
   {
     id: "four",
     title: "Miramax",
-    img: "4.jpg",
+    img: "2.jpg",
     details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
     src: "ST_2020_ActiveReel_5.mp4"
 },
 {
     id: "five",
     title: "New Era",
-    img: "1.jpg",
+    img: "2.jpg",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
     src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
-},
-{
-    id: "six",
-    title: "Walmart",
-    img: "3.jpg",
-    details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-    src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
-},  {
-  id: "seven",
-  title: "Miramax",
-  img: "2.jpg",
-  details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-  src: "ST_2020_ActiveReel_5.mp4"
-},
-{
-  id: "eight",
-  title: "New Era",
-  img: "4.jpg",
-  details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-  src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
-},
-{
-  id: " nine",
-  title: "Walmart",
-  img: "1.jpg",
-  details: "<p>Project Info, A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-  src: "HBH_HSN_15_FINAL_16x9_UPDATE_v01.mp4"
 }
 ]
 const HorizontalScrollText2 = () => {
   const swapText = useRef(null);
   const textRef = useRef(null);
   const textRef2 = useRef(null);
-  const textRef3 = useRef(null);
   const textRef4 = useRef(null);
   const textRef5 = useRef(null);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
-  const videoContainerRef = useRef(null);
   const wrapperRef = useRef(null);
   const projectWrapperRef = useRef(null);
-  const scrollContainerRef = useRef(null); // Add a new ref for the scroll container
   const [firstHover, setFirstHover] = useState(false);
   const [workInView, setWorkInView] = useState(false);
 
   const focusFrontRef = useRef(null);
+  const [works, setWorks] = useState([]);
 
   useEffect(() => {
-      const focusFront = focusFrontRef.current;
-    const item = textRef.current;
-    const itemWidth = item.clientWidth;
+ 
 
-    const item2 = textRef2.current;
-    const itemWidth2 = item2.clientWidth;
-
-    const item4 = textRef4.current;
-    const itemWidth4 = item4.clientWidth;
-
-
+    const worksArray = Array.from(document.querySelectorAll('.flexItemWorks')); // Assuming .flexItem is the class of the elements you want to animate
+    setWorks(worksArray); // Set the works array state
+    worksArray.forEach((work) => {
+      const image = work.querySelector('img'); // Select the image inside the .flexItemWorks element
+      gsap.to(work, {
+        scrollTrigger: {
+          trigger: work,
+          start: 'top-=360 top',
+          end: 'bottom top',
+          scrub: true,
+          markers: true,
+          onUpdate: ({ progress, direction, isActive }) => {
+            const scaleValue = 1 - progress * 0.6; // Adjust the scaling factor as needed
+            gsap.set(work, { scale: scaleValue });
+          },
+        },
+      });
+    });
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top top',
@@ -249,27 +229,6 @@ useEffect(() => {
     </div>
 
     </div>
-<div ref={textRef2} data-scroll data-scroll-speed="0.5" className={styles.scrollText2} style={{display: ''}}>
-  {
-    projects.map(({ id, title, details, img }) => (
-        // eslint-disable-next-line react/jsx-key
-<div className={styles.flexItem}>
-          <Image alt="Alt" src={`/images/${img}`} width={600} height={800}/>
-            <span
-                ref={swapText}
-                key={id}
-                className={styles.listItem}
-                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
-            >
-            {workInView ? title : title}
-            </span>
-            </div>
-
-    ))
-}
-
-
-</div>
 <div className={styles.projectDetails}>
 {
             projects.map(({ id, details }) => (
@@ -315,6 +274,27 @@ useEffect(() => {
 
     </div>
 </div>
+</div>
+<div ref={textRef2} className={styles.scrollText2} style={{display: ''}}>
+  {
+    projects.map(({ id, title, details, img }) => (
+        // eslint-disable-next-line react/jsx-key
+<div ref={works} className={`${styles.flexItem} flexItemWorks`}>
+          <Image alt="Alt" className='fuck' src={`/images/${img}`} width={600} height={800}/>
+            <span
+                ref={swapText}
+                key={id}
+                className={styles.listItem}
+                onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
+            >
+            {workInView ? title : title}
+            </span>
+            </div>
+
+    ))
+}
+
+
 </div>
     </div>
 
