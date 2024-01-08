@@ -75,7 +75,7 @@ const HorizontalScrollText2 = () => {
           start: 'top-=360 top',
           end: 'bottom top',
           scrub: true,
-          markers: true,
+          markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
             const scaleValue = 1 - progress * 0.6; // Adjust the scaling factor as needed
             gsap.set(work, { scale: scaleValue });
