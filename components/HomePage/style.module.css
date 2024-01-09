@@ -203,31 +203,46 @@
 height: auto;
 overflow: visible;
 position: relative;
+height: 4000px;
 }
 .projectWrapper {
   width: 100vw;
-  overflow: hidden;
+  height: 100vh;
+  overflow: auto;
   display: block;
   z-index: 99999;
-  position: sticky;
+  position: relative;
     background:  rgba(0,0,0,0.5);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
 }
-
-.scrollText2 {
-  white-space: nowrap;
-  font-size: 1.4rem;
+.scrollTextWrap {
   position: relative;
-  transform: translateY(100px);
+  z-index: 9999;
+
+}
+
+
+.scrollTextClip {
+  position: fixed;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+clip-path: polygon(0 0, 40% 0, 29% 100%, 0% 100%);
+  z-index: 999999;
+
+}
+.scrollText2 {
+  font-size: 1.4rem;
+  position: absolute;
   color: #fff;
-  z-index: 9; 
   opacity: 0;
-  justify-content: space-around;
+  z-index: 2;
   display: block;
-  flex-wrap: wrap;
   gap: 180px;
-  align-items: center;
+  top: 100px ;
+  width: 100vw;
 }
 .scrollText2 .flexItem {
   opacity: 1;
@@ -238,22 +253,7 @@ position: relative;
   height: auto;
 }
 
-.projectList{
-    white-space: nowrap;
-    top: calc(50vh - 20px);
-    position: fixed;
-    transform: translateY(0px);
-    color: #fff;
-    z-index: 9; 
-}
 
-.projectList h3 {
-  font-weight: 300;
-  color: #fff;
-}
-.projectList h3.hovered {
-  color: #fff;
-}
 .projectEl{
   color: #fff;
   display: inline;

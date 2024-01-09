@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 import styles from './style.module.css';
 
-const Scroll = () => {
+const ScrollMarker = () => {
   const lineRef = useRef(null);
 
   useEffect(() => {
@@ -79,4 +79,4 @@ const Scroll = () => {
   );
 };
 
-export default Scroll;
+export default ScrollMarker;

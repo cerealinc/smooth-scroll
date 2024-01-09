@@ -1,53 +1,65 @@
-'use client';
-import React, { useLayoutEffect, useRef } from 'react'
-import styles from './style.module.css';
-import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import styles from './style.module.css';
 
-export default function Index() {
+const Intro = () => {
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
 
-    const background = useRef(null);
-    const introImage = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-    useLayoutEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
+    const item = textRef.current;
+    const itemWidth = item.clientWidth;
 
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: document.documentElement,
-                scrub: true,
-                start: "top",
-                end: "+=500px",
-            },
-        })
 
-        timeline
-            .from(background.current, {clipPath: `inset(15%)`})
-            .to(introImage.current, {height: "200px"}, 0)
-    }, [])
+    const marqueeContent = document.querySelectorAll('.marquee-content');
+    const marquee = document.querySelector('.marquee');
 
-    return (
-        <div className={styles.homeHeader}>
-            <div className={styles.backgroundImage} ref={background}>
-                <Image 
-                    src={'/images/background.jpeg'}
-                    fill={true}
-                    alt="background image"
-                    priority={true}
-                />
-            </div>
-            <div className={styles.intro}>
-                    <div ref={introImage} data-scroll data-scroll-speed="0.3" className={styles.introImage}>
-                        <Image
-                            src={'/images/intro.png'}
-                            alt="intro image"
-                            fill={true} 
-                            priority={true}
-                        />
-                    </div>
-                    <h1 data-scroll data-scroll-speed="0.7">SMOOTH SCROLL</h1>
-             </div>
-        </div>
-    )
-}
+    marquee.addEventListener('animationend', () => {
+      // Once the initial animation ends, remove the class and add the infinite scrolling class
+      marquee.classList.remove('initial-scroll');
+      marqueeContent.forEach(element => {
+        element.classList.add('scroll');
+      });
+    });
+
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: 'top center',
+      end: 'bottom center',
+      pin: true, // Pin the container
+      pinSpacing: false, // Remove space when pinned
+      markers: false, // Remove this in production
+      onEnter: () => {
+        gsap.to(item, { opacity: 1, duration: 1 }); // Adjust the duration for video fade
+      },
+      onLeaveBack: () => {
+        gsap.to(item, { opacity: 0, duration: 1 }); // Adjust the duration for video fade
+      },
+    });
+  }, []);
+
+  return (
+    <div className={styles.wrapper}>
+
+    <div ref={containerRef} className={styles.scrollContainer}>
+      <div ref={textRef} className={styles.scrollText}>
+      <div className="marquee initial-scroll ">
+      <div className="marquee-content">
+        <div className="text-block">Creative Direction, Development, and Execution</div>
+      </div>
+      <div className="marquee-content">
+        <div className="text-block">Creative Direction, Development, and Execution</div>
+      </div>
+    </div>
+
+      </div>
+    </div>
+    </div>
+  );
+};
+
+export default Intro;

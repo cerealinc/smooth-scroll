@@ -1,17 +1,12 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
-import styles from './page.module.css'
-import Projects from '../components/Projects/index';
+import React, {useState} from 'react';
 import Logo from '../components/Logo';
-import TextReveal from '../components/HorizontalScrollText2'; 
+import HomePage from '../components/HomePage'; 
 import Nav from '../components/Nav'; 
-import Scroll from '../components/Scroll'; 
-import HorizontalScrollText from '../components/HorizontalScrollText';
-import HorizontalScrollText3 from '../components/HorizontalScrollText3';
-import { useInView } from 'react-intersection-observer';
+import ScrollMarker from '../components/ScrollMarker'; 
+import Intro from '../components/Intro';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
-import CursorCircle from '../components/Cursor';
-import Main from '@/components/main';
+import Contact from '@/components/contact';
 
 
 export default function Home() {
@@ -42,12 +37,12 @@ export default function Home() {
       <Logo />
       <Nav handleClick={handleClick} />
     <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>
-          <Main />
+          <Contact />
         </div>
   
-      <Scroll />
-      <HorizontalScrollText />
-      <TextReveal />
+      <ScrollMarker />
+      <Intro />
+      <HomePage />
     </ReactLenis>
 
   )

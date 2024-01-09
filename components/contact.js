@@ -2,12 +2,12 @@ import { World } from "./World/World.js";
 import { useEffect, useState } from 'react';
 import styles from './Main.module.css'; // Import your CSS module
 
-export default function Main() {
+export default function Contact() {
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
 
-    const main = () => {
+    const contact = () => {
       // scene container
       const container = document.querySelector('#scene-container');
 
@@ -23,7 +23,7 @@ export default function Main() {
 
     };
 
-    main();
+    contact();
   }, []);
 
   return (
