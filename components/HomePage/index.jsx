@@ -92,7 +92,7 @@ const HomePage = () => {
       scrub: true,
       pin: true,
       pinSpacing: false,
-      markers: true,
+      markers: false,
       onUpdate: (self) => {
         const blurAmount = 140 - self.progress * 140;
         gsap.to(videoRef.current, { opacity: { blurAmount } });
