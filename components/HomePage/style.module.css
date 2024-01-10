@@ -277,6 +277,7 @@ height: 4000px;
 }
 .scrollText2 .flexItem {
   opacity: 1;
+  line-height: 0;
 }
 
 .scrollText2 .flexItem img {

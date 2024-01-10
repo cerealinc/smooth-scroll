@@ -76,12 +76,12 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top-=140 top',
+          start: 'top+=140 top',
           end: 'bottom top',
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
-            const scaleValue = 1 - progress * .9; // Adjust the scaling factor as needed
+            const scaleValue = 1 - progress * .1; // Adjust the scaling factor as needed
             gsap.set(work, { scale: scaleValue });
           },
         },
@@ -343,7 +343,6 @@ useEffect(() => {
                 className={styles.listItem}
                 onMouseEnter={() => [setActiveElementOnHover(id), handleProjectHover()]}
               >
-                {workInView ? title : title}
               </span>
             </div>
 
