@@ -333,10 +333,23 @@ useEffect(() => {
 
       <div ref={textRef2} className={styles.scrollText2} style={{ display: '' }}>
         {
-          projects.map(({ id, title, details, img }) => (
+          projects.map(({ id, title, details, img, src }) => (
             // eslint-disable-next-line react/jsx-key
             <div ref={works} className={`${styles.flexItem} flexItemWorks`}>
-              <Image alt="Alt" className='fuck' src={`/images/${img}`} width={600} height={800} />
+                <video
+                  loop
+                  muted
+                  autoPlay
+                  playsInline
+                  key={id}
+                  style={{
+                    display:
+                      activeId === id ? "block" : "block"
+                  }}
+                >
+                  <source src={`/images/${src}`} type="video/mp4" />
+
+                </video>
               <span
                 ref={swapText}
                 key={id}

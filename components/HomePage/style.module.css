@@ -273,13 +273,14 @@ height: 4000px;
   gap: 180px;
   top: 100px ;
   width: 100vw;
-  margin-top: 200px;
 }
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
 }
-
+.scrollText2 .flexItem video {
+  max-width: 100%;
+}
 .scrollText2 .flexItem img {
   width: 100%;
   height: auto;
