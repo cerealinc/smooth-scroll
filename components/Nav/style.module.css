@@ -26,14 +26,14 @@
     content: ' ';
     height: 1px;
     width: 6px;
-    background-color: #fff;
+    background-color: #0a0a0a;
     margin-top: -4px;
 }
 
 .underline {
     width: 0;
     height: 1px;
-    background-color: #fff;
+    background-color: #0a0a0a;
     display: block;
     margin-top: 8px;
     position: relative;

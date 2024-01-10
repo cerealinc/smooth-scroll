@@ -5,8 +5,8 @@ function createControls(camera, canvas) {
     const controls = new OrbitControls(camera, canvas);
 
     controls.enableDamping = true;
-    controls.minDistance = 120;
-    controls.maxDistance = 1940;
+    controls.minDistance = 180;
+    controls.maxDistance = 1340;
 
     return controls;
 }
@@ -17,7 +17,7 @@ function createCamera(container){
     const camera = new THREE.PerspectiveCamera(50, WIDTH/HEIGHT, 1, 10000);
 
     // positioning camera
-    camera.position.set(0,200,640);
+    camera.position.set(0,200,340);
     
     return camera;
 }

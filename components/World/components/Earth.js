@@ -57,7 +57,7 @@ function createEarth() {
   earth.add(cloudMesh);
 
   earth.tick = (delta) => {
-    cloudMesh.rotation.y += (-.2) * delta;
+    cloudMesh.rotation.y += (-.01) * delta;
     earth.rotation.y += (1 / 28) * delta;
   };
 

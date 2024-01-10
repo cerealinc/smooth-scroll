@@ -4,10 +4,10 @@ function createControls(camera, canvas) {
     const controls = new OrbitControls(camera, canvas);
 
     controls.enableDamping = true;
- 
+    controls.zoomSpeed = -1;
     // restricting zoom in and zoom out
-    controls.minDistance = 120;
-    controls.maxDistance = 2240;
+    controls.minDistance = 180;
+    controls.maxDistance = 1340;
 
     return controls;
 }

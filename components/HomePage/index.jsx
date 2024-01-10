@@ -51,6 +51,7 @@ const HomePage = () => {
   const textRef2Wrap = useRef(null);
 
   
+  const textRef4Wrap = useRef(null);
   const textRef4 = useRef(null);
   const textRef5 = useRef(null);
   const containerRef = useRef(null);
@@ -80,7 +81,7 @@ const HomePage = () => {
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
-            const scaleValue = 1 - progress * 0.6; // Adjust the scaling factor as needed
+            const scaleValue = 1 - progress * .9; // Adjust the scaling factor as needed
             gsap.set(work, { scale: scaleValue });
           },
         },
@@ -123,8 +124,8 @@ const HomePage = () => {
       setWorkInView(true);
       gsap.to(videoRef.current, { opacity: 0, delay: .1, duration: 1 });
       gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
-      gsap.to(textRef5.current, { opacity: 0, marginTop: '-80px)', duration: 2 });
-      gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px)', duration: 2 });
+      gsap.to(textRef5.current, { opacity: 0.5, marginTop: '-80px', duration: 2 });
+      gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px', duration: 2 });
       gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
 
 
@@ -134,7 +135,7 @@ const HomePage = () => {
     const onLeaveBackFunction = (self) => {
       setWorkInView(false);
       gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
-      gsap.to(videoRef.current, { opacity: 1, delay: .1, duration: 1 });
+      gsap.to(videoRef.current, { opacity: 1, delay: 1, duration: 1 });
       gsap.to(textRef2.current, { opacity: .5, y: 100, duration: 3 });
       gsap.to(textRef5.current, { opacity: 1, marginTop: 0, duration: 2 });
       gsap.to(textRef4.current, { opacity: 0, marginTop: 0, duration: 2 });
@@ -247,11 +248,9 @@ useEffect(() => {
 
         </div>
       </div>
+      <div ref={textRef4Wrap} className={`${styles.scrollText4Wrap} ${workInView ? styles.inView : styles.notInView}`}>
 
-      <div className={styles.scrollTextWrap} style={{ display: '' }}>
-
-      <div  ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
-        <div ref={textRef4} className={styles.scrollText4}>
+      <div ref={textRef4} className={styles.scrollText4}>
           <div className={styles.marquee}>
             <div className={`${styles.marqueeContent} ${styles.scroll}`}>
               <div className={styles.textBlock}>Select Commissions Include</div>
@@ -262,11 +261,16 @@ useEffect(() => {
           </div>
 
         </div>
+        </div>
+
+      <div className={styles.scrollTextWrap} style={{ display: '' }}>
+
+      <div  ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
 
         <div ref={projectWrapperRef} className={styles.projectWrapper} id='your-anchor-id'>
 
           <div className={styles.overlay}></div>
-          <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.wd : styles.start}`}>
+          <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.inView : styles.notInView}`}>
             <div className={styles.marquee}>
               <div className={`${styles.marqueeContent} ${styles.scroll}`}>
                 <div className={styles.textBlock}>Select Commissions Include</div>
@@ -326,7 +330,6 @@ useEffect(() => {
       </div>
 
       <div className={styles.parent}>
-      <div ref={textRef2Wrap} className={styles.scrollTextClip}></div>
 
       <div ref={textRef2} className={styles.scrollText2} style={{ display: '' }}>
         {
