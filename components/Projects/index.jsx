@@ -106,9 +106,9 @@ export default function Index() {
         <div ref={wrapperRef} className={styles.wrapper}>
         <div className={styles.childWrapper}>
         <div ref={textRef} className={styles.scrollText}>
-        Select Select Clients Include <span style={{marginLeft: "20vw"}}>Select Select Clients Include
-    </span><span style={{marginLeft: "20vw"}}>Select Select Clients Include
-    </span><span style={{marginLeft: "20vw"}}>Select Select Clients Include
+        Select Select Commissions Include <span style={{marginLeft: "20vw"}}>Select Select Commissions Include
+    </span><span style={{marginLeft: "20vw"}}>Select Select Commissions Include
+    </span><span style={{marginLeft: "20vw"}}>Select Select Commissions Include
     </span>
         </div>
         <div className={styles.projectList}>

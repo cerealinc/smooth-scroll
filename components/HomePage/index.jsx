@@ -75,7 +75,7 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top-=360 top',
+          start: 'top-=140 top',
           end: 'bottom top',
           scrub: true,
           markers: false,
@@ -254,10 +254,10 @@ useEffect(() => {
         <div ref={textRef4} className={styles.scrollText4}>
           <div className={styles.marquee}>
             <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>Select Clients Include</div>
+              <div className={styles.textBlock}>Select Commissions Include</div>
             </div>
             <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>Select Clients Include</div>
+              <div className={styles.textBlock}>Select Commissions Include</div>
             </div>
           </div>
 
@@ -269,10 +269,10 @@ useEffect(() => {
           <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.wd : styles.start}`}>
             <div className={styles.marquee}>
               <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-                <div className={styles.textBlock}>Select Clients Include</div>
+                <div className={styles.textBlock}>Select Commissions Include</div>
               </div>
               <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-                <div className={styles.textBlock}>Select Clients Include</div>
+                <div className={styles.textBlock}>Select Commissions Include</div>
               </div>
             </div>
 
