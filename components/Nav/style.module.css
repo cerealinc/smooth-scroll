@@ -7,7 +7,7 @@
     right: 42px;
     top: 40px;
     z-index: 9;
-    color: #fff;
+    color: #0a0a0a;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
     z-index: 999999999;
 }
 .navigation a {
-    color: #fff;
+    color: #0a0a0a;
     text-decoration: none;
     padding: 8px;
     position: relative;

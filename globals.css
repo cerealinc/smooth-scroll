@@ -14,7 +14,7 @@ html, body {
 }
 body{
   margin: 0px;
-  background-color: #0a0a0a;
+  background-color: #fff;
   overflow-x: hidden;
 }
 
@@ -144,7 +144,7 @@ html.lenis {
 }
 
 .text-block {
-  color: #fff;
+  color: #0a0a0a;
   font-size: 4rem;
   font-weight: 400;
   line-height: 1;
@@ -203,10 +203,10 @@ html.lenis {
 }
 
 .contact-info {
-  color: #fff;
+  color: #0a0a0a;
 }
 .contact-details {
-  color: #fff;
+  color: #0a0a0a;
 }
 
 .world-overlay {

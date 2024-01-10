@@ -11,7 +11,7 @@
   top: calc(50vh - 70px);
   position: fixed;
   transform: translateY(30px);
-  color: #fff;
+  color: #0a0a0a;
   z-index: 9;
 }
 
@@ -73,7 +73,7 @@
   }
   
   .textBlock {
-    color: #fff;
+    color: #0a0a0a;
     font-size: 4rem;
     font-weight: 400;
     line-height: 1;
@@ -103,7 +103,7 @@
     position: absolute;
     bottom: 122px;
     right: 70px;
-    color: #fff;
+    color: #0a0a0a;
     z-index: 9999999999;
     width: 76vw;
     max-width: 400px;
@@ -156,7 +156,7 @@
   left: 0;
   right: 0;
   text-align: center;
-  color: #fff;
+  color: #0a0a0a;
   z-index: 9999;
 }
 .scrollCopy {
@@ -169,7 +169,7 @@
   text-align: center;
   transform: translateY(-50%);
   transform: translatex(-50%);
-  color: #fff;
+  color: #0a0a0a;
   z-index: 9999;
   width: 850px;
 }
@@ -236,7 +236,7 @@ clip-path: polygon(0 0, 40% 0, 29% 100%, 0% 100%);
 .scrollText2 {
   font-size: 1.4rem;
   position: absolute;
-  color: #fff;
+  color: #0a0a0a;
   opacity: 0;
   z-index: 2;
   display: block;
@@ -255,12 +255,12 @@ clip-path: polygon(0 0, 40% 0, 29% 100%, 0% 100%);
 
 
 .projectEl{
-  color: #fff;
+  color: #0a0a0a;
   display: inline;
   margin:  0 30px;
 }
 .hovered {
-  color: #fff;
+  color: #0a0a0a;
 }
 h2.notHovered {
   opacity: 1 !important;
@@ -305,7 +305,7 @@ h2.notHovered {
   margin: 0px;
   cursor: pointer;
   font-size: 1rem;
-  color: #fff;
+  color: #0a0a0a;
   transition: 600ms ease-in-out 200ms;
 }
 .projectEl p span {
@@ -345,7 +345,7 @@ h2.notHovered {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   z-index: 2;
-  background:  rgba(0,0,0,0.2);
+  background: rgb(255 255 255 / 53%)
 
 }
 
