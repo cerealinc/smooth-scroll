@@ -19,6 +19,7 @@
     text-decoration: none;
     padding: 8px;
     position: relative;
+    text-transform: uppercase;
 }
 
 .navigation .centerLine{

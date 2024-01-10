@@ -78,6 +78,14 @@
     font-weight: 400;
     line-height: 1;
   }
+  .scrollText5 .textBlock {
+    color: #fff;
+
+  }
+  .scrollText .textBlock {
+    color: #fff;
+
+  }
   .listItem {
     padding: 0 24px;
     cursor: pointer;
@@ -345,7 +353,7 @@ h2.notHovered {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   z-index: 2;
-  background: rgb(255 255 255 / 53%)
+  background: rgb(0 0 0 / 80%)
 
 }
 

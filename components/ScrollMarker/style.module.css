@@ -8,7 +8,8 @@
 }
 .scrollHeader {
     transform: rotate(90deg);
-
+    color: #fff;
+    text-transform: uppercase;
 }
 
 .scrollLine {
