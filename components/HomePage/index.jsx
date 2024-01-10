@@ -82,8 +82,11 @@ const HomePage = () => {
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
             const scaleValue = 1 - progress * .1; // Adjust the scaling factor as needed
-            gsap.set(work, { scale: scaleValue });
-          },
+            const scaleValue3 = progress * 12; // Adjust the scaling factor as needed
+            gsap.set(work, {
+              scale: scaleValue,
+              boxShadow: `${scaleValue3}px ${scaleValue3}px 12px rgba(0, 0, 0, 0.3)`
+            });          },
         },
       });
     });
