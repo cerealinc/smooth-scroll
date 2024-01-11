@@ -69,8 +69,6 @@ const ScrollMarker = () => {
 
   return (
     <div className={`${styles.scroll} ${styles[textColor]}`}>
-      <div className={styles.scrollHeader}>Scroll</div>
-
         <div
           ref={lineRef}
           className={styles.scrollLine}

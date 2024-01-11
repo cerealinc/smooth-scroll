@@ -12,14 +12,14 @@ const projects = [
     title: "Miramax",
     img: "2.jpg",
     details: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-    src: "ST_2020_ActiveReel_5.mp4"
+    src: "Halston_x_Netflix__Nora.mp4"
   },
   {
     id: "two",
     title: "New Era",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-    src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
+    src: "Krewe2020_Thumbnail.mp4"
   },
   {
     id: "three",
@@ -49,8 +49,9 @@ const HomePage = () => {
   const textRef2 = useRef(null);
 
   const textRef2Wrap = useRef(null);
-
   
+  const projectOverlay = useRef(null);
+
   const textRef4Wrap = useRef(null);
   const textRef4 = useRef(null);
   const textRef5 = useRef(null);
@@ -59,6 +60,9 @@ const HomePage = () => {
   const wrapperRef = useRef(null);
   const projectWrapperRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
+  const featuredReel = useRef(null);
+
+
   const [firstHover, setFirstHover] = useState(false);
   const [workInView, setWorkInView] = useState(false);
 
@@ -69,10 +73,13 @@ const HomePage = () => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-    const worksArray = Array.from(document.querySelectorAll('.flexItemWorks')); // Assuming .flexItem is the class of the elements you want to animate
-    setWorks(worksArray); // Set the works array state
+    const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
+    setWorks(worksArray);
+    
     worksArray.forEach((work) => {
-      const image = work.querySelector('img'); // Select the image inside the .flexItemWorks element
+      const image = work.querySelector('img');
+    
+      // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
@@ -81,15 +88,41 @@ const HomePage = () => {
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
-            const scaleValue = 1 - progress * .1; // Adjust the scaling factor as needed
-            const scaleValue3 = progress * 12; // Adjust the scaling factor as needed
+            const scaleValue = 1 - progress * 0.1;
+            const scaleValue3 = progress * 12;
+            const scaleValue2 = progress * 122;
             gsap.set(work, {
               scale: scaleValue,
-              boxShadow: `${scaleValue3}px ${scaleValue3}px 12px rgba(0, 0, 0, 0.3)`
-            });          },
+              boxShadow: `${scaleValue3}px ${scaleValue3}px 12px rgba(0, 0, 0, 0.1)`,
+              marginBottom: `${scaleValue2}px`
+            });
+          },
+        },
+      });
+    
+      // Second gsap.to code for scaling out
+      gsap.to(work, {
+        scrollTrigger: {
+          trigger: work,
+          start: 'top bottom', // Adjust the start value for scaling out
+          end: 'top-=140 top',
+          scrub: true,
+          markers: true,
+          onUpdate: ({ progress, direction, isActive }) => {
+            const scaleValue = 0.9 + progress * 0.1; // Adjust the scaling factor for scaling out
+            const scaleValue3 = 2 - progress * 12; // Adjust the scaling factor for scaling out
+            const scaleValue2 =  progress / 20;
+
+            gsap.set(work, {
+              scale: scaleValue,
+              boxShadow: `-${scaleValue3}px -${scaleValue3}px 6px rgba(0, 0, 0, 0.3)`,
+              marginTop: `${scaleValue2}px`
+            });
+          },
         },
       });
     });
+    
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: 'top top',
@@ -100,6 +133,7 @@ const HomePage = () => {
       onUpdate: (self) => {
         const blurAmount = 140 - self.progress * 140;
         gsap.to(videoRef.current, { opacity: { blurAmount } });
+        gsap.to(featuredReel.current, { opacity: 1 });
       },
     });
 
@@ -130,8 +164,8 @@ const HomePage = () => {
       gsap.to(textRef5.current, { opacity: 0.5, marginTop: '-80px', duration: 2 });
       gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px', duration: 2 });
       gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
-
-
+      gsap.to(projectOverlay.current, { opacity: 0, delay: .1, duration: 1 });
+    
     };
 
     // Define onLeaveBack function
@@ -139,9 +173,10 @@ const HomePage = () => {
       setWorkInView(false);
       gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
       gsap.to(videoRef.current, { opacity: 1, delay: 1, duration: 1 });
-      gsap.to(textRef2.current, { opacity: .5, y: 100, duration: 3 });
+      gsap.to(textRef2.current, { opacity: .5, duration: 3 });
       gsap.to(textRef5.current, { opacity: 1, marginTop: 0, duration: 2 });
       gsap.to(textRef4.current, { opacity: 0, marginTop: 0, duration: 2 });
+      gsap.to(projectOverlay.current, { opacity: 1, delay: .1, duration: 1 });
 
     };
 
@@ -242,7 +277,9 @@ useEffect(() => {
       </div>
 
       <div ref={containerRef} className={styles.scrollContainer}>
-
+<div className={styles.featuredReel} ref={featuredReel}>
+Featured Reel
+</div>
         <div ref={videoRef} className={styles.scrollVideoBlur}>
 
           <video loop muted autoPlay playsInline className="videoInner">
@@ -267,13 +304,7 @@ useEffect(() => {
         </div>
 
       <div className={styles.scrollTextWrap} style={{ display: '' }}>
-
-      <div  ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
-
-        <div ref={projectWrapperRef} className={styles.projectWrapper} id='your-anchor-id'>
-
-          <div className={styles.overlay}></div>
-          <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.inView : styles.notInView}`}>
+      <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.inView : styles.notInView}`}>
             <div className={styles.marquee}>
               <div className={`${styles.marqueeContent} ${styles.scroll}`}>
                 <div className={styles.textBlock}>Select Commissions Include</div>
@@ -284,6 +315,12 @@ useEffect(() => {
             </div>
 
           </div>
+      <div  ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
+
+        <div ref={projectWrapperRef} className={styles.projectWrapper} id='your-anchor-id'>
+
+          <div ref={projectOverlay} className={styles.overlay}></div>
+
           <div className={styles.projectDetails}>
             {
               projects.map(({ id, details }) => (
