@@ -40,7 +40,7 @@ const projects = [
     title: "New Era",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<span>Creative Direction</span> <span>Development</span> <span>Production</span>",
-    src: "HBH_Energy_15_FINAL_16x9_UPDATE_v01.mp4"
+    src: "saint-steven-taylor-Official_MP_Trailer_Final.mp4"
   }
 ]
 const HomePage = () => {
