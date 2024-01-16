@@ -113,40 +113,11 @@ transition: ease-in-out opacity 300ms;
     padding: 0 24px;
     cursor: pointer;
   }
-.scrollText2  .marqueeContentWork {
-  min-width: 100vw;
-  grid-column-gap: 2rem;
-  padding: 12px 0;
-  flex: none;
-  justify-content: space-around;
-  display: flex;
-}
-
-.scrollText2 .marqueeWork {
-  width: 100vw;
-  grid-column-gap: 2rem;
-  display: flex;
-  overflow: hidden;
-}
 
 
-  .projectDetails {
-    position: absolute;
-    bottom: 122px;
-    right: 70px;
-    color: #0a0a0a;
-    z-index: 999;
-    width: 76vw;
-    max-width: 400px;
-    letter-spacing: 3;
-    font-size: 13px;
-    text-align: right;
-  }
-  .projectDetails p {
-    margin-bottom: 12px;
-    font-weight: 100;
-    line-height:2;
-  }
+
+
+
   @media screen and (max-width: 767px) {
     .marquee-image.hide-mobile {
       display: none;
@@ -263,7 +234,6 @@ position: relative;
 .scrollText2 {
   font-size: 1.4rem;
   color: #0a0a0a;
-  opacity: .5;
   z-index: 2;
   display: block;
   gap: 180px;
@@ -271,15 +241,67 @@ position: relative;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-    margin-bottom: 180px;
+  margin-top: 180px;
+  margin-bottom: 180px;
 }
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
-  width: 60vw;
+  width: 70vw;
 }
+
+.projectDetails {
+  position: relative;
+  color: #0a0a0a;
+  width: 100%;
+  font-size: 28px;
+  line-height: 1.3;
+  padding: 12px;
+}
+.projectDetailsInner {
+  max-width: 520px;
+}
+.projectDetails p {
+  margin-bottom: 12px;
+  font-weight: 100;
+  line-height:1.3;
+}
+.projectHeader {
+margin-bottom: 12px;
+font-weight: 100;
+line-height:1.6;
+font-size: 18px;
+display: none;
+
+}
+.projectDetails .projectTags {
+font-size: 16px;
+}
+.projectVideo {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
+  overflow: hidden;
+}
+
+.projectVideo video{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.1);
+  object-fit: cover; /* or "contain" based on your preference */
+}
+
+
+
 .scrollText2 .flexItem:nth-child(2n) {
   align-self: flex-end;
+  text-align: right;
+}
+.scrollText2 .flexItem:nth-child(2n)
+.projectDetailsInner {
+  float: right;
 }
 .scrollText2 .flexItem:nth-child(3) {
   margin-left: 10vw;
