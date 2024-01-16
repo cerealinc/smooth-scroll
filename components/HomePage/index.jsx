@@ -142,37 +142,7 @@ const HomePage = () => {
       });
     });
     
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: 'top top',
-      scrub: true,
-      pin: true,
-      pinSpacing: true,
-      markers: false,
-      onUpdate: (self) => {
-        const blurAmount = 140 - self.progress * 140;
-        gsap.to(videoRef.current, { opacity: { blurAmount } });
-        gsap.to(featuredReel.current, { opacity: 1 });
 
-        // Check if the container pin ends
-        if (self.progress === 1) {
-          // Add GSAP animation for scrolling up textRef
-          gsap.to(textRef.current, {
-            y: -400, // Adjust the value based on your needs
-            duration: 1,
-            ease: 'power2.inOut',
-          });
-        } else {
-          // Reset the position when pin is not at the end
-          gsap.to(textRef.current, {
-            y: 0,
-            duration: 1,
-            ease: 'power2.inOut',
-          });
-        }
-
-      },
-    });
 
     // Create a ScrollTrigger to control the video blur effect
     gsap.to(videoRef.current, {
@@ -234,8 +204,8 @@ const HomePage = () => {
       // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
 ScrollTrigger.create({
   trigger: projectWrapperRefOuter.current,
-  start: 'top bottom-=300',
-  end: 'bottom bottom',
+  start: 'top center-=200',
+  end: 'top center-=200',
   pin: false, // Pin the outer wrapper
   pinSpacing: false, // Adjust pinSpacing based on your layout needs
   markers: false,
@@ -328,7 +298,7 @@ useEffect(() => {
 
       <div ref={containerRef} className={styles.scrollContainer}>
 <div className={styles.featuredReel} ref={featuredReel}>
-Featured Reel
+Featured Commissions
 </div>
         <div ref={videoRef} className={styles.scrollVideoBlur}>
 

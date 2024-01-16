@@ -228,7 +228,7 @@ transition: ease-in-out opacity 300ms;
     overflow: hidden;
     position: relative;
     z-index: 999;
-    clip-path: polygon(0 0, 100% 0, 100% calc(150%), 0% calc(150% + 0px));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100%), 0% calc(100% + 0px));
 }
 .projectWrapperOuter {
 height: auto;
@@ -266,19 +266,26 @@ position: relative;
   opacity: .5;
   z-index: 2;
   display: block;
-  gap: 80px;
+  gap: 180px;
   width: 100vw;
   display: flex;
-  margin-bottom: 50vh;
+  flex-flow: column nowrap;
+  justify-content: center;
+    margin-bottom: 180px;
 }
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
   width: 60vw;
-
 }
 .scrollText2 .flexItem:nth-child(2n) {
-  text-align: right;
+  align-self: flex-end;
+}
+.scrollText2 .flexItem:nth-child(3) {
+  margin-left: 10vw;
+}
+.scrollText2 .flexItem:nth-child(4) {
+  margin-right: 10vw;
 }
 .scrollText2 .flexItem video {
   max-width: 100%;
