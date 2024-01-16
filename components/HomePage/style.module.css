@@ -135,7 +135,7 @@ transition: ease-in-out opacity 300ms;
     bottom: 122px;
     right: 70px;
     color: #0a0a0a;
-    z-index: 9999999999;
+    z-index: 999;
     width: 76vw;
     max-width: 400px;
     letter-spacing: 3;
@@ -234,23 +234,18 @@ transition: ease-in-out opacity 300ms;
 height: auto;
 overflow: visible;
 position: relative;
-height: 8000px;
 }
 .projectWrapper {
   width: 100vw;
-  height: 100vh;
   overflow: auto;
   display: block;
-  z-index: 99999;
+  z-index: 99;
   position: relative;
     background:  rgba(0,0,0,0.5);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
 }
 .scrollTextWrap {
   position: relative;
-  z-index: 99;
-  top: 50vh;
 }
 
 
@@ -267,19 +262,23 @@ height: 8000px;
 }
 .scrollText2 {
   font-size: 1.4rem;
-  position: absolute;
   color: #0a0a0a;
   opacity: .5;
   z-index: 2;
   display: block;
-  gap: 180px;
-  top: 70vh ;
+  gap: 80px;
   width: 100vw;
+  display: flex;
+  margin-bottom: 50vh;
 }
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
+  width: 60vw;
 
+}
+.scrollText2 .flexItem:nth-child(2n) {
+  text-align: right;
 }
 .scrollText2 .flexItem video {
   max-width: 100%;
@@ -420,7 +419,7 @@ z-index: 0;
   color: #fff;
   text-transform: uppercase;
   z-index: 999;
-  opacity: 0;
+  opacity: 1;
 }
 
 

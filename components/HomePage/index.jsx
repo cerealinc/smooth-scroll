@@ -147,12 +147,30 @@ const HomePage = () => {
       start: 'top top',
       scrub: true,
       pin: true,
-      pinSpacing: false,
+      pinSpacing: true,
       markers: false,
       onUpdate: (self) => {
         const blurAmount = 140 - self.progress * 140;
         gsap.to(videoRef.current, { opacity: { blurAmount } });
         gsap.to(featuredReel.current, { opacity: 1 });
+
+        // Check if the container pin ends
+        if (self.progress === 1) {
+          // Add GSAP animation for scrolling up textRef
+          gsap.to(textRef.current, {
+            y: -400, // Adjust the value based on your needs
+            duration: 1,
+            ease: 'power2.inOut',
+          });
+        } else {
+          // Reset the position when pin is not at the end
+          gsap.to(textRef.current, {
+            y: 0,
+            duration: 1,
+            ease: 'power2.inOut',
+          });
+        }
+
       },
     });
 
@@ -161,12 +179,12 @@ const HomePage = () => {
       filter: 'blur(64px)',
       scrollTrigger: {
         trigger: videoRef.current,
-        start: 'top bottom',
-        end: 'top-=300 top',
+        start: 'top-=100 center',
+        end: 'top-=100 top',
         scrub: true,
         markers: false,
         onUpdate: (self) => {
-          const blurAmount = 140 - self.progress * 140;
+          const blurAmount = 20 - self.progress * 20;
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
         },
@@ -179,6 +197,7 @@ const HomePage = () => {
     const onEnterFunction = (self) => {
       setWorkInView(true);
       gsap.to(videoRef.current, { opacity: 0, delay: .1, duration: 1 });
+      gsap.to(textRef.current, { opacity: 0, marginTop: '-80px', duration: 2 });
       gsap.to(textRef2.current, { opacity: 1, y: 0, duration: 3 });
       gsap.to(textRef5.current, { opacity: 0.5, marginTop: '-80px', duration: 2 });
       gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px', duration: 2 });
@@ -198,6 +217,7 @@ const HomePage = () => {
       setWorkInView(false);
       gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
       gsap.to(videoRef.current, { opacity: 1, delay: 1, duration: 1 });
+      gsap.to(textRef.current, { opacity: 1, marginTop: 0, duration: 1 });
       gsap.to(textRef2.current, { opacity: .5, y: 100, duration: 3 });
       gsap.to(textRef5.current, { opacity: 1, marginTop: 0, duration: 2 });
       gsap.to(textRef4.current, { opacity: 0, marginTop: 0, duration: 2 });
@@ -214,9 +234,9 @@ const HomePage = () => {
       // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
 ScrollTrigger.create({
   trigger: projectWrapperRefOuter.current,
-  start: 'top top+=140',
+  start: 'top bottom-=300',
   end: 'bottom bottom',
-  pin: true, // Pin the outer wrapper
+  pin: false, // Pin the outer wrapper
   pinSpacing: false, // Adjust pinSpacing based on your layout needs
   markers: false,
   onEnter: onEnterFunction,
@@ -318,50 +338,14 @@ Featured Reel
 
         </div>
       </div>
-      <div ref={textRef4Wrap} className={`${styles.scrollText4Wrap} ${workInView ? styles.inView : styles.notInView}`}>
 
-      <div ref={textRef4} className={styles.scrollText4}>
-          <div className={styles.marquee}>
-            <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>Select Commissions Include</div>
-            </div>
-            <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>Select Commissions Include</div>
-            </div>
-          </div>
 
-        </div>
-        </div>
-
-      <div className={styles.scrollTextWrap} style={{ display: '' }}>
 
       <div  ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
 
         <div ref={projectWrapperRef} className={styles.projectWrapper} id='your-anchor-id'>
 
           <div className={styles.overlay}></div>
-          <div ref={textRef5} className={`${styles.scrollText5} ${workInView ? styles.inView : styles.notInView}`}>
-            <div className={styles.marquee}>
-              <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-                <div className={styles.textBlock}>Select Commissions Include</div>
-              </div>
-              <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-                <div className={styles.textBlock}>Select Commissions Include</div>
-              </div>
-            </div>
-
-          </div>
-
-          <div ref={gridContainer} className={styles.gridContainer}>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-    <div  className={`${styles.gridItem} gridItem`}>LOGO</div>
-  </div>
 
 
           <div className={styles.projectDetails}>
@@ -447,7 +431,6 @@ Featured Reel
 
 
       </div>
-    </div>
     </div>
     </div>
 
