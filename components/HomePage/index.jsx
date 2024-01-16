@@ -343,6 +343,13 @@ const HomePage = () => {
                 >
                   {title}
                 </div>
+                <div className={styles.projectTags} key={id}>
+                              {tags.map((tag, index) => (
+                  <React.Fragment key={index}>
+                    {index > 0 && <span className={styles.bullet}> • </span>}
+                    {tag}
+                  </React.Fragment>
+                ))}                              </div>
                 <p
                                 key={id}
                                 style={{
@@ -352,13 +359,7 @@ const HomePage = () => {
               
                                 dangerouslySetInnerHTML={{ __html: details }}>
                               </p>
-                              <div className={styles.projectTags} key={id}>
-                              {tags.map((tag, index) => (
-                  <React.Fragment key={index}>
-                    {index > 0 && <span className={styles.bullet}> • </span>}
-                    {tag}
-                  </React.Fragment>
-                ))}                              </div>
+
               </div>
               </div>
               </div>

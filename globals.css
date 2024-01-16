@@ -132,6 +132,7 @@ html.lenis {
   grid-column-gap: 12rem;
   display: flex;
   overflow: hidden;
+
 }
 
 .marquee-content {
