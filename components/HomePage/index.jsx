@@ -104,21 +104,25 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top top',
+          start: 'center top',
           end: 'bottom top',
           scrub: true,
           markers: false,
           onEnter: ({ progress, direction, isActive }) => {
             gsap.to(video, { filter: `blur(8px)`, duration: 2, });
+            gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
+
             },
             onLeaveBack: ({ progress, direction, isActive }) => {
               // Reverse the animation when scrolling back down
               gsap.to(video, { filter: 'blur(0px)', duration: 2 });
+              gsap.to(projectDetails, { filter: 'blur(0px)', opacity: 1, duration: 2 });
+
             },
           onUpdate: ({ progress, direction, isActive }) => {
             const blurAmount = 16 - progress * 16;
 
-            const scaleValue = 1 - progress * 0.1;
+            const scaleValue = 1 - progress * 0.09;
             const scaleValue2 = progress * 10;
 
             gsap.set(videoWrap, {
@@ -134,9 +138,16 @@ const HomePage = () => {
         scrollTrigger: {
           trigger: work,
           start: 'top bottom+=360', // Adjust the start value for scaling out
-          end: 'top center-=200',
+          end: 'top center+=200',
           scrub: true,
           markers: false,
+          onEnter: ({ progress, direction, isActive }) => {
+            gsap.to(projectDetails, { filter: `blur(0px)`, opacity: 1, duration: 2, });
+            },
+            onLeaveBack: ({ progress, direction, isActive }) => {
+              // Reverse the animation when scrolling back down
+              gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
+            },
           onUpdate: ({ progress, direction, isActive, self }) => {
             const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
             const scaleValue2 = progress / 40;
@@ -149,42 +160,9 @@ const HomePage = () => {
         },
       });
 
-            // First gsap.to code for scaling in
-            gsap.to(projectDetails, {
-              scrollTrigger: {
-                trigger: projectDetails,
-                start: 'top-=40 top',
-                end: 'bottom top',
-                scrub: true,
-                markers: false,
-                onEnter: ({ progress, direction, isActive }) => {
-                gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
-                },
-                onLeaveBack: ({ progress, direction, isActive }) => {
-                  // Reverse the animation when scrolling back down
-                  gsap.to(projectDetails, { filter: 'blur(0px)', opacity: 1, duration: 2 });
-                },
-              },
-            });
             gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
 
-      // Second gsap.to code for scaling out
-      gsap.to(projectDetails, {
-        scrollTrigger: {
-          trigger: projectDetails,
-          start: 'top bottom-=100', // Adjust the start value for scaling out
-          end: 'top center+=200',
-          scrub: true,
-          markers: false,
-          onEnter: ({ progress, direction, isActive }) => {
-            gsap.to(projectDetails, { filter: `blur(0px)`, opacity: 1, duration: 2, });
-            },
-            onLeaveBack: ({ progress, direction, isActive }) => {
-              // Reverse the animation when scrolling back down
-              gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
-            },
-        },
-      });
+
 
 
     });
@@ -387,7 +365,7 @@ const HomePage = () => {
                 <div className={styles.projectTags} key={id}>
                               {tags.map((tag, index) => (
                   <React.Fragment key={index}>
-                    {index > 0 && <span className={styles.bullet}> • </span>}
+                    {index > 0 && <span className={styles.bullet}>, </span>}
                     {tag}
                   </React.Fragment>
                 ))}                              </div>
