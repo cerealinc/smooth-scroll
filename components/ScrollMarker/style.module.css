@@ -6,6 +6,7 @@
     color: #0a0a0a;
     z-index: 9999999999;
     height: 60px;
+    display: none;
 }
 .scrollHeader {
     transform: rotate(90deg);

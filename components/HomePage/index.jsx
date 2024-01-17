@@ -77,8 +77,8 @@ const HomePage = () => {
   const wrapperRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
   const featuredReel = useRef(null);
-  const gridContainer = useRef(null);
-  const projectVideoRef = useRef(null); // Move this line to the top
+  const childWrapperRef = useRef(null);
+  const projectDetails = useRef(null); // Move this line to the top
 
 
   const [firstHover, setFirstHover] = useState(false);
@@ -92,44 +92,35 @@ const HomePage = () => {
     gsap.registerPlugin(ScrollToPlugin);
 
 
-
-    const gridItems = document.querySelectorAll('.gridItem');
-
-    gsap.to(gridItems, {
-      scrollTrigger: {
-        trigger: gridContainer.current,
-        start: 'top 80%', // Adjust the start position as needed
-      },
-      opacity: 1,
-      marginTop: 0,
-      stagger: 0.2, // Adjust the stagger value as needed
-      duration: 0.8,
-      ease: 'power2.inOut',
-    });
-
-
-
-
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
     setWorks(worksArray);
 
     worksArray.forEach((work) => {
       const video = work.querySelector('video');
       const videoWrap = work.querySelector('.projectVideo');
-      
+      const projectDetails = work.querySelector('.projectDetails');
+
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top+=140 top',
+          start: 'top top',
           end: 'bottom top',
           scrub: true,
           markers: false,
+          onEnter: ({ progress, direction, isActive }) => {
+            gsap.to(video, { filter: `blur(8px)`, duration: 2, });
+            },
+            onLeaveBack: ({ progress, direction, isActive }) => {
+              // Reverse the animation when scrolling back down
+              gsap.to(video, { filter: 'blur(0px)', duration: 2 });
+            },
           onUpdate: ({ progress, direction, isActive }) => {
+            const blurAmount = 16 - progress * 16;
+
             const scaleValue = 1 - progress * 0.1;
-            const scaleValue3 = progress * 12;
-            const scaleValue2 = progress * 40;
-            
+            const scaleValue2 = progress * 10;
+
             gsap.set(videoWrap, {
               scale: scaleValue,
               marginBottom: `${scaleValue2}px`
@@ -142,25 +133,62 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top bottom', // Adjust the start value for scaling out
-          end: 'top center',
+          start: 'top bottom+=360', // Adjust the start value for scaling out
+          end: 'top center-=200',
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive, self }) => {
-            const scaleValue = 0.9 + progress * 0.1; // Adjust the scaling factor for scaling out
-            const scaleValue3 = 2 - progress * 12; // Adjust the scaling factor for scaling out
+            const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
             const scaleValue2 = progress / 40;
-            const blurAmount = 8 - progress * 8;
+            const blurAmount = 16 - progress * 16;
             gsap.set(video, { filter: `blur(${blurAmount}px)` });
-
-            gsap.set(videoWrap, {
-              scale: scaleValue,
+            gsap.to(videoWrap, {
               marginTop: `${scaleValue2}px`
             });
           },
         },
       });
+
+            // First gsap.to code for scaling in
+            gsap.to(projectDetails, {
+              scrollTrigger: {
+                trigger: projectDetails,
+                start: 'top-=40 top',
+                end: 'bottom top',
+                scrub: true,
+                markers: false,
+                onEnter: ({ progress, direction, isActive }) => {
+                gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
+                },
+                onLeaveBack: ({ progress, direction, isActive }) => {
+                  // Reverse the animation when scrolling back down
+                  gsap.to(projectDetails, { filter: 'blur(0px)', opacity: 1, duration: 2 });
+                },
+              },
+            });
+            gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
+
+      // Second gsap.to code for scaling out
+      gsap.to(projectDetails, {
+        scrollTrigger: {
+          trigger: projectDetails,
+          start: 'top bottom-=100', // Adjust the start value for scaling out
+          end: 'top center+=200',
+          scrub: true,
+          markers: false,
+          onEnter: ({ progress, direction, isActive }) => {
+            gsap.to(projectDetails, { filter: `blur(0px)`, opacity: 1, duration: 2, });
+            },
+            onLeaveBack: ({ progress, direction, isActive }) => {
+              // Reverse the animation when scrolling back down
+              gsap.to(projectDetails, { filter: `blur(4px)`, opacity: .5, duration: 2, });
+            },
+        },
+      });
+
+
     });
+
 
 
 
@@ -186,10 +214,7 @@ const HomePage = () => {
     // Define onEnter function
     const onEnterFunction = (self) => {
       setWorkInView(true);
-      gsap.to(videoRef.current, { opacity: 0, delay: .1, duration: 1 });
-      gsap.to(textRef.current, { opacity: 0, marginTop: '-80px', duration: 2 });
-      gsap.to(textRef5.current, { opacity: 0.5, marginTop: '-80px', duration: 2 });
-      gsap.to(textRef4.current, { opacity: 1, marginTop: '-80px', duration: 2 });
+      gsap.to(videoRef.current, {filter: `blur(12px)`, opacity: 1, duration: 1 });
       gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
 
     };
@@ -197,11 +222,8 @@ const HomePage = () => {
     // Define onLeaveBack function
     const onLeaveBackFunction = (self) => {
       setWorkInView(false);
-      gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
-      gsap.to(videoRef.current, { opacity: 1, delay: 1, duration: 1 });
-      gsap.to(textRef.current, { opacity: 1, marginTop: 0, duration: 1 });
-      gsap.to(textRef5.current, { opacity: 1, marginTop: 0, duration: 2 });
-      gsap.to(textRef4.current, { opacity: 0, marginTop: 0, duration: 2 });
+      gsap.to(focusFrontRef.current, {opacity: 0, duration: 2 });
+      gsap.to(videoRef.current, { opacity: 1, duration: 1 });
     };
 
 
@@ -215,8 +237,27 @@ const HomePage = () => {
       onEnter: onEnterFunction,
       onLeaveBack: onLeaveBackFunction,
     });
-
-
+    
+    // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
+    ScrollTrigger.create({
+      trigger: childWrapperRef.current,
+      start: 'top top',
+      end: 'bottom center',
+      pin: false, // Pin the outer wrapper
+      pinSpacing: false, // Adjust pinSpacing based on your layout needs
+      markers: false,
+      onUpdate: (self) => {
+        const blurAmount = 20 - self.progress * 20;
+        const scroll = 100 + self.progress * 260;
+        gsap.set(textRef.current, { opacity: 1, marginTop: `-${scroll}px` });
+        console.log(scroll)
+       // gsap.set(childWrapperRef.current, {height: `${scroll}vh` });
+      },
+      onLeaveBack:  (self) => {
+        gsap.set(textRef.current, { opacity: 1, marginTop: `0px` });
+       
+      }
+    });
 
   }, []);
   // Add this code within your useEffect to handle scroll and clip the text
@@ -277,7 +318,7 @@ const HomePage = () => {
     <div ref={wrapperRef} className={styles.wrapper}>
 
 
-      <div className={styles.childWrapper}>
+      <div ref={childWrapperRef} className={styles.childWrapper}>
         <div ref={textRef} className={styles.scrollText}>
           <div className={styles.marquee}>
             <div className={`${styles.marqueeContent} ${styles.scroll}`}>
@@ -288,7 +329,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
 
       <div ref={containerRef} className={styles.scrollContainer}>
         <div className={styles.featuredReel} ref={featuredReel}>
@@ -301,6 +341,7 @@ const HomePage = () => {
           </video>
 
         </div>
+      </div>
       </div>
 
 
@@ -333,7 +374,7 @@ const HomePage = () => {
                 </video>
                 </div>
 
-                <div className={styles.projectDetails}>
+                <div className={`${styles.projectDetails} projectDetails`}>
                 <div className={styles.projectDetailsInner}>
 
                 <div
