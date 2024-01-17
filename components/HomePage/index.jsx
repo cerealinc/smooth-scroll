@@ -13,7 +13,7 @@ const projects = [
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: [
-      "MIRAMAX"
+      "Miramax"
     ],
     src: "saint-steven-taylor-halston-netflix.mp4"
   },
@@ -103,12 +103,12 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'bottom-=220 top',
+          start: 'bottom-=260 top',
           end: 'bottom top',
           scrub: true,
           markers: false,
           onEnter: ({ progress, direction, isActive }) => {
-            gsap.to(work, { filter: `blur(4px)`, duration: 2, });
+            gsap.to(work, { filter: `blur(4px)`, duration: 4, });
 
             },
             onLeaveBack: ({ progress, direction, isActive }) => {
@@ -140,7 +140,7 @@ const HomePage = () => {
             },
             onLeaveBack: ({ progress, direction, isActive }) => {
               // Reverse the animation when scrolling back down
-              gsap.to(work, { filter: `blur(4px)`, duration: 2, });
+              gsap.to(work, { filter: `blur(4px)`, duration: 4, });
             },
           onUpdate: ({ progress, direction, isActive, self }) => {
             const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
