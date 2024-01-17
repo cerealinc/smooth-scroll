@@ -141,21 +141,28 @@ const HomePage = () => {
             onLeaveBack: ({ progress, direction, isActive }) => {
               // Reverse the animation when scrolling back down
               gsap.to(work, { filter: `blur(4px)`, duration: 4, });
-            },
+          },
+        },
+      });
+      // Second gsap.to code for scaling out
+      gsap.to(work, {
+        scrollTrigger: {
+          trigger: work,
+          start: 'top bottom+=200', // Adjust the start value for scaling out
+          end: 'top center+=200',
+          scrub: true,
+          markers: true,
           onUpdate: ({ progress, direction, isActive, self }) => {
             const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
             const scaleValue2 = progress / 40;
             const blurAmount = 16 - progress * 16;
             gsap.to(videoWrap, {
+              scale: scaleValue,
               marginTop: `${scaleValue2}px`
             });
           },
         },
       });
-
-
-
-
 
     });
 
