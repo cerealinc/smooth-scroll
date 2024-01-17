@@ -206,7 +206,8 @@ height: auto;
 overflow: visible;
 position: relative;
 background: #f5f5f5;
-padding-top: 100px;
+padding-top: 120px;
+background: linear-gradient(to bottom, #cdcdcd 0%, #f5f5f5 20vh)
 
 }
 .projectWrapper {

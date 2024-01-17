@@ -33,7 +33,7 @@ export default function Home() {
   const fadeClass = renderMain ? (fadeOut ? 'fadeOut' : 'fadeIn') : '';
 
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ lerp: 0.1, duration: 2, smoothTouch: true }}>
       <Logo />
       <Nav handleClick={handleClick} />
     <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>

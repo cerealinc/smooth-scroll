@@ -99,6 +99,24 @@ const HomePage = () => {
       const videoWrap = work.querySelector('.projectVideo');
       const projectDetails = work.querySelector('.projectDetails');
 
+
+      gsap.to(work, {
+        scrollTrigger: {
+          trigger: work,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          markers: false,
+          onUpdate: ({ progress, direction, isActive }) => {
+            // Parallax effect for the project details
+            const detailsParallax = 10 + progress * 120;
+            gsap.to(work, { y: detailsParallax, marginBottom: detailsParallax });
+
+          },
+        },
+      });
+
+
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
