@@ -106,7 +106,7 @@ const HomePage = () => {
           start: 'bottom-=220 top',
           end: 'bottom top',
           scrub: true,
-          markers: true,
+          markers: false,
           onEnter: ({ progress, direction, isActive }) => {
             gsap.to(work, { filter: `blur(4px)`, duration: 2, });
 
