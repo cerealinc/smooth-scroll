@@ -9,12 +9,11 @@ import styles from './style.module.css';
 const projects = [
   {
     id: "one",
-    title: "Miramax",
+    title: "Creative Direction, Production",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: [
-      "Creative Direction",
-      "Production"
+      "MIRAMAX"
     ],
     src: "saint-steven-taylor-halston-netflix.mp4"
   },
@@ -104,12 +103,12 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'center top',
+          start: 'bottom-=220 top',
           end: 'bottom top',
           scrub: true,
-          markers: false,
+          markers: true,
           onEnter: ({ progress, direction, isActive }) => {
-            gsap.to(work, { filter: `blur(8px)`, duration: 2, });
+            gsap.to(work, { filter: `blur(4px)`, duration: 2, });
 
             },
             onLeaveBack: ({ progress, direction, isActive }) => {

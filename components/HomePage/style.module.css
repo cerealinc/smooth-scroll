@@ -283,6 +283,7 @@ font-weight: 100;
 line-height:1.6;
 font-size: 18px;
 text-transform: uppercase;
+letter-spacing: 0.07em;
 
 }
 .projectDetails .projectTags {
@@ -333,7 +334,7 @@ margin-bottom: 12px;
 }
 
 .flexItem {
-  filter: blur(8px);
+  filter: blur(4px);
 }
 .projectEl{
   color: #0a0a0a;
