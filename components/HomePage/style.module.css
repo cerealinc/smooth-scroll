@@ -332,7 +332,9 @@ margin-bottom: 12px;
   height: auto;
 }
 
-
+.flexItem {
+  filter: blur(8px);
+}
 .projectEl{
   color: #0a0a0a;
   display: inline;
