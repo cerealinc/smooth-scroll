@@ -151,7 +151,7 @@ const HomePage = () => {
           start: 'top bottom+=200', // Adjust the start value for scaling out
           end: 'top center+=200',
           scrub: true,
-          markers: true,
+          markers: false,
           onUpdate: ({ progress, direction, isActive, self }) => {
             const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
             const scaleValue2 = progress / 40;
