@@ -9,59 +9,108 @@ import styles from './style.module.css';
 const projects = [
   {
     id: "one",
-    title: "Creative Direction, Production",
+    title: "New Ara",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: [
-      "Miramax"
+      "Production",
+      "Creative Development",
+      "Post Production"
     ],
     src: "saint-steven-taylor-halston-netflix.mp4"
   },
   {
     id: "two",
-    title: "New Era",
+    title: "Lobos 1707",
     img: "2.jpg",
     details: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: [
-      "Development",
-      "Production"
+      "Creative Direction",
+      "Creative Development",
+      "Production",
+      "Post Production"
     ],
-    src: "Krewe2020_Thumbnail.mp4"
+    src: "lobos.mp4"
   },
   {
     id: "three",
-    title: "Walmart",
+    title: "Keepers",
     img: "2.jpg",
     details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
     tags: [
       "Creative Direction",
-      "Development",
-      "Production"
+      "Creative Development"
     ],
     src: "saint-studio-GME_SRT.mp4"
   },
   {
     id: "four",
-    title: "Miramax",
+    title: "Haku",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliequat.",
     tags: [
-      "Development",
-      "Production"
+      "Creative Direction",
+      "Creative Development",
+      "Executive Production"
     ],
     src: "ST_2020_ActiveReel_5.mp4"
   },
   {
     id: "five",
-    title: "New Era",
+    title: "Open Innovation",
     img: "2.jpg",
     details: "Lorem ipsum dolor sit amet, consectetur ad quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     tags: [
       "Creative Direction",
-      "Development",
-      "Production"
+      "Creative Development"
     ],
     src: "saint-steven-taylor-Official_MP_Trailer_Final.mp4"
+  },
+  {
+    id: "six",
+    title: "Krewe Summer 2020",
+    img: "2.jpg",
+    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    tags: [
+      "Creative Direction",
+      "Creative Development",
+      "Production"
+    ],
+    src: "saint-studio-GME_SRT.mp4"
+  },
+  {
+    id: "seven",
+    title: "Halston x Netflix",
+    img: "2.jpg",
+    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    tags: [
+      "Creative Direction",
+      "Creative Development",
+      "Executive Production"
+    ],
+    src: "saint-studio-GME_SRT.mp4"
+  },
+  {
+    id: "eight",
+    title: "Walmart InHome",
+    img: "saint-walmart.jpg",
+    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    tags: [
+      "Production"
+    ],
+    src: ""
+  },
+  {
+    id: "nine",
+    title: "Health by Habit",
+    img: "2.jpg",
+    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    tags: [
+      "Creative Direction",
+      "Creative Development",
+      "Executive Production"
+    ],
+    src: "saint-studio-GME_SRT.mp4"
   }
 ]
 const HomePage = () => {
@@ -69,18 +118,13 @@ const HomePage = () => {
   const textRef = useRef(null);
   const textRef2 = useRef(null);
   const textRef2Wrap = useRef(null);
-  const textRef4 = useRef(null);
-  const textRef5 = useRef(null);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const wrapperRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
   const featuredReel = useRef(null);
   const childWrapperRef = useRef(null);
-  const projectDetails = useRef(null); // Move this line to the top
 
-
-  const [firstHover, setFirstHover] = useState(false);
   const [workInView, setWorkInView] = useState(false);
 
   const focusFrontRef = useRef(null);
@@ -143,6 +187,7 @@ const HomePage = () => {
               scale: scaleValue,
               marginBottom: `${scaleValue2}px`
             });
+            
           },
         },
       });
@@ -170,19 +215,43 @@ const HomePage = () => {
           end: 'top center+=200',
           scrub: true,
           markers: false,
+          
           onUpdate: ({ progress, direction, isActive, self }) => {
             const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
             const scaleValue2 = progress / 40;
             const blurAmount = 16 - progress * 16;
             gsap.to(videoWrap, {
               scale: scaleValue,
-              marginTop: `${scaleValue2}px`
             });
           },
         },
       });
 
     });
+
+
+
+
+    // Create a ScrollTrigger to control the video blur effect
+    gsap.to(videoRef.current, {
+      filter: 'blur(64px)',
+      scrollTrigger: {
+        trigger: videoRef.current,
+        start: 'top-=100 center',
+        end: 'top-=100 top',
+        scrub: true,
+        markers: false,
+        onUpdate: (self) => {
+          const blurAmount = 20 - self.progress * 20;
+          gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
+          gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
+        },
+
+      },
+    });
+  
+
+  
 
 
 
@@ -237,15 +306,14 @@ const HomePage = () => {
     ScrollTrigger.create({
       trigger: childWrapperRef.current,
       start: 'top top',
-      end: 'bottom center',
+      end: 'bottom top',
       pin: false, // Pin the outer wrapper
       pinSpacing: false, // Adjust pinSpacing based on your layout needs
       markers: false,
       onUpdate: (self) => {
         const blurAmount = 20 - self.progress * 20;
-        const scroll = 100 + self.progress * 260;
+        const scroll = self.progress * 560; // Adjust the factor based on your needs
         gsap.set(textRef.current, { opacity: 1, marginTop: `-${scroll}px` });
-        console.log(scroll)
        // gsap.set(childWrapperRef.current, {height: `${scroll}vh` });
       },
       onLeaveBack:  (self) => {
@@ -253,6 +321,18 @@ const HomePage = () => {
        
       }
     });
+    /*
+
+    ScrollTrigger.create({
+      trigger: childWrapperRef.current,
+      start: 'bottom-=120 top',
+      pin: true, // Pin the outer wrapper
+      pinSpacing: false, // Adjust pinSpacing based on your layout needs
+      markers: false,
+      endTrigger: projectWrapperRefOuter.current, // Set the endTrigger to projectWrapperRefOuter
+      end: 'bottom bottom', // Pin ends when the bottom of projectWrapperRefOuter reaches the bottom of the viewport
+    });
+        */
 
   }, []);
   // Add this code within your useEffect to handle scroll and clip the text
@@ -286,28 +366,6 @@ const HomePage = () => {
   }, []);
 
 
-  const handleProjectHover = () => {
-    if (!firstHover) {
-      setFirstHover(true); // Set the flag to indicate the first hover
-    }
-  }
-
-  useEffect(() => {
-    // Use gsap.to for the animation
-    gsap.to(swapText.current, {
-      opacity: workInView ? 1 : 0, // Set opacity based on workInView
-      duration: 0.5, // Animation duration
-      ease: 'power2.inOut', // Easing function
-    });
-  }, [workInView]); // Run the effect when workInView changes
-
-  const [activeId, setActiveId] = useState(0);
-
-  const setActiveElementOnHover = (id) => {
-    setActiveId(id);
-  };
-
-  const focusClasses = `${firstHover ? styles.hovered : styles.notHovered}`;
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
@@ -340,74 +398,44 @@ const HomePage = () => {
       </div>
 
 
-
       <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
-
-
-
-
-        <div ref={textRef2} className={styles.scrollText2} style={{ display: '' }}>
-          {
-            projects.map(({ id, title, details, img, src, tags }) => (
+          <div ref={textRef2} className={styles.scrollText2}>
+            {projects.map(({ id, title, details, img, src, tags }) => (
               // eslint-disable-next-line react/jsx-key
-              <div ref={works} className={`${styles.flexItem} flexItemWorks`}>
+              <div key={id} className={`${styles.flexItem} flexItemWorks`}>
+                {src ? (
+                  // If src is set, render video
                   <div className={`${styles.projectVideo} projectVideo`}>
-
-                <video
-                  loop
-                  muted
-                  autoPlay
-                  playsInline
-                  key={id}
-                  style={{
-                    display:
-                      activeId === id ? "block" : "block"
-                  }}
-                >
-                  <source src={`/images/${src}`} type="video/mp4" />
-
-                </video>
-                </div>
+                    <video loop muted autoPlay playsInline>
+                      <source src={`/images/${src}`} type="video/mp4" />
+                    </video>
+                  </div>
+                ) : (
+                  // If src is not set, render image
+                  <img src={`/images/${img}`} alt={title} className={styles.projectImage} />
+                )}
 
                 <div className={`${styles.projectDetails} projectDetails`}>
-                <div className={styles.projectDetailsInner}>
-
-                <div
-                  ref={swapText}
-                  key={id}
-                  className={styles.projectHeader}
-                >
-                  {title}
+                  <div className={styles.projectDetailsInner}>
+                    <div ref={swapText} className={styles.projectHeader}>
+                      {title}
+                    </div>
+                    <div className={styles.projectTags}>
+                      {tags.map((tag, index) => (
+                        <React.Fragment key={index}>
+                          {index > 0 && <span className={styles.bullet}>, </span>}
+                          {tag}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <p dangerouslySetInnerHTML={{ __html: details }}></p>
+                  </div>
                 </div>
-                <div className={styles.projectTags} key={id}>
-                              {tags.map((tag, index) => (
-                  <React.Fragment key={index}>
-                    {index > 0 && <span className={styles.bullet}>, </span>}
-                    {tag}
-                  </React.Fragment>
-                ))}                              </div>
-                <p
-                                key={id}
-                                style={{
-                                  display:
-                                    activeId === id ? "block" : "block"
-                                }}
-              
-                                dangerouslySetInnerHTML={{ __html: details }}>
-                              </p>
-
               </div>
-              </div>
-              </div>
-
-            ))
-          }
-
-
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-
   );
 };
 

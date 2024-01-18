@@ -160,7 +160,7 @@ html.lenis {
 }
 @keyframes scroll {
   from {
-    transform: translateX(0%);
+    transform: translateX(-40vw);
   }
   to {
     transform: translateX(calc(-100% - 12rem));
