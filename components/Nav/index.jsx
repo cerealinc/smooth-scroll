@@ -5,15 +5,14 @@ import gsap from 'gsap';
 import styles from './style.module.css';
 
 const Nav = ({ handleClick, setRenderMain }) => {
-
   const animationRef = useRef(null);
   const underlineRefs = useRef([]);
-  const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
 
   const handleLinkClick = () => {
-    handleClick(false); // Set renderMain state to false when "Home" or "Work" are clicked
-    // ... (other logic if needed)
+    handleClick(false);
   };
+
   const manageMouseEnter = (e, index) => {
     // Create a new animation timeline
     const animation = gsap.timeline({
@@ -50,52 +49,67 @@ const Nav = ({ handleClick, setRenderMain }) => {
       { left: '-10%', width: '0%', duration: .4, ease: "power2.inOut" }
     );
   };
-  // Create an Intersection Observer to check if the section with class .isDark is in view
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.target.classList.contains('isDark')) {
-          setIsDarkSectionInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
       });
     }, {
-      threshold: .3
-
+      threshold: 0.1, // Adjust the threshold based on your needs
     });
 
-    const darkSection = document.querySelector('.isDark');
-    if (darkSection) {
-      observer.observe(darkSection);
-    }
+    const sections = document.querySelectorAll('.section'); // Add 'section' class to your sections
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
 
     return () => {
-      if (darkSection) {
-        observer.unobserve(darkSection);
-      }
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
   }, []);
-  // ...
-
-  // Use isDarkSectionInView to determine the text color
-  const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
 
   return (
-    <div className={`${styles.navigation} ${styles[textColor]}`}>
-      <Link onClick={handleLinkClick} onMouseEnter={(e) => manageMouseEnter(e, 0)} onMouseLeave={(e) => manageMouseLeave(e, 0)} href="">
-        Home
-        <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
-      </Link>
-      <Link onClick={handleLinkClick} onMouseEnter={(e) => manageMouseEnter(e, 1)} onMouseLeave={(e) => manageMouseLeave(e, 1)} href="">
-        Work
-        <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
-      </Link>
-      <Link onClick={() => handleClick(true)} onMouseEnter={(e) => manageMouseEnter(e, 2)} onMouseLeave={(e) => manageMouseLeave(e, 2)} href="">
-        Contact
-        <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
-      </Link>
+    <div className={styles.navigation}>
+<Link
+  onClick={handleLinkClick}
+  onMouseEnter={(e) => manageMouseEnter(e, 0)}
+  onMouseLeave={(e) => manageMouseLeave(e, 0)}
+  href="#home"
+  className={activeSection === 'home' ? styles.active : ''}
+>
+  Home
+  <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
+</Link>
+
+<Link
+  onClick={handleLinkClick}
+  onMouseEnter={(e) => manageMouseEnter(e, 1)}
+  onMouseLeave={(e) => manageMouseLeave(e, 1)}
+  href="#work"
+  className={activeSection === 'work' ? styles.active : ''}
+>
+  Work
+  <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
+</Link>
+
+<Link
+  onClick={() => handleClick(true)}
+  onMouseEnter={(e) => manageMouseEnter(e, 2)}
+  onMouseLeave={(e) => manageMouseLeave(e, 2)}
+  href="#contact"
+  className={activeSection === 'contact' ? styles.active : ''}
+>
+  Contact
+  <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
+</Link>
+
     </div>
   );
 };
-
 
 export default Nav;

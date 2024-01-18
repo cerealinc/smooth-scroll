@@ -97,7 +97,13 @@ html.lenis {
   top: 0;
   z-index: 1;
 }
-
+.world-overlay {
+  overflow: hidden;
+}
+.world-overlay .videoInner {
+  filter: blur(10px);
+  scale: 1.2;
+}
 
 .horizontal-scroll-video::after{
   content: "";
@@ -178,14 +184,12 @@ html.lenis {
 
 
 .world-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 56vh;
+  position: relative;
   width: 100vw;
+  min-height: 100vh;
   z-index: 1;
     background-color: transparent;
-    opacity: 0; /* Start with opacity 0 */
+    opacity: 1; /* Start with opacity 0 */
     transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }
 .world-container .world {
@@ -196,25 +200,29 @@ html.lenis {
 
 .world-container .world-overlay {
   height: 44vh;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100vw;
   z-index: 99;
 
 }
-
+.contact-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+}
 .contact-info {
-  color: #fff;
+  color: #ffffff;
 }
 .contact-details {
-  color: #fff;
+  color: #ffffff;
 }
 
 .world-overlay {
-  display: flex;
-  align-items: center;
-  padding: 60px;
-  justify-content: space-between;
+
 }
 
 
@@ -232,7 +240,7 @@ html.lenis {
 
 .world-container {
   /* Your existing styles */
-  opacity: 0; /* Start with opacity 0 */
+  opacity: 1; /* Start with opacity 0 */
   transition: opacity 1s ease-in-out; /* Adjust duration and easing as needed */
 }
 

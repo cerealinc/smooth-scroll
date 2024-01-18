@@ -36,7 +36,7 @@ const projects = [
     id: "three",
     title: "Keepers",
     img: "2.jpg",
-    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
     tags: [
       "Creative Direction",
       "Creative Development"
@@ -59,7 +59,7 @@ const projects = [
     id: "five",
     title: "Open Innovation",
     img: "2.jpg",
-    details: "Lorem ipsum dolor sit amet, consectetur ad quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
     tags: [
       "Creative Direction",
       "Creative Development"
@@ -70,7 +70,7 @@ const projects = [
     id: "six",
     title: "Krewe Summer 2020",
     img: "2.jpg",
-    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
     tags: [
       "Creative Direction",
       "Creative Development",
@@ -82,7 +82,7 @@ const projects = [
     id: "seven",
     title: "Halston x Netflix",
     img: "2.jpg",
-    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
     tags: [
       "Creative Direction",
       "Creative Development",
@@ -143,36 +143,18 @@ const HomePage = () => {
       const videoWrap = work.querySelector('.projectVideo');
       const projectDetails = work.querySelector('.projectDetails');
 
-
-      gsap.to(work, {
-        scrollTrigger: {
-          trigger: work,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-          markers: false,
-          onUpdate: ({ progress, direction, isActive }) => {
-            // Parallax effect for the project details
-            const detailsParallax = 10 + progress * 120;
-            gsap.to(work, { y: detailsParallax, marginBottom: detailsParallax });
-
-          },
-        },
-      });
-
-
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'bottom-=260 top',
-          end: 'bottom top',
+          start: 'bottom-=100 top',
+          end: 'bottom+=200 top',
           scrub: true,
           markers: false,
           onEnter: ({ progress, direction, isActive }) => {
             gsap.to(work, { filter: `blur(4px)`, duration: 4, });
 
-            },
+          },
             onLeaveBack: ({ progress, direction, isActive }) => {
               // Reverse the animation when scrolling back down
               gsap.to(work, { filter: 'blur(0px)', duration: 2 });
@@ -185,13 +167,12 @@ const HomePage = () => {
 
             gsap.set(videoWrap, {
               scale: scaleValue,
-              marginBottom: `${scaleValue2}px`
             });
             
           },
         },
       });
-
+  /*
       // Second gsap.to code for scaling out
       gsap.to(work, {
         scrollTrigger: {
@@ -207,7 +188,7 @@ const HomePage = () => {
           },
         },
       });
-      // Second gsap.to code for scaling out
+    
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
@@ -226,7 +207,7 @@ const HomePage = () => {
           },
         },
       });
-
+      */
     });
 
 
@@ -389,7 +370,7 @@ const HomePage = () => {
         </div>
         <div ref={videoRef} className={styles.scrollVideoBlur}>
 
-          <video loop muted autoPlay playsInline className="videoInner">
+          <video loop muted autoPlay playsInline className="videoInner isDark">
             <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
           </video>
 
@@ -412,7 +393,9 @@ const HomePage = () => {
                   </div>
                 ) : (
                   // If src is not set, render image
-                  <img src={`/images/${img}`} alt={title} className={styles.projectImage} />
+                  <div className={`${styles.projectImage}`}>
+                  <img src={`/images/${img}`} alt={title} />
+                  </div>
                 )}
 
                 <div className={`${styles.projectDetails} projectDetails`}>

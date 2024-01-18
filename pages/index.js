@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import Logo from '../components/Logo';
 import HomePage from '../components/HomePage'; 
 import Nav from '../components/Nav'; 
-import ScrollMarker from '../components/ScrollMarker'; 
 import Intro from '../components/Intro';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 import Contact from '@/components/contact';
@@ -35,14 +34,18 @@ export default function Home() {
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
       <Logo />
-      <Nav handleClick={handleClick} />
-    <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>
-          <Contact />
-        </div>
-  
-      <ScrollMarker />
-      <Intro />
+      <Nav handleClick={handleClick} />  
+      <div id="home" className="section">
+        <Intro />
+      </div>
+      <div id="work" className="section">
       <HomePage />
+      </div>
+      <div id="contact" className="section">
+      <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>
+          <Contact />
+          </div>
+          </div>
     </ReactLenis>
 
   )
