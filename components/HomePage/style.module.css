@@ -347,7 +347,9 @@ font-weight: 500;
 .scrollText2 .flexItem:nth-child(2n) {
   align-self: flex-end;
 }
-
+.scrollText2 .flexItem:nth-child(2n) .projectDetails {
+text-align: right;
+}
 /* 
 .scrollText2 .flexItem:nth-child(3) {
   margin-left: 10vw;
