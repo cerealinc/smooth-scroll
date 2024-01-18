@@ -145,14 +145,13 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top top+=200',
+          start: 'top center',
           end: 'bottom top',
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
-
             const scaleValue = 1 - progress * 0.05;
-            const scaleValue2 = progress * 36;
+            const scaleValue2 = progress * 180;
             gsap.set(work, {
               y: -scaleValue2,
             });            
@@ -266,7 +265,6 @@ const HomePage = () => {
           gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
           gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
         },
-
       },
     });
 

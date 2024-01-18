@@ -251,9 +251,9 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
-  width: calc(50vw - 10px);
+  width: 50vw;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
 }
 
 .flexItem video:hover, .flexItem img:hover {
