@@ -17,7 +17,7 @@ const projects = [
       "Creative Development",
       "Post Production"
     ],
-    src: "saint-steven-taylor-halston-netflix.mp4"
+    src: "new-era.mp4"
   },
   {
     id: "two",
@@ -76,7 +76,7 @@ const projects = [
       "Creative Development",
       "Production"
     ],
-    src: "saint-studio-GME_SRT.mp4"
+    src: "Krewe2020_Thumbnail.mp4"
   },
   {
     id: "seven",
@@ -88,7 +88,7 @@ const projects = [
       "Creative Development",
       "Executive Production"
     ],
-    src: "saint-studio-GME_SRT.mp4"
+    src: "saint-steven-taylor-halston-netflix.mp4"
   },
   {
     id: "eight",
