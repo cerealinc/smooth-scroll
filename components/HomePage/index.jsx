@@ -378,9 +378,7 @@ const HomePage = () => {
         </div>
 
       <div ref={containerRef} className={styles.scrollContainer}>
-        <div className={styles.featuredReel} ref={featuredReel}>
-          Featured Commissions
-        </div>
+
         <div ref={videoRef} className={styles.scrollVideoBlur}>
 
           <video loop muted autoPlay playsInline className="videoInner isDark">
