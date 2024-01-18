@@ -126,62 +126,6 @@ html.lenis {
 
 
 
-/* Marquee styles */
-:root {
-  --coral: #f17144;
-  --indian-red: #ef445c;
-}
-
-
-.marquee {
-  width: 100%;
-  grid-column-gap: 12rem;
-  display: flex;
-  overflow: hidden;
-
-}
-
-.marquee-content {
-  min-width: 100%;
-  grid-column-gap: 12rem;
-  flex: none;
-  justify-content: space-around;
-  display: flex;
-
-}
-
-.text-block {
-  color: #0a0a0a;
-  font-size: 4rem;
-  font-weight: 400;
-  line-height: 1;
-}
-@keyframes initialAnimation {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-@keyframes scroll {
-  from {
-    transform: translateX(-40vw);
-  }
-  to {
-    transform: translateX(calc(-100% - 12rem));
-  }
-}
-
-.initial-scroll {
-  animation: initialAnimation 11s linear forwards;
-}
-
-.scroll {
-  animation: scroll 14s linear infinite;
-}
-
-
 
 .world-container {
   position: relative;

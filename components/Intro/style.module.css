@@ -19,3 +19,59 @@
     top: 0%;
   }
 
+  .marquee {
+    width: 100vw;
+    grid-column-gap: 2rem;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .marqueeContent {
+    min-width: 100vw;
+    grid-column-gap: 2rem;
+    padding: 12px 0;
+    flex: none;
+    justify-content: space-around;
+    display: flex;
+  }
+  .textBlock {
+    color: #0a0a0a;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+
+
+
+  @media screen and (max-width: 767px) {
+    .marquee-image.hide-mobile {
+      display: none;
+    }
+  }
+  
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }
+  .scroll {
+    animation: scroll 17s linear infinite;
+  }
+  .scrollWork {
+    animation: scroll 26s linear infinite;
+  }
+  .reverse {
+    animation-direction: reverse;
+  }
+  @keyframes scrollWork {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }

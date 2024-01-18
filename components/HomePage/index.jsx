@@ -437,11 +437,20 @@ const HomePage = () => {
         <div ref={textRef2} className={styles.scrollText2}>
           {projects.map(({ id, title, details, img, src, tags }) => (
             // eslint-disable-next-line react/jsx-key
-            <div key={id} className={`${styles.flexItem} flexItemWorks`} onMouseEnter={() => [setActiveElementOnHover(id)]}
-            >
+            <div key={id} className={`${styles.flexItem} flexItemWorks`} onMouseEnter={() => [setActiveElementOnHover(id)]}>
               {src ? (
                 // If src is set, render video
                 <div className={`${styles.projectVideo} projectVideo`}>
+                          <div className={styles.projectScrollText}>
+          <div className={styles.projectMarquee}>
+            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+              <div className={styles.textBlock}>Case Study Coming Soon</div>
+            </div>
+            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+            <div className={styles.textBlock}>Case Study Coming Soon</div>
+            </div>
+          </div>
+        </div>
                   <video loop muted autoPlay playsInline>
                     <source src={`/images/${src}`} type="video/mp4" />
                   </video>
@@ -449,6 +458,16 @@ const HomePage = () => {
               ) : (
                 // If src is not set, render image
                 <div className={`${styles.projectImage}`}>
+                                            <div className={styles.projectScrollText}>
+          <div className={styles.projectMarquee}>
+            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+              <div className={styles.textBlock}>Case Study Coming Soon</div>
+            </div>
+            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+            <div className={styles.textBlock}>Case Study Coming Soon</div>
+            </div>
+          </div>
+        </div>
                   <img src={`/images/${img}`} alt={title} />
                 </div>
               )}

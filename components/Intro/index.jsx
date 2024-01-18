@@ -17,13 +17,6 @@ const Intro = () => {
     const marqueeContent = document.querySelectorAll('.marquee-content');
     const marquee = document.querySelector('.marquee');
 
-    marquee.addEventListener('animationend', () => {
-      // Once the initial animation ends, remove the class and add the infinite scrolling class
-      marquee.classList.remove('initial-scroll');
-      marqueeContent.forEach(element => {
-        element.classList.add('scroll');
-      });
-    });
 
 
     ScrollTrigger.create({
@@ -47,12 +40,12 @@ const Intro = () => {
 
     <div ref={containerRef} className={styles.scrollContainer}>
       <div ref={textRef} className={styles.scrollText}>
-      <div className="marquee initial-scroll ">
-      <div className="marquee-content">
-        <div className="text-block">Creative Direction, Development, and Execution</div>
+      <div className={styles.marquee}>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={styles.textBlock}>Creative Direction, Development, and Execution</div>
       </div>
-      <div className="marquee-content">
-        <div className="text-block">Creative Direction, Development, and Execution</div>
+      <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+      <div className={styles.textBlock}>Creative Direction, Development, and Execution</div>
       </div>
     </div>
 

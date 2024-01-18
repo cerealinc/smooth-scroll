@@ -14,6 +14,19 @@
   color: #0a0a0a;
   z-index: 9;
 }
+
+.projectScrollText {
+  top: 50%;
+  position: absolute;
+  transform: translateY(-22px);
+  color: #0a0a0a;
+  z-index: 9;
+  opacity: 0;
+  transition: ease-in-out 800ms;
+
+}
+
+
 .scrollText4Wrap {
   height: 140px;
   width: 100vw;
@@ -78,7 +91,6 @@ transition: ease-in-out opacity 300ms;
     display: flex;
     overflow: hidden;
   }
-  
   .marqueeContent {
     min-width: 100vw;
     grid-column-gap: 2rem;
@@ -87,12 +99,33 @@ transition: ease-in-out opacity 300ms;
     justify-content: space-around;
     display: flex;
   }
+
+  .projectMarquee {
+    width: 100%;
+    grid-column-gap: 2rem;
+    display: flex;
+    overflow: hidden;
+  }
+  .projectMarqueeContent {
+    width: 100%;
+    grid-column-gap: 2rem;
+    padding: 12px 0;
+    flex: none;
+    justify-content: space-around;
+    display: flex;
+  }
+
   
   .textBlock {
     color: #0a0a0a;
     font-size: 4rem;
     font-weight: 400;
     line-height: 1;
+  }
+  .projectScrollText  .textBlock {
+    font-size: 3rem;
+    color: #ffffff;
+
   }
   .scrollText5 .textBlock {
     color: #fff;
@@ -134,6 +167,9 @@ transition: ease-in-out opacity 300ms;
   }
   .scroll {
     animation: scroll 12s linear infinite;
+  }
+  .scrollProject {
+    animation: scroll 6s linear infinite;
   }
   .scrollWork {
     animation: scroll 26s linear infinite;
@@ -256,11 +292,14 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
   margin-bottom: 80px;
 }
 
-.flexItem video:hover, .flexItem img:hover {
+.flexItem:hover video, .flexItem:hover img {
   filter: blur(4px);
   cursor: pointer;
 }
-
+.flexItem:hover .projectScrollText {
+  opacity: 1;
+  transform: translateY(-34px);
+}
 .projectDetails {
   position: absolute;
   color: #0a0a0a;
