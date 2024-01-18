@@ -283,6 +283,7 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
   font-style: italic;
   color: #888888;
   letter-spacing: 0.07em;
+  transition: ease-in-out 400ms;
 
 }
 .projectHeader {

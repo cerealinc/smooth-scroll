@@ -154,7 +154,7 @@ const HomePage = () => {
             const scaleValue2 = progress * 180;
             gsap.set(work, {
               y: -scaleValue2,
-            });            
+            });
           },
         },
       });
@@ -169,11 +169,11 @@ const HomePage = () => {
           onEnter: ({ progress, direction, isActive }) => {
             gsap.to(work, { filter: `blur(4px)`, duration: 1, });
           },
-            onLeaveBack: ({ progress, direction, isActive }) => {
-              // Reverse the animation when scrolling back down
-              gsap.to(work, { filter: 'blur(0px)', duration: 1 });
+          onLeaveBack: ({ progress, direction, isActive }) => {
+            // Reverse the animation when scrolling back down
+            gsap.to(work, { filter: 'blur(0px)', duration: 1 });
 
-            },
+          },
           onUpdate: ({ progress, direction, isActive }) => {
 
             const scaleValue = 1 - progress * 0.05;
@@ -182,46 +182,46 @@ const HomePage = () => {
             gsap.set(videoWrap, {
               scale: scaleValue,
             });
-            
+
           },
         },
       });
-  /*
-      // Second gsap.to code for scaling out
-      gsap.to(work, {
-        scrollTrigger: {
-          trigger: work,
-          start: 'top bottom-=160', // Adjust the start value for scaling out
-          scrub: true,
-          onEnter: ({ progress, direction, isActive }) => {
-            gsap.to(work, { filter: `blur(0px)`, duration: 2, });
+      /*
+          // Second gsap.to code for scaling out
+          gsap.to(work, {
+            scrollTrigger: {
+              trigger: work,
+              start: 'top bottom-=160', // Adjust the start value for scaling out
+              scrub: true,
+              onEnter: ({ progress, direction, isActive }) => {
+                gsap.to(work, { filter: `blur(0px)`, duration: 2, });
+                },
+                onLeaveBack: ({ progress, direction, isActive }) => {
+                  // Reverse the animation when scrolling back down
+                  gsap.to(work, { filter: `blur(4px)`, duration: 4, });
+              },
             },
-            onLeaveBack: ({ progress, direction, isActive }) => {
-              // Reverse the animation when scrolling back down
-              gsap.to(work, { filter: `blur(4px)`, duration: 4, });
-          },
-        },
-      });
-    
-      gsap.to(work, {
-        scrollTrigger: {
-          trigger: work,
-          start: 'top bottom+=200', // Adjust the start value for scaling out
-          end: 'top center+=200',
-          scrub: true,
-          markers: false,
-          
-          onUpdate: ({ progress, direction, isActive, self }) => {
-            const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
-            const scaleValue2 = progress / 40;
-            const blurAmount = 16 - progress * 16;
-            gsap.to(videoWrap, {
-              scale: scaleValue,
-            });
-          },
-        },
-      });
-      */
+          });
+        
+          gsap.to(work, {
+            scrollTrigger: {
+              trigger: work,
+              start: 'top bottom+=200', // Adjust the start value for scaling out
+              end: 'top center+=200',
+              scrub: true,
+              markers: false,
+              
+              onUpdate: ({ progress, direction, isActive, self }) => {
+                const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
+                const scaleValue2 = progress / 40;
+                const blurAmount = 16 - progress * 16;
+                gsap.to(videoWrap, {
+                  scale: scaleValue,
+                });
+              },
+            },
+          });
+          */
     });
 
 
@@ -244,9 +244,9 @@ const HomePage = () => {
 
       },
     });
-  
 
-  
+
+
 
 
 
@@ -272,7 +272,7 @@ const HomePage = () => {
     // Define onEnter function
     const onEnterFunction = (self) => {
       setWorkInView(true);
-      gsap.to(videoRef.current, {filter: `blur(12px)`, opacity: 1, duration: 1 });
+      gsap.to(videoRef.current, { filter: `blur(12px)`, opacity: 1, duration: 1 });
       gsap.to(focusFrontRef.current, { opacity: 1, duration: 2 });
 
     };
@@ -280,7 +280,7 @@ const HomePage = () => {
     // Define onLeaveBack function
     const onLeaveBackFunction = (self) => {
       setWorkInView(false);
-      gsap.to(focusFrontRef.current, {opacity: 0, duration: 2 });
+      gsap.to(focusFrontRef.current, { opacity: 0, duration: 2 });
       gsap.to(videoRef.current, { opacity: 1, duration: 1 });
     };
 
@@ -295,7 +295,7 @@ const HomePage = () => {
       onEnter: onEnterFunction,
       onLeaveBack: onLeaveBackFunction,
     });
-    
+
     // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
     ScrollTrigger.create({
       trigger: childWrapperRef.current,
@@ -308,11 +308,11 @@ const HomePage = () => {
         const blurAmount = 20 - self.progress * 20;
         const scroll = self.progress * 560; // Adjust the factor based on your needs
         gsap.set(textRef.current, { opacity: 1, marginTop: `-${scroll}px` });
-       // gsap.set(childWrapperRef.current, {height: `${scroll}vh` });
+        // gsap.set(childWrapperRef.current, {height: `${scroll}vh` });
       },
-      onLeaveBack:  (self) => {
+      onLeaveBack: (self) => {
         gsap.set(textRef.current, { opacity: 1, marginTop: `0px` });
-       
+
       }
     });
     /*
@@ -359,7 +359,11 @@ const HomePage = () => {
     };
   }, []);
 
+  const [activeId, setActiveId] = useState(0);
 
+  const setActiveElementOnHover = (id) => {
+      setActiveId(id);
+  };
 
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
@@ -377,59 +381,65 @@ const HomePage = () => {
           </div>
         </div>
 
-      <div ref={containerRef} className={styles.scrollContainer}>
+        <div ref={containerRef} className={styles.scrollContainer}>
 
-        <div ref={videoRef} className={styles.scrollVideoBlur}>
+          <div ref={videoRef} className={styles.scrollVideoBlur}>
 
-          <video loop muted autoPlay playsInline className="videoInner isDark">
-            <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-          </video>
+            <video loop muted autoPlay playsInline className="videoInner isDark">
+              <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
+            </video>
 
+          </div>
         </div>
-      </div>
       </div>
 
 
       <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
-          <div ref={textRef2} className={styles.scrollText2}>
-            {projects.map(({ id, title, details, img, src, tags }) => (
-              // eslint-disable-next-line react/jsx-key
-              <div key={id} className={`${styles.flexItem} flexItemWorks`}>
-                {src ? (
-                  // If src is set, render video
-                  <div className={`${styles.projectVideo} projectVideo`}>
-                    <video loop muted autoPlay playsInline>
-                      <source src={`/images/${src}`} type="video/mp4" />
-                    </video>
-                  </div>
-                ) : (
-                  // If src is not set, render image
-                  <div className={`${styles.projectImage}`}>
+        <div ref={textRef2} className={styles.scrollText2}>
+          {projects.map(({ id, title, details, img, src, tags }) => (
+            // eslint-disable-next-line react/jsx-key
+            <div key={id} className={`${styles.flexItem} flexItemWorks`} onMouseEnter={() => [setActiveElementOnHover(id)]}
+            >
+              {src ? (
+                // If src is set, render video
+                <div className={`${styles.projectVideo} projectVideo`}>
+                  <video loop muted autoPlay playsInline>
+                    <source src={`/images/${src}`} type="video/mp4" />
+                  </video>
+                </div>
+              ) : (
+                // If src is not set, render image
+                <div className={`${styles.projectImage}`}>
                   <img src={`/images/${img}`} alt={title} />
-                  </div>
-                )}
+                </div>
+              )}
 
-                <div className={`${styles.projectDetails} projectDetails`}>
-                  <div className={styles.projectDetailsInner}>
-                    <div ref={swapText} className={styles.projectHeader}>
-                      {title}
-                    </div>
-                    <div className={styles.projectTags}>
-                      {tags.map((tag, index) => (
-                        <React.Fragment key={index}>
-                          {index > 0 && <span className={styles.bullet}>, </span>}
-                          {tag}
-                        </React.Fragment>
-                      ))}
-                    </div>
-                    <p dangerouslySetInnerHTML={{ __html: details }}></p>
+              <div className={`${styles.projectDetails} projectDetails`}>
+                <div className={styles.projectDetailsInner}>
+                  <div ref={swapText} className={styles.projectHeader}>
+                    {title}
                   </div>
+                  <div className={styles.projectTags}>
+                    {tags.map((tag, index) => (
+                      <React.Fragment key={index}>
+                        {index > 0 && <span className={styles.bullet}>, </span>}
+                        {tag}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  <p
+                    style={{
+                      opacity:
+                        activeId === id ? "1" : "0"
+                    }}
+                    dangerouslySetInnerHTML={{ __html: details }}></p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
+    </div>
   );
 };
 
