@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { SplitText } from 'gsap/dist/SplitText';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import Image from 'next/image'
@@ -131,22 +132,58 @@ const HomePage = () => {
   const [works, setWorks] = useState([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
+    const flexItems = document.querySelectorAll('.flexItemWorks');
 
+    flexItems.forEach((flexItem) => {
+      const projectDetails = flexItem.querySelector('.projectDetails p');
+  
+      // Initialize SplitText for each projectDetails
+      const splitText = new SplitText(projectDetails, { type: 'chars' });
+      // Set initial state
+      gsap.set(splitText.chars, {
+        opacity: 0,
+        y: 6,
+      });
+      flexItem.addEventListener('mouseenter', () => {
+        gsap.to(splitText.chars, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.inOut',
+          stagger: {
+            amount: 0.4, // Adjust the stagger amount as needed
+          },
+        });
+      });
+  
+      flexItem.addEventListener('mouseleave', () => {
+        gsap.to(splitText.chars, {
+          opacity: 0,
+          y: 6,
+          duration: 0.6,
+          ease: 'power3.inOut',
+          stagger: {
+            amount: 0.4, // Adjust the stagger amount as needed
+          },
+        });
+      });
+    });
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
     setWorks(worksArray);
-
+    
     worksArray.forEach((work) => {
       const video = work.querySelector('video');
       const videoWrap = work.querySelector('.projectVideo');
       const projectDetails = work.querySelector('.projectDetails');
+    
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'top center',
-          end: 'bottom top',
+          start: "top center", // Use "top center" as a starting point
+          end: "bottom top",  // Use "bottom top" as an end point
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
@@ -158,6 +195,8 @@ const HomePage = () => {
           },
         },
       });
+    
+    
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
@@ -428,10 +467,6 @@ const HomePage = () => {
                     ))}
                   </div>
                   <p
-                    style={{
-                      opacity:
-                        activeId === id ? "1" : "0"
-                    }}
                     dangerouslySetInnerHTML={{ __html: details }}></p>
                 </div>
               </div>
