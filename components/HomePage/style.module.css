@@ -18,7 +18,7 @@
 .projectScrollText {
   top: 50%;
   position: absolute;
-  transform: translateY(-22px);
+  transform: translateY(-32px);
   color: #0a0a0a;
   z-index: 9;
   opacity: 0;
@@ -298,7 +298,7 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
 }
 .flexItem:hover .projectScrollText {
   opacity: 1;
-  transform: translateY(-34px);
+  transform: translateY(-40px);
 }
 .projectDetails {
   position: absolute;
