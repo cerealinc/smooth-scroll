@@ -142,7 +142,23 @@ const HomePage = () => {
       const video = work.querySelector('video');
       const videoWrap = work.querySelector('.projectVideo');
       const projectDetails = work.querySelector('.projectDetails');
+      gsap.to(work, {
+        scrollTrigger: {
+          trigger: work,
+          start: 'top top+=200',
+          end: 'bottom top',
+          scrub: true,
+          markers: false,
+          onUpdate: ({ progress, direction, isActive }) => {
 
+            const scaleValue = 1 - progress * 0.05;
+            const scaleValue2 = progress * 36;
+            gsap.set(work, {
+              y: -scaleValue2,
+            });            
+          },
+        },
+      });
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
@@ -152,18 +168,17 @@ const HomePage = () => {
           scrub: true,
           markers: false,
           onEnter: ({ progress, direction, isActive }) => {
-            gsap.to(work, { filter: `blur(4px)`, duration: 4, });
-
+            gsap.to(work, { filter: `blur(4px)`, duration: 1, });
           },
             onLeaveBack: ({ progress, direction, isActive }) => {
               // Reverse the animation when scrolling back down
-              gsap.to(work, { filter: 'blur(0px)', duration: 2 });
+              gsap.to(work, { filter: 'blur(0px)', duration: 1 });
 
             },
           onUpdate: ({ progress, direction, isActive }) => {
 
             const scaleValue = 1 - progress * 0.05;
-            const scaleValue2 = progress * 10;
+            const scaleValue2 = progress * 50;
 
             gsap.set(videoWrap, {
               scale: scaleValue,
