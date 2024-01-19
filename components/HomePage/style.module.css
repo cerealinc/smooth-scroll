@@ -15,7 +15,7 @@
   color: #0a0a0a;
   z-index: 9;
   opacity: 0;
-  transition: ease-in-out 800ms;
+  transition: ease-in-out 500ms;
 
 }
 
@@ -293,7 +293,7 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
 
 .projectDetailsInner {
   max-width: 520px;
-  width: 50%;
+  width: 65%;
   min-width: 280px;
 }
 .projectDetails p {
