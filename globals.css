@@ -128,11 +128,11 @@ html.lenis {
 
 
 .world-container {
-  position: relative;
+  position: absolute;
   width: 100vw;
   min-height: 100vh;
   z-index: 1;
-    background-color: transparent;
+    background-color: #0a0a0a;
     opacity: 1; /* Start with opacity 0 */
     transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }

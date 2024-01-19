@@ -50,6 +50,9 @@ export default function Contact() {
 
 
         <div className="contact-wrap">
+        <div className="contact-details">
+A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+</div>
         <div className="contact-info">
     ST. STUDIO INC<br/>
     135 #01 Beverlv Blvd<br/>
@@ -62,13 +65,9 @@ STUDIO MANAGER<br/>
 Camille Waterfallen<br/>
 CW@ST.STUDIO
 </div>
-<div className="contact-details">
-A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+
 </div>
-</div>
-          <video loop muted autoPlay playsInline className="videoInner">
-            <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-          </video>
+
 
         </div>
 
