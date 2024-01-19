@@ -293,6 +293,8 @@ background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh)
 
 .projectDetailsInner {
   max-width: 520px;
+  width: 50%;
+  min-width: 280px;
 }
 .projectDetails p {
   font-size: 14px;
