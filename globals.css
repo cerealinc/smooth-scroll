@@ -132,7 +132,7 @@ html.lenis {
   width: 100vw;
   min-height: 100vh;
   z-index: 1;
-    background-color: #0a0a0a;
+    background-color: #fff;
     opacity: 1; /* Start with opacity 0 */
     transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }
@@ -159,11 +159,11 @@ html.lenis {
   padding: 60px;
 }
 .contact-info {
-  color: #ffffff;
+  color: #0a0a0a;
   text-align: right;
 }
 .contact-details {
-  color: #ffffff;
+  color: #0a0a0a;
 }
 
 .world-overlay {
