@@ -137,7 +137,7 @@ html.lenis {
     transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }
 .world-container .world {
-  height: 56vh;
+  height:100vh;
   background-color: transparent;
 
 }
@@ -154,7 +154,6 @@ html.lenis {
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 60px;
 }
@@ -162,8 +161,23 @@ html.lenis {
   color: #0a0a0a;
   text-align: right;
 }
+.contact-info span
+{
+  font-size: 14px;
+    font-weight: 100;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    font-style: italic;
+    color: #888888;
+    letter-spacing: 0.07em;
+}
 .contact-details {
   color: #0a0a0a;
+  font-size: 15px;
+    letter-spacing: 0.07em;
+    color: #0a0a0a;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .world-overlay {
@@ -181,6 +195,9 @@ html.lenis {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 1.4px;
+      max-width: 520px;
+    width: 65%;
+    min-width: 280px;
 }
 
 .world-container {

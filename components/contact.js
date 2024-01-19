@@ -55,15 +55,20 @@ A right hand to strategy, our team is both innovative and insightful, offering e
 </div>
         <div className="contact-info">
     ST. STUDIO INC<br/>
-    135 #01 Beverlv Blvd<br/>
-Los Angeles CA, 90036<br/><br/>
+    <span>135 #01 Beverlv Blvd<br/>
+Los Angeles CA, 90036<br/>
+</span><br/>
 GENERAL<br/>
-310 990 ****<br/>
+<span>
+310 990 0000<br/>
 00@ST.STUDIO
-<br/><br/>
+<br/>
+</span><br/>
 STUDIO MANAGER<br/>
+<span>
 Camille Waterfallen<br/>
 CW@ST.STUDIO
+</span>
 </div>
 
 </div>
