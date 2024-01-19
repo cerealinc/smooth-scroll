@@ -13,42 +13,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
     handleClick(false);
   };
 
-  const manageMouseEnter = (e, index) => {
-    // Create a new animation timeline
-    const animation = gsap.timeline({
-      repeat: -1, // Infinite repeat
-    });    animation.fromTo(
-      underlineRefs.current[index],
-      { left: '-10%', width: '0' },
-      { left: 0, width: '100%', duration: 1, ease: "power2.inOut" }
-    );
-    animation.fromTo(
-      underlineRefs.current[index],
-      { left: 0, width: '100%', duration: 1, delay: .5,  ease: "power2.inOut"},
-      { left: 0, width: '100%', duration: 1, delay: .5,  ease: "power2.inOut"},
-    );
-    animation.fromTo(
-      underlineRefs.current[index],
-      { left: 0, width: '100%', duration: .5, ease: "power2.inOut" },
-      { left: '110%', width: '0%', duration: 1, ease: "power2.inOut" }
-    );
-    // Store the animation in the animationRef
-    animationRef.current = animation;
-  };
-
-  const manageMouseLeave = (e, index) => {
-    if (animationRef.current) {
-      animationRef.current.pause(); // Pause the animation
-      animationRef.current.kill();  // Clear the animation
-    }
-
-    // Create a new animation timeline to return the underline to its original position
-    const animationLeave = gsap.timeline();
-    animationLeave.to(
-      underlineRefs.current[index],
-      { left: '-10%', width: '0%', duration: .4, ease: "power2.inOut" }
-    );
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -77,8 +41,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
     <div className={styles.navigation}>
 <Link
   onClick={handleLinkClick}
-  onMouseEnter={(e) => manageMouseEnter(e, 0)}
-  onMouseLeave={(e) => manageMouseLeave(e, 0)}
   href="#home"
   className={activeSection === 'home' ? styles.active : styles.inActive}
 >
@@ -88,8 +50,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
 
 <Link
   onClick={handleLinkClick}
-  onMouseEnter={(e) => manageMouseEnter(e, 1)}
-  onMouseLeave={(e) => manageMouseLeave(e, 1)}
   href="#work"
   className={activeSection === 'work' ? styles.active : styles.inActive }
 >
@@ -99,8 +59,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
 
 <Link
   onClick={() => handleClick(true)}
-  onMouseEnter={(e) => manageMouseEnter(e, 2)}
-  onMouseLeave={(e) => manageMouseLeave(e, 2)}
   href="#contact"
   className={activeSection === 'contact' ? styles.active : styles.inActive}
 >

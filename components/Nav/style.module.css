@@ -54,7 +54,7 @@
     margin-top: 8px;
     position: relative;
     left: 0%;
-    transition: 800ms ease-in-out 100ms;
+    transition: 400ms ease-in-out;
 }
 
 .inActive .underline {
@@ -65,6 +65,13 @@
     margin-top: 8px;
     position: relative;
     left: -10%;
-    transition: 800ms ease-in-out 300ms;
+    transition: 400ms ease-in-out;
 
+}
+.inActive {
+transition: 400ms ease-in-out;
+opacity: 1;
+}
+.inActive:hover {
+    opacity: .6;
 }

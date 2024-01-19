@@ -161,7 +161,7 @@ const HomePage = () => {
           duration: 0.6,
           ease: 'power3.inOut',
           stagger: {
-            amount: 0.4, // Adjust the stagger amount as needed
+            amount: 0.05, // Adjust the stagger amount as needed
           },
         });
       });
