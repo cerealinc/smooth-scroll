@@ -20,6 +20,7 @@
     padding: 8px;
     position: relative;
     text-transform: uppercase;
+    overflow: hidden;
 }
 
 
@@ -52,5 +53,18 @@
     display: block;
     margin-top: 8px;
     position: relative;
+    left: 0%;
+    transition: 800ms ease-in-out 100ms;
+}
+
+.inActive .underline {
+    width: 0%;
+    height: 1px;
+    background-color: #0a0a0a;
+    display: block;
+    margin-top: 8px;
+    position: relative;
     left: -10%;
+    transition: 800ms ease-in-out 300ms;
+
 }

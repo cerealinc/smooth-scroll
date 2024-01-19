@@ -80,7 +80,7 @@ const Nav = ({ handleClick, setRenderMain }) => {
   onMouseEnter={(e) => manageMouseEnter(e, 0)}
   onMouseLeave={(e) => manageMouseLeave(e, 0)}
   href="#home"
-  className={activeSection === 'home' ? styles.active : ''}
+  className={activeSection === 'home' ? styles.active : styles.inActive}
 >
   Home
   <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
@@ -91,7 +91,7 @@ const Nav = ({ handleClick, setRenderMain }) => {
   onMouseEnter={(e) => manageMouseEnter(e, 1)}
   onMouseLeave={(e) => manageMouseLeave(e, 1)}
   href="#work"
-  className={activeSection === 'work' ? styles.active : ''}
+  className={activeSection === 'work' ? styles.active : styles.inActive }
 >
   Work
   <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
@@ -102,7 +102,7 @@ const Nav = ({ handleClick, setRenderMain }) => {
   onMouseEnter={(e) => manageMouseEnter(e, 2)}
   onMouseLeave={(e) => manageMouseLeave(e, 2)}
   href="#contact"
-  className={activeSection === 'contact' ? styles.active : ''}
+  className={activeSection === 'contact' ? styles.active : styles.inActive}
 >
   Contact
   <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>

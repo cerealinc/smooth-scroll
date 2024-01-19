@@ -118,13 +118,8 @@ const HomePage = () => {
   const swapText = useRef(null);
   const textRef = useRef(null);
   const textRef2 = useRef(null);
-  const textRef2Wrap = useRef(null);
-  const containerRef = useRef(null);
   const videoRef = useRef(null);
-  const wrapperRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
-  const featuredReel = useRef(null);
-  const childWrapperRef = useRef(null);
 
   const [workInView, setWorkInView] = useState(false);
 
@@ -225,87 +220,8 @@ const HomePage = () => {
           },
         },
       });
-      /*
-          // Second gsap.to code for scaling out
-          gsap.to(work, {
-            scrollTrigger: {
-              trigger: work,
-              start: 'top bottom-=160', // Adjust the start value for scaling out
-              scrub: true,
-              onEnter: ({ progress, direction, isActive }) => {
-                gsap.to(work, { filter: `blur(0px)`, duration: 2, });
-                },
-                onLeaveBack: ({ progress, direction, isActive }) => {
-                  // Reverse the animation when scrolling back down
-                  gsap.to(work, { filter: `blur(4px)`, duration: 4, });
-              },
-            },
-          });
-        
-          gsap.to(work, {
-            scrollTrigger: {
-              trigger: work,
-              start: 'top bottom+=200', // Adjust the start value for scaling out
-              end: 'top center+=200',
-              scrub: true,
-              markers: false,
-              
-              onUpdate: ({ progress, direction, isActive, self }) => {
-                const scaleValue = progress * 0.1 + 0.9; // Adjust the scaling factor for videoWrap
-                const scaleValue2 = progress / 40;
-                const blurAmount = 16 - progress * 16;
-                gsap.to(videoWrap, {
-                  scale: scaleValue,
-                });
-              },
-            },
-          });
-          */
     });
 
-
-
-
-    // Create a ScrollTrigger to control the video blur effect
-    gsap.to(videoRef.current, {
-      filter: 'blur(64px)',
-      scrollTrigger: {
-        trigger: videoRef.current,
-        start: 'top-=100 center',
-        end: 'top-=100 top',
-        scrub: true,
-        markers: false,
-        onUpdate: (self) => {
-          const blurAmount = 20 - self.progress * 20;
-          gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
-          gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
-        },
-
-      },
-    });
-
-
-
-
-
-
-
-    // Create a ScrollTrigger to control the video blur effect
-    gsap.to(videoRef.current, {
-      filter: 'blur(64px)',
-      scrollTrigger: {
-        trigger: videoRef.current,
-        start: 'top-=100 center',
-        end: 'top-=100 top',
-        scrub: true,
-        markers: false,
-        onUpdate: (self) => {
-          const blurAmount = 20 - self.progress * 20;
-          gsap.set(videoRef.current, { filter: `blur(${blurAmount}px)` });
-          gsap.to(textRef.current, { y: `${blurAmount}` }); // Adjust the duration for video fade
-        },
-      },
-    });
 
 
     // Define onEnter function
@@ -335,67 +251,8 @@ const HomePage = () => {
       onLeaveBack: onLeaveBackFunction,
     });
 
-    // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
-    ScrollTrigger.create({
-      trigger: childWrapperRef.current,
-      start: 'top top',
-      end: 'bottom top',
-      pin: false, // Pin the outer wrapper
-      pinSpacing: false, // Adjust pinSpacing based on your layout needs
-      markers: false,
-      onUpdate: (self) => {
-        const blurAmount = 20 - self.progress * 20;
-        const scroll = self.progress * 560; // Adjust the factor based on your needs
-        gsap.set(textRef.current, { opacity: 1, marginTop: `-${scroll}px` });
-        // gsap.set(childWrapperRef.current, {height: `${scroll}vh` });
-      },
-      onLeaveBack: (self) => {
-        gsap.set(textRef.current, { opacity: 1, marginTop: `0px` });
+  
 
-      }
-    });
-    /*
-
-    ScrollTrigger.create({
-      trigger: childWrapperRef.current,
-      start: 'bottom-=120 top',
-      pin: true, // Pin the outer wrapper
-      pinSpacing: false, // Adjust pinSpacing based on your layout needs
-      markers: false,
-      endTrigger: projectWrapperRefOuter.current, // Set the endTrigger to projectWrapperRefOuter
-      end: 'bottom bottom', // Pin ends when the bottom of projectWrapperRefOuter reaches the bottom of the viewport
-    });
-        */
-
-  }, []);
-  // Add this code within your useEffect to handle scroll and clip the text
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollClipRef = textRef2Wrap.current;
-      const scrollTextRef = textRef2.current;
-
-      if (scrollClipRef && scrollTextRef) {
-        const scrollClipRect = scrollClipRef.getBoundingClientRect();
-        const scrollTextRect = scrollTextRef.getBoundingClientRect();
-
-        // Check if scrollText is behind scrollClip
-        if (scrollTextRect.bottom < scrollClipRect.top) {
-          // Apply clip to hide scrollText when it's behind scrollClip
-          scrollTextRef.style.clipPath = 'inset(100% 100% 100% 100%)';
-        } else {
-          // Reset clip if scrollText is visible
-          scrollTextRef.style.clipPath = 'none';
-        }
-      }
-    };
-
-    // Add event listener for scroll
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const [activeId, setActiveId] = useState(0);
@@ -405,32 +262,9 @@ const HomePage = () => {
   };
 
   return (
-    <div ref={wrapperRef} className={styles.wrapper}>
 
 
-      <div ref={childWrapperRef} className={styles.childWrapper}>
-        <div ref={textRef} className={styles.scrollText}>
-          <div className={styles.marquee}>
-            <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
-            </div>
-            <div className={`${styles.marqueeContent} ${styles.scroll}`}>
-              <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
-            </div>
-          </div>
-        </div>
 
-        <div ref={containerRef} className={styles.scrollContainer}>
-
-          <div ref={videoRef} className={styles.scrollVideoBlur}>
-
-            <video loop muted autoPlay playsInline className="videoInner isDark">
-              <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
-            </video>
-
-          </div>
-        </div>
-      </div>
 
 
       <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
@@ -493,7 +327,6 @@ const HomePage = () => {
           ))}
         </div>
       </div>
-    </div>
   );
 };
 
