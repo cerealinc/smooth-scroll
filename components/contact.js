@@ -40,20 +40,21 @@ export default function Contact() {
 
   return (
     <div className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
-    <div id="scene-container" className="world">
-    </div>
+      <div id="scene-container" className="world">
+      </div>
 
-    <div>
+      <div>
 
-    <div ref={childWrapperRef} className="world-overlay">
+        <div ref={childWrapperRef} className="world-overlay">
 
 
 
-        <div className="contact-wrap">
-        <div className="contact-details">
-A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-</div>
-        <div className="contact-info">
+          <div className="contact-wrap">
+            <div>
+            <div className="contact-details">
+              A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+            </div>
+            <div className="contact-info">
     ST. STUDIO INC<br/>
     <span>135 #01 Beverlv Blvd<br/>
 Los Angeles CA, 90036<br/>
@@ -70,14 +71,32 @@ Camille Waterfallen<br/>
 CW@ST.STUDIO
 </span>
 </div>
-
 </div>
+            <div className="contact-info">
+              ST. STUDIO INC<br />
+              <span>135 #01 Beverlv Blvd<br />
+                Los Angeles CA, 90036<br />
+              </span><br />
+              GENERAL<br />
+              <span>
+                310 990 0000<br />
+                00@ST.STUDIO
+                <br />
+              </span><br />
+              STUDIO MANAGER<br />
+              <span>
+                Camille Waterfallen<br />
+                CW@ST.STUDIO
+              </span>
+            </div>
+
+          </div>
 
 
         </div>
 
-    </div>
-    </div>  );
+      </div>
+    </div>);
 }
 
 
