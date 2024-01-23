@@ -302,8 +302,21 @@ const HomePage = () => {
         },
       });
       
-    const world = new World(WorldRef.current);
-    world.start();
+      const contact = () => {
+
+        const world = new World(WorldRef.current);
+  
+        // starting world
+        world.start();
+  
+        // locating on model
+      // Los Angeles
+      world.findLocation(34.0522, -118.2437, world.earth);
+
+      // New York
+      world.findLocation(40.7128, -74.0060, world.earth);
+      };
+      contact();
     const handleScroll = (event) => {
       event.stopPropagation(); // Prevent the event from bubbling up
   

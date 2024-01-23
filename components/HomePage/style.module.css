@@ -396,4 +396,24 @@ z-index: 0;
     position: relative;
     margin-bottom: 80px;
   }
+    
+  .textBlock {
+    font-size: 2rem;
+  }
+  .projectScrollText .textBlock {
+    font-size: 1.5rem;
+
+  }
+
+  .projectDetails {
+    position: relative;
+    line-height: 1.3;
+    padding: 30px;
+    font-size: 28px;
+}
+.projectDetailsInner {
+  max-width: 520px;
+  width: 100%;
+  min-width: 280px;
+}
 }

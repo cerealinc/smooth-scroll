@@ -10,6 +10,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 110%, 0% 110%);
     width: 100vw;
     background-color: #fff;
+    z-index: 3;
   }
 
   .scrollText {
@@ -119,3 +120,26 @@
       transform: translateX(calc(-100% - 2rem));
     }
   }
+
+
+  @media screen and (max-width: 767px) {
+    .marquee-image.hide-mobile {
+      display: none;
+    }
+    .scrollText2 .flexItem {
+      opacity: 1;
+      line-height: 0;
+      width: 100vw;
+      position: relative;
+      margin-bottom: 80px;
+    }
+      
+    .textBlock {
+      font-size: 2rem;
+    }
+    .projectScrollText .textBlock {
+      font-size: 1.5rem;
+  
+    }
+  }
+  

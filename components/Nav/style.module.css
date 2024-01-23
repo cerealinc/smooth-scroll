@@ -72,3 +72,11 @@ opacity: 1;
 .inActive:hover {
     opacity: .6;
 }
+
+@media screen and (max-width: 767px) {
+    .navigation {
+      right: 22px;
+      top: 20px;
+  }
+
+}

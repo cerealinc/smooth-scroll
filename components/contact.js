@@ -25,7 +25,6 @@ export default function Contact() {
 
       // locating on model
       world.findLocation(34.05, -118.24); // Update the latitude and longitude accordingly
-      setFadeIn(true);
 
     };
     contact();
