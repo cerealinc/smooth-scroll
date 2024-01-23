@@ -38,14 +38,7 @@ export default function Home() {
       <div id="home" className="section">
         <Intro />
       </div>
-      <div id="work" className="section">
       <HomePage />
-      </div>
-      <div id="contact" className="section">
-      <div className={`world-container ${renderMain ? 'fadeIn' : ''}`}>
-          <Contact />
-          </div>
-          </div>
     </ReactLenis>
 
   )

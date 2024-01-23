@@ -13,7 +13,7 @@ function createMoon() {
   });
 
   const moon = new THREE.Mesh(geometry, material);
-  moon.position.set(400, -200, -1450);
+  moon.position.set(480, -100, -2950);
 
   moon.tick = (delta) => {
     moon.rotation.y += (1 / 24) * delta;

@@ -12,13 +12,6 @@ const Intro = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const item = textRef.current;
-    const itemWidth = item.clientWidth;
-
-
-    const marqueeContent = document.querySelectorAll('.marquee-content');
-    const marquee = document.querySelector('.marquee');
-
     // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
     ScrollTrigger.create({
       trigger: childWrapperRef.current,
@@ -97,7 +90,7 @@ const Intro = () => {
 
       <div ref={videoRef} className={styles.scrollVideoBlur}>
 
-        <video loop muted autoPlay playsInline className="videoInner isDark">
+        <video loop muted autoPlay playsInline className={styles.videoInner}>
           <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
         </video>
 

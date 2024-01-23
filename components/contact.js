@@ -3,28 +3,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from './Main.module.css'; // Import your CSS module
+import * as THREE from 'three';
+import { zoomIn } from "./World/components/Camera.js";
 
 export default function Contact() {
   const [fadeIn, setFadeIn] = useState(false);
   const childWrapperRef = useRef(null);
+  const WorldRef = useRef(null);
+  const contactDetailsRef = useRef(null);
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.create({
-      trigger: childWrapperRef.current,
-      start: 'top center',
-      pin: true, // Pin the outer wrapper
-      pinSpacing: false, // Adjust pinSpacing based on your layout needs
-      markers: false,
-      end: 'bottom bottom', // Pin ends when the bottom of projectWrapperRefOuter reaches the bottom of the viewport
-    });
+  
     const contact = () => {
-      // scene container
-      const container = document.querySelector('#scene-container');
 
-      // creating new instance of world class
-      const world = new World(container);
+      const world = new World(WorldRef.current);
 
       // starting world
       world.start();
@@ -34,14 +28,21 @@ export default function Contact() {
       setFadeIn(true);
 
     };
-
     contact();
+
+    const contactDetailsElement = contactDetailsRef.current;
+    contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
+  
+    return () => {
+      contactDetailsElement.removeEventListener('wheel', handleScroll);
+    };
+
   }, []);
+  
 
   return (
-    <div className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
-      <div id="scene-container" className="world">
-      </div>
+    <div ref={WorldRef} className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
+
 
       <div>
 
@@ -50,45 +51,51 @@ export default function Contact() {
 
 
           <div className="contact-wrap">
-            <div>
-            <div className="contact-details">
-              A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+          <div className="contact-details" ref={contactDetailsRef}>
+                <div className="contact-scroll">
+                A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+              <div className="contact-info" style={{textAlign: 'left'}}>
+                <h4>PRODUCTION SERVICES</h4>
+                <p>135 #01 Beverlv Blvd<br />
+                  Los Angeles CA, 90036<br />
+                </p>
+                <h4>CREATIVE SERVICES</h4>
+                <p>
+                Retouching<br />
+                Motion<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Retouching<br />
+                Motion<br />
+                Retouching<br />
+                Motion<br />
+                Retouching<br />
+                </p>
+              </div>
+              </div>
             </div>
+
             <div className="contact-info">
-    ST. STUDIO INC<br/>
-    <span>135 #01 Beverlv Blvd<br/>
-Los Angeles CA, 90036<br/>
-</span><br/>
-GENERAL<br/>
-<span>
-310 990 0000<br/>
-00@ST.STUDIO
-<br/>
-</span><br/>
-STUDIO MANAGER<br/>
-<span>
-Camille Waterfallen<br/>
-CW@ST.STUDIO
-</span>
-</div>
-</div>
-            <div className="contact-info">
-              ST. STUDIO INC<br />
-              <span>135 #01 Beverlv Blvd<br />
-                Los Angeles CA, 90036<br />
-              </span><br />
-              GENERAL<br />
-              <span>
-                310 990 0000<br />
-                00@ST.STUDIO
-                <br />
-              </span><br />
-              STUDIO MANAGER<br />
-              <span>
+                <h4>ST. STUDIO INC</h4>
+                <p>135 #01 Beverlv Blvd<br />
+                  Los Angeles CA, 90036<br />
+                </p>
+                <h4>GENERAL</h4>
+                <p>
+                  310 990 0000<br />
+                  <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
+                </p>
+                <h4>STUDIO MANAGER</h4>
+                <p>
                 Camille Waterfallen<br />
-                CW@ST.STUDIO
-              </span>
-            </div>
+                 <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
+                </p>
+              </div>
 
           </div>
 

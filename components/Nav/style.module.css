@@ -22,7 +22,16 @@
     text-transform: uppercase;
     overflow: hidden;
 }
-
+.navigation a:hover .underline{
+    width: 100%;
+    height: 1px;
+    background-color: #0a0a0a;
+    display: block;
+    margin-top: 8px;
+    position: relative;
+    left: 0%;
+    transition: 400ms ease-in-out;
+}
 
 .underline {
     width: 0;
@@ -32,18 +41,6 @@
     margin-top: 8px;
     position: relative;
     left: -10%;
-}
-
-.isBlack a  {
-    color: #000;
-}
-.isBlack .underline, .isBlack.navigation .centerLine {
-    background-color: #000;
- 
-}
-.isWhite a{
-    color: #fff;
-
 }
 
 .active .underline {

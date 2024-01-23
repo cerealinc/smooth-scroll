@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { SplitText } from 'gsap/dist/SplitText';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+import { World } from '../World/World';
+
 import Image from 'next/image'
 
 import styles from './style.module.css';
@@ -120,8 +122,11 @@ const HomePage = () => {
   const textRef2 = useRef(null);
   const videoRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
-
+  const childWrapperRef = useRef(null);
+  const WorldRef = useRef(null);
+  const contactDetailsRef = useRef(null);
   const [workInView, setWorkInView] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
 
   const focusFrontRef = useRef(null);
   const [works, setWorks] = useState([]);
@@ -151,6 +156,7 @@ const HomePage = () => {
           stagger: {
             amount: 0.4, // Adjust the stagger amount as needed
           },
+          force3D: true, // Add this line
         });
       });
   
@@ -163,6 +169,7 @@ const HomePage = () => {
           stagger: {
             amount: 0.05, // Adjust the stagger amount as needed
           },
+          force3D: true, // Add this line
         });
       });
     });
@@ -182,6 +189,7 @@ const HomePage = () => {
           scrub: true,
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
+            
             const scaleValue = 1 - progress * 0.05;
             const scaleValue2 = progress * 180;
             gsap.set(work, {
@@ -249,9 +257,67 @@ const HomePage = () => {
       markers: false,
       onEnter: onEnterFunction,
       onLeaveBack: onLeaveBackFunction,
+      
     });
 
+      // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
+      ScrollTrigger.create({
+        trigger: projectWrapperRefOuter.current,
+        start: 'bottom center',
+        pin: false, // Pin the outer wrapper
+        pinSpacing: false, // Adjust pinSpacing based on your layout needs
+        markers: false,
+        onEnter: ({ progress, direction, isActive }) => {
+          gsap.to(childWrapperRef.current, { filter: `blur(0px)`, duration: 1.5, });
+        },
+        onLeaveBack: ({ progress, direction, isActive }) => {
+          // Reverse the animation when scrolling back down
+          gsap.to(childWrapperRef.current, {filter: `blur(4px)`, duration: 1.5, });
+
+        },     
+      });
+
+      ScrollTrigger.create({
+        trigger: projectWrapperRefOuter.current,
+        start: 'bottom bottom',
+        end: 'bottom center', // Define an end point
+        pin: false,
+        pinSpacing: false,
+        markers: true,
+        onUpdate: (self) => {
+          // Use the progress value to control the opacity
+          const scaleValue = self.progress * 30;
+          gsap.set(WorldRef.current, {
+            opacity: self.progress, // Progress ranges from 0 to 1
+          });
+          gsap.set(childWrapperRef.current, {
+            y: -scaleValue, // Progress ranges from 0 to 1
+          });
+        },
+        onEnter: () => {
+          // If needed, you can still use onEnter for specific actions
+        },
+        onLeaveBack: () => {
+          // If needed, you can still use onLeaveBack for specific actions
+        },
+      });
+      
+    const world = new World(WorldRef.current);
+    world.start();
+    const handleScroll = (event) => {
+      event.stopPropagation(); // Prevent the event from bubbling up
   
+      // Optional: Add your custom scroll logic here
+      // For example, adjusting `scrollTop` based on `event.deltaY`
+    };
+  
+    const contactDetailsElement = contactDetailsRef.current;
+    contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
+  
+    return () => {
+      contactDetailsElement.removeEventListener('wheel', handleScroll);
+    };
+
 
   }, []);
 
@@ -263,9 +329,8 @@ const HomePage = () => {
 
   return (
 
-
-
-
+<>
+<div id="work" className="section">
 
       <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
         <div ref={textRef2} className={styles.scrollText2}>
@@ -327,6 +392,77 @@ const HomePage = () => {
           ))}
         </div>
       </div>
+      </div>
+
+      <div id="contact" className="section">
+
+      <div ref={WorldRef} className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
+
+      </div>
+
+
+  <div ref={childWrapperRef} className="world-overlay">
+
+
+
+    <div className="contact-wrap">
+    <div className="contact-details" ref={contactDetailsRef}>
+          <div className="contact-scroll">
+          A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+        <div className="contact-info" style={{textAlign: 'left'}}>
+          <h4>PRODUCTION SERVICES</h4>
+          <p>135 #01 Beverlv Blvd<br />
+            Los Angeles CA, 90036<br />
+          </p>
+          <h4>CREATIVE SERVICES</h4>
+          <p>
+          Retouching<br />
+          Motion<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Retouching<br />
+          Motion<br />
+          Retouching<br />
+          Motion<br />
+          Retouching<br />
+          </p>
+        </div>
+        </div>
+      </div>
+
+      <div className="contact-info">
+          <h4>ST. STUDIO INC</h4>
+          <p>135 #01 Beverlv Blvd<br />
+            Los Angeles CA, 90036<br />
+          </p>
+          <h4>GENERAL</h4>
+          <p>
+            310 990 0000<br />
+            <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
+          </p>
+          <h4>STUDIO MANAGER</h4>
+          <p>
+          Camille Waterfallen<br />
+           <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
+          </p>
+        </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+<div className={styles.spacer}></div>
+
+</>
+
+
   );
 };
 
