@@ -283,7 +283,7 @@ const HomePage = () => {
         end: 'bottom center', // Define an end point
         pin: false,
         pinSpacing: false,
-        markers: true,
+        markers: false,
         onUpdate: (self) => {
           // Use the progress value to control the opacity
           const scaleValue = self.progress * 30;
