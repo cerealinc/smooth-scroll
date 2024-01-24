@@ -137,19 +137,18 @@ const HomePage = () => {
     gsap.registerPlugin(ScrollToPlugin);
 
     const flexItems = document.querySelectorAll('.flexItemWorks');
+    const isDesktop = () => window.innerWidth > 1024; // Or any other threshold you prefer
+    if (isDesktop()) {
 
     flexItems.forEach((flexItem) => {
       const projectDetails = flexItem.querySelector('.projectDetails p');
-      const isDesktop = () => window.innerWidth > 1024; // Or any other threshold you prefer
 
       // Initialize SplitText for each projectDetails
       const splitText = new SplitText(projectDetails, { type: 'chars' });
-      if (isDesktop()) {
         gsap.set(splitText.chars, {
         opacity: 0,
         y: 3,
       });
-    };
 
     
       // Create a GSAP timeline for the animation
@@ -169,7 +168,6 @@ const HomePage = () => {
       // Check if device is desktop
     
       // Mouse events
-      if (isDesktop()) {
         // Mouse enter event
         flexItem.addEventListener('mouseenter', () => {
           tl.play();
@@ -180,7 +178,10 @@ const HomePage = () => {
           tl.reverse();
         });
       }
-    });
+    )
+  };
+
+
     
     
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
