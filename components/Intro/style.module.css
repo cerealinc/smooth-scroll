@@ -144,5 +144,8 @@
     .wrapper {
       height: 52vh;
     }
+    .scrollText {
+      transform: translateY(-50px);
+    }
   }
   
