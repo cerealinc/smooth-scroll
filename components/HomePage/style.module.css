@@ -11,7 +11,7 @@
 .projectScrollText {
   top: 50%;
   position: absolute;
-  transform: translateY(-32px);
+  transform: translateY(-50%);
   color: #0a0a0a;
   z-index: 9;
   opacity: 0;
@@ -407,9 +407,7 @@ z-index: 0;
     font-size: 1.5rem;
 
   }
-  .projectScrollText {
-    transform: translateY(-12px);
-  }
+
   .projectDetails {
     position: relative;
     line-height: 1.3;
