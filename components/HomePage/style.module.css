@@ -407,7 +407,9 @@ z-index: 0;
     font-size: 1.5rem;
 
   }
-
+  .projectScrollText {
+    transform: translateY(-12px);
+  }
   .projectDetails {
     position: relative;
     line-height: 1.3;
