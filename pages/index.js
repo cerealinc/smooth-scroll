@@ -28,11 +28,24 @@ export default function Home() {
       }, 1000); // Adjust timeout to match the transition duration
     }
   };
-
+  const isMobile = () => {
+    // Ensure this runs only on the client side
+    if (typeof window !== "undefined") {
+      // Simple check for mobile devices
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+    }
+    return false; // Default to false if not on the client side
+  };
+  
+  
+    const lenisOptions = isMobile() 
+      ? { lerp: 0.05, duration: 0.5, smoothTouch: true } // Adjust these values for mobile
+      : { lerp: 0.1, duration: 1.5, smoothTouch: true }; // Default values for non-mobile
+  
   const fadeClass = renderMain ? (fadeOut ? 'fadeOut' : 'fadeIn') : '';
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
+    <ReactLenis root options={lenisOptions}>
       <Logo />
       <Nav handleClick={handleClick} />  
       <div id="home" className="section">

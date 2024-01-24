@@ -389,12 +389,15 @@ z-index: 0;
   .marquee-image.hide-mobile {
     display: none;
   }
+  .scrollText2 {
+    padding-bottom: 20px;
+  }
   .scrollText2 .flexItem {
     opacity: 1;
     line-height: 0;
     width: 100vw;
     position: relative;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
     
   .textBlock {

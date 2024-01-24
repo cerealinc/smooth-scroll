@@ -141,5 +141,8 @@
       font-size: 1.5rem;
   
     }
+    .wrapper {
+      height: 52vh;
+    }
   }
   

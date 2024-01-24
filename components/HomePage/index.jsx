@@ -140,40 +140,49 @@ const HomePage = () => {
 
     flexItems.forEach((flexItem) => {
       const projectDetails = flexItem.querySelector('.projectDetails p');
-  
+      const isDesktop = () => window.innerWidth > 1024; // Or any other threshold you prefer
+
       // Initialize SplitText for each projectDetails
       const splitText = new SplitText(projectDetails, { type: 'chars' });
-      // Set initial state
-      gsap.set(splitText.chars, {
+      if (isDesktop()) {
+        gsap.set(splitText.chars, {
         opacity: 0,
-        y: 6,
+        y: 3,
       });
-      flexItem.addEventListener('mouseenter', () => {
-        gsap.to(splitText.chars, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power3.inOut',
-          stagger: {
-            amount: 0.4, // Adjust the stagger amount as needed
-          },
-          force3D: true, // Add this line
+    };
+
+    
+      // Create a GSAP timeline for the animation
+      const tl = gsap.timeline({ paused: true });
+    
+      tl.to(splitText.chars, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.inOut',
+        stagger: {
+          amount: 0.5, // Adjust the stagger amount as needed
+        },
+        force3D: true, // Add this line
+      });
+    
+      // Check if device is desktop
+    
+      // Mouse events
+      if (isDesktop()) {
+        // Mouse enter event
+        flexItem.addEventListener('mouseenter', () => {
+          tl.play();
         });
-      });
-  
-      flexItem.addEventListener('mouseleave', () => {
-        gsap.to(splitText.chars, {
-          opacity: 0,
-          y: 6,
-          duration: 0.6,
-          ease: 'power3.inOut',
-          stagger: {
-            amount: 0.05, // Adjust the stagger amount as needed
-          },
-          force3D: true, // Add this line
+    
+        // Mouse leave event
+        flexItem.addEventListener('mouseleave', () => {
+          tl.reverse();
         });
-      });
+      }
     });
+    
+    
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
     setWorks(worksArray);
     
