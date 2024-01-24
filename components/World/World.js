@@ -19,13 +19,15 @@ let resizer;
 class World {
 
   constructor(container) {
+    this.allowZoom = false; // Add a flag to control zooming
+
     this.camera = createCamera(container);
     this.scene = createScene();
     this.earth = createEarth();
     this.moon = createMoon();
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
-
+    this.controls = createControls(this.camera, container);
     // adding moon to scene
     this.scene.add(this.moon);
 
@@ -47,6 +49,30 @@ class World {
     loop.updatables.push(this.earth, this.moon);
   }
 
+  calculateZoomLevel(progress) {
+    const minZoom = 280;
+    const maxZoom = 580;
+    // Interpolate between minZoom and maxZoom based on progress
+    const zoom = minZoom + (maxZoom - minZoom) * progress;
+    return { min: zoom, max: zoom };
+  }
+
+  enableZoom() {
+    this.allowZoom = true;
+  }
+
+  disableZoom() {
+    this.allowZoom = false;
+  }
+
+  updateZoom(progress) {
+    if (this.allowZoom) {
+      const zoomLevel = this.calculateZoomLevel(progress);
+      this.controls.minDistance = zoomLevel.min;
+      this.controls.maxDistance = zoomLevel.max;
+      this.controls.update();
+    }
+  }
   render() {
     this.renderer.render(this.scene, this.camera);
   }

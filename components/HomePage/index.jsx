@@ -5,118 +5,13 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { World } from '../World/World';
 import { CldVideoPlayer } from 'next-cloudinary';
+import { projects } from '@/data/projects';
+import { useDesktopAnimation } from '@/hooks/useDesktopAnimation';
 
 import Image from 'next/image'
 
 import styles from './style.module.css';
 
-const projects = [
-  {
-    id: "one",
-    title: "New Ara",
-    img: "2.jpg",
-    details: "Lorem ipsum dolor sit amet ut labore et dolore magna aliqua. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: [
-      "Production",
-      "Creative Development",
-      "Post Production"
-    ],
-    src: "new-era_ixfpxo"
-  },
-  {
-    id: "two",
-    title: "Lobos 1707",
-    img: "2.jpg",
-    details: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    tags: [
-      "Creative Direction",
-      "Creative Development",
-      "Production",
-      "Post Production"
-    ],
-    src: "lobos_y3u3kc"
-  },
-  {
-    id: "three",
-    title: "Keepers",
-    img: "2.jpg",
-    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
-    tags: [
-      "Creative Direction",
-      "Creative Development"
-    ],
-    src: "saint-studio-GME_SRT_gy2fxr"
-  },
-  {
-    id: "four",
-    title: "Haku",
-    img: "2.jpg",
-    details: "Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliequat.",
-    tags: [
-      "Creative Direction",
-      "Creative Development",
-      "Executive Production"
-    ],
-    src: "saint-studio-haku-dr-woo_yd18ny"
-  },
-  {
-    id: "five",
-    title: "Open Innovation",
-    img: "2.jpg",
-    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
-    tags: [
-      "Creative Direction",
-      "Creative Development"
-    ],
-    src: "saint-steven-taylor-Official_MP_Trailer_Final_cknikv"
-  },
-  {
-    id: "six",
-    title: "Krewe Summer 2020",
-    img: "2.jpg",
-    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
-    tags: [
-      "Creative Direction",
-      "Creative Development",
-      "Production"
-    ],
-    src: "Krewe2020_Thumbnail_wemyjj"
-  },
-  {
-    id: "seven",
-    title: "Halston x Netflix",
-    img: "2.jpg",
-    details: "Director - Steven Taylor, Photographer - Daniel P, Stvlist - Jaguline. Hair - Kell. Director - Steven Tavlor. Photographer - Daniel P, Stylist - Jaquline, Hair - Kelly,",
-    tags: [
-      "Creative Direction",
-      "Creative Development",
-      "Executive Production"
-    ],
-    src: "saint-steven-taylor-halston-netflix_acozq2"
-  },
-  {
-    id: "eight",
-    title: "Walmart InHome",
-    img: "saint-walmart.jpg",
-    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    tags: [
-      "Production"
-    ],
-    src: ""
-  },
-  {
-    id: "nine",
-    title: "Health by Habit",
-    img: "2.jpg",
-    details: "Project Info, Enim ad minim veniam lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    tags: [
-      "Creative Direction",
-      "Creative Development",
-      "Executive Production"
-    ],
-    src: "saint-studio-GME_SRT_gy2fxr"
-  }
-]
 const HomePage = () => {
   const swapText = useRef(null);
   const textRef = useRef(null);
@@ -132,57 +27,12 @@ const HomePage = () => {
   const focusFrontRef = useRef(null);
   const [works, setWorks] = useState([]);
 
+  useDesktopAnimation(); // Custom hook for desktop-specific animations
+
   useEffect(() => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-    const flexItems = document.querySelectorAll('.flexItemWorks');
-    const isDesktop = () => window.innerWidth > 1024; // Or any other threshold you prefer
-    if (isDesktop()) {
-
-    flexItems.forEach((flexItem) => {
-      const projectDetails = flexItem.querySelector('.projectDetails p');
-
-      // Initialize SplitText for each projectDetails
-      const splitText = new SplitText(projectDetails, { type: 'chars' });
-        gsap.set(splitText.chars, {
-        opacity: 0,
-        y: 3,
-      });
-
-    
-      // Create a GSAP timeline for the animation
-      const tl = gsap.timeline({ paused: true });
-    
-      tl.to(splitText.chars, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power3.inOut',
-        stagger: {
-          amount: 0.5, // Adjust the stagger amount as needed
-        },
-        force3D: true, // Add this line
-      });
-    
-      // Check if device is desktop
-    
-      // Mouse events
-        // Mouse enter event
-        flexItem.addEventListener('mouseenter', () => {
-          tl.play();
-        });
-    
-        // Mouse leave event
-        flexItem.addEventListener('mouseleave', () => {
-          tl.reverse();
-        });
-      }
-    )
-  };
-
-
-    
     
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
     setWorks(worksArray);
@@ -313,21 +163,68 @@ const HomePage = () => {
         },
       });
       
-      const contact = () => {
+      
+
+
+
+
+
 
         const world = new World(WorldRef.current);
   
         // starting world
         world.start();
-  
+
+
+        const throttle = (func, limit) => {
+          let lastFunc;
+          let lastRan;
+          return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            } else {
+              clearTimeout(lastFunc);
+              lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                  func.apply(context, args);
+                  lastRan = Date.now();
+                }
+              }, limit - (Date.now() - lastRan));
+            }
+          }
+        };
+        
+        const updateZoomThrottled = throttle(function(progress) {
+          world.updateZoom(progress);
+        }, 10); // Adjust the 100ms to your needs
+
+
+        ScrollTrigger.create({
+          trigger: projectWrapperRefOuter.current,
+          start: 'bottom bottom',
+          markers: true,
+          onEnter: () => world.enableZoom(), // Enable zooming
+          onLeave: () => world.disableZoom(), // Disable zooming
+          onEnterBack: () => world.enableZoom(), // Enable zooming
+          onLeaveBack: () => world.disableZoom(), // Disable zooming
+          onUpdate: self => {
+            updateZoomThrottled(self.progress);
+            console.log(self.progress);
+          },
+        });
+
+
         // locating on model
       // Los Angeles
       world.findLocation(34.0522, -118.2437, world.earth);
 
       // New York
       world.findLocation(40.7128, -74.0060, world.earth);
-      };
-      contact();
+      
+      
     const handleScroll = (event) => {
       event.stopPropagation(); // Prevent the event from bubbling up
   
