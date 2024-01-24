@@ -390,7 +390,7 @@ z-index: 0;
     display: none;
   }
   .scrollText2 {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
   }
   .scrollText2 .flexItem {
     opacity: 1;
