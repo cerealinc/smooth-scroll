@@ -39,8 +39,8 @@ export default function Home() {
   
   
     const lenisOptions = isMobile() 
-      ? { lerp: 0.9, syncTouch: true } // Adjust these values for mobile
-      : { lerp: 0.1, smoothTouch: true }; // Default values for non-mobile
+      ? { lerp: 0.8, duration: 1.5, smoothTouch: true } // Adjust these values for mobile
+      : { lerp: 0.1, duration: 1.5, smoothTouch: true }; // Default values for non-mobile
   
   const fadeClass = renderMain ? (fadeOut ? 'fadeOut' : 'fadeIn') : '';
 
