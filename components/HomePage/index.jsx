@@ -4,6 +4,7 @@ import { SplitText } from 'gsap/dist/SplitText';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { World } from '../World/World';
+import { CldVideoPlayer } from 'next-cloudinary';
 
 import Image from 'next/image'
 
@@ -20,7 +21,7 @@ const projects = [
       "Creative Development",
       "Post Production"
     ],
-    src: "new-era.mp4"
+    src: "new-era_ixfpxo"
   },
   {
     id: "two",
@@ -33,7 +34,7 @@ const projects = [
       "Production",
       "Post Production"
     ],
-    src: "lobos.mp4"
+    src: "lobos_y3u3kc"
   },
   {
     id: "three",
@@ -44,7 +45,7 @@ const projects = [
       "Creative Direction",
       "Creative Development"
     ],
-    src: "saint-studio-GME_SRT.mp4"
+    src: "saint-studio-GME_SRT_gy2fxr"
   },
   {
     id: "four",
@@ -56,7 +57,7 @@ const projects = [
       "Creative Development",
       "Executive Production"
     ],
-    src: "saint-studio-haku-dr-woo.mp4"
+    src: "saint-studio-haku-dr-woo_yd18ny"
   },
   {
     id: "five",
@@ -67,7 +68,7 @@ const projects = [
       "Creative Direction",
       "Creative Development"
     ],
-    src: "saint-steven-taylor-Official_MP_Trailer_Final.mp4"
+    src: "saint-steven-taylor-Official_MP_Trailer_Final_cknikv"
   },
   {
     id: "six",
@@ -79,7 +80,7 @@ const projects = [
       "Creative Development",
       "Production"
     ],
-    src: "Krewe2020_Thumbnail.mp4"
+    src: "Krewe2020_Thumbnail_wemyjj"
   },
   {
     id: "seven",
@@ -91,7 +92,7 @@ const projects = [
       "Creative Development",
       "Executive Production"
     ],
-    src: "saint-steven-taylor-halston-netflix.mp4"
+    src: "saint-steven-taylor-halston-netflix_acozq2"
   },
   {
     id: "eight",
@@ -113,7 +114,7 @@ const projects = [
       "Creative Development",
       "Executive Production"
     ],
-    src: "saint-studio-GME_SRT.mp4"
+    src: "saint-studio-GME_SRT_gy2fxr"
   }
 ]
 const HomePage = () => {
@@ -363,9 +364,14 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-                  <video loop muted autoPlay playsInline>
-                    <source src={`/images/${src}`} type="video/mp4" />
-                  </video>
+   
+                  <CldVideoPlayer
+                  height={2000}
+                  width={2000}
+                  controls={false}
+    loop muted autoPlay playsInline
+    src={`/SAINT/${src}`} type="video/mp4" 
+/>
                 </div>
               ) : (
                 // If src is not set, render image
