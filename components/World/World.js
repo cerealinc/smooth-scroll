@@ -11,6 +11,7 @@ import { Resizer } from "./systems/resizer.js";
 import { Loop } from "./systems/animationLoop.js";
 import { createControls } from "./systems/cameraControls.js";
 import { markLocation } from "./systems/locationFinder.js";
+import gsap from 'gsap';
 
 let loop;
 let controls;
@@ -50,10 +51,11 @@ class World {
   }
 
   calculateZoomLevel(progress) {
-    const minZoom = 280;
-    const maxZoom = 580;
-    // Interpolate between minZoom and maxZoom based on progress
-    const zoom = minZoom + (maxZoom - minZoom) * progress;
+    const minZoom = 180;
+    const maxZoom = 680;
+    // Use an easing function for smoother transition
+    const easedProgress = gsap.parseEase("power3.out")(progress / 5);
+    const zoom = minZoom + (maxZoom - minZoom) * easedProgress;
     return { min: zoom, max: zoom };
   }
 

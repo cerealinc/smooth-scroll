@@ -14,7 +14,7 @@ import styles from './style.module.css';
 
 const HomePage = () => {
   const swapText = useRef(null);
-  const textRef = useRef(null);
+  const spacerRef = useRef(null);
   const textRef2 = useRef(null);
   const videoRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
@@ -203,8 +203,9 @@ const HomePage = () => {
 
 
         ScrollTrigger.create({
-          trigger: projectWrapperRefOuter.current,
-          start: 'bottom bottom',
+          trigger: spacerRef.current,
+          start: 'top bottom',
+          end: 'top top',
           markers: true,
           onEnter: () => world.enableZoom(), // Enable zooming
           onLeave: () => world.disableZoom(), // Disable zooming
@@ -212,7 +213,7 @@ const HomePage = () => {
           onLeaveBack: () => world.disableZoom(), // Disable zooming
           onUpdate: self => {
             updateZoomThrottled(self.progress);
-            console.log(self.progress);
+
           },
         });
 
@@ -384,7 +385,7 @@ const HomePage = () => {
   </div>
 
 </div>
-<div className={styles.spacer}></div>
+<div ref={spacerRef} className={styles.spacer}></div>
 
 </>
 
