@@ -1,13 +1,8 @@
 .logo {
     font-size: 21.2px;
     letter-spacing: 0.1em;
-    position: fixed;
-    left: 50px;
-    top: 40px;
-    z-index: 9;
     color: #0a0a0a;
     font-weight: 500;
-    z-index: 9999999;
 
   }
   .logo a {
@@ -22,8 +17,7 @@
   @media screen and (max-width: 767px) {
 
   .logo {
-    left: 30px;
-    top: 20px;
+    z-index: 9;
   }
 
 }

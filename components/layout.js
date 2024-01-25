@@ -1,6 +1,4 @@
 
-import Nav from '../components/Nav'; 
-import Logo from '../components/Logo';
 import localFont from "@next/font/local";
 
 
@@ -23,7 +21,6 @@ export default function Layout({ children }) {
 
   return (
     <div style={bbfont.style}>
-    <Logo />
           {children}
           </div>
 

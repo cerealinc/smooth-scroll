@@ -1,6 +1,5 @@
 'use client';
 import React, {useState} from 'react';
-import Logo from '../components/Logo';
 import HomePage from '../components/HomePage'; 
 import Nav from '../components/Nav'; 
 import Intro from '../components/Intro';
@@ -15,16 +14,10 @@ export default function Home() {
   const handleClick = (shouldRenderMain) => {
     if (shouldRenderMain) {
       setRenderMain(true);
-      setFadeOut(false);
-      document.body.style.overflow = 'hidden';
-      document.body.style.height = '100vh';
 
     } else {
-      setFadeOut(true);
       setTimeout(() => {
         setRenderMain(false);
-        document.body.style.overflow = '';
-        document.body.style.height = '';
       }, 1000); // Adjust timeout to match the transition duration
     }
   };
@@ -46,7 +39,6 @@ export default function Home() {
 
   return (
     <ReactLenis root options={lenisOptions}>
-      <Logo />
       <Nav handleClick={handleClick} />  
       <div id="home" className="section">
         <Intro />

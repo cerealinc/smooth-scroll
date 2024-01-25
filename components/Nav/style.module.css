@@ -1,36 +1,44 @@
 
 
 .navigation {
-    font-size: 15px;
-    letter-spacing: 0.07em;
+
     position: fixed;
-    right: 42px;
-    top: 40px;
+    right: 0;
+    left: 0;
+    top: 0px;
     z-index: 9;
     color: #0a0a0a;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
     justify-content: center;
     z-index: 999999999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+
+
 }
-.navigation a {
+.menu a {
     color: #0a0a0a;
     text-decoration: none;
     padding: 8px;
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.07em;
 }
-.navigation a:hover .underline{
+.menu a:hover .underline{
     width: 100%;
-    height: 1px;
     background-color: #0a0a0a;
-    display: block;
-    margin-top: 8px;
-    position: relative;
     left: 0%;
     transition: 400ms ease-in-out;
+}
+
+.menu {
+    display: flex;
+
 }
 
 .underline {
@@ -45,22 +53,12 @@
 
 .active .underline {
     width: 100%;
-    height: 1px;
-    background-color: #0a0a0a;
-    display: block;
-    margin-top: 8px;
-    position: relative;
     left: 0%;
     transition: 400ms ease-in-out;
 }
 
 .inActive .underline {
     width: 0%;
-    height: 1px;
-    background-color: #0a0a0a;
-    display: block;
-    margin-top: 8px;
-    position: relative;
     left: -10%;
     transition: 400ms ease-in-out;
 
@@ -75,8 +73,23 @@ opacity: 1;
 
 @media screen and (max-width: 767px) {
     .navigation {
-      right: 22px;
-      top: 20px;
+        background: #f5f5f51b;
+        padding: 12px 20px;
+        backdrop-filter: blur(6px);
+
   }
+  .menu a {
+    font-size: 13px;
+    letter-spacing: 0.07em;
+}
+.underline {
+    width: 0;
+    height: 1px;
+    background-color: #0a0a0a;
+    display: block;
+    margin-top: 3px;
+    position: relative;
+    left: -10%;
+}
 
 }
