@@ -51,10 +51,9 @@ const HomePage = () => {
           markers: false,
           onUpdate: ({ progress, direction, isActive }) => {
             
-            const scaleValue = 1 - progress * 0.05;
-            const scaleValue2 = progress * 180;
+            const scaleValue2 = progress * 50;
             gsap.set(work, {
-              y: -scaleValue2,
+              yPercent: -scaleValue2,
             });
           },
         },
@@ -65,10 +64,8 @@ const HomePage = () => {
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: 'bottom-=100 top',
-          end: 'bottom+=200 top',
+          start: 'center top',
           scrub: true,
-          markers: false,
           onEnter: ({ progress, direction, isActive }) => {
             gsap.to(work, { filter: `blur(4px)`, duration: 1, });
           },
@@ -79,7 +76,7 @@ const HomePage = () => {
           },
           onUpdate: ({ progress, direction, isActive }) => {
 
-            const scaleValue = 1 - progress * 0.05;
+            const scaleValue = 1 - progress * 0.07;
             const scaleValue2 = progress * 50;
 
             gsap.set(videoWrap, {

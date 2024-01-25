@@ -11,6 +11,7 @@ export const useDesktopAnimation = () => {
     const isDesktop = () => window.innerWidth > 1024; // Or any other threshold you prefer
 
     if (isDesktop()) {
+      
       const flexItems = document.querySelectorAll('.flexItemWorks');
       
       flexItems.forEach((flexItem) => {
