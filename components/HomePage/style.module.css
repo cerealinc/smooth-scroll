@@ -116,7 +116,6 @@
   width: 100vw;
   display: block;
   position: relative;
-  z-index: 999999999;
 }
 .projectWrapperOuter {
 height: auto;

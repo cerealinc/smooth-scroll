@@ -2,7 +2,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 function createControls(camera, canvas) {
     const controls = new OrbitControls(camera, canvas);
-
+    controls.enableZoom = false; // Disable zoom functionality
     controls.enablePan = false;
     controls.enableDamping = true;
     controls.dampingFactor = 0.17;

@@ -51,7 +51,7 @@ class World {
   }
 
   calculateZoomLevel(progress) {
-    const minZoom = 180;
+    const minZoom = 280;
     const maxZoom = 680;
     // Use an easing function for smoother transition
     const easedProgress = gsap.parseEase("power3.out")(progress / 5);

@@ -7,6 +7,7 @@ function createControls(camera, canvas) {
 		controls.enableDamping = true;
 		controls.dampingFactor = 0.17;
 		controls.rotateSpeed = 0.37;
+    controls.enableZoom = false; // Disable zoom functionality
 
 
     return controls;

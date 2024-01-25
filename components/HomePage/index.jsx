@@ -206,7 +206,6 @@ const HomePage = () => {
           trigger: spacerRef.current,
           start: 'top bottom',
           end: 'top top',
-          markers: true,
           onEnter: () => world.enableZoom(), // Enable zooming
           onLeave: () => world.disableZoom(), // Disable zooming
           onEnterBack: () => world.enableZoom(), // Enable zooming
@@ -321,7 +320,7 @@ const HomePage = () => {
       </div>
       </div>
 
-      <div id="contact" className="section">
+      <div id="contact" className="section" style={{position: 'relative'}}>
 
       <div ref={WorldRef} className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
 
@@ -345,18 +344,8 @@ const HomePage = () => {
           <p>
           Retouching<br />
           Motion<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Retouching<br />
-          Motion<br />
-          Retouching<br />
-          Motion<br />
-          Retouching<br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<br />
           </p>
         </div>
         </div>
