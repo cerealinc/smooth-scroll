@@ -38,9 +38,7 @@ const HomePage = () => {
     setWorks(worksArray);
     
     worksArray.forEach((work) => {
-      const video = work.querySelector('video');
       const videoWrap = work.querySelector('.projectVideo');
-      const projectDetails = work.querySelector('.projectDetails');
     
       gsap.to(work, {
         scrollTrigger: {
