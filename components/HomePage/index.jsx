@@ -251,7 +251,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
     ScrollTrigger.create({
       trigger: specificSection,
-      start: "top center", // Adjust these values as needed
+      start: "top bottom", // Adjust these values as needed
       end: "top top",
       onEnter: () => stopLenis(),
       onLeaveBack: () => startLenis(),
