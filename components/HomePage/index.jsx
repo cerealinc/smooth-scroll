@@ -256,7 +256,25 @@ const HomePage = ({ startLenis, stopLenis }) => {
   }, []);
 
 
+  useEffect(() => {
 
+
+
+  ScrollTrigger.create({
+    trigger: projectWrapperRefOuter.current,
+    start: "bottom bottom",
+    end: "bottom top",
+    onEnter: () => stopLenis(),
+    onLeaveBack: () => startLenis(),
+    snap: {
+      snapTo: 1,
+      duration: 2, delay: 0.5, ease: "power3.inOut",
+      directional: false
+
+    }
+  });
+
+}, [startLenis, stopLenis, projectWrapperRefOuter]);
   
   
 
