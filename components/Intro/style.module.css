@@ -98,7 +98,18 @@
       transform: translateX(calc(-100% - 2rem));
     }
   }
+  @keyframes scroll2 {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }
   .scroll {
+    animation: scroll 17s linear infinite;
+  }
+  .scroll2 {
     animation: scroll 17s linear infinite;
   }
   .scrollWork {

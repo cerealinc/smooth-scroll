@@ -77,10 +77,10 @@ const Intro = () => {
 <div ref={childWrapperRef} className={styles.childWrapper}>
     <div ref={textRef} className={styles.scrollText2}>
       <div className={styles.marquee}>
-        <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={`${styles.marqueeContent} ${styles.scroll2}`}>
           <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
         </div>
-        <div className={`${styles.marqueeContent} ${styles.scroll}`}>
+        <div className={`${styles.marqueeContent} ${styles.scroll2}`}>
           <div className={styles.textBlock}>A partner for agencies, brands, and start-ups</div>
         </div>
       </div>
