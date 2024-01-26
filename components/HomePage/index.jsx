@@ -27,7 +27,14 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
   const focusFrontRef = useRef(null);
   const [works, setWorks] = useState([]);
-
+  const isMobile = () => {
+    // Ensure this runs only on the client side
+    if (typeof window !== "undefined") {
+      // Simple check for mobile devices
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+    }
+    return false; // Default to false if not on the client side
+  };
   useDesktopAnimation(); // Custom hook for desktop-specific animations
 
   useEffect(() => {
@@ -41,16 +48,19 @@ const HomePage = ({ startLenis, stopLenis }) => {
     worksArray.forEach((work) => {
       const videoWrap = work.querySelector('.projectVideo');
     
+
+      // Different scale value for mobile
+      const mobileScaleMultiplier = isMobile() ? 20 : 50; // Adjust this value as needed
+
       gsap.to(work, {
         scrollTrigger: {
           trigger: work,
-          start: "top center", // Use "top center" as a starting point
-          end: "bottom top",  // Use "bottom top" as an end point
+          start: "top center",
+          end: "bottom top",
           scrub: true,
           markers: false,
-          onUpdate: ({ progress, direction, isActive }) => {
-            
-            const scaleValue2 = progress * 50;
+          onUpdate: ({ progress }) => {
+            const scaleValue2 = progress * mobileScaleMultiplier;
             gsap.set(work, {
               yPercent: -scaleValue2,
             });

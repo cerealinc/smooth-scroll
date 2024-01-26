@@ -23,19 +23,16 @@
     padding: 8px;
     position: relative;
     text-transform: uppercase;
-    overflow: hidden;
     cursor: pointer;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.07em;
 }
-.menu a:hover .underline{
-    width: 100%;
-    background-color: #0a0a0a;
-    left: 0%;
-    transition: 400ms ease-in-out;
+.menu a:hover .underline,
+.active .underline {
+    width: calc(100% - 8px);
+    left: 4px;
 }
-
 .menu {
     display: flex;
 
@@ -47,20 +44,14 @@
     background-color: #0a0a0a;
     display: block;
     margin-top: 8px;
-    position: relative;
-    left: -10%;
-}
-
-.active .underline {
-    width: 100%;
-    left: 0%;
+    position: absolute;
+    left: -8px;
     transition: 400ms ease-in-out;
 }
 
 .inActive .underline {
     width: 0%;
-    left: -10%;
-    transition: 400ms ease-in-out;
+    left: -8px;
 
 }
 .inActive {
@@ -83,13 +74,7 @@ opacity: 1;
     letter-spacing: 0.07em;
 }
 .underline {
-    width: 0;
-    height: 1px;
-    background-color: #0a0a0a;
-    display: block;
     margin-top: 3px;
-    position: relative;
-    left: -10%;
 }
 
 }
