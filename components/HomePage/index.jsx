@@ -273,12 +273,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
     });
 
 
-
-
-    // Cleanup
-    return () => {
-      ScrollTrigger.kill();
-    };
   }, [startLenis, stopLenis]);
 
   const [activeId, setActiveId] = useState(0);
