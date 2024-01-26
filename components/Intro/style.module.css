@@ -110,7 +110,7 @@
     animation: scroll 17s linear infinite;
   }
   .scroll2 {
-    animation: scroll 17s linear infinite;
+    animation: scroll 18s linear infinite;
   }
   .scrollWork {
     animation: scroll 26s linear infinite;
@@ -146,10 +146,10 @@
   
     }
     .wrapper {
-      height: 49vh;
+      height: 53vh;
     }
     .scrollText {
-      transform: translateY(-50px);
+      transform: translateY(-100%);
     }
   }
   
