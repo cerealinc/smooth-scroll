@@ -255,7 +255,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
       end: "top top-=200",
       onEnter: () => stopLenis(),
       onLeaveBack: () => startLenis(),
-      markers: true,
+      markers: false,
       snap: 1, // Snaps to the start of the section
       duration: 0.3, ease: "power3.inOut" 
       // You can also customize the snap with an object for more control
