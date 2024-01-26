@@ -7,12 +7,13 @@ import { World } from '../World/World';
 import { CldVideoPlayer } from 'next-cloudinary';
 import { projects } from '@/data/projects';
 import { useDesktopAnimation } from '@/hooks/useDesktopAnimation';
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 import Image from 'next/image'
 
 import styles from './style.module.css';
 
-const HomePage = () => {
+const HomePage = ({ startLenis, stopLenis }) => {
   const swapText = useRef(null);
   const spacerRef = useRef(null);
   const textRef2 = useRef(null);
@@ -243,6 +244,29 @@ const HomePage = () => {
 
 
   }, []);
+
+
+  useEffect(() => {
+    const specificSection = document.getElementById('contact');
+
+    ScrollTrigger.create({
+      trigger: specificSection,
+      start: "top-=200 center", // Adjust these values as needed
+      end: "top top-=200",
+      onEnter: () => stopLenis(),
+      onLeaveBack: () => startLenis(),
+      markers: true,
+      snap: 1, // Snaps to the start of the section
+      duration: 0.3, ease: "power3.inOut" 
+      // You can also customize the snap with an object for more control
+      // e.g., snap: { snapTo: "labels", duration: 0.3, delay: 0.1, ease: "power1.inOut" }
+    });
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.kill();
+    };
+  }, [startLenis, stopLenis]);
 
   const [activeId, setActiveId] = useState(0);
 
