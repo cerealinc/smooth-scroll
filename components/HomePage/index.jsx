@@ -256,24 +256,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
   }, []);
 
 
-  useEffect(() => {
-    const specificSection = document.getElementById('contact');
 
-    ScrollTrigger.create({
-      trigger: specificSection,
-      start: "top bottom", // Adjust these values as needed
-      end: "top top",
-      onEnter: () => stopLenis(),
-      onLeaveBack: () => startLenis(),
-      markers: false,
-      snap: 1, // Snaps to the start of the section
-      duration: 0.5, delay: 1, ease: "power3.inOut" 
-      // You can also customize the snap with an object for more control
-      // e.g., snap: { snapTo: "labels", duration: 0.3, delay: 0.1, ease: "power1.inOut" }
-    });
-
-
-  }, [startLenis, stopLenis]);
+  
+  
 
   const [activeId, setActiveId] = useState(0);
 
@@ -306,8 +291,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
         </div>
    
                   <CldVideoPlayer
-                  height={2000}
-                  width={2000}
+  width="1920" // Width of the video player
+  height="1080" // Height of the video player
+  style={{ width: '100%' }} // Set the width to 100% to make it responsive
                   controls={false}
     loop muted autoPlay playsInline
     src={`/SAINT/${src}`} type="video/mp4" 
@@ -353,7 +339,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
       </div>
       </div>
 
-      <div id="contact" className="section" style={{position: 'relative'}}>
+      <div id="contact" className="section" style={{position: 'relative', height: '30vh'}}>
 
       <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
 
@@ -368,10 +354,20 @@ const HomePage = ({ startLenis, stopLenis }) => {
     <div className={styles.contactDetails} ref={contactDetailsRef}>
           <div className={styles.contactScroll}>
           A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-        <div className={styles.bah} style={{textAlign: 'left'}}><p><br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
+        <div className={styles.bah} style={{textAlign: 'left'}}><br/>
+          <ul>
+<li>Production</li>
+<li>Post Production</li>
+<li>Post Production Management </li>
+<li>Retouching </li>
+<li>Motion Editing</li>
+<li>Music Directing / Supervision</li>
+<li>Creative Services</li>
+<li>Creative Direction </li>
+<li>Art Direction</li>
+<li>Project Management</li>
+<li>Social Content Strategy + Management </li>
+</ul>
         </div>
         </div>
       </div>
