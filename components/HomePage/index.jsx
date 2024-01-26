@@ -261,7 +261,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
     ScrollTrigger.create({
       trigger: specificSection,
-      start: "top center", // Adjust these values as needed
+      start: "top bottom", // Adjust these values as needed
       end: "top top",
       onEnter: () => stopLenis(),
       onLeaveBack: () => startLenis(),
@@ -271,6 +271,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
       // You can also customize the snap with an object for more control
       // e.g., snap: { snapTo: "labels", duration: 0.3, delay: 0.1, ease: "power1.inOut" }
     });
+
+
+
 
     // Cleanup
     return () => {
