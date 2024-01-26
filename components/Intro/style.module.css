@@ -89,11 +89,6 @@
   z-index: 1;
 }
 
-  @media screen and (max-width: 767px) {
-    .marquee-image.hide-mobile {
-      display: none;
-    }
-  }
   
   @keyframes scroll {
     from {
@@ -109,9 +104,7 @@
   .scrollWork {
     animation: scroll 26s linear infinite;
   }
-  .reverse {
-    animation-direction: reverse;
-  }
+
   @keyframes scrollWork {
     from {
       transform: translateX(0);
@@ -135,7 +128,7 @@
     }
       
     .textBlock {
-      font-size: 1.2rem;
+      font-size: 2.2rem;
     }
     .projectScrollText .textBlock {
       font-size: 1.5rem;
