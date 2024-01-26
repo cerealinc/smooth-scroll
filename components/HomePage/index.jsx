@@ -358,20 +358,20 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
       <div id="contact" className="section" style={{position: 'relative'}}>
 
-      <div ref={WorldRef} className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
+      <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
 
       </div>
 
 
-  <div ref={childWrapperRef} className="world-overlay">
+  <div ref={childWrapperRef} className={styles.worldOverlay}>
 
 
 
-    <div className="contact-wrap">
-    <div className="contact-details" ref={contactDetailsRef}>
-          <div className="contact-scroll">
+    <div className={styles.contactWrap}>
+    <div className={styles.contactDetails} ref={contactDetailsRef}>
+          <div className={styles.contactScroll}>
           A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-        <div className='bah' style={{textAlign: 'left'}}><p><br />
+        <div className={styles.bah} style={{textAlign: 'left'}}><p><br />
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
@@ -379,21 +379,22 @@ const HomePage = ({ startLenis, stopLenis }) => {
         </div>
       </div>
 
-      <div className="contact-info">
-        <div className='info-section'>
+      <div className={styles.contactInfo}>
+        <div className={styles.infoSection}>
           <h4>ST. STUDIO INC</h4>
           <p>135 #01 Beverlv Blvd<br />
             Los Angeles CA, 90036<br />
           </p>
           </div>
-          <div className='hide-md info-section'>
+          <div className={`${styles.hideMd} ${styles.infoSection}`}>
           <h4>GENERAL</h4>
           <p>
             310 990 0000<br />
             <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
           </p>
           </div>
-          <div className='info-section bahbah'>
+          <div className={`${styles.infoSection} ${styles.bahbah}`}>
+
           <h4>STUDIO MANAGER</h4>
           <p>
           Camille Waterfallen<br />
