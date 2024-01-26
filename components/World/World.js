@@ -4,6 +4,7 @@ import { createEarth } from "./components/Earth.js";
 import { createScene } from "./components/Scene.js";
 import { createLight } from "./components/Light.js";
 import { createMoon } from "./components/Moon.js";
+import { createMars } from "./components/Mars.js";
 
 // importing systems
 import { createRenderer } from "./systems/renderer.js";
@@ -26,11 +27,13 @@ class World {
     this.scene = createScene();
     this.earth = createEarth();
     this.moon = createMoon();
+    this.mars = createMars();
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
     this.controls = createControls(this.camera, container);
     // adding moon to scene
     this.scene.add(this.moon);
+    this.scene.add(this.mars);
 
     // adding earth to scene
     this.scene.add(this.earth);
@@ -47,7 +50,7 @@ class World {
 
     // animation loop
     loop = new Loop(this.camera, this.scene, this.renderer);
-    loop.updatables.push(this.earth, this.moon);
+    loop.updatables.push(this.earth, this.moon, this.mars);
   }
 
   calculateZoomLevel(progress) {

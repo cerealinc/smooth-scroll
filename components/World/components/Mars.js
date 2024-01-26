@@ -2,10 +2,10 @@ import * as THREE from "three";
 
 const textureLoader = new THREE.TextureLoader();
 
-function createMoon() {
+function createMars() {
   const geometry = new THREE.SphereGeometry(62, 32, 32);
   const moon_texture = textureLoader.load(
-    "/assets/textures/moon/moon_texture.jpg"
+    "/assets/textures/moon/moon.jpg"
   );
 
   const material = new THREE.MeshPhongMaterial({
@@ -13,13 +13,13 @@ function createMoon() {
   });
 
   const moon = new THREE.Mesh(geometry, material);
-  moon.position.set(680, -730, -2950);
+  moon.position.set(-640, -700, -1650);
 
   moon.tick = (delta) => {
-    moon.rotation.y += (1 / 10) * delta;
+    moon.rotation.y += (1 / 15) * delta;
   };
 
   return moon;
 }
 
-export { createMoon };
+export { createMars };
