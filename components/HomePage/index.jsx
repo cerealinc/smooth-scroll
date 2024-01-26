@@ -330,37 +330,36 @@ const HomePage = () => {
     <div className="contact-details" ref={contactDetailsRef}>
           <div className="contact-scroll">
           A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-        <div className="contact-info" style={{textAlign: 'left'}}>
-          <h4>PRODUCTION SERVICES</h4>
-          <p>135 #01 Beverlv Blvd<br />
-            Los Angeles CA, 90036<br />
-          </p>
-          <h4>CREATIVE SERVICES</h4>
-          <p>
-          Retouching<br />
-          Motion<br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-<br />
-          </p>
+        <div className='bah' style={{textAlign: 'left'}}><p><br />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
         </div>
         </div>
       </div>
 
       <div className="contact-info">
+        <div className='info-section'>
           <h4>ST. STUDIO INC</h4>
           <p>135 #01 Beverlv Blvd<br />
             Los Angeles CA, 90036<br />
           </p>
+          </div>
+          <div className='hide-md info-section'>
           <h4>GENERAL</h4>
           <p>
             310 990 0000<br />
             <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
           </p>
+          </div>
+          <div className='info-section bahbah'>
           <h4>STUDIO MANAGER</h4>
           <p>
           Camille Waterfallen<br />
            <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
           </p>
+          </div>
+
         </div>
 
     </div>

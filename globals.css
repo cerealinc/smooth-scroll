@@ -66,6 +66,37 @@ html.lenis {
   padding: 50px;
   
 }
+.bah {
+  color: #0a0a0a;
+  text-align: left;
+  line-height: 1.3;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: capitalize;
+}
+
+.bah h4{
+  color: #0a0a0a;
+  line-height: 1.3;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+.bah p
+{
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-style: italic;
+  color: #888888;
+  letter-spacing: 0.07em;
+}
+
+
 .contact-info {
   color: #0a0a0a;
   text-align: right;
@@ -145,4 +176,45 @@ html.lenis {
 .fadeOut {
   opacity: 0; /* Start with opacity 0 */
   z-index: -1;
+}
+
+@media screen and (max-width: 767px) {
+  .contact-details {
+    width: 100%;
+    height: 40vh;
+  }
+.world-container {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 60vh;
+  margin-bottom: 40vh;
+
+}
+.contact-wrap {
+  padding: 20px;
+  display: block;
+}
+.contact-info {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+.contact-info p{
+  text-align: left;
+  font-size: 12px;
+}
+.contact-details, .contact-info h4 {
+  font-size: 13px;
+}
+.hide-md {
+  display: none;
+}
+.bah p {
+  font-size: 12px;
+}
+
+.contact-info .bahbah p, .bahbah {
+  text-align: right;
+}
 }
