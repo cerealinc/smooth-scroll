@@ -220,19 +220,26 @@ const HomePage = () => {
       world.findLocation(40.7128, -74.0060, world.earth);
       
       
-    const handleScroll = (event) => {
-      event.stopPropagation(); // Prevent the event from bubbling up
-  
-      // Optional: Add your custom scroll logic here
-      // For example, adjusting `scrollTop` based on `event.deltaY`
+      const handleScroll = (event) => {
+        event.stopPropagation(); // Prevent the event from bubbling up
+    
+        // Optional: Add your custom scroll logic here
+        // For example, adjusting `scrollTop` based on `event.deltaY` or touch movements
     };
-  
+    
     const contactDetailsElement = contactDetailsRef.current;
+    
+    // For mouse wheel scrolling
     contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
-  
+    
+    // For touch-based scrolling
+    contactDetailsElement.addEventListener('touchmove', handleScroll, { passive: false });
+    
     return () => {
-      contactDetailsElement.removeEventListener('wheel', handleScroll);
+        contactDetailsElement.removeEventListener('wheel', handleScroll);
+        contactDetailsElement.removeEventListener('touchmove', handleScroll);
     };
+    
 
 
   }, []);
