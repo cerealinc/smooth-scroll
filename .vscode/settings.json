@@ -1,0 +1,20 @@
+{
+    // This is all that matters
+    "workbench.colorTheme": "Cobalt2",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 20,
+    "editor.letterSpacing": 0.5,
+    "files.trimTrailingWhitespace": true,
+    "editor.fontWeight": "400",
+    "prettier.eslintIntegration": true,
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 2,
+    "editor.cursorBlinking": "solid",
+    "editor.renderWhitespace": "selection",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+  }

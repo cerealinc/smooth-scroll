@@ -2,21 +2,27 @@ import * as THREE from "three";
 
 const textureLoader = new THREE.TextureLoader();
 
+
 const createClouds = () => {
-  const canvasCloud = textureLoader.load(
-    "/assets/textures/earth/earth_clouds.png"
-  );
+  let cloudLayers = new THREE.Group();
 
-  const geometry = new THREE.SphereGeometry(101, 128, 128); // Increased segments
-  const material = new THREE.MeshPhongMaterial({
-    map: canvasCloud,
-    transparent: true,
-    depthTest: false,
-  });
+  for (let i = 0; i < 3; i++) { // Create 3 layers
+    const canvasCloud = textureLoader.load("/assets/textures/earth/Clouds.png");
 
-  const cloudMesh = new THREE.Mesh(geometry, material);
+    const geometry = new THREE.SphereGeometry(104 + i * 0.5, 128, 128); // Slightly increase radius for each layer
+    const material = new THREE.MeshPhongMaterial({
+      alphaMap: canvasCloud,
 
-  return cloudMesh;
+      transparent: true,
+      opacity: 0.6 - i * 0.1, // Decrease opacity for each layer
+      depthTest: true,
+    });
+
+    const cloudMesh = new THREE.Mesh(geometry, material);
+    cloudLayers.add(cloudMesh);
+  }
+
+  return cloudLayers;
 };
 
 function createMaterial() {

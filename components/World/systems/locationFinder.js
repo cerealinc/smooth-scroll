@@ -25,7 +25,7 @@ function findPosition(lat, lng, radius) {
   const R = radius + 2; // Adding a small offset to keep it above the surface
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lng + 180) * Math.PI / 180;
-  
+
   const x = -R * Math.sin(phi) * Math.cos(theta);
   const y = R * Math.cos(phi);
   const z = R * Math.sin(phi) * Math.sin(theta);
@@ -61,7 +61,7 @@ function markLocation(lat, lng, earth) {
   const marker = createMarker();
 
   // Finding the position above the Earth's surface
-  const position = findPosition(lat, lng, 110); // Adjust the radius to position the beacon above the Earth
+  const position = findPosition(lat, lng, 100); // Adjust the radius to position the beacon above the Earth
 
   // Setting the marker position above the Earth's surface
   marker.position.set(position.x, position.y, position.z); // Adjust the Y-axis value to position the beacon above the Earth

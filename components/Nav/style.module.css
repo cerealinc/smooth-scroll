@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 32px 40px;
 
 
 }
@@ -27,6 +27,8 @@
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.07em;
+    transition: 400ms ease-in-out;
+
 }
 .menu a:hover .underline,
 .active .underline {
@@ -43,7 +45,7 @@
     height: 1px;
     background-color: #0a0a0a;
     display: block;
-    margin-top: 8px;
+    margin-top: 4px;
     position: absolute;
     left: -8px;
     transition: 400ms ease-in-out;
@@ -58,20 +60,31 @@
 transition: 400ms ease-in-out;
 opacity: 1;
 }
-.inActive:hover {
+.menu a:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 767px) {
     .navigation {
-        background: #f5f5f51b;
-        padding: 12px 20px;
-        backdrop-filter: blur(6px);
-
+        padding: 12px 19px 12px 20px;
+        justify-content: center;
+        top: 30px;
+  }
+  .menu {
+    position: absolute;
+    top: 10px;
+    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
   }
   .menu a {
     font-size: 13px;
     letter-spacing: 0.07em;
+    opacity: .6 !important;
+}
+.menu a.homeLink {
+    display: none;
 }
 .underline {
     margin-top: 3px;

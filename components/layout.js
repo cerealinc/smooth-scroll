@@ -21,8 +21,8 @@ export default function Layout({ children }) {
 
   return (
     <div style={bbfont.style}>
-          {children}
-          </div>
+      {children}
+    </div>
 
   )
 }
