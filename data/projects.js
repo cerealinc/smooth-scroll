@@ -1,7 +1,7 @@
 export const projects = [
         {
           id: "one",
-          title: "New Ara",
+          title: "New Era",
           img: "2.jpg",
           details: "Talent — Victoria Brito, Director — Steven Taylor, Photographer — Daniel Prakopcyk, DP – Matthew Roe, Fashion Stylist — Jacqueline Wlodarczyk, Makeup Artist – Keshia Smith, Cortney Watson, Production — Rowan Productions, Post Production – ST. Studio",
           tags: [

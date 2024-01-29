@@ -14,6 +14,31 @@ import Image from 'next/image'
 import styles from './style.module.css';
 
 const HomePage = ({ startLenis, stopLenis }) => {
+  // State for device type
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is on a mobile device
+    setIsMobileDevice(
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    );
+  }, []);
+
+  // State to manage the number of displayed projects
+  // Will be set after the device type is determined
+  const [displayedProjects, setDisplayedProjects] = useState(projects.length);
+
+  useEffect(() => {
+    // Set the initial number of projects based on device type
+    if (isMobileDevice) {
+      setDisplayedProjects(3);
+    }
+  }, [isMobileDevice]);
+
+  // Function to handle "View More" button click
+  const loadMoreProjects = () => {
+    setDisplayedProjects(prev => prev + 3);
+  };
   const swapText = useRef(null);
   const spacerRef = useRef(null);
   const textRef2 = useRef(null);
@@ -41,13 +66,13 @@ const HomePage = ({ startLenis, stopLenis }) => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-    
+
     const worksArray = Array.from(document.querySelectorAll('.flexItemWorks'));
     setWorks(worksArray);
-    
+
     worksArray.forEach((work) => {
       const videoWrap = work.querySelector('.projectVideo');
-    
+
 
       // Different scale value for mobile
       const mobileScaleMultiplier = isMobile() ? 20 : 50; // Adjust this value as needed
@@ -67,8 +92,8 @@ const HomePage = ({ startLenis, stopLenis }) => {
           },
         },
       });
-    
-    
+
+
       // First gsap.to code for scaling in
       gsap.to(work, {
         scrollTrigger: {
@@ -124,133 +149,133 @@ const HomePage = ({ startLenis, stopLenis }) => {
       markers: false,
       onEnter: onEnterFunction,
       onLeaveBack: onLeaveBackFunction,
-      
+
     });
 
-      // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
-      ScrollTrigger.create({
-        trigger: projectWrapperRefOuter.current,
-        start: 'bottom center',
-        pin: false, // Pin the outer wrapper
-        pinSpacing: false, // Adjust pinSpacing based on your layout needs
-        markers: false,
-        onEnter: ({ progress, direction, isActive }) => {
-          gsap.to(childWrapperRef.current, { filter: `blur(0px)`, duration: 1.5, });
-        },
-        onLeaveBack: ({ progress, direction, isActive }) => {
-          // Reverse the animation when scrolling back down
-          gsap.to(childWrapperRef.current, {filter: `blur(4px)`, duration: 1.5, });
+    // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
+    ScrollTrigger.create({
+      trigger: projectWrapperRefOuter.current,
+      start: 'bottom center',
+      pin: false, // Pin the outer wrapper
+      pinSpacing: false, // Adjust pinSpacing based on your layout needs
+      markers: false,
+      onEnter: ({ progress, direction, isActive }) => {
+        gsap.to(childWrapperRef.current, { filter: `blur(0px)`, duration: 1.5, });
+      },
+      onLeaveBack: ({ progress, direction, isActive }) => {
+        // Reverse the animation when scrolling back down
+        gsap.to(childWrapperRef.current, { filter: `blur(4px)`, duration: 1.5, });
 
-        },     
-      });
+      },
+    });
 
-      ScrollTrigger.create({
-        trigger: projectWrapperRefOuter.current,
-        start: 'bottom bottom',
-        end: 'bottom center', // Define an end point
-        pin: false,
-        pinSpacing: false,
-        markers: false,
-        onUpdate: (self) => {
-          // Use the progress value to control the opacity
-          const scaleValue = self.progress * 30;
-          gsap.set(WorldRef.current, {
-            opacity: self.progress, // Progress ranges from 0 to 1
-          });
-          gsap.set(childWrapperRef.current, {
-            y: -scaleValue, // Progress ranges from 0 to 1
-          });
-        },
-        onEnter: () => {
-          // If needed, you can still use onEnter for specific actions
-        },
-        onLeaveBack: () => {
-          // If needed, you can still use onLeaveBack for specific actions
-        },
-      });
-      
-      
+    ScrollTrigger.create({
+      trigger: projectWrapperRefOuter.current,
+      start: 'bottom bottom',
+      end: 'bottom center', // Define an end point
+      pin: false,
+      pinSpacing: false,
+      markers: false,
+      onUpdate: (self) => {
+        // Use the progress value to control the opacity
+        const scaleValue = self.progress * 30;
+        gsap.set(WorldRef.current, {
+          opacity: self.progress, // Progress ranges from 0 to 1
+        });
+        gsap.set(childWrapperRef.current, {
+          y: -scaleValue, // Progress ranges from 0 to 1
+        });
+      },
+      onEnter: () => {
+        // If needed, you can still use onEnter for specific actions
+      },
+      onLeaveBack: () => {
+        // If needed, you can still use onLeaveBack for specific actions
+      },
+    });
 
 
 
 
 
 
-        const world = new World(WorldRef.current);
-  
-        // starting world
-        world.start();
 
 
-        const throttle = (func, limit) => {
-          let lastFunc;
-          let lastRan;
-          return function() {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
+    const world = new World(WorldRef.current);
+
+    // starting world
+    world.start();
+
+
+    const throttle = (func, limit) => {
+      let lastFunc;
+      let lastRan;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function () {
+            if ((Date.now() - lastRan) >= limit) {
               func.apply(context, args);
               lastRan = Date.now();
-            } else {
-              clearTimeout(lastFunc);
-              lastFunc = setTimeout(function() {
-                if ((Date.now() - lastRan) >= limit) {
-                  func.apply(context, args);
-                  lastRan = Date.now();
-                }
-              }, limit - (Date.now() - lastRan));
             }
-          }
-        };
-        
-        const updateZoomThrottled = throttle(function(progress) {
-          world.updateZoom(progress);
-        }, 10); // Adjust the 100ms to your needs
-
-
-        ScrollTrigger.create({
-          trigger: spacerRef.current,
-          start: 'top bottom',
-          end: 'top top',
-          onEnter: () => world.enableZoom(), // Enable zooming
-          onLeave: () => world.disableZoom(), // Disable zooming
-          onEnterBack: () => world.enableZoom(), // Enable zooming
-          onLeaveBack: () => world.disableZoom(), // Disable zooming
-          onUpdate: self => {
-            updateZoomThrottled(self.progress);
-
-          },
-        });
-
-
-        // locating on model
-      // Los Angeles
-      world.findLocation(34.0522, -118.2437, world.earth);
-
-      // New York
-      world.findLocation(40.7128, -74.0060, world.earth);
-      
-      
-      const handleScroll = (event) => {
-        event.stopPropagation(); // Prevent the event from bubbling up
-    
-        // Optional: Add your custom scroll logic here
-        // For example, adjusting `scrollTop` based on `event.deltaY` or touch movements
+          }, limit - (Date.now() - lastRan));
+        }
+      }
     };
-    
+
+    const updateZoomThrottled = throttle(function (progress) {
+      world.updateZoom(progress);
+    }, 10); // Adjust the 100ms to your needs
+
+
+    ScrollTrigger.create({
+      trigger: spacerRef.current,
+      start: 'top bottom',
+      end: 'top top',
+      onEnter: () => world.enableZoom(), // Enable zooming
+      onLeave: () => world.disableZoom(), // Disable zooming
+      onEnterBack: () => world.enableZoom(), // Enable zooming
+      onLeaveBack: () => world.disableZoom(), // Disable zooming
+      onUpdate: self => {
+        updateZoomThrottled(self.progress);
+
+      },
+    });
+
+
+    // locating on model
+    // Los Angeles
+    world.findLocation(34.0522, -118.2437, world.earth);
+
+    // New York
+    world.findLocation(40.7128, -74.0060, world.earth);
+
+
+    const handleScroll = (event) => {
+      event.stopPropagation(); // Prevent the event from bubbling up
+
+      // Optional: Add your custom scroll logic here
+      // For example, adjusting `scrollTop` based on `event.deltaY` or touch movements
+    };
+
     const contactDetailsElement = contactDetailsRef.current;
-    
+
     // For mouse wheel scrolling
     contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
-    
+
     // For touch-based scrolling
     contactDetailsElement.addEventListener('touchmove', handleScroll, { passive: false });
-    
+
     return () => {
-        contactDetailsElement.removeEventListener('wheel', handleScroll);
-        contactDetailsElement.removeEventListener('touchmove', handleScroll);
+      contactDetailsElement.removeEventListener('wheel', handleScroll);
+      contactDetailsElement.removeEventListener('touchmove', handleScroll);
     };
-    
+
 
 
   }, []);
@@ -260,170 +285,179 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
 
 
-  ScrollTrigger.create({
-    trigger: projectWrapperRefOuter.current,
-    start: "bottom bottom",
-    end: "bottom top",
-    onEnter: () => stopLenis(),
-    onLeaveBack: () => startLenis(),
-    snap: {
-      snapTo: 1,
-      duration: 2, delay: 0.5, ease: "power3.inOut",
-      directional: false
+    ScrollTrigger.create({
+      trigger: projectWrapperRefOuter.current,
+      start: "bottom bottom",
+      end: "bottom top",
+      onEnter: () => stopLenis(),
+      onLeaveBack: () => startLenis(),
+      snap: {
+        snapTo: 1,
+        duration: 2, delay: 0.5, ease: "power3.inOut",
+        directional: false
 
-    }
-  });
+      }
+    });
 
-}, [startLenis, stopLenis, projectWrapperRefOuter]);
-  
-  
+  }, [startLenis, stopLenis, projectWrapperRefOuter]);
+
+
 
   const [activeId, setActiveId] = useState(0);
 
   const setActiveElementOnHover = (id) => {
-      setActiveId(id);
+    setActiveId(id);
   };
 
   return (
 
-<>
-<div id="work" className="section">
+    <>
+      <div id="work" className="section">
 
-      <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
-        <div ref={textRef2} className={styles.scrollText2}>
-          {projects.map(({ id, title, details, img, src, tags }) => (
-            // eslint-disable-next-line react/jsx-key
-            <div key={id} className={`${styles.flexItem} flexItemWorks`} onMouseEnter={() => [setActiveElementOnHover(id)]}>
-              {src ? (
-                // If src is set, render video
-                <div className={`${styles.projectVideo} projectVideo`}>
-                          <div className={styles.projectScrollText}>
-          <div className={styles.projectMarquee}>
-            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
-              <div className={styles.textBlock}>Case Study Coming Soon</div>
-            </div>
-            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
-            <div className={styles.textBlock}>Case Study Coming Soon</div>
-            </div>
-          </div>
-        </div>
-   
-                  <CldVideoPlayer
-  width="1920" // Width of the video player
-  height="1080" // Height of the video player
-  style={{ width: '100%' }} // Set the width to 100% to make it responsive
-                  controls={false}
-    loop muted autoPlay playsInline
-    src={`/SAINT/${src}`} type="video/mp4" 
-/>
-                </div>
-              ) : (
-                // If src is not set, render image
-                <div className={`${styles.projectImage}`}>
-                                            <div className={styles.projectScrollText}>
-          <div className={styles.projectMarquee}>
-            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
-              <div className={styles.textBlock}>Case Study Coming Soon</div>
-            </div>
-            <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
-            <div className={styles.textBlock}>Case Study Coming Soon</div>
-            </div>
-          </div>
-        </div>
-                  <img src={`/images/${img}`} alt={title} />
-                </div>
-              )}
+        <div ref={projectWrapperRefOuter} className={styles.projectWrapperOuter} id='your-anchor-2'>
+          <div ref={textRef2} className={styles.scrollText2}>
+          {projects.slice(0, displayedProjects).map(({ id, title, details, img, src, tags }) => (
+              // eslint-disable-next-line react/jsx-key
+              <div key={id} className={`${styles.flexItem} flexItemWorks`} onMouseEnter={() => [setActiveElementOnHover(id)]}>
+                {src ? (
+                  // If src is set, render video
+                  <div className={`${styles.projectVideo} projectVideo`}>
+                    <div className={styles.projectScrollText}>
+                      <div className={styles.projectMarquee}>
+                        <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+                          <div className={styles.textBlock}>Case Study Coming Soon</div>
+                        </div>
+                        <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+                          <div className={styles.textBlock}>Case Study Coming Soon</div>
+                        </div>
+                      </div>
+                    </div>
 
-              <div className={`${styles.projectDetails} projectDetails`}>
-                <div className={styles.projectDetailsInner}>
-                  <div ref={swapText} className={styles.projectHeader}>
-                    {title}
+                    <CldVideoPlayer
+                      width="1920" // Width of the video player
+                      height="1080" // Height of the video player
+                      style={{ width: '100%' }} // Set the width to 100% to make it responsive
+                      controls={false}
+                      loop muted autoPlay playsInline
+                      src={`/SAINT/${src}`} type="video/mp4"
+                    />
                   </div>
-                  <div className={styles.projectTags}>
-                    {tags.map((tag, index) => (
-                      <React.Fragment key={index}>
-                        {index > 0 && <span className={styles.bullet}>, </span>}
-                        {tag}
-                      </React.Fragment>
-                    ))}
+                ) : (
+                  // If src is not set, render image
+                  <div className={`${styles.projectImage}`}>
+                    <div className={styles.projectScrollText}>
+                      <div className={styles.projectMarquee}>
+                        <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+                          <div className={styles.textBlock}>Case Study Coming Soon</div>
+                        </div>
+                        <div className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}>
+                          <div className={styles.textBlock}>Case Study Coming Soon</div>
+                        </div>
+                      </div>
+                    </div>
+                    <img src={`/images/${img}`} alt={title} />
                   </div>
-                  <p
-                    dangerouslySetInnerHTML={{ __html: details }}></p>
+                )}
+
+                <div className={`${styles.projectDetails} projectDetails`}>
+                  <div className={styles.projectDetailsInner}>
+                    <div ref={swapText} className={styles.projectHeader}>
+                      {title}
+                    </div>
+                    <div className={styles.projectTags}>
+                      {tags.map((tag, index) => (
+                        <React.Fragment key={index}>
+                          {index > 0 && <span className={styles.bullet}>, </span>}
+                          {tag}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: details }}></p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* "View More" Button */}
+          {isMobileDevice && displayedProjects < projects.length && (
+            <div className={styles.viewMore}>
+            <button onClick={loadMoreProjects} className={styles.viewMoreButton}>
+              View More
+            </button>
+            </div>
+          )}
+          
+        </div>
+      </div>
+
+      <div id="contact" className="section" style={{ position: 'relative', height: '30vh' }}>
+
+        <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
+
+        </div>
+
+
+        <div ref={childWrapperRef} className={styles.worldOverlay}>
+
+
+
+          <div className={styles.contactWrap}>
+            <div className={styles.contactDetails} ref={contactDetailsRef}>
+              <div className={styles.contactScroll}>
+                A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
+                <div className={styles.bah} style={{ textAlign: 'left' }}><br />
+                  <ul>
+                    <li>Production</li>
+                    <li>Post Production</li>
+                    <li>Post Production Management </li>
+                    <li>Retouching </li>
+                    <li>Motion Editing</li>
+                    <li>Music Directing / Supervision</li>
+                    <li>Creative Services</li>
+                    <li>Creative Direction </li>
+                    <li>Art Direction</li>
+                    <li>Project Management</li>
+                    <li>Social Content Strategy + Management </li>
+                  </ul>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-      </div>
 
-      <div id="contact" className="section" style={{position: 'relative', height: '30vh'}}>
+            <div className={styles.contactInfo}>
+              <div className={styles.infoSection}>
+                <h4>ST. STUDIO INC</h4>
+                <p>135 #01 Beverlv Blvd<br />
+                  Los Angeles CA, 90036<br />
+                </p>
+              </div>
+              <div className={`${styles.hideMd} ${styles.infoSection}`}>
+                <h4>GENERAL</h4>
+                <p>
+                  310 990 0000<br />
+                  <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
+                </p>
+              </div>
+              <div className={`${styles.infoSection} ${styles.bahbah}`}>
 
-      <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
+                <h4>STUDIO MANAGER</h4>
+                <p>
+                  Camille Waterfallen<br />
+                  <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
+                </p>
+              </div>
 
-      </div>
+            </div>
 
-
-  <div ref={childWrapperRef} className={styles.worldOverlay}>
-
-
-
-    <div className={styles.contactWrap}>
-    <div className={styles.contactDetails} ref={contactDetailsRef}>
-          <div className={styles.contactScroll}>
-          A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-        <div className={styles.bah} style={{textAlign: 'left'}}><br/>
-          <ul>
-<li>Production</li>
-<li>Post Production</li>
-<li>Post Production Management </li>
-<li>Retouching </li>
-<li>Motion Editing</li>
-<li>Music Directing / Supervision</li>
-<li>Creative Services</li>
-<li>Creative Direction </li>
-<li>Art Direction</li>
-<li>Project Management</li>
-<li>Social Content Strategy + Management </li>
-</ul>
-        </div>
-        </div>
-      </div>
-
-      <div className={styles.contactInfo}>
-        <div className={styles.infoSection}>
-          <h4>ST. STUDIO INC</h4>
-          <p>135 #01 Beverlv Blvd<br />
-            Los Angeles CA, 90036<br />
-          </p>
-          </div>
-          <div className={`${styles.hideMd} ${styles.infoSection}`}>
-          <h4>GENERAL</h4>
-          <p>
-            310 990 0000<br />
-            <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
-          </p>
-          </div>
-          <div className={`${styles.infoSection} ${styles.bahbah}`}>
-
-          <h4>STUDIO MANAGER</h4>
-          <p>
-          Camille Waterfallen<br />
-           <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
-          </p>
           </div>
 
+
         </div>
 
-    </div>
+      </div>
+      <div ref={spacerRef} className={styles.spacer}></div>
 
-
-  </div>
-
-</div>
-<div ref={spacerRef} className={styles.spacer}></div>
-
-</>
+    </>
 
 
   );
