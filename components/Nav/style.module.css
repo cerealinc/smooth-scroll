@@ -18,7 +18,7 @@
 
 }
 .menu a {
-    color: #0a0a0a;
+    color: #fff;
     text-decoration: none;
     padding: 8px;
     position: relative;
@@ -43,7 +43,7 @@
 .underline {
     width: 0;
     height: 1px;
-    background-color: #0a0a0a;
+    background-color: #fff;
     display: block;
     margin-top: 4px;
     position: absolute;

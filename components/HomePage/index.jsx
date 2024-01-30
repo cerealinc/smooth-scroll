@@ -400,7 +400,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
         </div>
       </div>
 
-      <div id="contact" className="section" style={{ position: 'relative', height: 'auto' }}>
+      <div id="contact" className="section isDark" style={{ position: 'relative', height: 'auto' }}>
 
         <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
 

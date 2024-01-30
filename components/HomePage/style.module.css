@@ -133,6 +133,7 @@
   width: 100vw;
   display: block;
   position: relative;
+  background-color: #0a0a0a;
 }
 .projectWrapperOuter {
 height: auto;
@@ -461,7 +462,7 @@ z-index: 0;
   letter-spacing: 0.07em;
 }
 .contactInfo h4{
-  color: #0a0a0a;
+  color: #fff;
   line-height: 1.3;
   font-size: 15px;
   font-weight: 500;
@@ -488,10 +489,9 @@ z-index: 0;
   text-decoration: underline;
 }
 .contactDetails {
-    color: #0a0a0a;
+    color: #fff;
     font-size: 21.2px;
     letter-spacing: 0.1em;
-    color: #0a0a0a;
     font-weight: 500;
     text-transform: uppercase;
     text-align: left;
@@ -509,6 +509,8 @@ z-index: 0;
 }
 .contactDetails h4 {
   text-transform: uppercase;
+  color: #fff;
+
 }
 .contactDetails ul {
   margin-bottom: 24px;
