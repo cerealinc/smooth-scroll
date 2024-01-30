@@ -46,6 +46,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
   };
   const swapText = useRef(null);
   const spacerRef = useRef(null);
+  const spacerwRef = useRef(null);
   const textRef2 = useRef(null);
   const videoRef = useRef(null);
   const projectWrapperRefOuter = useRef(null);
@@ -271,23 +272,26 @@ const HomePage = ({ startLenis, stopLenis }) => {
     ScrollTrigger.create({
       trigger: spacerRef.current,
       start: 'top top',
+      // Set the end trigger to 50% of the spacerRef's bottom.
+      // This means contactDetailsRef scrolling will end when the user reaches the middle of spacerRef.
       end: 'bottom bottom',
       onUpdate: self => {
         // Calculate the scroll position based on the progress within the spacer section
         const maxScroll = contactDetailsRef.current.scrollHeight - contactDetailsRef.current.offsetHeight;
-        const scrollPos = self.progress * maxScroll;
+        // Adjust scrollPos calculation to account for the early end of the scroll animation
+        const scrollPos = self.progress * maxScroll * 2; // Multiplied by 2 because we end at 50%
 
         // Scroll the contactDetailsRef to the calculated position
         contactDetailsRef.current.scrollTop = scrollPos;
       }
-      // Note: No scroller property is needed here since we're listening to the window scroll by default.
+      // No scroller property needed since we're listening to the window scroll by default.
     });
 
     // Clean up function
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []); // Make sure to include dependencies if there are any
+  }, []); // Include dependencies if there are any
 
 
   useEffect(() => {
@@ -399,6 +403,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
         </div>
       </div>
+      <div ref={spacerwRef} className={styles.spacerw}></div>
 
       <div id="contact" className="section isDark" style={{ position: 'relative', height: 'auto' }}>
 
