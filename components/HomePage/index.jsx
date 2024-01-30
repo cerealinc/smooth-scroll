@@ -14,6 +14,11 @@ import Image from 'next/image'
 import styles from './style.module.css';
 
 const HomePage = ({ startLenis, stopLenis }) => {
+
+
+
+
+
   // State for device type
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
@@ -230,13 +235,13 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
     const updateZoomThrottled = throttle(function (progress) {
       world.updateZoom(progress);
-    }, 10); // Adjust the 100ms to your needs
+    }, 4); // Adjust the 100ms to your needs
 
 
     ScrollTrigger.create({
       trigger: spacerRef.current,
       start: 'top bottom',
-      end: 'top top',
+      end: 'bottom bottom',
       onEnter: () => world.enableZoom(), // Enable zooming
       onLeave: () => world.disableZoom(), // Disable zooming
       onEnterBack: () => world.enableZoom(), // Enable zooming
@@ -250,35 +255,39 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
     // locating on model
     // Los Angeles
-    world.findLocation(34.0522, -118.2437, world.earth);
+    world.findLocation(34.0522, -118.2437, world.earth, 0.2);
 
     // New York
-    world.findLocation(40.7128, -74.0060, world.earth);
+    world.findLocation(40.7128, -74.0060, world.earth, 0.14);
 
 
-    const handleScroll = (event) => {
-      event.stopPropagation(); // Prevent the event from bubbling up
-
-      // Optional: Add your custom scroll logic here
-      // For example, adjusting `scrollTop` based on `event.deltaY` or touch movements
-    };
-
-    const contactDetailsElement = contactDetailsRef.current;
-
-    // For mouse wheel scrolling
-    contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
-
-    // For touch-based scrolling
-    contactDetailsElement.addEventListener('touchmove', handleScroll, { passive: false });
-
-    return () => {
-      contactDetailsElement.removeEventListener('wheel', handleScroll);
-      contactDetailsElement.removeEventListener('touchmove', handleScroll);
-    };
 
 
 
   }, []);
+
+  useEffect(() => {
+    // Define a ScrollTrigger for the spacer section
+    ScrollTrigger.create({
+      trigger: spacerRef.current,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: self => {
+        // Calculate the scroll position based on the progress within the spacer section
+        const maxScroll = contactDetailsRef.current.scrollHeight - contactDetailsRef.current.offsetHeight;
+        const scrollPos = self.progress * maxScroll;
+
+        // Scroll the contactDetailsRef to the calculated position
+        contactDetailsRef.current.scrollTop = scrollPos;
+      }
+      // Note: No scroller property is needed here since we're listening to the window scroll by default.
+    });
+
+    // Clean up function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []); // Make sure to include dependencies if there are any
 
 
   useEffect(() => {
@@ -387,11 +396,11 @@ const HomePage = ({ startLenis, stopLenis }) => {
             </button>
             </div>
           )}
-          
+
         </div>
       </div>
 
-      <div id="contact" className="section" style={{ position: 'relative', height: '30vh' }}>
+      <div id="contact" className="section" style={{ position: 'relative', height: 'auto' }}>
 
         <div ref={WorldRef} className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ''}`}>
 
@@ -401,16 +410,19 @@ const HomePage = ({ startLenis, stopLenis }) => {
         <div ref={childWrapperRef} className={styles.worldOverlay}>
 
 
-
           <div className={styles.contactWrap}>
             <div className={styles.contactDetails} ref={contactDetailsRef}>
               <div className={styles.contactScroll}>
                 A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-                <div className={styles.bah} style={{ textAlign: 'left' }}><br />
+                <div className={styles.bah} style={{ textAlign: 'left' }}>
+                  <h4>Production Services</h4>
                   <ul>
-                    <li>Production</li>
+                    <li>Production – LA + NYC (and available to travel)</li>
                     <li>Post Production</li>
                     <li>Post Production Management </li>
+                  </ul>
+                  <h4>Creative Services</h4>
+                  <ul>
                     <li>Retouching </li>
                     <li>Motion Editing</li>
                     <li>Music Directing / Supervision</li>
@@ -453,9 +465,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
 
         </div>
+        <div ref={spacerRef} className={styles.spacer}></div>
 
       </div>
-      <div ref={spacerRef} className={styles.spacer}></div>
 
     </>
 

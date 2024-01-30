@@ -4,8 +4,10 @@ import * as THREE from "three";
 const previousMarkers = [];
 
 // Function to create the hovering dot marker
-function createMarker() {
-  const geometry = new THREE.SphereGeometry(.3, 16, 16); // Parameters: radius, widthSegments, heightSegments
+function createMarker(size = 0.3) { // Default size is 0.3
+  console.log("Marker size:", size); // Add this line to log the size
+
+  const geometry = new THREE.SphereGeometry(size, 16, 16); // Use the size parameter
   const material = new THREE.MeshStandardMaterial({
     emissive: 0xFF0000, // Yellow emissive color
     emissiveIntensity: 1, // Full intensity
@@ -34,18 +36,30 @@ function findPosition(lat, lng, radius) {
 }
 
 
-
-// Function to create rings around the marker
-function createRings(marker) {
+function createRings(marker, size = 2) {
   const rings = new THREE.Group();
 
-  const ringGeometry = new THREE.RingGeometry(0, 2, 64); // Parameters: innerRadius, outerRadius, segments
-  const ringMaterial = new THREE.LineBasicMaterial({ color: 0xFF0000 });
+  // Define the gap between each ring
+  const gap = 0.1;
 
-  for (let i = 1; i <= 5; i++) {
-    const ring = new THREE.Line(ringGeometry, ringMaterial);
-    ring.scale.set(i, i, 1);
-    rings.add(ring);
+  for (let i = 1; i <= 7; i++) { // Change this to 3 for three rings
+    const innerRadius = i * size - gap; // Increment the inner radius for each ring
+    const outerRadius = i * size; // Outer radius for each ring
+
+    // Create the geometry for a ring
+    const ringGeometry = new THREE.RingGeometry(innerRadius, outerRadius, 64);
+    const ringMaterial = new THREE.MeshBasicMaterial({
+      color: 0xFF0000,
+      side: THREE.DoubleSide, // Ensure the ring is visible from both sides
+      transparent: true, // Enable transparency
+      opacity: 0 // Make the material transparent
+    });
+
+    // We need to create an edge geometry to only show the edges of the ring
+    const edges = new THREE.EdgesGeometry(ringGeometry);
+    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xFF0000 }));
+
+    rings.add(line);
   }
 
   marker.add(rings);
@@ -53,12 +67,14 @@ function createRings(marker) {
   return rings;
 }
 
+
+
 // Function to mark the location with a pulsating beacon effect
-function markLocation(lat, lng, earth) {
+function markLocation(lat, lng, earth, size = 0.3) {
   // Check for any previously marked marker
 
   // Creating the marker
-  const marker = createMarker();
+  const marker = createMarker(size);
 
   // Finding the position above the Earth's surface
   const position = findPosition(lat, lng, 100); // Adjust the radius to position the beacon above the Earth
@@ -69,10 +85,11 @@ function markLocation(lat, lng, earth) {
   // Rotating the marker to face upwards
   marker.lookAt(earth.position);
   // Creating rings around the marker
-  const rings = createRings(marker);
+  const rings = createRings(marker, size * 4); // Pass an adjusted size for the rings
 
-  const minScale = 0.5; // Minimum scale for the rings
-  const maxScale = 0.7; // Maximum scale for the rings
+  const baseScale = size * 10; // Base scale factor for rings
+  const minScale = baseScale * 0.5; // Minimum scale for the rings
+  const maxScale = baseScale * 0.7; // Maximum scale for the rings
   const speed = 0.003; // Speed of expansion and contraction
 
   let isGrowing = true; // Flag to control the scaling direction

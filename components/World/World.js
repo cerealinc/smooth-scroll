@@ -5,7 +5,6 @@ import { createScene } from "./components/Scene.js";
 import { createLight } from "./components/Light.js";
 import { createMoon } from "./components/Moon.js";
 import { createMars } from "./components/Mars.js";
-
 // importing systems
 import { createRenderer } from "./systems/renderer.js";
 import { Resizer } from "./systems/resizer.js";
@@ -17,6 +16,7 @@ import gsap from 'gsap';
 let loop;
 let controls;
 let resizer;
+
 
 class World {
 
@@ -38,6 +38,7 @@ class World {
     // adding earth to scene
     this.scene.add(this.earth);
 
+
     // adding lights to the scene
     const { mainLight, ambientLight } = createLight();
     this.scene.add(mainLight, ambientLight);
@@ -55,7 +56,7 @@ class World {
 
   calculateZoomLevel(progress) {
     const minZoom = 280;
-    const maxZoom = 680;
+    const maxZoom = 980;
     // Use an easing function for smoother transition
     const easedProgress = gsap.parseEase("power3.out")(progress / 5);
     const zoom = minZoom + (maxZoom - minZoom) * easedProgress;
@@ -72,12 +73,19 @@ class World {
 
   updateZoom(progress) {
     if (this.allowZoom) {
-      const zoomLevel = this.calculateZoomLevel(progress);
+      // Reverse the progress for zooming out
+      const reversedProgress = 1 - progress;
+
+      // Calculate the new zoom level based on reversed progress
+      const zoomLevel = this.calculateZoomLevel(reversedProgress);
+
+      // Apply the new zoom level
       this.controls.minDistance = zoomLevel.min;
       this.controls.maxDistance = zoomLevel.max;
       this.controls.update();
     }
   }
+
   render() {
     this.renderer.render(this.scene, this.camera);
   }
@@ -90,9 +98,9 @@ class World {
     loop.stop();
   }
 
-  findLocation(lat, lng) {
-    const marker = markLocation(lat, lng, this.earth);
-    this.earth.add(marker);
+  findLocation(lat, lng, earth, size = 0.2) { // Add size parameter with default value
+    const marker = markLocation(lat, lng, earth, size); // Pass size to markLocation
+    earth.add(marker);
   }
 }
 
