@@ -507,7 +507,7 @@ z-index: 0;
     width: 60vw;
     max-width: 520px;
     min-width: 280px;
-    height: 250px; /* Set a fixed height for scrolling */
+    height: calc(67vh + 30px); /* Set a fixed height for scrolling */
     margin-top: 16px;
     display: flex;
     flex-direction: column;
