@@ -20,7 +20,7 @@ const Logo = () => {
         }
       });
     }, {
-      threshold: .3
+      threshold: .25
     });
 
     const darkSection = document.querySelector('.isDark');
@@ -44,6 +44,7 @@ const Logo = () => {
       <Link href="" >
       SAINT
       </Link>
+
     </div>
   );
 };

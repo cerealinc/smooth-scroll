@@ -3,7 +3,7 @@ import * as THREE from "three";
 const textureLoader = new THREE.TextureLoader();
 
 function createMoon() {
-  const geometry = new THREE.SphereGeometry(64, 32, 32);
+  const geometry = new THREE.SphereGeometry(32, 32, 32);
   const moon_texture = textureLoader.load(
     "/assets/textures/moon/moon_texture.jpg"
   );
@@ -13,7 +13,7 @@ function createMoon() {
   });
 
   const moon = new THREE.Mesh(geometry, material);
-  moon.position.set(window.innerWidth, -540, -2950);
+  moon.position.set(window.innerWidth, -840, -5000);
 console.log(moon.position);
 console.log(window.innerWidth / 8);
   moon.tick = (delta) => {

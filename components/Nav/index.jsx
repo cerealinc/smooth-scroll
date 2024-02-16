@@ -12,6 +12,8 @@ const Nav = ({ handleClick, setRenderMain }) => {
   const animationRef = useRef(null);
   const underlineRefs = useRef([]);
   const [activeSection, setActiveSection] = useState(null);
+  const navRef = useRef(null);
+  const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
 
   const handleLinkClick = (e, sectionId) => {
     e.preventDefault(); // Prevent default link behavior
@@ -23,6 +25,36 @@ const Nav = ({ handleClick, setRenderMain }) => {
       ease: "power3.inOut" // Customize the easing function
     });
   };
+
+  // Create an Intersection Observer to check if the section with class .isDark is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log('Intersection Observer Entry Data:', entry);
+
+        if (entry.target.classList.contains('isDark')) {
+          setIsDarkSectionInView(entry.isIntersecting);
+        }
+      });
+    }, {
+      threshold: .25
+    });
+
+    const darkSection = document.querySelector('.isDark');
+    if (darkSection) {
+      observer.observe(darkSection);
+    }
+
+    return () => {
+      if (darkSection) {
+        observer.unobserve(darkSection);
+      }
+    };
+  }, []);
+  // ...
+
+  // Use isDarkSectionInView to determine the text color
+  const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
 
 
 
@@ -52,7 +84,8 @@ const Nav = ({ handleClick, setRenderMain }) => {
   return (
     <div className={styles.navigation}>
 <Logo/>
-<div className={styles.menu}>
+<div className={`${styles.menu} ${styles[textColor]}`} ref={navRef}>
+
 <a
   onClick={(e) => handleLinkClick(e, 'home')}
   className={`${styles.homeLink} ${activeSection === 'home' ? styles.active : styles.inActive}`}

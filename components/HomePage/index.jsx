@@ -178,27 +178,36 @@ const HomePage = ({ startLenis, stopLenis }) => {
     ScrollTrigger.create({
       trigger: projectWrapperRefOuter.current,
       start: 'bottom bottom',
-      end: 'bottom center', // Define an end point
+      end: 'bottom center-=200', // Define an end point
       pin: false,
       pinSpacing: false,
       markers: false,
       onUpdate: (self) => {
-        // Use the progress value to control the opacity
-        const scaleValue = self.progress * 30;
+        // Assuming you want to start at a dynamic position, for example, -100px, and end at 0
+        const startY = 140; // Dynamic starting position
+        const endY = 0; // Ending position
+
+        // Calculate the current y value based on progress
+        const currentY = startY + (endY - startY) * self.progress; // Interpolates from startY to endY
+
+        // Apply the calculated y value
+        gsap.set(childWrapperRef.current, {
+          y: currentY,
+        });
+
+        // Adjust opacity based on progress
         gsap.set(WorldRef.current, {
           opacity: self.progress, // Progress ranges from 0 to 1
         });
-        gsap.set(childWrapperRef.current, {
-          y: -scaleValue, // Progress ranges from 0 to 1
-        });
       },
       onEnter: () => {
-        // If needed, you can still use onEnter for specific actions
+        // Additional actions on enter
       },
       onLeaveBack: () => {
-        // If needed, you can still use onLeaveBack for specific actions
+        // Additional actions on leave back
       },
     });
+
 
 
 
@@ -441,7 +450,13 @@ const HomePage = ({ startLenis, stopLenis }) => {
               </div>
             </div>
 
-            <div className={styles.contactInfo}>
+
+          </div>
+
+
+
+        <div className={styles.footer}>
+        <div className={styles.contactInfo}>
               <div className={styles.infoSection}>
                 <h4>ST. STUDIO INC</h4>
                 <p>135 #01 Beverlv Blvd<br />
@@ -465,11 +480,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
               </div>
 
             </div>
+              </div>
 
-          </div>
-
-
-        </div>
+      </div>
         <div ref={spacerRef} className={styles.spacer}></div>
 
       </div>

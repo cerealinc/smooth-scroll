@@ -18,7 +18,7 @@
 
 }
 .menu a {
-    color: #fff;
+    color: #0a0a0a;
     text-decoration: none;
     padding: 8px;
     position: relative;
@@ -43,7 +43,7 @@
 .underline {
     width: 0;
     height: 1px;
-    background-color: #fff;
+    background-color: #0a0a0a;
     display: block;
     margin-top: 4px;
     position: absolute;
@@ -51,6 +51,15 @@
     transition: 400ms ease-in-out;
 }
 
+
+.menu.isBlack a{
+    color: #fff;
+  }
+
+  .menu.isBlack .underline {
+    background-color: #fff;
+
+}
 .inActive .underline {
     width: 0%;
     left: -8px;

@@ -22,7 +22,6 @@ class World {
 
   constructor(container) {
     this.allowZoom = false; // Add a flag to control zooming
-
     this.camera = createCamera(container);
     this.scene = createScene();
     this.earth = createEarth();

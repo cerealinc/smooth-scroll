@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from './Main.module.css'; // Import your CSS module
-import * as THREE from 'three';
-import { zoomIn } from "./World/components/Camera.js";
 
 export default function Contact() {
   const [fadeIn, setFadeIn] = useState(false);
@@ -15,7 +13,7 @@ export default function Contact() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  
+
     const contact = () => {
 
       const world = new World(WorldRef.current);
@@ -31,13 +29,13 @@ export default function Contact() {
 
     const contactDetailsElement = contactDetailsRef.current;
     contactDetailsElement.addEventListener('wheel', handleScroll, { passive: false });
-  
+
     return () => {
       contactDetailsElement.removeEventListener('wheel', handleScroll);
     };
 
   }, []);
-  
+
 
   return (
     <div ref={WorldRef} className={`world-container ${fadeIn ? styles.fadeIn : ''}`}>
@@ -100,6 +98,19 @@ export default function Contact() {
 
 
         </div>
+
+      </div>
+      <div className="footer">
+        <div className="footer-content">
+          <div className="footer-content-left">
+            <h4>ST. STUDIO INC</h4>
+            <p>135 #01 Beverlv Blvd<br />
+              Los Angeles CA, 90036<br />
+              310 990 0000<br />
+              <a href="mailto:">email</a>
+              </p>
+              </div>
+              </div>
 
       </div>
     </div>);

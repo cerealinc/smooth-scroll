@@ -135,6 +135,19 @@
   position: relative;
   background-color: #0a0a0a;
 }
+
+.footer {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  height: auto;
+  background-color: #0a0a0a;
+  z-index: 1;
+  color: #fff;
+  border-top: #e0e0e04e solid .5px;
+  padding: 40px;
+}
+
 .spacerw {
   height: 50vh;
   width: 100vw;
@@ -171,15 +184,15 @@ z-index: 99;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  padding-bottom: 200px;
+  padding-bottom: 340px;
 
 }
 .scrollText2 .flexItem {
   opacity: 1;
   line-height: 0;
-  width: 50vw;
+  width: calc(50vw - 10px);
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: -120px;
 }
 
 .flexItem:hover video, .flexItem:hover img {
@@ -418,6 +431,7 @@ z-index: 0;
   height: auto;
   position: fixed;
   top: calc(33% - 60px);
+  height: calc(67% + 60px);
     width: 100vw;
   z-index: 1;
   filter: blur(4px);
@@ -426,7 +440,7 @@ z-index: 0;
 .contactWrap {
   display: flex;
   justify-content: space-between;
-  padding: 50px;
+  padding: 40px;
 
 }
 .bah {
@@ -461,14 +475,14 @@ z-index: 0;
 
 
 .contactInfo {
-  color: #0a0a0a;
-  text-align: right;
+  color: #fff;
+  text-align: left;
   line-height: 1.3;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.07em;
-
-  display: none;
+  display: flex;
+  justify-content: space-between;
 }
 .contactInfo h4{
   color: #fff;
@@ -507,7 +521,7 @@ z-index: 0;
     width: 60vw;
     max-width: 520px;
     min-width: 280px;
-    height: calc(67vh + 30px); /* Set a fixed height for scrolling */
+    height: 47vh; /* Set a fixed height for scrolling */
     margin-top: 16px;
     display: flex;
     flex-direction: column;
