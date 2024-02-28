@@ -354,10 +354,10 @@ const HomePage = ({ startLenis, stopLenis }) => {
                         </div>
                       </div>
                     </div>
-
                     <CldVideoPlayer
-                      width="1920" // Width of the video player
-                      height="1080" // Height of the video player
+                      id={{id}} // Use a unique identifier for each video
+                      width="800" // Width of the video player
+                      height="450" // Height of the video player
                       style={{ width: '100%' }} // Set the width to 100% to make it responsive
                       controls={false}
                       loop muted autoPlay playsInline

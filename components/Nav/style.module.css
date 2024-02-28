@@ -20,9 +20,9 @@
 .menu a {
     color: #0a0a0a;
     text-decoration: none;
-    padding: 8px;
+    padding: 2px 8px;
     position: relative;
-    text-transform: uppercase;
+    text-transform: capitalize;
     cursor: pointer;
     font-weight: 500;
     font-size: 15px;
@@ -30,6 +30,9 @@
     transition: 400ms ease-in-out;
 
 }
+
+
+
 .menu a:hover .underline,
 .active .underline {
     width: calc(100% - 8px);
@@ -49,6 +52,8 @@
     position: absolute;
     left: -8px;
     transition: 400ms ease-in-out;
+
+    display: none !important;
 }
 
 
@@ -69,8 +74,8 @@
 transition: 400ms ease-in-out;
 opacity: 1;
 }
-.menu a:hover {
-    opacity: .6;
+.menu a:hover, .menu a.active  {
+    color: #A4A4A4;
 }
 
 @media screen and (max-width: 767px) {
@@ -90,7 +95,12 @@ opacity: 1;
   .menu a {
     font-size: 13px;
     letter-spacing: 0.07em;
-    opacity: .6 !important;
+    color: #A4A4A4 !important;
+    padding: 9px 6px;
+    text-transform: uppercase;
+}
+.menu a.active {
+    opacity: .6;
 }
 .menu a.homeLink {
     display: none;
