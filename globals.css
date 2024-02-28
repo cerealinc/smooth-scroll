@@ -36,3 +36,10 @@ html.lenis {
   margin-bottom: 10px; /* Space between lines */
   transition: filter 0.3s ease, transform 0.3s ease; /* Smooth transition for effects */
 }
+
+@media screen and (max-width: 767px) {
+  html, body {
+    overflow: visible;
+  }
+
+}
