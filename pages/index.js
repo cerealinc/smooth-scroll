@@ -1,8 +1,8 @@
 'use client';
 import React, {useState, useRef, useEffect} from 'react';
 import gsap from 'gsap';
-import HomePage from '../components/HomePage'; 
-import Nav from '../components/Nav'; 
+import HomePage from '../components/HomePage';
+import Nav from '../components/Nav';
 import Intro from '../components/Intro';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
@@ -30,12 +30,12 @@ export default function Home() {
     }
     return false; // Default to false if not on the client side
   };
-  
-  
-    const lenisOptions = isMobile() 
-      ? { lerp: 1, duration: 1.5, smoothTouch: true } // Adjust these values for mobile
+
+
+    const lenisOptions = isMobile()
+      ? { lerp: 1, duration: 0, smoothTouch: true } // Adjust these values for mobile
       : { lerp: 0.1, duration: 1.5, smoothTouch: true }; // Default values for non-mobile
-  
+
   const fadeClass = renderMain ? (fadeOut ? 'fadeOut' : 'fadeIn') : '';
   useEffect(() => {
     function update(time) {
@@ -57,13 +57,24 @@ export default function Home() {
     lenisRef.current?.lenis?.stop();
   };
   return (
-    <ReactLenis root options={lenisOptions}>
-      <Nav handleClick={handleClick}  ref={lenisRef} autoRaf={false}/>  
-      <div id="home" className="section">
-        <Intro />
-      </div>
-      <HomePage startLenis={startLenis} stopLenis={stopLenis}/> {/* Pass lenis as a prop */}
-    </ReactLenis>
-
-  )
+    <>
+      {isMobile() ? (
+        <>
+          <Nav handleClick={handleClick} />
+          <div id="home" className="section">
+            <Intro />
+          </div>
+          <HomePage startLenis={startLenis} stopLenis={stopLenis} />
+        </>
+      ) : (
+        <ReactLenis root options={lenisOptions}>
+          <Nav handleClick={handleClick} ref={lenisRef} autoRaf={false} />
+          <div id="home" className="section">
+            <Intro />
+          </div>
+          <HomePage startLenis={startLenis} stopLenis={stopLenis} />
+        </ReactLenis>
+      )}
+    </>
+  );
 }

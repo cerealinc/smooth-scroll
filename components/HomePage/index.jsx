@@ -7,9 +7,6 @@ import { World } from '../World/World';
 import { CldVideoPlayer } from 'next-cloudinary';
 import { projects } from '@/data/projects';
 import { useDesktopAnimation } from '@/hooks/useDesktopAnimation';
-import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
-
-import Image from 'next/image'
 
 import styles from './style.module.css';
 
