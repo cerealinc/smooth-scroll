@@ -476,7 +476,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
                 <div>
                   <a
                   className={styles.socialLink}
-href='https://instagram.com/st.studio'>INSTAGRAM
+href='https://instagram.com/st.studio' target='_blank'>INSTAGRAM
                   <Image
                   src='/arrow.png'
                   height={8}
