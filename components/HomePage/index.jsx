@@ -279,7 +279,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
     // Define a ScrollTrigger for the spacer section
     ScrollTrigger.create({
       trigger: spacerRef.current,
-      start: 'top center',
+      start: 'top top-=200',
       // Set the end trigger to 50% of the spacerRef's bottom.
       // This means contactDetailsRef scrolling will end when the user reaches the middle of spacerRef.
       end: 'bottom bottom',
