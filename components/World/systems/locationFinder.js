@@ -9,7 +9,7 @@ function createMarker(size = 0.3) { // Default size is 0.3
 
   const geometry = new THREE.SphereGeometry(size, 16, 16); // Use the size parameter
   const material = new THREE.MeshStandardMaterial({
-    emissive: 0xFF0000, // Yellow emissive color
+    emissive: 0xffffff, // Yellow emissive color
     emissiveIntensity: 1, // Full intensity
     metalness: 0.5, // Adjust to your liking
     roughness: 0.5, // Adjust to your liking
@@ -49,7 +49,7 @@ function createRings(marker, size = 2) {
     // Create the geometry for a ring
     const ringGeometry = new THREE.RingGeometry(innerRadius, outerRadius, 64);
     const ringMaterial = new THREE.MeshBasicMaterial({
-      color: 0xFF0000,
+      color: 0xffffff,
       side: THREE.DoubleSide, // Ensure the ring is visible from both sides
       transparent: true, // Enable transparency
       opacity: 0 // Make the material transparent
@@ -57,7 +57,7 @@ function createRings(marker, size = 2) {
 
     // We need to create an edge geometry to only show the edges of the ring
     const edges = new THREE.EdgesGeometry(ringGeometry);
-    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xFF0000 }));
+    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff }));
 
     rings.add(line);
   }

@@ -7,6 +7,7 @@ import { World } from '../World/World';
 import { CldVideoPlayer } from 'next-cloudinary';
 import { projects } from '@/data/projects';
 import { useDesktopAnimation } from '@/hooks/useDesktopAnimation';
+import Image from 'next/image';
 
 import styles from './style.module.css';
 
@@ -50,6 +51,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
   const childWrapperRef = useRef(null);
   const WorldRef = useRef(null);
   const contactDetailsRef = useRef(null);
+  const infoRef = useRef(null);
   const [workInView, setWorkInView] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
 
@@ -277,7 +279,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
     // Define a ScrollTrigger for the spacer section
     ScrollTrigger.create({
       trigger: spacerRef.current,
-      start: 'top top',
+      start: 'top center',
       // Set the end trigger to 50% of the spacerRef's bottom.
       // This means contactDetailsRef scrolling will end when the user reaches the middle of spacerRef.
       end: 'bottom bottom',
@@ -285,7 +287,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
         // Calculate the scroll position based on the progress within the spacer section
         const maxScroll = contactDetailsRef.current.scrollHeight - contactDetailsRef.current.offsetHeight;
         // Adjust scrollPos calculation to account for the early end of the scroll animation
-        const scrollPos = self.progress * maxScroll * 2; // Multiplied by 2 because we end at 50%
+        const scrollPos = self.progress * maxScroll; // Multiplied by 2 because we end at 50%
 
         // Scroll the contactDetailsRef to the calculated position
         contactDetailsRef.current.scrollTop = scrollPos;
@@ -422,30 +424,39 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
 
           <div className={styles.contactWrap}>
-            <div className={styles.contactDetails} ref={contactDetailsRef}>
+            <div className={styles.contactDetails}>
               <div className={styles.contactScroll}>
-                A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact
-                <div className={styles.bah} style={{ textAlign: 'left' }}>
-                  <h4>Production Services</h4>
-                  <ul>
-                    <li>Production – LA + NYC (and available to travel)</li>
-                    <li>Post Production</li>
-                    <li>Post Production Management </li>
-                  </ul>
-                  <h4>Creative Services</h4>
-                  <ul>
-                    <li>Retouching </li>
-                    <li>Motion Editing</li>
-                    <li>Music Directing / Supervision</li>
-                    <li>Creative Services</li>
-                    <li>Creative Direction </li>
-                    <li>Art Direction</li>
-                    <li>Project Management</li>
-                    <li>Social Content Strategy + Management </li>
-                  </ul>
-                </div>
+                A right hand to strategy, our team is both innovative and insightful, offering end to end solutions that streamline and maximize clients vision, resources, and impact.
               </div>
             </div>
+
+
+          </div>
+
+
+<div className={styles.infoDetailsWrap} ref={contactDetailsRef}>
+  <h3>Offerings</h3>
+  <div className={styles.infoDetails}>
+    <div className={styles.detailsInfo}>
+      <ul>
+      <li>Production — LA + NYC (Available to Travel)</li>
+      <li>Post Production +Post Production Management</li>
+      <li>Retouching</li>
+      <li>Motion Editing</li>
+      <li>Music Directing + Supervision</li>
+      </ul>
+    </div>
+    <div className={styles.detailsInfo}>
+      <ul>
+      <li>Creative Services</li>
+      <li>Creative Direction</li>
+      <li>Art Direction</li>
+      <li>Project Management</li>
+      <li>Social Content Strategy + Management</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
           </div>
@@ -455,34 +466,45 @@ const HomePage = ({ startLenis, stopLenis }) => {
         <div className={styles.footer}>
         <div className={styles.contactInfo}>
               <div className={styles.infoSection}>
-                <h4>ST. STUDIO INC</h4>
-                <p>135 #01 Beverlv Blvd<br />
-                  Los Angeles CA, 90036<br />
-                </p>
-              </div>
-              <div className={`${styles.hideMd} ${styles.infoSection}`}>
-                <h4>GENERAL</h4>
-                <p>
-                  310 990 0000<br />
-                  <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
-                </p>
-              </div>
-              <div className={`${styles.infoSection} ${styles.bahbah}`}>
+                <div className={styles.infoSectionLarge}>
+                <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
+                </div>
 
+              </div>
+
+              <div className={`${styles.infoSection} ${styles.infoSectionSmall}`}>
+                <div>
+                  <a
+                  className={styles.socialLink}
+href=''>INSTAGRAM
+                  <Image
+                  src='/arrow.png'
+                  height={8}
+                  width={8}
+                  alt="Instagram"/>
+                  </a>
+                </div>
+<div>
                 <h4>STUDIO MANAGER</h4>
                 <p>
                   Camille Waterfallen<br />
                   <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
                 </p>
+                </div>
+                <div>
+                <h4 className={styles.contactLogo}>ST<span className={styles.logoline}></span>STUDIO</h4>
+                <p>135 #01 Beverlv Blvd<br />
+                  Los Angeles CA, 90036<br />
+                </p>
+                </div>
               </div>
 
             </div>
               </div>
+              <div ref={spacerRef} className={styles.spacer}></div>
 
       </div>
-        <div ref={spacerRef} className={styles.spacer}></div>
 
-      </div>
 
     </>
 
