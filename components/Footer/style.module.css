@@ -434,19 +434,22 @@
   .worldOverlay {
     height: auto;
     position: fixed;
-    padding-top: 30vh;
+    padding-top: 40vh;
     top: 90px;
-    height: calc(100vh - 90px);
+    height: calc(50vh - 90px);
     width: 100vw;
     overflow: hidden;
     z-index: 2;
     filter: blur(4px);
+    background-color: #0a0a0a78;
+    backdrop-filter: blur(8px);
 
   }
   .contactWrap {
     display: flex;
     justify-content: space-between;
     padding: 40px 40px 55px 40px;
+    margin-top: -400px;
 
   }
 
@@ -457,7 +460,7 @@
     padding-top: 100px;
     padding-bottom: 180px;
     overflow: hidden;
-    background-color: #0a0a0a;
+
 
   }
   .infoDetailsWrap h3 {
