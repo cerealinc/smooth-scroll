@@ -145,6 +145,7 @@
   z-index: 999;
 
   padding: 40px;
+  display: none;
 }
 
 .footerPopup {
@@ -455,7 +456,7 @@ z-index: 0;
   color: #E2E2E2;
   border-top: #a4a4a47e 1px solid;
   padding-top: 100px;
-  padding-bottom: 180px;
+  padding-bottom: 80px;
   overflow: hidden;
   background-color: #0a0a0ab3;
   backdrop-filter: blur(8px);
