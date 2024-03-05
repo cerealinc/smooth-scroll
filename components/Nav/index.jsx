@@ -91,16 +91,16 @@ const Nav = ({ handleClick, setRenderMain }) => {
   className={`${styles.homeLink} ${activeSection === 'home' ? styles.active : styles.inActive}`}
 >
   Home
-  <div ref={(el) => (underlineRefs.current[0] = el)} className={styles.underline}></div>
 </a>
 
         <a onClick={(e) => handleLinkClick(e, 'work')} className={activeSection === 'work' ? styles.active : styles.inActive}>
           Work
-          <div ref={(el) => (underlineRefs.current[1] = el)} className={styles.underline}></div>
         </a>
         <a onClick={(e) => handleLinkClick(e, 'contact')} className={activeSection === 'contact' ? styles.active : styles.inActive}>
           Info
-          <div ref={(el) => (underlineRefs.current[2] = el)} className={styles.underline}></div>
+        </a>
+        <a onClick={(e) => handleLinkClick(e, 'contactPopup')} className={activeSection === 'contactPopup' ? styles.active : styles.inActive}>
+          Contact
         </a>
       </div>
 

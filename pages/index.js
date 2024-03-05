@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import HomePage from '../components/HomePage';
 import Nav from '../components/Nav';
 import Intro from '../components/Intro';
+import Footer from '../components/Footer';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 

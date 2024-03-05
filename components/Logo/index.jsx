@@ -41,9 +41,8 @@ const Logo = () => {
 
   return (
     <div className={`${styles.logo} ${styles[textColor]}`} ref={mainRef}>
-      <Link href="" className={styles.contactLogo}>
-        ST<span className={styles.logoline}></span>STUDIO
-
+      <Link href="/" >
+      SAINT
       </Link>
 
     </div>

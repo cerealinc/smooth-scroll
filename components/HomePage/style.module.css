@@ -142,9 +142,14 @@
   bottom: 0;
   height: auto;
   background-color: #0a0a0a;
-  z-index: 1;
+  z-index: 999;
 
   padding: 40px;
+}
+
+.footerPopup {
+  position: fixed;
+  bottom: -90px;
 }
 
 .spacerw {
@@ -429,17 +434,19 @@ z-index: 0;
 .worldOverlay {
   height: auto;
   position: fixed;
-  top: calc(30% - 60px);
-  height: calc(70% + 60px);
-    width: 100vw;
-  z-index: 1;
+  padding-top: 30vh;
+  top: 90px;
+  height: calc(100vh - 90px);
+  width: 100vw;
+  overflow: hidden;
+  z-index: 2;
   filter: blur(4px);
 
 }
 .contactWrap {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 40px 40px 55px 40px;
 
 }
 
@@ -448,9 +455,9 @@ z-index: 0;
   color: #E2E2E2;
   border-top: #a4a4a47e 1px solid;
   padding-top: 100px;
-  padding-bottom: 150px;
-  height: 40vh;
+  padding-bottom: 180px;
   overflow: hidden;
+  background-color: #0a0a0a;
 
 }
 .infoDetailsWrap h3 {
@@ -573,7 +580,7 @@ z-index: 0;
     text-transform: uppercase;
     text-align: left;
     width: 60vw;
-    max-width: 520px;
+    max-width: 500px;
     min-width: 280px;
     margin-top: 16px;
     display: flex;
