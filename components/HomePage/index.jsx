@@ -77,7 +77,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
       const videoWrap = work.querySelector(".projectVideo");
 
       // Different scale value for mobile
-      const mobileScaleMultiplier = isMobile() ? 20 : 50; // Adjust this value as needed
+      const mobileScaleMultiplier = isMobile() ? 20 : 10; // Adjust this value as needed
 
       gsap.to(work, {
         scrollTrigger: {

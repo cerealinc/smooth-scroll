@@ -141,7 +141,8 @@
     width: 100vw;
     bottom: 0;
     height: auto;
-    background-color: #0a0a0ad3;
+    background-color: #ab704dd3;
+    background-color: #bcb71ccf;
     z-index: 999;
 
     padding: 40px;
@@ -253,7 +254,7 @@
     transform: translateY(-50%);
   }
   .projectDetails {
-    position: absolute;
+    position: relative;
     color: #0a0a0a;
     width: 100%;
     font-weight: 100;
