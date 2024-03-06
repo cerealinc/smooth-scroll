@@ -74,6 +74,7 @@ export default function Home() {
             <Intro />
           </div>
           <HomePage startLenis={startLenis} stopLenis={stopLenis} />
+          <Footer />
         </ReactLenis>
       )}
     </>

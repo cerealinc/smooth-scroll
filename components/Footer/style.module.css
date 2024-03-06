@@ -141,7 +141,7 @@
     width: 100vw;
     bottom: 0;
     height: auto;
-    background-color: #0a0a0a;
+    background-color: #0a0a0ad3;
     z-index: 999;
 
     padding: 40px;
@@ -149,8 +149,53 @@
 
   .footerPopup {
     position: fixed;
-    bottom: -90px;
+    bottom: -190px;
   }
+
+  .contactInActive {
+    position: fixed;
+    bottom: 36px;
+    right: 40px;
+    color: #0a0a0a;
+    z-index: 999;
+    transition: 400ms ease-in-out;
+    opacity: 1;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.07em;
+
+   }
+
+   .contactActive {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    color: #0a0a0a;
+    z-index: 999;
+    transition: ease-in-out 400ms;
+    opacity: 0;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.07em;
+   }
+   .isBlack .contactInActive{
+    color: #fff;
+   }
+   .isBlack
+   .contactInActive:hover,
+   .contactInActive:hover  {
+    color: #A4A4A4;
+    transition: 400ms ease-in-out;
+
+   }
+   .close {
+    color: #fff;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+   }
 
   .spacerw {
     height: 50vh;
