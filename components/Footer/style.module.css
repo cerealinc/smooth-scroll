@@ -141,11 +141,11 @@
     width: 100vw;
     bottom: 0;
     height: auto;
-    background-color: #ab704dd3;
-    background-color: #bcb71ccf;
+    background-color: #ab704de7;
+    border-top: #834629 1px solid;
     z-index: 999;
 
-    padding: 40px;
+    padding: 70px 40px 60px 40px;
   }
 
   .footerPopup {
@@ -157,7 +157,7 @@
     position: fixed;
     bottom: 36px;
     right: 40px;
-    color: #0a0a0a;
+    color: #AB6F4D;
     z-index: 999;
     transition: 400ms ease-in-out;
     opacity: 1;
@@ -172,7 +172,7 @@
     position: fixed;
     bottom: 30px;
     right: 40px;
-    color: #0a0a0a;
+    color: #AB6F4D;
     z-index: 999;
     transition: ease-in-out 400ms;
     opacity: 0;
@@ -181,12 +181,12 @@
     letter-spacing: 0.07em;
    }
    .isBlack .contactInActive{
-    color: #fff;
+    color: #AB6F4D;
    }
    .isBlack
    .contactInActive:hover,
    .contactInActive:hover  {
-    color: #A4A4A4;
+    color: #834629;
     transition: 400ms ease-in-out;
 
    }
@@ -610,11 +610,11 @@
     font-weight: 100;
     line-height: 1.3;
     margin-bottom: 12px;
-    color: #A4A4A4;
+    color: #fff;
     letter-spacing: 0.07em;
   }
   .contactInfo p a {
-    color: #A4A4A4;
+    color: #fff;
     text-decoration: none;
 
   }

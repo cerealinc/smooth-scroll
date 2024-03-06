@@ -75,7 +75,7 @@ transition: 400ms ease-in-out;
 opacity: 1;
 }
 .menu a:hover, .menu a.active  {
-    color: #A4A4A4;
+    color: #AB6F4D;
 }
 
 .footer {
