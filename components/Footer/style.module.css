@@ -142,7 +142,6 @@
     bottom: 0;
     height: auto;
     background-color: #ab704de7;
-    border-top: #834629 1px solid;
     z-index: 999;
 
     padding: 70px 40px 60px 40px;
@@ -150,7 +149,7 @@
 
   .footerPopup {
     position: fixed;
-    bottom: -190px;
+    bottom: -220px;
   }
 
   .contactInActive {

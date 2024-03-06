@@ -440,13 +440,13 @@ const HomePage = ({ startLenis, stopLenis }) => {
               </div>
             </div>
           </div>
-
+          <h3>Offerings</h3>
           <div className={styles.infoDetailsWrap}>
-            <h3>Offerings</h3>
+
             <div className={styles.infoDetails}>
               <div className={styles.detailsInfo}>
                 <ul>
-                  <li>Production — LA + NYC (Available to Travel)</li>
+                  <li>Production — LA + NYC</li>
                   <li>Post Production + Post Production Management</li>
                   <li>Retouching</li>
                   <li>Motion Editing</li>
