@@ -36,6 +36,12 @@ html.lenis {
   margin-bottom: 10px; /* Space between lines */
   transition: filter 0.3s ease, transform 0.3s ease; /* Smooth transition for effects */
 }
+.detailsInfoItem {
+  display: block;
+  transform: translateY(60px);
+  transition: ease-in-out 1400ms 200ms;
+}
+.ukl li {overflow: hidden;}
 
 @media screen and (max-width: 767px) {
   html, body {

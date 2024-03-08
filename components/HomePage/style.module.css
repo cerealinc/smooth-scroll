@@ -452,7 +452,7 @@ z-index: 0;
 }
 
 .infoDetailsWrap {
-  margin: 18px 40px;
+  margin: 0px 40px 18px 40px;
   color: #E2E2E2;
   border-top: #a4a4a47e 1px solid;
   padding-top: 20px;

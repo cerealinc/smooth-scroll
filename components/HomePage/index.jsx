@@ -70,6 +70,46 @@ const HomePage = ({ startLenis, stopLenis }) => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
+
+    // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
+    ScrollTrigger.create({
+      trigger: projectWrapperRefOuter.current,
+      start: "bottom bottom",
+      end: "bottom top",
+      scrub: true,
+      pin: false, // Pin the outer wrapper
+      markers: true,
+      onUpdate: ({ progress }) => {
+        const scaleValue2 = progress * 3;
+        gsap.set(infoRef.current, {
+          yPercent: scaleValue2,
+        });
+      },
+    });
+
+
+    const infoArray = Array.from(document.querySelectorAll(".detailsInfoItem"));
+    setWorks(infoArray);
+
+    infoArray.forEach((infoItem) => {
+
+        ScrollTrigger.create({
+          trigger: projectWrapperRefOuter.current,
+          start: "bottom top-=200",
+          scrub: true,
+          onEnter: ({}) => {
+            gsap.set(infoItem, {
+              y: 0,
+            });
+          },
+          onLeaveBack: ({}) => {
+            gsap.set(infoItem, {
+              y: 60,
+            });
+          },
+        });
+      });
+
     const worksArray = Array.from(document.querySelectorAll(".flexItemWorks"));
     setWorks(worksArray);
 
@@ -161,6 +201,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
           filter: `blur(0px)`,
           duration: 1.5,
         });
+
       },
       onLeaveBack: ({ progress, direction, isActive }) => {
         // Reverse the animation when scrolling back down
@@ -168,8 +209,13 @@ const HomePage = ({ startLenis, stopLenis }) => {
           filter: `blur(4px)`,
           duration: 1.5,
         });
+
+
       },
     });
+
+
+
 
     ScrollTrigger.create({
       trigger: projectWrapperRefOuter.current,
@@ -441,25 +487,25 @@ const HomePage = ({ startLenis, stopLenis }) => {
             </div>
           </div>
           <h3>Offerings</h3>
-          <div className={styles.infoDetailsWrap}>
+          <div className={styles.infoDetailsWrap} ref={infoRef}>
 
             <div className={styles.infoDetails}>
               <div className={styles.detailsInfo}>
-                <ul>
-                  <li>Production — LA + NYC</li>
-                  <li>Post Production + Post Production Management</li>
-                  <li>Retouching</li>
-                  <li>Motion Editing</li>
-                  <li>Music Directing + Supervision</li>
+                <ul className="ukl">
+                  <li><span className="detailsInfoItem">Production — LA + NYC</span></li>
+                  <li><span className="detailsInfoItem">Post Production + Post Production Management</span></li>
+                  <li><span className="detailsInfoItem">Retouching</span></li>
+                  <li><span className="detailsInfoItem">Motion Editing</span></li>
+                  <li><span className="detailsInfoItem">Music Directing + Supervision</span></li>
                 </ul>
               </div>
               <div className={styles.detailsInfo}>
-                <ul>
-                  <li>Creative Services</li>
-                  <li>Creative Direction</li>
-                  <li>Art Direction</li>
-                  <li>Project Management</li>
-                  <li>Social Content Strategy + Management</li>
+              <ul className="ukl">
+                <li><span className="detailsInfoItem">Creative Services</span></li>
+                <li><span className="detailsInfoItem">Creative Direction</span></li>
+                <li><span className="detailsInfoItem">Art Direction</span></li>
+                <li><span className="detailsInfoItem">Project Management</span></li>
+                <li><span className="detailsInfoItem">Social Content Strategy + Management</span></li>
                 </ul>
               </div>
             </div>
