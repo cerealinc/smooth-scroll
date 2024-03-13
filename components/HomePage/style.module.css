@@ -629,6 +629,9 @@ z-index: 0;
 
 @media screen and (max-width: 1024px) {
 
+.spacer {
+  height: 360vh;
+}
   .infoDetails {
     display: block;
     font-size: 12px;
