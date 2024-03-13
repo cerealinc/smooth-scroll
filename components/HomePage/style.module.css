@@ -702,7 +702,7 @@ z-index: 0;
 .worldOverlay {
   height: auto;
   position: fixed;
-  padding-top: 30vh;
+  padding-top: 50vh;
   top: 90px;
   height: calc(100vh - 90px);
   width: 100vw;
@@ -717,10 +717,11 @@ z-index: 0;
 }
 .worldContainer {
 position: fixed;
-bottom: 0;
+bottom: auto;
+top: 0;
 width: 100vw;
-height: 50vh;
-margin-bottom: 10vh;
+height: 50%;
+margin-bottom: 0;
 
 }
 .contactWrap {

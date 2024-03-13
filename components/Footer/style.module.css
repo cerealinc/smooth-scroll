@@ -154,10 +154,10 @@
 
   .contactInActive {
     position: fixed;
-    bottom: 36px;
+    bottom: 136px;
     right: 40px;
     color: #AB6F4D;
-    z-index: 999;
+    z-index: 9999;
     transition: 400ms ease-in-out;
     opacity: 1;
     cursor: pointer;
