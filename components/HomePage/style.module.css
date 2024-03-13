@@ -628,6 +628,11 @@ z-index: 0;
 
 
 @media screen and (max-width: 1024px) {
+
+  .infoDetails {
+    display: block;
+  }
+
   .projectDetails {
     position: relative;
     line-height: 1.3;

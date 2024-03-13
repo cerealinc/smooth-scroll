@@ -78,7 +78,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
       end: "bottom top",
       scrub: true,
       pin: false, // Pin the outer wrapper
-      markers: true,
       onUpdate: ({ progress }) => {
         const scaleValue2 = progress * 3;
         gsap.set(infoRef.current, {

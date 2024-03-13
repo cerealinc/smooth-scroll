@@ -64,7 +64,7 @@ const Footer = ({ handleClick }) => {
 
   const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
   return (
-    <footer className={styles[textColor]}>
+    <div className={styles[textColor]}>
 
           <a onClick={(e) => handleContactPopup(e, 'contactPopup')} className={activeContact === 'contactPopup' ? styles.contactActive : styles.contactInActive}>
             Contact
@@ -116,7 +116,7 @@ const Footer = ({ handleClick }) => {
           </div>
         </div>
       </div>
-      </footer>
+      </div>
   );
 };
 
