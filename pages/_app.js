@@ -5,9 +5,7 @@ import 'react/jsx-dev-runtime';
 export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-        <div>
       <Component {...pageProps} />
-      </div>
     </Layout>
   )
 }
