@@ -1,15 +1,15 @@
 // Footer.js
-import React, {useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from "./style.module.css";
 import Image from "next/image";
 import gsap from 'gsap';
 
 const Footer = ({ handleClick }) => {
-  const footerPopupRef = useRef()
+  const footerPopupRef = useRef();
   const [activeContact, setActiveContact] = useState(null);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
 
-  const handleContactPopup = (e, sectionId) => {
+  const handleContactPopup = (e) => {
     e.preventDefault();
 
     const footerPopup = footerPopupRef.current;
@@ -39,6 +39,7 @@ const Footer = ({ handleClick }) => {
       setActiveContact('contactPopup'); // Set activeContact to 'contactPopup' as the popup is open
     }
   };
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -65,12 +66,11 @@ const Footer = ({ handleClick }) => {
   const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
   return (
     <div className={styles[textColor]}>
-
-          <a onClick={(e) => handleContactPopup(e, 'contactPopup')} className={activeContact === 'contactPopup' ? styles.contactActive : styles.contactInActive}>
-            Contact
-          </a>
-<div ref={footerPopupRef} className={`${styles.footer} ${styles.footerPopup}`}>
-  <span className={styles.close} onClick={(e) => handleContactPopup(e, 'contactPopup')}>X</span>
+      <a onClick={(e) => handleContactPopup(e, 'contactPopup')} className={activeContact === 'contactPopup' ? styles.contactActive : styles.contactInActive}>
+        Contact
+      </a>
+      <div ref={footerPopupRef} className={`${styles.footer} ${styles.footerPopup}`}>
+        <span className={styles.close} onClick={(e) => handleContactPopup(e, 'contactPopup')}>X</span>
         <div className={styles.contactInfo}>
           <div className={styles.infoSection}>
             <div className={styles.infoSectionLarge}>
@@ -116,7 +116,7 @@ const Footer = ({ handleClick }) => {
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
