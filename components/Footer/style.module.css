@@ -671,22 +671,9 @@
 
 
   @media screen and (max-width: 1024px) {
-    .projectDetails {
-      position: relative;
-      line-height: 1.3;
-      padding: 20px;
-      font-size: 28px;
-  }
-  .scrollText2 {
-    padding-bottom: 0px;
-  }
-  .scrollText2 .flexItem {
-    opacity: 1;
-    line-height: 0;
-    width: 100vw;
-    position: relative;
-    margin-bottom: 10px;
-  }
+    .infoSection .infoSectionLarge {
+      font-size: 1.5rem;
+    }
   }
 
 
@@ -759,7 +746,7 @@
   }
   .contactInfo {
   text-align: left;
-  display: flex;
+  display: block;
   justify-content: space-between;
   }
   .contactInfo p{
