@@ -628,9 +628,8 @@ z-index: 0;
 
 
 @media screen and (max-width: 1024px) {
-
-.spacer {
-  height: 360vh;
+.spacerw {
+  height: 100vh;
 }
   .infoDetails {
     display: block;
@@ -638,8 +637,8 @@ z-index: 0;
 
   }
   .infoDetailsWrap {
-    padding: 0px 20px 100px 20px;
-    margin: 0;
+    padding: 0px 10px 100px 10px;
+    margin: 0px 10px 0 10px;
   }
 
   .projectDetails {
