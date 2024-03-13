@@ -631,6 +631,8 @@ z-index: 0;
 
   .infoDetails {
     display: block;
+    font-size: 12px;
+
   }
   .infoDetailsWrap {
     padding: 0px 20px 100px 20px;
@@ -655,6 +657,7 @@ z-index: 0;
 }
 .worldOverlay h3 {
   margin: 20px 20px 20px 20px;
+  font-size: 13px;
 }
 }
 
@@ -702,7 +705,7 @@ z-index: 0;
 .worldOverlay {
   height: auto;
   position: fixed;
-  padding-top: 40vh;
+  padding-top: 30vh;
   top: 90px;
   height: calc(100vh - 90px);
   width: 100vw;
