@@ -72,6 +72,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
 
     // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
+    /*
     ScrollTrigger.create({
       trigger: projectWrapperRefOuter.current,
       start: "bottom bottom",
@@ -85,6 +86,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
         });
       },
     });
+    */
 
 
     const infoArray = Array.from(document.querySelectorAll(".detailsInfoItem"));
