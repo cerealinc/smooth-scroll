@@ -174,7 +174,7 @@
     color: #AB6F4D;
     z-index: 999;
     transition: ease-in-out 400ms;
-    opacity: .3;
+    opacity: 0;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.07em;
@@ -674,17 +674,21 @@
     .infoSection .infoSectionLarge {
       font-size: 1.5rem;
     }
+
+   .infoSection.infoSectionSmall {
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+   }
+
+
   }
 
 
   @media screen and (max-width: 767px) {
 
-
-    .contactInActive {
-
+    .contactInActive, .contactActive {
       right: 20px;
-
-
      }
     .worldOverlay {
       height: auto;

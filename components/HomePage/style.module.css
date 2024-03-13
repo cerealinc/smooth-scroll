@@ -628,9 +628,7 @@ z-index: 0;
 
 
 @media screen and (max-width: 1024px) {
-.spacerw {
-  height: 100vh;
-}
+
   .infoDetails {
     display: block;
     font-size: 12px;
