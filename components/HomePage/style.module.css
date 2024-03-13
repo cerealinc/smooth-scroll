@@ -1,4 +1,3 @@
-
 .viewMore {
   width: 100vw;
   text-align: center;
@@ -11,7 +10,7 @@
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.07em;
-  opacity: .6 !important;
+  opacity: 0.6 !important;
   background-color: transparent;
   color: #0a0a0a;
   border-bottom: #212121 solid 1px;
@@ -33,100 +32,74 @@
   z-index: 9;
   opacity: 0;
   transition: ease-in-out 500ms;
-
 }
 
+.projectMarquee {
+  width: 100%;
+  grid-column-gap: 2rem;
+  display: flex;
+  overflow: hidden;
+}
+.projectMarqueeContent {
+  width: 100%;
+  grid-column-gap: 2rem;
+  padding: 12px 0;
+  flex: none;
+  justify-content: space-around;
+  display: flex;
+}
 
-  .marquee {
-    width: 100vw;
-    grid-column-gap: 2rem;
-    display: flex;
-    overflow: hidden;
-  }
-  .marqueeContent {
-    min-width: 100vw;
-    grid-column-gap: 2rem;
-    padding: 12px 0;
-    flex: none;
-    justify-content: space-around;
-    display: flex;
-  }
+.textBlock {
+  color: #0a0a0a;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.projectScrollText .textBlock {
+  font-size: 3rem;
+  color: #ffffff;
+}
 
-  .projectMarquee {
-    width: 100%;
-    grid-column-gap: 2rem;
-    display: flex;
-    overflow: hidden;
-  }
-  .projectMarqueeContent {
-    width: 100%;
-    grid-column-gap: 2rem;
-    padding: 12px 0;
-    flex: none;
-    justify-content: space-around;
-    display: flex;
-  }
+.scrollText .textBlock {
+  color: #fff;
+}
 
+.listItem {
+  padding: 0 24px;
+  cursor: pointer;
+}
 
-  .textBlock {
-    color: #0a0a0a;
-    font-size: 4rem;
-    font-weight: 400;
-    line-height: 1;
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
-  .projectScrollText  .textBlock {
-    font-size: 3rem;
-    color: #ffffff;
-
+  to {
+    transform: translateX(calc(-100% - 2rem));
   }
-
-  .scrollText .textBlock {
-    color: #fff;
-
+}
+.scroll {
+  animation: scroll 12s linear infinite;
+}
+.scrollProject {
+  animation: scroll 6s linear infinite;
+}
+.scrollWork {
+  animation: scroll 26s linear infinite;
+}
+.reverse {
+  animation-direction: reverse;
+}
+@keyframes scrollWork {
+  from {
+    transform: translateX(0);
   }
-
-  .listItem {
-    padding: 0 24px;
-    cursor: pointer;
+  to {
+    transform: translateX(calc(-100% - 2rem));
   }
-
-
-
-
-
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - 2rem));
-    }
-  }
-  .scroll {
-    animation: scroll 12s linear infinite;
-  }
-  .scrollProject {
-    animation: scroll 6s linear infinite;
-  }
-  .scrollWork {
-    animation: scroll 26s linear infinite;
-  }
-  .reverse {
-    animation-direction: reverse;
-  }
-  @keyframes scrollWork {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - 2rem));
-    }
-  }
-
+}
 
 .wrapper {
   position: relative;
-
 }
 .spacer {
   height: 160vh;
@@ -134,23 +107,6 @@
   display: block;
   position: relative;
   background-color: #0a0a0a;
-}
-
-.footer {
-  position: absolute;
-  width: 100vw;
-  bottom: 0;
-  height: auto;
-  background-color: #0a0a0a;
-  z-index: 999;
-
-  padding: 40px;
-  display: none;
-}
-
-.footerPopup {
-  position: fixed;
-  bottom: -90px;
 }
 
 .spacerw {
@@ -161,13 +117,13 @@
   background-color: #0a0a0a;
 }
 .projectWrapperOuter {
-height: auto;
-overflow: visible;
-position: relative;
-background: #f5f5f5;
-padding-top: 120px;
-background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh);
-z-index: 99;
+  height: auto;
+  overflow: visible;
+  position: relative;
+  background: #f5f5f5;
+  padding-top: 120px;
+  background: linear-gradient(to bottom, #e0e0e0 0%, #f5f5f5 10vh);
+  z-index: 99;
 }
 .projectWrapper {
   width: 100vw;
@@ -175,8 +131,7 @@ z-index: 99;
   display: block;
   z-index: 99;
   position: relative;
-    background:  rgba(0,0,0,0.5);
-
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .scrollText2 {
@@ -190,7 +145,6 @@ z-index: 99;
   flex-flow: column nowrap;
   justify-content: center;
   padding-bottom: 20px;
-
 }
 .scrollText2 .flexItem {
   opacity: 1;
@@ -200,7 +154,8 @@ z-index: 99;
   margin-bottom: 0px;
 }
 
-.flexItem:hover video, .flexItem:hover img {
+.flexItem:hover video,
+.flexItem:hover img {
   filter: blur(4px);
   cursor: pointer;
 }
@@ -213,7 +168,7 @@ z-index: 99;
   color: #0a0a0a;
   width: 100%;
   font-weight: 100;
-  line-height:1.3;
+  line-height: 1.3;
   padding: 34px 40px;
   font-size: 28px;
   line-height: 1.3;
@@ -227,50 +182,48 @@ z-index: 99;
 .projectDetails p {
   font-size: 14px;
   font-weight: 100;
-  line-height:1.3;
+  line-height: 1.3;
   margin-bottom: 12px;
   color: #888888;
   letter-spacing: 0.07em;
 }
 .projectHeader {
-margin-bottom: 20px;
-font-weight: 400;
-line-height:1.6;
-font-size: 22px;
-text-transform: uppercase;
-letter-spacing: 0.07em;
-font-weight: 600;
+  margin-bottom: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
 
-font-size: 21.2px;
-    letter-spacing: 0.1em;
-    z-index: 9;
-    color: #0a0a0a;
-    font-weight: 500;
-
+  font-size: 21.2px;
+  letter-spacing: 0.1em;
+  z-index: 9;
+  color: #0a0a0a;
+  font-weight: 500;
 }
 .projectDetails .projectTags {
-font-size: 18px;
-margin-bottom: 22px;
-font-weight: 100;
-text-transform: uppercase;
-color: #212121;
-font-size: 15px;
-letter-spacing: 0.07em;
-z-index: 9;
-color: #0a0a0a;
-font-weight: 500;
-
+  font-size: 18px;
+  margin-bottom: 22px;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #212121;
+  font-size: 15px;
+  letter-spacing: 0.07em;
+  z-index: 9;
+  color: #0a0a0a;
+  font-weight: 500;
 }
-.projectVideo, .projectImage  {
+.projectVideo,
+.projectImage {
   position: relative;
   width: 100%;
   height: 0;
   padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100%) */
   overflow: hidden;
   transform: translate3d(0, 0, 0);
-
 }
-.projectVideo video{
+.projectVideo video {
   position: absolute;
   top: 50%; /* Align the top edge of the video to the center of the parent */
   left: 50%; /* Align the left edge of the video to the center of the parent */
@@ -282,22 +235,20 @@ font-weight: 500;
   transform-origin: center; /* This ensures scaling happens from the center */
 }
 
-.projectImage img{
+.projectImage img {
   position: absolute;
   width: 100%;
   height: 100%;
   transform: scale(1.1);
   object-fit: cover; /* or "contain" based on your preference */
   transition: ease-in-out 600ms;
-
 }
-
 
 .scrollText2 .flexItem:nth-child(2n) {
   align-self: flex-end;
 }
 .scrollText2 .flexItem:nth-child(2n) .projectDetails {
-text-align: right;
+  text-align: right;
 }
 .scrollText2 .flexItem:nth-child(2n) .projectDetailsInner {
   float: right;
@@ -310,9 +261,6 @@ text-align: right;
   height: auto;
 }
 
-
-
-
 .video {
   bottom: 0;
   width: 100vw;
@@ -322,7 +270,6 @@ text-align: right;
   top: 0;
   z-index: 1;
   image-rendering: pixelated;
-
 }
 
 .videoBlur {
@@ -334,7 +281,6 @@ text-align: right;
   top: 0;
   z-index: 0;
   backdrop-filter: blur(26px);
-
 }
 .overlay {
   position: absolute;
@@ -345,36 +291,30 @@ text-align: right;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   z-index: -2;
-  background: rgba(255, 255, 255, 0.5)
-
+  background: rgba(255, 255, 255, 0.5);
 }
 
-
-.focusFront{
+.focusFront {
   position: absolute;
   top: 0;
-z-index: 0;
-    width: 100%;
-    height: 100%;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: ease-in-out 400ms; /* Apply transition to --radius */
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: ease-in-out 400ms; /* Apply transition to --radius */
 }
-.focusFront.hovered{
+.focusFront.hovered {
   position: absolute;
   top: 0;
   z-index: 0;
   transition: ease-in-out 0ms; /* Apply transition to --radius */
   backdrop-filter: blur(26px);
   opacity: 1;
-
-
 }
-
 
 .featuredReel {
   position: absolute;
@@ -386,9 +326,6 @@ z-index: 0;
   z-index: 999;
   opacity: 1;
 }
-
-
-
 
 .gridContainer {
   display: grid;
@@ -412,8 +349,6 @@ z-index: 0;
   opacity: 0; /* Initially set opacity to 0 for the fade-in effect */
 }
 
-
-
 .worldContainer {
   position: fixed;
   bottom: 0;
@@ -423,13 +358,12 @@ z-index: 0;
   margin-bottom: 30vh;
   overflow: visible;
   z-index: 2;
-    opacity: 1; /* Start with opacity 0 */
-    transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
+  opacity: 1; /* Start with opacity 0 */
+  transition: opacity 2s ease-in-out 1s; /* Adjust duration and easing as needed */
 }
 .worldContainer .world {
-  height:100vh;
+  height: 100vh;
   background-color: transparent;
-
 }
 
 .worldOverlay {
@@ -442,24 +376,21 @@ z-index: 0;
   overflow: hidden;
   z-index: 2;
   filter: blur(4px);
-
 }
 .contactWrap {
   display: flex;
   justify-content: space-between;
   padding: 40px 40px 55px 40px;
-
 }
 
 .infoDetailsWrap {
   margin: 0px 40px 18px 40px;
-  color: #E2E2E2;
+  color: #e2e2e2;
   border-top: #a4a4a47e 1px solid;
   padding-top: 20px;
   padding-bottom: 70px;
   background-color: #0a0a0ab3;
   backdrop-filter: blur(8px);
-
 }
 .worldOverlay h3 {
   text-transform: uppercase;
@@ -467,11 +398,8 @@ z-index: 0;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.07em;
-  color: #E2E2E2;
+  color: #e2e2e2;
   margin: 40px 40px 20px 40px;
-
-
-
 }
 .infoDetails {
   display: flex;
@@ -498,10 +426,8 @@ z-index: 0;
   margin: 0;
   padding: 18px 0;
   border-bottom: #a4a4a47e 1px solid;
-  color: #E2E2E2;
+  color: #e2e2e2;
 }
-
-
 
 .contactInfo {
   color: #fff;
@@ -523,9 +449,8 @@ z-index: 0;
 .infoSection.infoSectionSmall {
   display: flex;
   justify-content: space-between;
-
 }
-.contactInfo h4{
+.contactInfo h4 {
   color: #fff;
   line-height: 1;
   font-size: 15px;
@@ -561,40 +486,36 @@ z-index: 0;
   margin-right: 3px;
   margin-bottom: 1.5px;
 }
-.contactInfo p
-{
+.contactInfo p {
   font-weight: 100;
   line-height: 1.3;
   margin-bottom: 12px;
-  color: #A4A4A4;
+  color: #a4a4a4;
   letter-spacing: 0.07em;
 }
 .contactInfo p a {
-  color: #A4A4A4;
+  color: #a4a4a4;
   text-decoration: none;
-
 }
 .contactInfo p a:hover {
   text-decoration: underline;
 }
 .contactDetails {
-    color: #fff;
-    font-size: 21.2px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: left;
-    width: 60vw;
-    max-width: 500px;
-    min-width: 280px;
-    margin-top: 16px;
-    display: flex;
-
+  color: #fff;
+  font-size: 21.2px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  width: 60vw;
+  max-width: 500px;
+  min-width: 280px;
+  margin-top: 16px;
+  display: flex;
 }
 .contactDetails h4 {
   text-transform: uppercase;
   color: #fff;
-
 }
 .contactDetails ul {
   margin-bottom: 24px;
@@ -626,13 +547,10 @@ z-index: 0;
   z-index: -1;
 }
 
-
 @media screen and (max-width: 1024px) {
-
   .infoDetails {
     display: block;
     font-size: 12px;
-
   }
   .infoDetailsWrap {
     padding: 0px 10px 100px 10px;
@@ -644,34 +562,24 @@ z-index: 0;
     line-height: 1.3;
     padding: 20px;
     font-size: 28px;
-}
-.scrollText2 {
-  padding-bottom: 0px;
-}
-.scrollText2 .flexItem {
-  opacity: 1;
-  line-height: 0;
-  width: 100vw;
-  position: relative;
-  margin-bottom: 10px;
-}
-.worldOverlay h3 {
-  margin: 20px 20px 20px 20px;
-  font-size: 13px;
-}
+  }
+  .scrollText2 {
+    padding-bottom: 0px;
+  }
+  .scrollText2 .flexItem {
+    opacity: 1;
+    line-height: 0;
+    width: 100vw;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .worldOverlay h3 {
+    margin: 20px 20px 20px 20px;
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-
-
-
-.footer {
-  padding: 20px;
-}
-
-  .marquee-image.hide-mobile {
-    display: none;
-  }
   .scrollText2 {
     padding-bottom: 0px;
   }
@@ -688,7 +596,6 @@ z-index: 0;
   }
   .projectScrollText .textBlock {
     font-size: 1.5rem;
-
   }
 
   .projectDetails {
@@ -696,61 +603,61 @@ z-index: 0;
     line-height: 1.3;
     padding: 20px;
     font-size: 28px;
-}
-.projectDetailsInner {
-  max-width: 520px;
-  width: 100%;
-  min-width: 280px;
-}
-.worldOverlay {
-  height: auto;
-  position: fixed;
-  padding-top: 30vh;
-  top: 90px;
-  height: calc(100vh - 90px);
-  width: 100vw;
-  overflow: hidden;
-  z-index: 2;
-  filter: blur(4px);
+  }
+  .projectDetailsInner {
+    max-width: 520px;
+    width: 100%;
+    min-width: 280px;
+  }
+  .worldOverlay {
+    height: auto;
+    position: fixed;
+    padding-top: 30vh;
+    top: 90px;
+    height: calc(100vh - 90px);
+    width: 100vw;
+    overflow: hidden;
+    z-index: 2;
+    filter: blur(4px);
+  }
+  .contactDetails {
+    width: 100%;
+    height: auto;
+  }
+  .worldContainer {
+    position: fixed;
+    bottom: auto;
+    top: 0;
+    width: 100vw;
+    height: 50vh;
+    margin-bottom: 0;
+  }
+  .contactWrap {
+    padding: 20px;
+    display: block;
+  }
+  .contactInfo {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+  .contactInfo p {
+    text-align: left;
+    font-size: 12px;
+  }
+  .contactDetails,
+  .contactInfo h4 {
+    font-size: 13px;
+  }
+  .hideMd {
+    display: none;
+  }
+  .bah p {
+    font-size: 12px;
+  }
 
-}
-.contactDetails {
-  width: 100%;
-  height: auto;
-}
-.worldContainer {
-position: fixed;
-bottom: auto;
-top: 0;
-width: 100vw;
-height: 50vh;
-margin-bottom: 0;
-
-}
-.contactWrap {
-padding: 20px;
-display: block;
-}
-.contactInfo {
-text-align: left;
-display: flex;
-justify-content: space-between;
-}
-.contactInfo p{
-text-align: left;
-font-size: 12px;
-}
-.contactDetails, .contactInfo h4 {
-font-size: 13px;
-}
-.hideMd {
-display: none;
-}
-.bah p {
-font-size: 12px;
-}
-
-.contactInfo .bahbah p, .bahbah {
-text-align: right;
-}
+  .contactInfo .bahbah p,
+  .bahbah {
+    text-align: right;
+  }
 }

@@ -1,15 +1,13 @@
 // Footer.js
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./style.module.css";
 import Image from "next/image";
-import gsap from 'gsap';
+import gsap from "gsap";
 
 const Footer = ({ handleClick }) => {
   const footerPopupRef = useRef();
   const [activeContact, setActiveContact] = useState(null);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
-
-
 
   const handleContactPopup = (e) => {
     e.preventDefault();
@@ -25,7 +23,7 @@ const Footer = ({ handleClick }) => {
         bottom: -footerPopup.offsetHeight, // Move it out of the viewport
         className: `${styles.footer} ${styles.footerPopup}`, // Remove the 'active' class
         duration: 1.5,
-        ease: 'power3.inOut',
+        ease: "power3.inOut",
       });
 
       setActiveContact(null); // Set activeContact to null as the popup is closed
@@ -35,25 +33,28 @@ const Footer = ({ handleClick }) => {
         bottom: 0,
         className: `${styles.footer} ${styles.footerPopup} ${styles.active}`, // Add the 'active' class
         duration: 1.5,
-        ease: 'power3.inOut',
+        ease: "power3.inOut",
       });
 
-      setActiveContact('contactPopup'); // Set activeContact to 'contactPopup' as the popup is open
+      setActiveContact("contactPopup"); // Set activeContact to 'contactPopup' as the popup is open
     }
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target.classList.contains('isDark')) {
-          setIsDarkSectionInView(entry.isIntersecting);
-        }
-      });
-    }, {
-      threshold: 0,
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.classList.contains("isDark")) {
+            setIsDarkSectionInView(entry.isIntersecting);
+          }
+        });
+      },
+      {
+        threshold: 0,
+      }
+    );
 
-    const darkSection = document.querySelector('.isDark');
+    const darkSection = document.querySelector(".isDark");
     if (darkSection) {
       observer.observe(darkSection);
     }
@@ -65,14 +66,29 @@ const Footer = ({ handleClick }) => {
     };
   }, []);
 
-  const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
+  const textColor = isDarkSectionInView ? "isBlack" : "isWhite";
   return (
     <div className={styles[textColor]}>
-      <a onClick={(e) => handleContactPopup(e, 'contactPopup')} className={activeContact === 'contactPopup' ? styles.contactActive : styles.contactInActive}>
+      <a
+        onClick={(e) => handleContactPopup(e, "contactPopup")}
+        className={
+          activeContact === "contactPopup"
+            ? styles.contactActive
+            : styles.contactInActive
+        }
+      >
         Contact
       </a>
-      <div ref={footerPopupRef} className={`${styles.footer} ${styles.footerPopup}`}>
-        <span className={styles.close} onClick={(e) => handleContactPopup(e, 'contactPopup')}>X</span>
+      <div
+        ref={footerPopupRef}
+        className={`${styles.footer} ${styles.footerPopup}`}
+      >
+        <span
+          className={styles.close}
+          onClick={(e) => handleContactPopup(e, "contactPopup")}
+        >
+          X
+        </span>
         <div className={styles.contactInfo}>
           <div className={styles.infoSection}>
             <div className={styles.infoSectionLarge}>
@@ -88,12 +104,7 @@ const Footer = ({ handleClick }) => {
                 target="_blank"
               >
                 INSTAGRAM
-                <Image
-                  src="/arrow.png"
-                  height={8}
-                  width={8}
-                  alt="Instagram"
-                />
+                <Image src="/arrow.png" height={8} width={8} alt="Instagram" />
               </a>
             </div>
             <div>

@@ -7,7 +7,6 @@ import { World } from "../World/World";
 import { CldVideoPlayer } from "next-cloudinary";
 import { projects } from "@/data/projects";
 import { useDesktopAnimation } from "@/hooks/useDesktopAnimation";
-import Image from "next/image";
 
 import styles from "./style.module.css";
 
@@ -47,7 +46,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
   const projectWrapperRefOuter = useRef(null);
   const childWrapperRef = useRef(null);
   const WorldRef = useRef(null);
-  const footerPopupRef = useRef(null);
   const infoRef = useRef(null);
   const [workInView, setWorkInView] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -70,7 +68,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-
     // Create ScrollTrigger with onEnter and onLeaveBack functions for the outer wrapper
     /*
     ScrollTrigger.create({
@@ -88,28 +85,26 @@ const HomePage = ({ startLenis, stopLenis }) => {
     });
     */
 
-
     const infoArray = Array.from(document.querySelectorAll(".detailsInfoItem"));
     setWorks(infoArray);
 
     infoArray.forEach((infoItem) => {
-
-        ScrollTrigger.create({
-          trigger: projectWrapperRefOuter.current,
-          start: "bottom top",
-          scrub: true,
-          onEnter: ({}) => {
-            gsap.set(infoItem, {
-              y: 0,
-            });
-          },
-          onLeaveBack: ({}) => {
-            gsap.set(infoItem, {
-              y: 60,
-            });
-          },
-        });
+      ScrollTrigger.create({
+        trigger: projectWrapperRefOuter.current,
+        start: "bottom top",
+        scrub: true,
+        onEnter: ({}) => {
+          gsap.set(infoItem, {
+            y: 0,
+          });
+        },
+        onLeaveBack: ({}) => {
+          gsap.set(infoItem, {
+            y: 60,
+          });
+        },
       });
+    });
 
     const worksArray = Array.from(document.querySelectorAll(".flexItemWorks"));
     setWorks(worksArray);
@@ -202,7 +197,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
           filter: `blur(0px)`,
           duration: 1.5,
         });
-
       },
       onLeaveBack: ({ progress, direction, isActive }) => {
         // Reverse the animation when scrolling back down
@@ -210,13 +204,8 @@ const HomePage = ({ startLenis, stopLenis }) => {
           filter: `blur(4px)`,
           duration: 1.5,
         });
-
-
       },
     });
-
-
-
 
     ScrollTrigger.create({
       trigger: projectWrapperRefOuter.current,
@@ -347,12 +336,6 @@ const HomePage = ({ startLenis, stopLenis }) => {
     });
   }, [startLenis, stopLenis, projectWrapperRefOuter]);
 
-  const [activeId, setActiveId] = useState(0);
-
-  const setActiveElementOnHover = (id) => {
-    setActiveId(id);
-  };
-
   return (
     <>
       <div id="work" className="section">
@@ -366,11 +349,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
               .slice(0, displayedProjects)
               .map(({ id, title, details, img, src, tags }) => (
                 // eslint-disable-next-line react/jsx-key
-                <div
-                  key={id}
-                  className={`${styles.flexItem} flexItemWorks`}
-                  onMouseEnter={() => [setActiveElementOnHover(id)]}
-                >
+                <div key={id} className={`${styles.flexItem} flexItemWorks`}>
                   {src ? (
                     // If src is set, render video
                     <div className={`${styles.projectVideo} projectVideo`}>
@@ -489,79 +468,59 @@ const HomePage = ({ startLenis, stopLenis }) => {
           </div>
           <h3>Offerings</h3>
           <div className={styles.infoDetailsWrap} ref={infoRef}>
-
             <div className={styles.infoDetails}>
               <div className={styles.detailsInfo}>
                 <ul className="ukl">
-                  <li><span className="detailsInfoItem">Production — LA + NYC</span></li>
-                  <li><span className="detailsInfoItem">Post Production + Post Production Management</span></li>
-                  <li><span className="detailsInfoItem">Retouching</span></li>
-                  <li><span className="detailsInfoItem">Motion Editing</span></li>
-                  <li><span className="detailsInfoItem">Music Directing + Supervision</span></li>
+                  <li>
+                    <span className="detailsInfoItem">
+                      Production — LA + NYC
+                    </span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">
+                      Post Production + Post Production Management
+                    </span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">Retouching</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">Motion Editing</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">
+                      Music Directing + Supervision
+                    </span>
+                  </li>
                 </ul>
               </div>
               <div className={styles.detailsInfo}>
-              <ul className="ukl">
-                <li><span className="detailsInfoItem">Creative Services</span></li>
-                <li><span className="detailsInfoItem">Creative Direction</span></li>
-                <li><span className="detailsInfoItem">Art Direction</span></li>
-                <li><span className="detailsInfoItem">Project Management</span></li>
-                <li><span className="detailsInfoItem">Social Content Strategy + Management</span></li>
+                <ul className="ukl">
+                  <li>
+                    <span className="detailsInfoItem">Creative Services</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">Creative Direction</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">Art Direction</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">Project Management</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">
+                      Social Content Strategy + Management
+                    </span>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={styles.footer}>
-          <div className={styles.contactInfo}>
-            <div className={styles.infoSection}>
-              <div className={styles.infoSectionLarge}>
-                <a href="mailto:00@ST.STUDIO">00@ST.STUDIO</a>
-              </div>
-            </div>
-
-            <div className={`${styles.infoSection} ${styles.infoSectionSmall}`}>
-              <div>
-                <a
-                  className={styles.socialLink}
-                  href="https://instagram.com/st.studio"
-                  target="_blank"
-                >
-                  INSTAGRAM
-                  <Image
-                    src="/arrow.png"
-                    height={8}
-                    width={8}
-                    alt="Instagram"
-                  />
-                </a>
-              </div>
-              <div>
-                <h4>STUDIO MANAGER</h4>
-                <p>
-                  Camille Waterfallen
-                  <br />
-                  <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
-                </p>
-              </div>
-              <div>
-                <h4 className={styles.contactLogo}>
-                  ST<span className={styles.logoline}></span>STUDIO
-                </h4>
-                <p>
-                  135 #01 Beverlv Blvd
-                  <br />
-                  Los Angeles CA, 90036
-                  <br />
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
         <div ref={spacerRef} className={styles.spacer}></div>
       </div>
-
     </>
   );
 };

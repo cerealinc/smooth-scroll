@@ -1,90 +1,77 @@
-
-
 .navigation {
-
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0px;
-    z-index: 9;
-    color: #0a0a0a;
-    justify-content: center;
-    z-index: 999999999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 36px 32px 36px 40px;
-
-
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0px;
+  z-index: 9;
+  color: #0a0a0a;
+  justify-content: center;
+  z-index: 999999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px 32px 36px 40px;
 }
 .menu a {
-    color: #0a0a0a;
-    text-decoration: none;
-    padding: 2px 8px;
-    position: relative;
-    text-transform: capitalize;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 0.07em;
-    transition: 400ms ease-in-out;
-
+  color: #0a0a0a;
+  text-decoration: none;
+  padding: 2px 8px;
+  position: relative;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.07em;
+  transition: 400ms ease-in-out;
 }
-
-
 
 .menu a:hover .underline,
 .active .underline {
-    width: calc(100% - 8px);
-    left: 4px;
+  width: calc(100% - 8px);
+  left: 4px;
 }
 .menu {
-    display: flex;
-
+  display: flex;
 }
 
 .underline {
-    width: 0;
-    height: 1px;
-    background-color: #0a0a0a;
-    display: block;
-    margin-top: 4px;
-    position: absolute;
-    left: -8px;
-    transition: 400ms ease-in-out;
+  width: 0;
+  height: 1px;
+  background-color: #0a0a0a;
+  display: block;
+  margin-top: 4px;
+  position: absolute;
+  left: -8px;
+  transition: 400ms ease-in-out;
 
-    display: none !important;
+  display: none !important;
 }
 
+.menu.isBlack a {
+  color: #fff;
+}
 
-.menu.isBlack a{
-    color: #fff;
-  }
-
-  .menu.isBlack .underline {
-    background-color: #fff;
-
+.menu.isBlack .underline {
+  background-color: #fff;
 }
 .inActive .underline {
-    width: 0%;
-    left: -8px;
-
+  width: 0%;
+  left: -8px;
 }
 .inActive {
-transition: 400ms ease-in-out;
-opacity: 1;
+  transition: 400ms ease-in-out;
+  opacity: 1;
 }
-.menu a:hover, .menu a.active  {
-    color: #AB6F4D;
+.menu a:hover,
+.menu a.active {
+  color: #ab6f4d;
 }
-
-
 
 @media screen and (max-width: 767px) {
-    .navigation {
-        padding: 12px 19px 12px 20px;
-        justify-content: center;
-        top: 30px;
+  .navigation {
+    padding: 12px 19px 12px 20px;
+    justify-content: center;
+    top: 30px;
   }
   .menu {
     position: absolute;
@@ -98,16 +85,14 @@ opacity: 1;
     font-size: 13px;
     letter-spacing: 0.07em;
     padding: 9px 6px;
-    text-transform: uppercase;
-}
-.menu a.active {
-    opacity: .6;
-}
-.menu a.homeLink {
+  }
+  .menu a.active {
+    opacity: 0.6;
+  }
+  .menu a.homeLink {
     display: none;
-}
-.underline {
+  }
+  .underline {
     margin-top: 3px;
-}
-
+  }
 }

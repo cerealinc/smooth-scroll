@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import AnimatedLogo from '../AnimatedSection';
 import Link from 'next/link';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from './style.module.css';
 
 const Logo = () => {
@@ -34,9 +31,7 @@ const Logo = () => {
       }
     };
   }, []);
-  // ...
 
-  // Use isDarkSectionInView to determine the text color
   const textColor = isDarkSectionInView ? 'isBlack' : 'isWhite';
 
   return (
@@ -44,7 +39,6 @@ const Logo = () => {
       <Link href="/" >
       SAINT
       </Link>
-
     </div>
   );
 };
