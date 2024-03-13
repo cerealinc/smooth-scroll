@@ -9,6 +9,8 @@ const Footer = ({ handleClick }) => {
   const [activeContact, setActiveContact] = useState(null);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
 
+
+
   const handleContactPopup = (e) => {
     e.preventDefault();
 
