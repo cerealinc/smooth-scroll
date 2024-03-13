@@ -680,6 +680,12 @@
   @media screen and (max-width: 767px) {
 
 
+    .contactInActive {
+
+      right: 20px;
+
+
+     }
     .worldOverlay {
       height: auto;
       position: fixed;

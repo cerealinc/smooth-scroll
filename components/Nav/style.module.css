@@ -78,125 +78,8 @@ opacity: 1;
     color: #AB6F4D;
 }
 
-.footer {
-    position: absolute;
-    width: 100vw;
-    bottom: 0;
-    height: auto;
-    background-color: #0a0a0a;
-    z-index: 99999;
-
-    padding: 40px;
-  }
-
-  .footerPopup {
-    position: fixed;
-    bottom: -180px;
-  }
 
 
-.contactInfo {
-    color: #fff;
-    text-align: left;
-    line-height: 1.3;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    display: flex;
-    gap: 120px;
-    justify-content: space-between;
-  }
-  .infoSection {
-    flex: 1;
-  }
-  .infoSection .infoSectionLarge {
-    font-size: 3rem;
-  }
-  .infoSection.infoSectionSmall {
-    display: flex;
-    justify-content: space-between;
-
-  }
-  .contactInfo h4{
-    color: #fff;
-    line-height: 1;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    margin-bottom: 12px;
-    margin-top: 0;
-  }
-  .contactInfo a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .contactInfo a:hover {
-    text-decoration: underline;
-  }
-  .socialLink {
-    line-height: 1;
-    display: flex;
-    gap: 4px;
-  }
-  .socialLink img {
-    margin-top: 2px;
-  }
-  .contactLogo {
-    display: flex;
-    gap: 3px;
-    align-items: flex-end;
-  }
-  .logoline {
-    width: 34px;
-    height: 1.5px;
-    background-color: #fff;
-    margin-right: 3px;
-    margin-bottom: 1.5px;
-  }
-  .contactInfo p
-  {
-    font-weight: 100;
-    line-height: 1.3;
-    margin-bottom: 12px;
-    color: #A4A4A4;
-    letter-spacing: 0.07em;
-  }
-  .contactInfo p a {
-    color: #A4A4A4;
-    text-decoration: none;
-
-  }
-  .contactInfo p a:hover {
-    text-decoration: underline;
-  }
-  .contactDetails {
-      color: #fff;
-      font-size: 21.2px;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      text-transform: uppercase;
-      text-align: left;
-      width: 60vw;
-      max-width: 500px;
-      min-width: 280px;
-      margin-top: 16px;
-      display: flex;
-
-  }
-  .contactDetails h4 {
-    text-transform: uppercase;
-    color: #fff;
-
-  }
-  .contactDetails ul {
-    margin-bottom: 24px;
-  }
-  .contactDetails ul li {
-    list-style: none;
-    margin-bottom: 6px;
-    font-style: italic;
-    color: #888888;
-  }
 @media screen and (max-width: 767px) {
     .navigation {
         padding: 12px 19px 12px 20px;
@@ -205,16 +88,15 @@ opacity: 1;
   }
   .menu {
     position: absolute;
-    top: 10px;
+    top: 4px;
     justify-content: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 20px;
   }
   .menu a {
     font-size: 13px;
     letter-spacing: 0.07em;
-    color: #A4A4A4 !important;
     padding: 9px 6px;
     text-transform: uppercase;
 }
