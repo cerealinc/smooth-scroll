@@ -473,45 +473,54 @@ const HomePage = ({ startLenis, stopLenis }) => {
                 <ul className="ukl">
                   <li>
                     <span className="detailsInfoItem">
-                      Production — LA + NYC
+                    Creative Direction
                     </span>
                   </li>
                   <li>
                     <span className="detailsInfoItem">
-                      Post Production + Post Production Management
+                    Art Direction
                     </span>
                   </li>
                   <li>
-                    <span className="detailsInfoItem">Retouching</span>
+                    <span className="detailsInfoItem">Production</span>
                   </li>
                   <li>
-                    <span className="detailsInfoItem">Motion Editing</span>
+                    <span className="detailsInfoItem">Post Production</span>
                   </li>
                   <li>
                     <span className="detailsInfoItem">
                       Music Directing + Supervision
                     </span>
                   </li>
+                  <li>
+                    <span className="detailsInfoItem">Brand Identity + Strategy</span>
+                  </li>
                 </ul>
               </div>
               <div className={styles.detailsInfo}>
                 <ul className="ukl">
+
                   <li>
-                    <span className="detailsInfoItem">Creative Services</span>
+                    <span className="detailsInfoItem">Social Content Strategy</span>
                   </li>
                   <li>
-                    <span className="detailsInfoItem">Creative Direction</span>
+                    <span className="detailsInfoItem">Social Community Management</span>
                   </li>
                   <li>
-                    <span className="detailsInfoItem">Art Direction</span>
-                  </li>
-                  <li>
-                    <span className="detailsInfoItem">Project Management</span>
+                    <span className="detailsInfoItem">Website Design</span>
                   </li>
                   <li>
                     <span className="detailsInfoItem">
-                      Social Content Strategy + Management
+                    Website Development
                     </span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">
+                    Email Marketing</span>
+                  </li>
+                  <li>
+                    <span className="detailsInfoItem">
+                    Ad Buying</span>
                   </li>
                 </ul>
               </div>
