@@ -69,6 +69,7 @@ const Footer = ({ handleClick }) => {
   const textColor = isDarkSectionInView ? "isBlack" : "isWhite";
   return (
     <div className={styles[textColor]}>
+
       <a
         onClick={(e) => handleContactPopup(e, "contactPopup")}
         className={
@@ -83,6 +84,16 @@ const Footer = ({ handleClick }) => {
         ref={footerPopupRef}
         className={`${styles.footer} ${styles.footerPopup}`}
       >
+        <div
+          className={
+            activeContact === "contactPopup"
+              ? styles.closeOverlayActive
+              : styles.closeOverlayInActive
+          }
+          onClick={(e) => handleContactPopup(e, "contactPopup")}
+        >
+
+        </div>
         <span
           className={styles.close}
           onClick={(e) => handleContactPopup(e, "contactPopup")}
