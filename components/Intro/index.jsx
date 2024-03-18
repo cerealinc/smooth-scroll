@@ -91,7 +91,7 @@ const Intro = () => {
       <div ref={videoRef} className={styles.scrollVideoBlur}>
 
         <video loop muted autoPlay playsInline className={styles.videoInner}>
-          <source src="/images/ST_2020_ActiveReel_5.mp4" type="video/mp4" />
+          <source src="/images/saint-studio-GME_SRT.mp4" type="video/mp4" />
         </video>
 
       </div>

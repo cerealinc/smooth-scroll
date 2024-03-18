@@ -73,7 +73,7 @@
   display: flex;
   gap: 120px;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 .infoSection {
   flex: 1;
