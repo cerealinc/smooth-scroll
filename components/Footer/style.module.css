@@ -65,12 +65,14 @@
   display: flex;
   gap: 120px;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .infoSection {
   flex: 1;
 }
 .infoSection .infoSectionLarge {
   font-size: 3rem;
+  line-height: 2rem;
 }
 .infoSection.infoSectionSmall {
   display: flex;
@@ -156,5 +158,23 @@
   .contactInfo .bahbah p,
   .bahbah {
     text-align: right;
+  }
+
+  .infoSection.infoSectionSmall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Three columns, each taking up equal space */
+
+  }
+  .instagram {
+    grid-column: 1 / 2; /* Span the first column */
+  }
+
+  .studioManager {
+    grid-column: 2 / 3; /* Span the first column */
+
+  }
+  .studioAddress {
+    grid-column: 2 / 3; /* Span the first column */
+
   }
 }

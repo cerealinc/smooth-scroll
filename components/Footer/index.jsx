@@ -97,7 +97,7 @@ const Footer = ({ handleClick }) => {
           </div>
 
           <div className={`${styles.infoSection} ${styles.infoSectionSmall}`}>
-            <div>
+          <div className={styles.instagram}>
               <a
                 className={styles.socialLink}
                 href="https://instagram.com/st.studio"
@@ -107,7 +107,8 @@ const Footer = ({ handleClick }) => {
                 <Image src="/arrow.png" height={8} width={8} alt="Instagram" />
               </a>
             </div>
-            <div>
+
+            <div className={styles.studioManager}>
               <h4>STUDIO MANAGER</h4>
               <p>
                 Camille Waterfallen
@@ -115,15 +116,14 @@ const Footer = ({ handleClick }) => {
                 <a href="mailto:CW@ST.STUDIO">CW@ST.STUDIO</a>
               </p>
             </div>
-            <div>
+            <div className={styles.studioAddress}>
               <h4 className={styles.contactLogo}>
                 ST<span className={styles.logoline}></span>STUDIO
               </h4>
               <p>
-                135 #01 Beverlv Blvd
-                <br />
-                Los Angeles CA, 90036
-                <br />
+              3336 S La Cienega Blvd<br />
+Ste. 153<br />
+LA CA 90016
               </p>
             </div>
           </div>
