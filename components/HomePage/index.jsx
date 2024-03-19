@@ -7,6 +7,7 @@ import { World } from "../World/World";
 import { CldVideoPlayer } from "next-cloudinary";
 import { projects } from "@/data/projects";
 import { useDesktopAnimation } from "@/hooks/useDesktopAnimation";
+import BlobAnimation from "../Blob";
 
 import styles from "./style.module.css";
 
@@ -63,6 +64,8 @@ const HomePage = ({ startLenis, stopLenis }) => {
     return false; // Default to false if not on the client side
   };
   useDesktopAnimation(); // Custom hook for desktop-specific animations
+
+
 
   useEffect(() => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -273,7 +276,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
     ScrollTrigger.create({
       trigger: spacerRef.current,
       start: "top bottom",
-      end: "bottom bottom",
+      end: "bottom center",
       onEnter: () => world.enableZoom(), // Enable zooming
       onLeave: () => world.disableZoom(), // Disable zooming
       onEnterBack: () => world.enableZoom(), // Enable zooming
@@ -528,8 +531,14 @@ const HomePage = ({ startLenis, stopLenis }) => {
           </div>
         </div>
 
-        <div ref={spacerRef} className={styles.spacer}></div>
+        <div ref={spacerRef} className={styles.spacer}>
+        <div className={styles.gradient}>
+        <BlobAnimation />
+        </div>
+        </div>
       </div>
+      <div className={styles.spacer2}></div>
+
     </>
   );
 };

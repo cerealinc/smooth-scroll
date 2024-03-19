@@ -102,12 +102,31 @@
   position: relative;
 }
 .spacer {
-  height: 160vh;
+  height: 260vh;
   width: 100vw;
   display: block;
   position: relative;
   background-color: #0a0a0a;
 }
+.spacer2 {
+  height: 50vh;
+  width: 100vw;
+  display: block;
+  position: relative;
+  background-color: #0a0a0a;
+}
+
+.gradient {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Adjust blob size */
+  height: 100vh; /* Adjust blob size */
+  opacity: 1;
+}
+
+
 
 .spacerw {
   height: 50vh;
@@ -553,8 +572,8 @@
     font-size: 12px;
   }
   .infoDetailsWrap {
-    padding: 0px 10px 100px 10px;
-    margin: 0px 10px 0 10px;
+    padding: 0px 20px 100px 20px;
+    margin: 0;
   }
 
   .projectDetails {
