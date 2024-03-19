@@ -39,6 +39,49 @@ const Footer = ({ handleClick }) => {
       setActiveContact("contactPopup"); // Set activeContact to 'contactPopup' as the popup is open
     }
   };
+// Import useEffect and useState from "react"
+
+useEffect(() => {
+  const footerPopup = footerPopupRef.current;
+
+  // Check if the footerPopup is already active
+  const isPopupActive = footerPopup.classList.contains(styles.active);
+
+  const checkIfBottom = () => {
+    // window.innerHeight + window.scrollY represents the total height scrolled
+    // document.body.offsetHeight represents the total height of the body content
+    // Adding a small threshold (e.g., 5px) to ensure it works on all browsers
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 35) {
+
+      // If not active, open the footerPopup
+      gsap.to(footerPopup, {
+        bottom: 0,
+        className: `${styles.footer} ${styles.footerPopup} ${styles.active}`, // Add the 'active' class
+        duration: 1.5,
+        ease: "power3.inOut",
+      });
+
+      setActiveContact("contactPopup"); // Set activeContact to 'contactPopup' as the popup is open
+
+    } else {
+      // If active, close the footerPopup
+      gsap.to(footerPopup, {
+        bottom: -footerPopup.offsetHeight, // Move it out of the viewport
+        className: `${styles.footer} ${styles.footerPopup}`, // Remove the 'active' class
+        duration: 1,
+        ease: "power3.inOut",
+      });
+
+      setActiveContact(null); // Set activeContact to null as the popup is closed
+    }
+  };
+
+  // Add scroll event listener
+  window.addEventListener('scroll', checkIfBottom);
+
+  // Cleanup function to remove event listener
+  return () => window.removeEventListener('scroll', checkIfBottom);
+}, []); // Empty dependency array means this effect runs once on mount
 
   useEffect(() => {
     const observer = new IntersectionObserver(

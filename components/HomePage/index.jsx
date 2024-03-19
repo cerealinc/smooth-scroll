@@ -276,7 +276,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
     ScrollTrigger.create({
       trigger: spacerRef.current,
       start: "top bottom",
-      end: "bottom center",
+      end: "bottom top",
       onEnter: () => world.enableZoom(), // Enable zooming
       onLeave: () => world.disableZoom(), // Disable zooming
       onEnterBack: () => world.enableZoom(), // Enable zooming
@@ -447,13 +447,15 @@ const HomePage = ({ startLenis, stopLenis }) => {
           )}
         </div>
       </div>
-      <div ref={spacerwRef} className={styles.spacerw}></div>
 
       <div
         id="contact"
         className="section isDark"
-        style={{ position: "relative", height: "auto" }}
+        style={{ position: "relative", height: "auto", backgroundColor: '#0a0a0a'
+      }}
       >
+              <div ref={spacerwRef} className={styles.spacerw}></div>
+
         <div
           ref={WorldRef}
           className={`${styles.worldContainer} ${fadeIn ? styles.fadeIn : ""}`}
@@ -535,9 +537,9 @@ const HomePage = ({ startLenis, stopLenis }) => {
         <div className={styles.gradient}>
         <BlobAnimation />
         </div>
-        </div>
       </div>
       <div className={styles.spacer2}></div>
+      </div>
 
     </>
   );

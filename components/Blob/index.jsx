@@ -38,8 +38,8 @@ const MorphingBlob = () => {
 
 
     <radialGradient id="grad1" cx="233.04" cy="198.03" fx="233.04" fy="198.03" r="215.75" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ab704d" stop-opacity=".1"/>
-      <stop offset=".74" stop-color="#1a1617" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ab704d" stopOpacity=".1"/>
+      <stop offset=".74" stop-color="#1a1617" stopOpacity="0"/>
     </radialGradient>
             </defs>
             <g transform="translate(0,0)">
