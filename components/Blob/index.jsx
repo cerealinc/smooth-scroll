@@ -22,7 +22,7 @@ const MorphingBlob = () => {
         const tl = gsap.timeline({
             repeat: -1,
             yoyo: true,
-            defaults: { duration: 6, ease: "power1.inOut" }
+            defaults: { duration: 10, ease: "power1.inOut" }
         });
 
         // Loop through the paths and create a tween for each
@@ -38,8 +38,8 @@ const MorphingBlob = () => {
 
 
     <radialGradient id="grad1" cx="233.04" cy="198.03" fx="233.04" fy="198.03" r="215.75" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ab704d" stopOpacity=".1"/>
-      <stop offset=".74" stop-color="#1a1617" stopOpacity="0"/>
+      <stop offset="0" stopColor="#1e1d1d" stopOpacity=".7"/>
+      <stop offset=".8" stopColor="#1e1d1d" stopOpacity="0"/>
     </radialGradient>
             </defs>
             <g transform="translate(0,0)">
