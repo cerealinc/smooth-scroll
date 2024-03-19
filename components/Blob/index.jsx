@@ -33,17 +33,17 @@ const MorphingBlob = () => {
     const scaleFactor = 1; // Adjust this value to scale the path up or down
 
     return (
-        <svg width="100vw" height="80vh" viewBox="0 0 600 600">
+        <svg width="150vw" height="150vh" viewBox="0 0 600 600">
             <defs>
 
 
     <radialGradient id="grad1" cx="233.04" cy="198.03" fx="233.04" fy="198.03" r="215.75" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stopColor="#1e1d1d" stopOpacity=".7"/>
+      <stop offset="0" stopColor="#1e1d1d" stopOpacity=".4"/>
       <stop offset=".8" stopColor="#1e1d1d" stopOpacity="0"/>
     </radialGradient>
             </defs>
             <g transform="translate(0,0)">
-                <path ref={pathRef} fill="url(#grad1)" d={paths[0]} />
+                <path ref={pathRef} fill="#060606" d={paths[0]} />
             </g>
         </svg>
     );

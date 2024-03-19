@@ -94,7 +94,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
     infoArray.forEach((infoItem) => {
       ScrollTrigger.create({
         trigger: projectWrapperRefOuter.current,
-        start: "bottom top",
+        start: "bottom top+=100",
         scrub: true,
         onEnter: ({}) => {
           gsap.set(infoItem, {
