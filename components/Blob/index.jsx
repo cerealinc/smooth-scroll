@@ -43,7 +43,7 @@ const MorphingBlob = () => {
     </radialGradient>
             </defs>
             <g transform="translate(0,0)">
-                <path ref={pathRef} fill="#060606" d={paths[0]} />
+                <path ref={pathRef} fill="#080808" d={paths[0]} />
             </g>
         </svg>
     );
