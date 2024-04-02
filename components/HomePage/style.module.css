@@ -106,6 +106,7 @@
   width: 100vw;
   display: block;
   position: relative;
+  background-color: #080808;
 }
 .spacer2 {
   height: 80vh;
@@ -132,6 +133,7 @@
   width: 100vw;
   display: block;
   position: relative;
+  background-color: #0a0a0a;
 }
 .projectWrapperOuter {
   height: auto;

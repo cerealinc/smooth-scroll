@@ -341,7 +341,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
   return (
     <>
-      <div id="work" className="section">
+      <div id="work" className="section" style={{display: 'none'}}>
         <div
           ref={projectWrapperRefOuter}
           className={styles.projectWrapperOuter}
