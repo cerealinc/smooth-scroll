@@ -341,110 +341,17 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
   return (
     <>
-      <div id="work" className="section" style={{display: 'none'}}>
+      <div id="work" className="section" style={{height: '0', overflow: 'hidden'}}>
         <div
           ref={projectWrapperRefOuter}
           className={styles.projectWrapperOuter}
           id="your-anchor-2"
         >
           <div ref={textRef2} className={styles.scrollText2}>
-            {projects
-              .slice(0, displayedProjects)
-              .map(({ id, title, details, img, src, tags }) => (
-                // eslint-disable-next-line react/jsx-key
-                <div key={id} className={`${styles.flexItem} flexItemWorks`}>
-                  {src ? (
-                    // If src is set, render video
-                    <div className={`${styles.projectVideo} projectVideo`}>
-                      <div className={styles.projectScrollText}>
-                        <div className={styles.projectMarquee}>
-                          <div
-                            className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}
-                          >
-                            <div className={styles.textBlock}>
-                              Case Study Coming Soon
-                            </div>
-                          </div>
-                          <div
-                            className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}
-                          >
-                            <div className={styles.textBlock}>
-                              Case Study Coming Soon
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <CldVideoPlayer
-                        id={{ id }} // Use a unique identifier for each video
-                        width="800" // Width of the video player
-                        height="450" // Height of the video player
-                        style={{ width: "100%" }} // Set the width to 100% to make it responsive
-                        controls={false}
-                        loop
-                        muted
-                        autoPlay
-                        playsInline
-                        src={`/SAINT/${src}`}
-                        type="video/mp4"
-                      />
-                    </div>
-                  ) : (
-                    // If src is not set, render image
-                    <div className={`${styles.projectImage}`}>
-                      <div className={styles.projectScrollText}>
-                        <div className={styles.projectMarquee}>
-                          <div
-                            className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}
-                          >
-                            <div className={styles.textBlock}>
-                              Case Study Coming Soon
-                            </div>
-                          </div>
-                          <div
-                            className={`${styles.projectMarqueeContent} ${styles.scrollProject}`}
-                          >
-                            <div className={styles.textBlock}>
-                              Case Study Coming Soon
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <img src={`/images/${img}`} alt={title} />
-                    </div>
-                  )}
 
-                  <div className={`${styles.projectDetails} projectDetails`}>
-                    <div className={styles.projectDetailsInner}>
-                      <div ref={swapText} className={styles.projectHeader}>
-                        {title}
-                      </div>
-                      <div className={styles.projectTags}>
-                        {tags.map((tag, index) => (
-                          <React.Fragment key={index}>
-                            {index > 0 && (
-                              <span className={styles.bullet}>, </span>
-                            )}
-                            {tag}
-                          </React.Fragment>
-                        ))}
-                      </div>
-                      <p dangerouslySetInnerHTML={{ __html: details }}></p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+
           </div>
-          {/* "View More" Button */}
-          {isMobileDevice && displayedProjects < projects.length && (
-            <div className={styles.viewMore}>
-              <button
-                onClick={loadMoreProjects}
-                className={styles.viewMoreButton}
-              >
-                View More
-              </button>
-            </div>
-          )}
+
         </div>
       </div>
 
@@ -546,3 +453,4 @@ const HomePage = ({ startLenis, stopLenis }) => {
 };
 
 export default HomePage;
+

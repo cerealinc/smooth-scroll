@@ -80,22 +80,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
         <Logo />
         <div className={`${styles.menu} ${styles[textColor]}`} ref={navRef}>
           <a
-            onClick={(e) => handleLinkClick(e, "home")}
-            className={`${styles.homeLink} ${
-              activeSection === "home" ? styles.active : styles.inActive
-            }`}
-          >
-            Home
-          </a>
-          <a
-            onClick={(e) => handleLinkClick(e, "work")}
-            className={
-              activeSection === "work" ? styles.active : styles.inActive
-            }
-          >
-            Work
-          </a>
-          <a
             onClick={(e) => handleLinkClick(e, "contact")}
             className={
               activeSection === "contact" ? styles.active : styles.inActive
