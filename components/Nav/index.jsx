@@ -4,7 +4,33 @@ import Logo from "../Logo";
 import Image from "next/image"; // Import the Image component
 import styles from "./style.module.css";
 
+
+const useWindowHeight = () => {
+  const [windowHeight, setWindowHeight] = useState(0);
+
+  useEffect(() => {
+    // Function to update the height
+    const updateHeight = () => {
+      setWindowHeight(window.innerHeight / 3);
+    };
+
+    // Update height on mount
+    updateHeight();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', updateHeight);
+
+    // Clean up
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []); // Empty array ensures this runs once on mount
+
+  return windowHeight;
+};
+
 const Nav = ({ handleClick, setRenderMain }) => {
+
+  const windowHeight = useWindowHeight();
+
   const [activeSection, setActiveSection] = useState(null);
   const navRef = useRef(null);
   const [isDarkSectionInView, setIsDarkSectionInView] = useState(false);
@@ -14,9 +40,9 @@ const Nav = ({ handleClick, setRenderMain }) => {
     handleClick(false);
 
     gsap.to(window, {
-      scrollTo: { y: `#${sectionId}`, autoKill: false },
-      duration: 2.6,
-      ease: "power3.inOut",
+      scrollTo: { y: `#${sectionId}`, autoKill: false, offsetY: windowHeight},
+      duration: 4.4,
+      ease: "power4.out",
     });
   };
 

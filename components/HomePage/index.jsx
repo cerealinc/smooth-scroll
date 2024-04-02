@@ -341,7 +341,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
 
   return (
     <>
-      <div id="work" className="section" style={{height: '0', overflow: 'hidden'}}>
+      <div id="" className="section" style={{height: '0px', overflow: 'hidden'}}>
         <div
           ref={projectWrapperRefOuter}
           className={styles.projectWrapperOuter}
@@ -356,12 +356,12 @@ const HomePage = ({ startLenis, stopLenis }) => {
       </div>
 
       <div
-        id="contact"
         className="section isDark"
         style={{ position: "relative", height: "auto", backgroundColor: '#0a0a0a'
       }}
       >
-              <div ref={spacerwRef} className={styles.spacerw}></div>
+              <div ref={spacerwRef} className={styles.spacerw}
+></div>
 
         <div
           ref={WorldRef}
@@ -445,7 +445,7 @@ const HomePage = ({ startLenis, stopLenis }) => {
         <BlobAnimation />
         </div>
       </div>
-      <div className={styles.spacer2}></div>
+      <div className={styles.spacer2} id="contact"></div>
       </div>
 
     </>
