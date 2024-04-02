@@ -104,16 +104,6 @@ const Nav = ({ handleClick, setRenderMain }) => {
     <>
       <div className={styles.navigation}>
         <Logo />
-        <div className={`${styles.menu} ${styles[textColor]}`} ref={navRef}>
-          <a
-            onClick={(e) => handleLinkClick(e, "contact")}
-            className={
-              activeSection === "contact" ? styles.active : styles.inActive
-            }
-          >
-            Info
-          </a>
-        </div>
       </div>
     </>
   );

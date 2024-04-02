@@ -56,7 +56,7 @@ const Intro = () => {
     <>
     <div className={styles.wrapper}>
 
-    <div ref={containerRef} className={styles.scrollContainer}>
+    <div ref={containerRef} className={`${styles.scrollContainer} is-dark`}>
       <div className={styles.scrollText}>
       <div className={styles.marquee}>
       <div className={`${styles.marqueeContent} ${styles.scroll}`}>
